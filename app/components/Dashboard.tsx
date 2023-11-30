@@ -40,7 +40,7 @@ export default function Dashboard() {
     return (
         <div style={{ display: "flex", width: "60%", margin: "50px auto" }}>
             <Grid grid={grid} setGrid={setGrid} />
-            <Form form={form} setForm={setForm} grid={grid} />
+            <Form form={form} setForm={setForm} grid={grid} setGrid={setGrid} />
         </div>
     );
 }

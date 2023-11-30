@@ -1,12 +1,9 @@
-import { find, first, size } from "lodash";
+import { find } from "lodash";
 import { rulesItems } from "../lib/formItems";
 import { ElementType } from "../types/ElementType";
 import { Neighbour } from "../types/Neighbout";
 import { getElementsBasedOnProperty } from "./getElementsBasedOnProperty";
-
-const getRandomItem = (array: ElementType[]) => {
-    return array[Math.floor(Math.random() * array.length)];
-};
+import { selectElement } from "./selectElement";
 
 export const applyRules = (
     rule: number,
@@ -45,14 +42,7 @@ export const applyRules = (
         elementsBasedOnColor
     );
 
-    if (size(elementsBasedOnShape) === 0) {
-        if (size(elementsBasedOnColor) === 1) {
-            return first(elementsBasedOnColor);
-        } else {
-            return getRandomItem(elementsBasedOnColor);
-        }
-    }
+    console.log(elementsBasedOnColor, elementsBasedOnShape, options);
 
-    // console.log("elementsBasedOnColor: ", elementsBasedOnColor);
-    // console.log("elementsBasedOnShape: ", elementsBasedOnShape);
+    return selectElement(elementsBasedOnColor, elementsBasedOnShape, options);
 };

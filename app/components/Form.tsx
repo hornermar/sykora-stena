@@ -7,15 +7,16 @@ type FormProps = {
     form: FormValues;
     setForm: React.Dispatch<React.SetStateAction<FormValues>>;
     grid: string[][];
+    setGrid: React.Dispatch<React.SetStateAction<string[][]>>;
 };
 
-export const Form = ({ form, setForm, grid }: FormProps) => {
+export const Form = ({ form, setForm, grid, setGrid }: FormProps) => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         console.log("grid: ", grid);
 
-        getElements(form, grid);
-        //setForm((prev) => ({ ...prev, grid: newGrid as any }));
+        const newGrid = getElements(form, grid);
+        setGrid(newGrid);
     };
 
     return (

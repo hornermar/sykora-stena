@@ -14,9 +14,8 @@ export const getShape = (
         elementList,
         ({ colorDensity }) => colorDensity === density
     );
-    console.log("[y][x]: ", [x], [y]);
-    const neighbours = getNeighboursWithSides(x, y, grid);
 
+    const neighbours = getNeighboursWithSides(x, y, grid);
     const element = applyRules(rule, neighbours, options);
 
     return element?.name;

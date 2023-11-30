@@ -17,8 +17,7 @@ const processCell = (
 
         const element = getShape(newGrid, x, y, colorDensity, rule);
 
-        newGrid[y][x] = element ?? `${colorDensity}`;
-        console.log("newGrid", newGrid);
+        newGrid[y][x] = element ?? "0";
     }
 };
 
