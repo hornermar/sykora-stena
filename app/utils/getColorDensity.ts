@@ -1,6 +1,6 @@
-import { getCoefficient } from "./getCoefficient";
+import { applyCoefficient } from "./applyCoefficient";
 import { getDensityAverage } from "./getDensityAverage";
-import { getExpandedNeighbours } from "./getNeighbours";
+import { getNeighbours } from "./getNeighbours";
 import { getRounded } from "./getRounded";
 
 /* 
@@ -9,26 +9,28 @@ import { getRounded } from "./getRounded";
   whose sides or corners touch.
 */
 export const getColourDensity = (
- grid: string[][],
- x: number,
- y: number,
- coefficient: number
+    grid: string[][],
+    x: number,
+    y: number,
+    coefficient: number
 ) => {
- let round: number = 1;
- let repeat: boolean = true;
- let unRoundedResult: number = 0;
+    let step: number = 1;
+    let repeat: boolean = true;
+    let unRoundedResult: number = 0;
 
- while (repeat && round < 5) {
-  const neighbours = getExpandedNeighbours(round, grid, x, y);
-  const neighboursAverage: number = getDensityAverage(neighbours);
-  unRoundedResult = getCoefficient(grid[y][x], coefficient, neighboursAverage);
+    while (repeat && step < 5) {
+        const neighbours = getNeighbours(step, grid, x, y);
+        const neighboursAverage: number = getDensityAverage(neighbours);
+        unRoundedResult = applyCoefficient(
+            grid[y][x],
+            coefficient,
+            neighboursAverage
+        );
 
-  repeat = unRoundedResult - Math.floor(unRoundedResult) === 0.5;
-  round++;
- }
+        repeat = unRoundedResult - Math.floor(unRoundedResult) === 0.5;
+        step++;
+    }
 
- console.log("unRoundedResult", unRoundedResult);
-
- const rounded: number = getRounded(unRoundedResult);
- return rounded.toString();
+    const rounded: number = getRounded(unRoundedResult);
+    return rounded;
 };

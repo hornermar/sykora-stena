@@ -4,74 +4,103 @@ import { FormValues } from "../types/FormValues";
 import { getElements } from "../utils/getElements";
 
 type FormProps = {
- form: FormValues;
- setForm: React.Dispatch<React.SetStateAction<FormValues>>;
- grid: string[][];
+    form: FormValues;
+    setForm: React.Dispatch<React.SetStateAction<FormValues>>;
+    grid: string[][];
 };
 
 export const Form = ({ form, setForm, grid }: FormProps) => {
- const handleSubmit = (e: any) => {
-  e.preventDefault();
-  console.log("grid: ", grid);
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        console.log("grid: ", grid);
 
-  getElements(form, grid);
-  //setForm((prev) => ({ ...prev, grid: newGrid as any }));
- };
+        getElements(form, grid);
+        //setForm((prev) => ({ ...prev, grid: newGrid as any }));
+    };
 
- return (
-  <form style={{ display: "flex", flexDirection: "column" }}>
-   <label>Rows</label>
-   <input
-    type="number"
-    value={form.structure.rows}
-    onChange={(e) =>
-     setForm((prev) => ({
-      ...prev,
-      structure: { ...prev.structure, rows: parseInt(e.target.value) },
-     }))
-    }
-   />
-   <label>Columns</label>
-   <input
-    type="number"
-    value={form.structure.columns}
-    onChange={(e) =>
-     setForm((prev) => ({
-      ...prev,
-      structure: { ...prev.structure, columns: parseInt(e.target.value) },
-     }))
-    }
-   />
-   <label>Coefficient</label>
-   <input
-    type="number"
-    value={form.coefficient}
-    onChange={(e) => {
-     console.log(e.target),
-      setForm((prev) => ({
-       ...prev,
-       coefficient: parseInt(e.target.value),
-      }));
-    }}
-    min="0"
-   />
-   <label>Rule</label>
-   <select
-    value={form.rule}
-    onChange={(e) =>
-     setForm((prev) => ({
-      ...prev,
-      rule: parseInt(e.target.value),
-     }))
-    }
-   >
-    {map(rulesItems, (item) => (
-     <option key={item.value} value={item.value}>
-      {item.label}
-     </option>
-    ))}
-   </select>
-   <button onClick={(e) => handleSubmit(e)}>values</button>
-  </form>
- );
+    return (
+        <form
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "20%",
+                margin: "0 auto",
+            }}
+        >
+            <label>Rows</label>
+            <input
+                type="number"
+                value={form.structure.rows}
+                onChange={(e) =>
+                    setForm((prev) => ({
+                        ...prev,
+                        structure: {
+                            ...prev.structure,
+                            rows: parseInt(e.target.value),
+                        },
+                    }))
+                }
+            />
+            <label>Columns</label>
+            <input
+                type="number"
+                value={form.structure.columns}
+                onChange={(e) =>
+                    setForm((prev) => ({
+                        ...prev,
+                        structure: {
+                            ...prev.structure,
+                            columns: parseInt(e.target.value),
+                        },
+                    }))
+                }
+            />
+            <label>Coefficient</label>
+            <p>
+                Lower values for c yield less change in color density; higher
+                values yield greater change
+            </p>
+            <input
+                type="number"
+                value={form.coefficient}
+                onChange={(e) => {
+                    setForm((prev) => ({
+                        ...prev,
+                        coefficient: parseFloat(e.target.value),
+                    }));
+                }}
+                step="0.1"
+                min="0"
+                max="4"
+            />
+            <label>Rule</label>
+            {/* <p>
+                We say that the <i>colors continue</i> if the color along a side
+                of an element is the same as that along the adjoining border of
+                the neighboring element.
+            </p>
+            <p>
+                We say that the <i>shapes continue</i> at the side of an element
+                if each half circle open to a side joins a half circle of a
+                bordering element to form a complete circle or if two patterns
+                join, neither of which is a half circle pen to a side
+            </p> */}
+            <select
+                value={form.rule}
+                onChange={(e) =>
+                    setForm((prev) => ({
+                        ...prev,
+                        rule: parseInt(e.target.value),
+                    }))
+                }
+            >
+                {map(rulesItems, (item) => (
+                    <option key={item.code} value={item.code}>
+                        {item.code}: {item.text}
+                    </option>
+                ))}
+            </select>
+            <button onClick={(e) => handleSubmit(e)}>values</button>
+        </form>
+    );
 };
