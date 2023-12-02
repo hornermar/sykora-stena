@@ -3,7 +3,6 @@ import { ElementType } from "../types/ElementType";
 export const elementList: ElementType[] = [
     {
         name: "1z",
-        path: "",
         colorDensity: 1,
         top: {
             color: "black",
@@ -24,7 +23,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "1b",
-        path: "",
         colorDensity: 1,
         top: {
             color: "black",
@@ -45,7 +43,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "1y",
-        path: "",
         colorDensity: 1,
         top: {
             color: "black",
@@ -66,7 +63,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "1i",
-        path: "",
         colorDensity: 1,
         top: {
             color: "white",
@@ -87,7 +83,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "1r",
-        path: "",
         colorDensity: 1,
         top: {
             color: "black",
@@ -108,7 +103,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "1d",
-        path: "",
         colorDensity: 1,
         top: {
             color: "white",
@@ -129,7 +123,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "2z",
-        path: "",
         colorDensity: 2,
         top: {
             color: "white",
@@ -150,7 +143,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "2b",
-        path: "",
         colorDensity: 2,
         top: {
             color: "white",
@@ -171,7 +163,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "2y",
-        path: "",
         colorDensity: 2,
         top: {
             color: "white",
@@ -192,7 +183,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "2r",
-        path: "",
         colorDensity: 2,
         top: {
             color: "black",
@@ -213,7 +203,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "3z",
-        path: "",
         colorDensity: 3,
         top: {
             color: "black",
@@ -234,7 +223,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "3b",
-        path: "",
         colorDensity: 3,
         top: {
             color: "black",
@@ -255,7 +243,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "3y",
-        path: "",
         colorDensity: 3,
         top: {
             color: "black",
@@ -276,7 +263,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "3r",
-        path: "",
         colorDensity: 3,
         top: {
             color: "white",
@@ -297,7 +283,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "4z",
-        path: "",
         colorDensity: 4,
         top: {
             color: "white",
@@ -318,7 +303,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "4b",
-        path: "",
         colorDensity: 4,
         top: {
             color: "white",
@@ -339,7 +323,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "4y",
-        path: "",
         colorDensity: 4,
         top: {
             color: "white",
@@ -360,7 +343,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "4i",
-        path: "",
         colorDensity: 4,
         top: {
             color: "black",
@@ -381,7 +363,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "4r",
-        path: "",
         colorDensity: 4,
         top: {
             color: "white",
@@ -402,7 +383,6 @@ export const elementList: ElementType[] = [
     },
     {
         name: "4d",
-        path: "",
         colorDensity: 4,
         top: {
             color: "black",

@@ -8,15 +8,23 @@ type FormProps = {
     setForm: React.Dispatch<React.SetStateAction<FormValues>>;
     grid: string[][];
     setGrid: React.Dispatch<React.SetStateAction<string[][]>>;
+    setIsGenerated: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const Form = ({ form, setForm, grid, setGrid }: FormProps) => {
+export const Form = ({
+    form,
+    setForm,
+    grid,
+    setGrid,
+    setIsGenerated,
+}: FormProps) => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         console.log("grid: ", grid);
 
-        const newGrid = getElements(form, grid);
-        setGrid(newGrid);
+        const filledGrid = getElements(form, grid);
+        setIsGenerated(true);
+        setGrid(filledGrid);
     };
 
     return (
@@ -24,8 +32,7 @@ export const Form = ({ form, setForm, grid, setGrid }: FormProps) => {
             style={{
                 display: "flex",
                 flexDirection: "column",
-                width: "20%",
-                margin: "0 auto",
+                width: "100%",
             }}
         >
             <label>Rows</label>
@@ -57,10 +64,6 @@ export const Form = ({ form, setForm, grid, setGrid }: FormProps) => {
                 }
             />
             <label>Coefficient</label>
-            <p>
-                Lower values for c yield less change in color density; higher
-                values yield greater change
-            </p>
             <input
                 type="number"
                 value={form.coefficient}
@@ -75,17 +78,7 @@ export const Form = ({ form, setForm, grid, setGrid }: FormProps) => {
                 max="4"
             />
             <label>Rule</label>
-            {/* <p>
-                We say that the <i>colors continue</i> if the color along a side
-                of an element is the same as that along the adjoining border of
-                the neighboring element.
-            </p>
-            <p>
-                We say that the <i>shapes continue</i> at the side of an element
-                if each half circle open to a side joins a half circle of a
-                bordering element to form a complete circle or if two patterns
-                join, neither of which is a half circle pen to a side
-            </p> */}
+
             <select
                 value={form.rule}
                 onChange={(e) =>
@@ -101,7 +94,8 @@ export const Form = ({ form, setForm, grid, setGrid }: FormProps) => {
                     </option>
                 ))}
             </select>
-            <button onClick={(e) => handleSubmit(e)}>values</button>
+            <button onClick={(e) => handleSubmit(e)}>Vygeneruj</button>
+            <button onClick={() => setIsGenerated(false)}>Reset</button>
         </form>
     );
 };

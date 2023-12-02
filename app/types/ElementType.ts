@@ -2,7 +2,6 @@ type Color = "black" | "white";
 
 export type ElementType = {
     name: string;
-    path: string;
     colorDensity: number;
     top: {
         color: Color;

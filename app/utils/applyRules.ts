@@ -42,7 +42,5 @@ export const applyRules = (
         elementsBasedOnColor
     );
 
-    console.log(elementsBasedOnColor, elementsBasedOnShape, options);
-
     return selectElement(elementsBasedOnColor, elementsBasedOnShape, options);
 };
