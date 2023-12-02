@@ -111,14 +111,6 @@ export const FrontPage = () => {
 
             <MediaCard color="transparent">
                 <p>
-                    <span
-                        style={{
-                            fontSize: "44px",
-                            fontWeight: "bold",
-                        }}
-                    >
-                        "
-                    </span>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. //
                     Nullam justo enim, consectetuer nec, ullamcorper ac, //
                     vestibulum in, elit.
