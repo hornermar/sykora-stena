@@ -23,9 +23,11 @@ export default function MediaCard({
     return (
         <StyledCard color={color}>
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {heading}
-                </Typography>
+                {heading && (
+                    <Typography gutterBottom variant="h5" component="div">
+                        {heading}
+                    </Typography>
+                )}
 
                 {children}
             </CardContent>

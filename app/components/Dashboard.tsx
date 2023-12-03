@@ -1,6 +1,6 @@
 "use client";
 import { Box } from "@mui/material";
-import { DescriptionOfInputs } from "./DescriptionOfInputs";
+import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
 import { FrontPage } from "./FrontPage";
 import { Section } from "./Section";
 
@@ -12,8 +12,8 @@ export default function HomePage() {
                     <FrontPage />
                 </Section>
 
-                <Section backgroundColor="white">
-                    <DescriptionOfInputs />
+                <Section backgroundColor="white" title="A. Vstupy umělce">
+                    <ArtistInputs />
                 </Section>
             </div>
         </Box>

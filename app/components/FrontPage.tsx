@@ -76,7 +76,7 @@ export const FrontPage = () => {
 
             <MediaCard color="white">
                 <div>
-                    <Structure size={58} grid={grid} cellType="image" />
+                    <Structure size={56} grid={grid} cellType="image" />
                     <p>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing
                         elit. // Nullam justo enim, consectetuer nec,
@@ -85,9 +85,10 @@ export const FrontPage = () => {
                         Proin in tellus sit amet nibh
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. // Nullam justo enim, consectetuer nec,
-                        ullamcorper ac, // vestibulum in, elit.
+                        Černobílou strukturu vytvořil Sýkora společně s
+                        Jaroslavem Blažkem v roce 1966. Popsali ji v článku
+                        Computer-aided multielement geometrical abstract
+                        paintings v časopise Leonardo.
                     </p>
                     <p>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing

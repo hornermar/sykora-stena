@@ -26,7 +26,12 @@ export const Structure = ({
     };
 
     return (
-        <Stack flexDirection="column" width="100%" alignItems="flex-end">
+        <Stack
+            flexDirection="column"
+            width="100%"
+            alignItems="center"
+            sx={{ margin: "0 auto" }}
+        >
             {map(grid, (row, y) => (
                 <div
                     key={y}
@@ -91,6 +96,7 @@ export const Structure = ({
                 <Switch
                     checked={type === "image"}
                     onChange={handleTypeChange}
+                    sx={{ alignSelf: "flex-end" }}
                 />
             )}
         </Stack>
