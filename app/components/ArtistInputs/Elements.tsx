@@ -1,10 +1,9 @@
 "use client";
 import { Stack, Switch } from "@mui/material";
-import Image from "next/image";
 import { useState } from "react";
-import { getElementImage } from "../../utils/getElementImages";
 import { ExampleGrid } from "../ExampleGrid";
 import MediaCard from "../MediaCard";
+import { RotatingElement } from "./RotatingElement";
 
 const allElements = [
     ["1z", "1r", "2z", "3z", "4z", "4r"],
@@ -33,14 +32,12 @@ const largeSize = 78;
 export const ArtistInputsElements = () => {
     const [blackWhite, setBlackWhite] = useState(true);
 
-    //setInterval(() => setBlackWhite((prev) => !prev), 4000);
-
     return (
         <>
             <MediaCard color="transparent">
                 Ještě před spuštěním výpočtu, který provedl algoritmus, musel
-                Zdeněk Sýkora nastavit několik parametrů. Na těch závisela
-                výsledná podoba obrazu.
+                Zdeněk Sýkora nastavit <b>4</b> parametry. Na těch závisela
+                výsledná podoba obrazu. V této části si ukážeme, které to jsou.
             </MediaCard>
             <MediaCard heading="1. Elementy" color="rgb(219, 219, 219)">
                 <Stack spacing={4} flexDirection="column">
@@ -52,6 +49,8 @@ export const ArtistInputsElements = () => {
                         ale ne tak, aby vytvořili dohromady kruh.
                     </p>
 
+                    <p>Jejich postupným otáčením získal 10 různých elementů.</p>
+
                     <div
                         style={{
                             display: "flex",
@@ -59,37 +58,11 @@ export const ArtistInputsElements = () => {
                             justifyContent: "space-between",
                         }}
                     >
-                        {/* TODO: change color after 10s, rotate */}
-                        <div>
-                            <Image
-                                src={getElementImage("1z")}
-                                width={largeSize}
-                                height={largeSize}
-                                alt={"element 1z"}
-                            />
-                        </div>
-                        <div>
-                            <Image
-                                src={getElementImage("1r")}
-                                width={largeSize}
-                                height={largeSize}
-                                alt={"element 1r"}
-                            />
-                        </div>
-                        <div>
-                            <Image
-                                src={getElementImage("3z")}
-                                width={largeSize}
-                                height={largeSize}
-                                alt={"element 3z"}
-                            />
-                        </div>
+                        <RotatingElement name="1z" size={largeSize} />
+                        <RotatingElement name="1r" size={largeSize} />
+                        <RotatingElement name="3z" size={largeSize} />
                     </div>
-                    <p>
-                        Jejich otáčením získal 10 prvků. Tento počet následným
-                        prohozením barev zvýšil na 20. Každý prvek má pak vždy
-                        právě jeden protějšek v opačných barvách.
-                    </p>
+                    <p>Prohozením barev pak tento počet zdvojnásobil na 20.</p>
 
                     <ExampleGrid
                         grid={
@@ -107,11 +80,12 @@ export const ArtistInputsElements = () => {
                     />
 
                     <p>
-                        Tyto prvky poté rozdělil do skupin podle hustoty barvy.
-                        Skupina 1 v tomto případě obsahuje nejsvětlejší prvky{" "}
-                        <b>1z</b>, <b>1b</b>, <b>1y</b>, <b></b>
-                        1i, <b>1r</b> a <b>1d</b>. Skupina 2 obsahovala prvky{" "}
-                        <b>2z</b>, <b>2b</b>, <b>2y</b> a <b>2r</b> a tak dále.
+                        Elementy poté rozdělil do skupin podle hustoty barvy.
+                        Skupina 1 obsahuje nejsvětlejší. Těmi jsou <b>1z</b>,{" "}
+                        <b>1b</b>, <b>1y</b>, <b> 1i</b>, <b>1r</b> a <b>1d</b>.
+                        Skupina 2 obsahuje prvky <b>2z</b>, <b>2b</b>, <b>2y</b>{" "}
+                        a <b>2r</b> a tak dále. Skupina 4 tak obsahuje nejtmavší
+                        elementy.
                     </p>
 
                     <ExampleGrid
@@ -122,13 +96,13 @@ export const ArtistInputsElements = () => {
                 </Stack>
             </MediaCard>
 
-            <MediaCard color="transparent">
+            {/* <MediaCard color="transparent">
                 <p>
                     Pro počítač jsou u každého prvku zaznamenány barvy na každé
                     ze čtyř stran a také, zda má na straně přilehlý otevřený
                     půlkruh nebo ne.
                 </p>
-            </MediaCard>
+            </MediaCard> */}
         </>
     );
 };

@@ -10,6 +10,7 @@ export type StructureProps = {
     size: number;
     cellType?: "select" | "image" | "text";
     onCellChange?: any;
+    displaySwitch?: boolean;
 };
 
 export const Structure = ({
@@ -17,6 +18,7 @@ export const Structure = ({
     size,
     onCellChange,
     cellType,
+    displaySwitch,
 }: StructureProps) => {
     const [type, setType] = useState(cellType);
 
@@ -92,7 +94,7 @@ export const Structure = ({
                     ))}
                 </div>
             ))}
-            {type !== "select" && (
+            {type !== "select" && displaySwitch && (
                 <Switch
                     checked={type === "image"}
                     onChange={handleTypeChange}

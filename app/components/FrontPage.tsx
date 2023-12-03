@@ -1,30 +1,10 @@
 "use client";
-import { Button, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { Typography } from "@mui/material";
 import { map } from "lodash";
 import { getElements } from "../utils/getElements";
+import { Button } from "./Button";
 import MediaCard from "./MediaCard";
 import { Structure } from "./Structure";
-
-const StyledButton = styled(Button)({
-    boxShadow: "none",
-    padding: "15px 20px",
-    borderRadius: "25px",
-    color: "black",
-    backgroundColor: "#d5d4d6",
-    textTransform: "none",
-    "&:hover": {
-        boxShadow: "none",
-        backgroundColor: "#b5b5b5",
-    },
-    "&:active": {
-        boxShadow: "none",
-        backgroundColor: "#b5b5b5",
-    },
-    "&:focus": {
-        backgroundColor: "#b5b5b5",
-    },
-});
 
 export const FrontPage = () => {
     const emptyGrid = [
@@ -76,7 +56,12 @@ export const FrontPage = () => {
 
             <MediaCard color="white">
                 <div>
-                    <Structure size={56} grid={grid} cellType="image" />
+                    <Structure
+                        size={50}
+                        grid={grid}
+                        cellType="image"
+                        displaySwitch
+                    />
                     <p>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing
                         elit. // Nullam justo enim, consectetuer nec,
@@ -96,16 +81,14 @@ export const FrontPage = () => {
                         ullamcorper ac, // vestibulum in, elit.
                     </p>
                     <div style={{ paddingTop: "10px" }}>
-                        <StyledButton
-                            variant="contained"
-                            fullWidth
-                            //onCLick transfer to "/algotitmus"
+                        <Button
                             onClick={() => {
                                 window.location.href = "/algoritmus";
                             }}
+                            fullWidth
                         >
                             Vyzkoušet
-                        </StyledButton>
+                        </Button>
                     </div>
                 </div>
             </MediaCard>

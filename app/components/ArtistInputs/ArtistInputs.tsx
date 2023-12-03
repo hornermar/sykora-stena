@@ -1,19 +1,33 @@
 "use client";
 import MediaCard from "../MediaCard";
 import { Structure } from "../Structure";
+import { Coefficient } from "./Coefficient";
 import { ArtistInputsElements } from "./Elements";
 
 const gridForDiagram = [
-    ["3z", "0", "4z", "0", "0", "0"],
-    ["0", "0", "1i", "0", "2z", "0"],
-    ["0", "0", "0", "0", "0", "0"],
+    // 1
+    ["-", "-", "-", "0", "3r", "1r", "+", "+", "0", "-", "-"],
+    // 2
+    ["-", "1r", "+", "+", "-", "-", "-", "4z", "+", "-", "2r"],
+    // 3
+    ["-", "+", "+", "4i", "-", "1i", "-", "0", "0", "0", "0"],
+    // 4
+    ["-", "+", "+", "+", "-", "-", "-", "3b", "+", "+", "0"],
+    // 5
+    ["1z", "0", "0", "0", "-", "1d", "-", "+", "+", "0", "-"],
+    // 6
+    ["-", "+", "+", "0", "-", "-", "1y", "+", "+", "+", "1d"],
+    // 7
+    ["-", "+", "4z", "+", "1r", "-", "-", "0", "+", "0", "-"],
+    // 8
+    ["0", "+", "+", "+", "0", "-", "-", "3b", "0", "-", "-"],
+    // 9
+    ["+", "+", "+", "1d", "0", "-", "-", "+", "+", "4r", "-"],
+    // 10
+    ["+", "0", "3b", "+", "0", "0", "1r", "+", "+", "0", "-"],
 ];
 
-const gridForCoefficient = [
-    ["3z", "+", "4z", "0", "0", "0"],
-    ["0", "0", "1i", "-", "2z", "0"],
-    ["0", "-", "-", "0", "0", "0"],
-];
+const smallSize = 30;
 
 export const ArtistInputs = () => {
     return (
@@ -22,35 +36,20 @@ export const ArtistInputs = () => {
 
             <MediaCard heading="2. Diagram" color="rgb(219, 219, 219)">
                 <p>
-                    Poté si umělec připravil mřížku, do které umístil několik
-                    počátečních prvků dle svojí volby. Vznikne mu tak vstupní
-                    diagram
+                    Poté si umělec připravil mřížku, do které rozmístil několik
+                    počátečních elementů dle vlastní volby. Přidal do něj také
+                    znaménka <b>+</b> a <b>-</b> v místech, kde si přál zvýšit
+                    nebo snížit hustotu barvy.
                 </p>
-                <Structure size={58} grid={gridForDiagram} cellType="text" />
-            </MediaCard>
-            <MediaCard heading="3. Koeficient" color="rgb(219, 219, 219)">
-                <p>c {">"} 0</p>
-                <p>
-                    Do tohoto diagramu pak také umístil tnaménka <b>+</b> a{" "}
-                    <b>-</b> v místech, kde si příl zvýšit nebo snížit hustotu
-                    barvy.
-                </p>
-                <p>
-                    Stupneň, o kolik se barva změnila na tmavší nebo světlejší
-                    určuje koeficient c. Ten musí mít číselnou hodnotu a být
-                    větší jak nula.
-                </p>
-                <p>
-                    Nižší hodnoty <b>c</b> způsobí menší změny v hustotě barvy,
-                    vyšší hodnoty naopak znamenají větší změnu.
-                </p>
-
                 <Structure
-                    size={58}
-                    grid={gridForCoefficient}
-                    cellType="image"
+                    size={smallSize}
+                    grid={gridForDiagram}
+                    cellType="text"
+                    displaySwitch
                 />
             </MediaCard>
+            <Coefficient grid={gridForDiagram} />
+
             <MediaCard heading="4. Pravidla" color="rgb(219, 219, 219)">
                 <p>Je třeba zvolit jedno ze čtyř pravidel.</p>
 
