@@ -14,15 +14,8 @@ export const FrontPage = () => {
         ["+", "0", "+", "0", "-", "0"],
         ["+", "0", "+", "0", "-", "0"],
     ];
-    const form = {
-        structure: {
-            rows: 5,
-            columns: 6,
-        },
-        coefficient: 0.75,
-        rule: 3,
-    };
-    const grid = getElements(form, emptyGrid);
+
+    const grid = getElements(3, 0.75, emptyGrid);
 
     return (
         <>

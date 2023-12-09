@@ -18,7 +18,7 @@ import { default as el4i } from "../../public/elements/4i.svg";
 import { default as el4r } from "../../public/elements/4r.svg";
 import { default as el4y } from "../../public/elements/4y.svg";
 import { default as el4z } from "../../public/elements/4z.svg";
-import { default as emptyWhite } from "../../public/elements/emptyWhite.svg";
+import { default as transparent } from "../../public/elements/transparent.svg";
 
 export const getElementImage = (element: string) => {
     switch (element) {
@@ -63,6 +63,6 @@ export const getElementImage = (element: string) => {
         case "4r":
             return el4r;
         default:
-            return emptyWhite;
+            return transparent;
     }
 };

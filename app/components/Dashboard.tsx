@@ -15,6 +15,13 @@ export default function HomePage() {
                 <Section backgroundColor="white" title="A. Vstupy umělce">
                     <ArtistInputs />
                 </Section>
+
+                <Section
+                    backgroundColor={"rgb(24, 76, 151)"}
+                    title="B. Dopočet chybějících prvků"
+                >
+                    <div></div>
+                </Section>
             </div>
         </Box>
     );

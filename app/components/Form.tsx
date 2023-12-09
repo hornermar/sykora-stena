@@ -22,7 +22,7 @@ export const Form = ({
         e.preventDefault();
         console.log("grid: ", grid);
 
-        const filledGrid = getElements(form, grid);
+        const filledGrid = getElements(form.rule, form.coefficient, grid);
         setIsGenerated(true);
         setGrid(filledGrid);
     };

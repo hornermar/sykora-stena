@@ -1,4 +1,4 @@
-import { FormValues } from "../types/FormValues";
+import { map } from "lodash";
 import { getColourDensity } from "./getColorDensity";
 import { getShape } from "./getShape";
 
@@ -21,22 +21,24 @@ const processCell = (
     }
 };
 
-export const getElements = (form: FormValues, grid: string[][]) => {
-    const { rule, coefficient, structure } = form;
-
+export const getElements = (
+    rule: number,
+    coefficient: number,
+    grid: string[][]
+) => {
     // Create a copy of the grid
-    let newGrid = grid.map((row: any) => [...row]);
+    let newGrid = map(grid, (row: any) => [...row]);
 
     // Iterate over the rows
-    for (let y = 0; y < structure.rows; y++) {
+    for (let y = 0; y < grid.length; y++) {
         // If the row is even, iterate from left to right
         if (y % 2 === 0) {
-            for (let x = 0; x < structure.columns; x++) {
+            for (let x = 0; x < grid[y].length; x++) {
                 processCell(newGrid, x, y, coefficient, rule);
             }
         } else {
             // If the row is odd, iterate from right to left
-            for (let x = structure.columns - 1; x >= 0; x--) {
+            for (let x = grid[y].length - 1; x >= 0; x--) {
                 processCell(newGrid, x, y, coefficient, rule);
             }
         }

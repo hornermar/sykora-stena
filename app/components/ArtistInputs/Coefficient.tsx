@@ -6,24 +6,15 @@ import { Structure } from "../Structure";
 
 type CoefficientProps = {
     grid: string[][];
+    rule: number;
 };
 
-const form = {
-    structure: {
-        rows: 10,
-        columns: 11,
-    },
-    rule: 3,
-};
-
-export const Coefficient = ({ grid }: CoefficientProps) => {
+export const Coefficient = ({ grid, rule }: CoefficientProps) => {
     const [coefficient, setCoefficient] = useState(2);
     const [gridWithCoefficient, setGridWithCoefficient] = useState(grid);
 
     useEffect(() => {
-        setGridWithCoefficient(
-            getElements({ ...form, coefficient: coefficient }, grid)
-        );
+        setGridWithCoefficient(getElements(rule, coefficient, grid));
     }, [coefficient]);
 
     return (
@@ -44,7 +35,7 @@ export const Coefficient = ({ grid }: CoefficientProps) => {
                 value={coefficient}
                 min={0}
                 max={4}
-                step={0.1}
+                step={0.5}
                 onChange={(e, newValue) => setCoefficient(newValue as number)}
                 valueLabelDisplay="on"
                 sx={{ marginTop: "30px" }}

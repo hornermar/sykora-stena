@@ -11,6 +11,7 @@ export type StructureProps = {
     cellType?: "select" | "image" | "text";
     onCellChange?: any;
     displaySwitch?: boolean;
+    backgroundColor?: string;
 };
 
 export const Structure = ({
@@ -19,12 +20,12 @@ export const Structure = ({
     onCellChange,
     cellType,
     displaySwitch,
+    backgroundColor,
 }: StructureProps) => {
     const [type, setType] = useState(cellType);
 
     const handleTypeChange = () => {
         setType((prev) => (prev === "image" ? "text" : "image"));
-        // setType("text")
     };
 
     return (
@@ -46,13 +47,15 @@ export const Structure = ({
                     {map(row, (cell: string, x) => (
                         <div
                             key={`${x}${y}`}
+                            className={`xy`}
                             style={{
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
                                 width: `${size}px`,
                                 height: `${size}px`,
-                                backgroundColor: "white",
+                                backgroundColor: backgroundColor,
+
                                 border:
                                     type === "text" ||
                                     cell === "+" ||
@@ -75,6 +78,7 @@ export const Structure = ({
                                         width={size}
                                         height={size}
                                         alt={`element ${cell}`}
+                                        className={`element-${x}${y}`}
                                     />
                                 ) : (
                                     <span>

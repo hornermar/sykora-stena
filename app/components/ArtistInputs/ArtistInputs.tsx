@@ -3,6 +3,7 @@ import MediaCard from "../MediaCard";
 import { Structure } from "../Structure";
 import { Coefficient } from "./Coefficient";
 import { ArtistInputsElements } from "./Elements";
+import { Rule } from "./Rule";
 
 const gridForDiagram = [
     // 1
@@ -29,6 +30,11 @@ const gridForDiagram = [
 
 const smallSize = 30;
 
+const form = {
+    rule: 3,
+    coefficient: 0.75,
+};
+
 export const ArtistInputs = () => {
     return (
         <>
@@ -41,52 +47,17 @@ export const ArtistInputs = () => {
                     znaménka <b>+</b> a <b>-</b> v místech, kde si přál zvýšit
                     nebo snížit hustotu barvy.
                 </p>
+
                 <Structure
                     size={smallSize}
                     grid={gridForDiagram}
                     cellType="text"
                     displaySwitch
+                    backgroundColor="white"
                 />
             </MediaCard>
-            <Coefficient grid={gridForDiagram} />
-
-            <MediaCard heading="4. Pravidla" color="rgb(219, 219, 219)">
-                <p>Je třeba zvolit jedno ze čtyř pravidel.</p>
-
-                <ul>
-                    <li style={{ padding: "10px 0" }}>
-                        Pravidlo 0: <b>Barva</b> i <b>tvar</b> na straně prvku
-                        pokračují přes stranu společnou s jiným prvkem.
-                    </li>
-                    <li style={{ padding: "10px 0" }}>
-                        Pravidlo 1: <b>Barva</b> na straně prvku pokračuje přes
-                        stranu společnou s jiným prvkem, ale <b>tvar</b> nikoli.
-                    </li>
-                    <li style={{ padding: "10px 0" }}>
-                        Pravidlo 2: <b>Barva</b> na straně prvku nepokračuje
-                        přes stranu společnou s jiným prvkem, ale <b>tvar</b>{" "}
-                        ano.
-                    </li>
-                    <li style={{ padding: "10px 0" }}>
-                        Pravidlo 3: Ani <b>barva</b>, ani <b>tvar</b> na straně
-                        prvku nepokračuje přes stranu společnou s jiným prvkem.
-                    </li>
-                </ul>
-            </MediaCard>
-            <MediaCard>
-                <p>
-                    Říkáme, že <i>barvy pokračují</i>, pokud je barva podél
-                    strany prvku stejná jako barva podél sousedního okraje
-                    sousedního prvku.
-                </p>
-                <p>
-                    Říkáme, že <i>tvary pokračují</i> na straně prvku, pokud se
-                    každý půlkruh otevřený na stranu spojuje s půlkruhem
-                    ohraničujícího prvku a tvoří úplný kruh nebo pokud se
-                    spojují dva vzory, z nichž žádný není půlkruhové pero na
-                    stranu
-                </p>
-            </MediaCard>
+            <Coefficient grid={gridForDiagram} rule={form.rule} />
+            <Rule grid={gridForDiagram} coefficient={form.coefficient} />
         </>
     );
 };
