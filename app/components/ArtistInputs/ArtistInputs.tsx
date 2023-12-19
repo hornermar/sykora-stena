@@ -42,11 +42,14 @@ export const ArtistInputs = () => {
 
             <MediaCard heading="2. Diagram" color="rgb(219, 219, 219)">
                 <p>
-                    Poté si umělec připravil mřížku, do které rozmístil několik
-                    počátečních elementů dle vlastní volby. Přidal do něj také
-                    znaménka <b>+</b> a <b>-</b> v místech, kde si přál zvýšit
-                    nebo snížit hustotu barvy.
+                    Umělec si připravil mřížku, pro kterou si zvolil počet prvků
+                    do výšky a šířky. Do ní pak umístil libovolný počet elementů
+                    dle vlastního výběru. Do míst, kde si přál zvýšit nebo
+                    naopak snížit hustotu barvy, přidal znaménka <b>+</b> a{" "}
+                    <b>-</b>.
                 </p>
+
+                <p>Výsledný diagram mohl vypadat například takto:</p>
 
                 <Structure
                     size={smallSize}

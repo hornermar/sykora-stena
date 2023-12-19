@@ -59,7 +59,7 @@ export const Rule = ({ coefficient, grid }: RuleProps) => {
 
             <p>Z těchto pojmů jsou pak sestavená pravidla:</p>
 
-            <FormControl sx={{ marginTop: "10px" }}>
+            <FormControl sx={{ paddingTop: "0px", paddingBottom: "20px" }}>
                 <RadioGroup
                     row
                     value={rule}

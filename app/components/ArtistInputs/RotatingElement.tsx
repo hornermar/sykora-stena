@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import rotateIcon from "../../../public/rotate-solid.svg";
 import { getElementImage } from "../../utils/getElementImages";
-// import { Button } from "../Button";
 import { Button } from "../Button";
 
 type RotatingElementProps = {
@@ -16,18 +15,10 @@ export const RotatingElement = ({ size, name }: RotatingElementProps) => {
 
     return (
         <Stack>
-            <Image
-                src={getElementImage(name)}
-                width={size}
-                height={size}
-                alt={"element 1z"}
-                style={{
-                    transform: `rotate(${90 * rotation}deg)`,
-                    marginBottom: "20px",
-                }}
-            />
-
-            <Button onClick={() => setRotation((prev) => prev + 1)}>
+            <Button
+                variant="text"
+                onClick={() => setRotation((prev) => prev + 1)}
+            >
                 <Image
                     src={rotateIcon}
                     width={15}
@@ -35,6 +26,16 @@ export const RotatingElement = ({ size, name }: RotatingElementProps) => {
                     alt={"rotate icon"}
                 />
             </Button>
+            <Image
+                src={getElementImage(name)}
+                width={size}
+                height={size}
+                alt={"element 1z"}
+                style={{
+                    transform: `rotate(${90 * rotation}deg)`,
+                    marginTop: "20px",
+                }}
+            />
         </Stack>
     );
 };

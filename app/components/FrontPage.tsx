@@ -56,23 +56,27 @@ export const FrontPage = () => {
                         displaySwitch
                     />
                     <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. // Nullam justo enim, consectetuer nec,
-                        ullamcorper ac, // vestibulum in, elit. Fusce tellus
-                        odio, dapibus id fermentum // quis, suscipit id erat.
-                        Proin in tellus sit amet nibh
+                        V roce 1961 začal Zdeněk Sýkora vytvářet obrazy
+                        gemetrického abstraktního typu. Jejich kompozice byla
+                        výsledkem opakovaného použití jednoho nebo více
+                        záklafních prvků. Tyto prvky se vyznačovaly tvarem
+                        (čtvercovým nebo obdélníkovým) a specifickými
+                        geometrickými vzory uvnitř.
                     </p>
                     <p>
-                        Černobílou strukturu vytvořil Sýkora společně s
-                        Jaroslavem Blažkem v roce 1966. Popsali ji v článku
-                        Computer-aided multielement geometrical abstract
-                        paintings v časopise Leonardo.
+                        Při zvažování dalších pravidel pro tvorbu kompozic z
+                        daných prvků si ale uvědomil, že člověk naráží na
+                        kompinatorické složitosti, které lze snadněji vyřešit
+                        pomocí počítače.
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. // Nullam justo enim, consectetuer nec,
-                        ullamcorper ac, // vestibulum in, elit.
+                        Obrátil se proto na matematika Jaroslava Blažka, se
+                        kterým připravili program, který počítal prvky v obraze
+                        předem zadaných pravidel. Jak algoritmus fungoval
+                        popsali v článku Computer-aided multielement geometrical
+                        abstract paintings v časopise Leonardo z roku 1970.
                     </p>
+
                     <div style={{ paddingTop: "10px" }}>
                         <Button
                             onClick={() => {

@@ -30,7 +30,7 @@ const smallSize = 45;
 const largeSize = 78;
 
 export const ArtistInputsElements = () => {
-    const [blackWhite, setBlackWhite] = useState(true);
+    const [blackWhite, setBlackWhite] = useState(false);
 
     return (
         <>
@@ -45,8 +45,8 @@ export const ArtistInputsElements = () => {
                         Nejříve musel Sýkora určit elementy, které pro danou
                         stukturu použije. Černobílá struktura je složena ze 3
                         základních obrazců. Do čtverce umístil jeden nebo dva
-                        půlkruhy. Ty jsou bud za sebou nebo proti sobě. Nikdy
-                        ale ne tak, aby vytvořili dohromady kruh.
+                        půlkruhy. Ty jsou buď za sebou nebo proti sobě. Nikdy
+                        ale ne tak, aby dohromady vytvořili kruh.
                     </p>
 
                     <p>Jejich postupným otáčením získal 10 různých elementů.</p>
@@ -62,29 +62,30 @@ export const ArtistInputsElements = () => {
                         <RotatingElement name="1r" size={largeSize} />
                         <RotatingElement name="3z" size={largeSize} />
                     </div>
+
                     <p>Prohozením barev pak tento počet zdvojnásobil na 20.</p>
 
+                    <Switch
+                        checked={blackWhite}
+                        onChange={() => setBlackWhite((prev) => !prev)}
+                        sx={{
+                            alignSelf: "center",
+                            marginTop: "15px !important",
+                        }}
+                    />
                     <ExampleGrid
                         grid={
                             blackWhite ? blackWhiteElements : whiteBlackElements
                         }
                         size={largeSize}
                     />
-                    <Switch
-                        checked={blackWhite}
-                        onChange={() => setBlackWhite((prev) => !prev)}
-                        sx={{
-                            alignSelf: "flex-end",
-                            marginTop: "0px !important",
-                        }}
-                    />
 
                     <p>
-                        Elementy poté rozdělil do skupin podle hustoty barvy.
-                        Skupina 1 obsahuje nejsvětlejší. Těmi jsou <b>1z</b>,{" "}
-                        <b>1b</b>, <b>1y</b>, <b> 1i</b>, <b>1r</b> a <b>1d</b>.
-                        Skupina 2 obsahuje prvky <b>2z</b>, <b>2b</b>, <b>2y</b>{" "}
-                        a <b>2r</b> a tak dále. Skupina 4 tak obsahuje nejtmavší
+                        Elementy rozdělil do skupin podle hustoty barvy. Skupina
+                        1 obsahuje nejsvětlejší. Těmi jsou <b>1z</b>, <b>1b</b>,{" "}
+                        <b>1y</b>, <b> 1i</b>, <b>1r</b> a <b>1d</b>. Skupina 2
+                        obsahuje prvky <b>2z</b>, <b>2b</b>, <b>2y</b> a{" "}
+                        <b>2r</b> a tak dále. Skupina 4 tak obsahuje nejtmavší
                         elementy.
                     </p>
 
