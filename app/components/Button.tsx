@@ -41,7 +41,7 @@ export const Button = ({
             fullWidth={fullWidth}
             onClick={onClick}
             size="small"
-            variant={variant}
+            variant={variant ?? "contained"}
         >
             {children}
         </StyledButton>

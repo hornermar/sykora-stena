@@ -12,13 +12,6 @@ const allElements = [
     ["1i", "0", "2r", "3r", "4i", "0"],
 ];
 
-const blackWhiteElements = [
-    ["1z", "1r", "3z"],
-    ["1b", "1d", "3b"],
-    ["1y", "0", "3y"],
-    ["1i", "0", "3r"],
-];
-
 const whiteBlackElements = [
     ["4z", "4r", "2z"],
     ["4b", "4d", "2b"],
@@ -26,11 +19,53 @@ const whiteBlackElements = [
     ["4i", "0", "2r"],
 ];
 
+const blackWhiteElements = [
+    ["1z", "1r", "3z"],
+    ["1b", "1d", "3b"],
+    ["1y", "0", "3y"],
+    ["1i", "0", "3r"],
+];
+
 const smallSize = 45;
 const largeSize = 78;
 
 export const ArtistInputsElements = () => {
-    const [blackWhite, setBlackWhite] = useState(false);
+    const [whiteBlack, setWhiteBlack] = useState(false);
+    const [emptydGrid, setEmptyGrid] = useState([
+        ["1z", "1r", "3z"],
+        ["F", "F", "F"],
+        ["F", "0", "F"],
+        ["F", "0", "F"],
+    ]);
+    const [rotation, setRotation] = useState({
+        "1z": 1,
+        "1r": 1,
+        "3z": 1,
+    });
+
+    const addElement = (name: "1z" | "1r" | "3z", order: number) => {
+        setEmptyGrid((prev) => {
+            const newGrid = [...prev];
+            newGrid[rotation[name]][order] =
+                blackWhiteElements[rotation[name]][order];
+            return newGrid;
+        });
+        setRotation((prev) => ({ ...prev, [name]: prev[name] + 1 }));
+    };
+
+    const addElements = (name: string) => {
+        switch (name) {
+            case "1z":
+                rotation[name] <= 3 && addElement(name, 0);
+                break;
+            case "1r":
+                rotation[name] <= 1 && addElement(name, 1);
+                break;
+            case "3z":
+                rotation[name] <= 3 && addElement(name, 2);
+                break;
+        }
+    };
 
     return (
         <>
@@ -49,7 +84,10 @@ export const ArtistInputsElements = () => {
                         ale ne tak, aby dohromady vytvořili kruh.
                     </p>
 
-                    <p>Jejich postupným otáčením získal 10 různých elementů.</p>
+                    <p>
+                        Jejich postupným otáčením získal 10 různých elementů.
+                        Prohozením barev pak tento počet zdvojnásobil na 20.
+                    </p>
 
                     <div
                         style={{
@@ -58,27 +96,44 @@ export const ArtistInputsElements = () => {
                             justifyContent: "space-between",
                         }}
                     >
-                        <RotatingElement name="1z" size={largeSize} />
-                        <RotatingElement name="1r" size={largeSize} />
-                        <RotatingElement name="3z" size={largeSize} />
+                        <RotatingElement
+                            name={!whiteBlack ? "1z" : "4z"}
+                            size={largeSize}
+                            onClick={() => addElements("1z")}
+                        />
+                        <RotatingElement
+                            name={!whiteBlack ? "1r" : "4r"}
+                            size={largeSize}
+                            onClick={() => addElements("1r")}
+                        />
+                        <RotatingElement
+                            name={!whiteBlack ? "3z" : "2z"}
+                            size={largeSize}
+                            onClick={() => addElements("3z")}
+                        />
                     </div>
 
-                    <p>Prohozením barev pak tento počet zdvojnásobil na 20.</p>
-
-                    <Switch
-                        checked={blackWhite}
-                        onChange={() => setBlackWhite((prev) => !prev)}
-                        sx={{
-                            alignSelf: "center",
-                            marginTop: "15px !important",
-                        }}
-                    />
                     <ExampleGrid
-                        grid={
-                            blackWhite ? blackWhiteElements : whiteBlackElements
-                        }
+                        grid={!whiteBlack ? emptydGrid : whiteBlackElements}
                         size={largeSize}
                     />
+
+                    <Switch
+                        checked={whiteBlack}
+                        onChange={() => setWhiteBlack((prev) => !prev)}
+                        sx={{
+                            alignSelf: "center",
+                            marginTop: "0px !important",
+                        }}
+                        disabled={
+                            rotation["1z"] < 4 ||
+                            rotation["1r"] < 1 ||
+                            rotation["3z"] < 4
+                        }
+                    />
+                    <p style={{ marginTop: "10px" }}>
+                        Prohozením barev pak tento počet zdvojnásobil na 20.
+                    </p>
 
                     <p>
                         Elementy rozdělil do skupin podle hustoty barvy. Skupina
@@ -96,14 +151,6 @@ export const ArtistInputsElements = () => {
                     />
                 </Stack>
             </MediaCard>
-
-            {/* <MediaCard color="transparent">
-                <p>
-                    Pro počítač jsou u každého prvku zaznamenány barvy na každé
-                    ze čtyř stran a také, zda má na straně přilehlý otevřený
-                    půlkruh nebo ne.
-                </p>
-            </MediaCard> */}
         </>
     );
 };

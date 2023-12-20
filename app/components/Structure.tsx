@@ -102,7 +102,7 @@ export const Structure = ({
                 <Switch
                     checked={type === "image"}
                     onChange={handleTypeChange}
-                    sx={{ alignSelf: "flex-end" }}
+                    sx={{ alignSelf: "center" }}
                 />
             )}
         </Stack>

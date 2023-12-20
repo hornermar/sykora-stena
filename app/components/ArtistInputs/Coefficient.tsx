@@ -52,6 +52,8 @@ export const Coefficient = ({ grid, rule }: CoefficientProps) => {
                 koeficient bude, tím bude obraz tmavší.
             </p>
 
+            <Structure size={30} grid={gridWithCoefficient} cellType="image" />
+
             <Slider
                 value={coefficient}
                 min={0.01}
@@ -59,10 +61,8 @@ export const Coefficient = ({ grid, rule }: CoefficientProps) => {
                 step={0.5}
                 onChange={(e, newValue) => setCoefficient(newValue as number)}
                 valueLabelDisplay="on"
-                sx={{ marginBottom: "10px" }}
+                sx={{ marginTop: "40px" }}
             />
-
-            <Structure size={30} grid={gridWithCoefficient} cellType="image" />
         </MediaCard>
     );
 };
