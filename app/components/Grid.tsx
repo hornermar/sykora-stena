@@ -21,7 +21,6 @@ export const Grid = ({ grid, setGrid, isGenerated }: GridProps) => {
 
     return (
         <Structure
-            size={30}
             grid={grid}
             onCellChange={handleCellChange}
             cellType={isGenerated ? "image" : "select"}

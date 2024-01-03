@@ -14,8 +14,6 @@ export type StructureProps = {
     sx?: CSSProperties;
 };
 
-const defaultCellSize = 10;
-
 export const Structure = ({
     grid,
     onCellChange,

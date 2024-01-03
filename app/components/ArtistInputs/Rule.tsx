@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import Card from "../Card";
+import { Structure } from "../Structure";
 import { RuleExample } from "./RuleExample";
 
 const smallSize = 45;
@@ -90,7 +91,7 @@ export const ArtistInputsRule = ({
                 </RadioGroup>
             </FormControl>
 
-            {/* <Structure size={30} grid={gridWithRule} cellType="image" /> */}
+            <Structure grid={gridWithRule} cellType="image" />
         </Card>
     );
 };

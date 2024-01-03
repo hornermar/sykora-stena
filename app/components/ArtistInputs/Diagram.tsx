@@ -1,5 +1,6 @@
 "use client";
 import Card from "../Card";
+import { Structure } from "../Structure";
 
 const smallSize = 45;
 
@@ -19,13 +20,12 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
 
             <p>Výsledný diagram mohl vypadat například takto:</p>
 
-            {/* <Structure
-                size={smallSize}
+            <Structure
                 grid={grid}
                 cellType="text"
                 displaySwitch
                 backgroundColor="white"
-            /> */}
+            />
         </Card>
     );
 };
