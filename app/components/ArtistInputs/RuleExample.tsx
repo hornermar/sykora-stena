@@ -30,9 +30,17 @@ export const RuleExample = ({ continues }: RuleExampleProps) => {
                 },
             }}
         >
-            {map(grid[continues], (g) => (
-                <Structure size={45} grid={g} cellType="image" />
-            ))}
+            {map(grid[continues], (g, i) => {
+                const isLast =
+                    Number(i) === Object.keys(grid[continues]).length - 1;
+                return (
+                    <Structure
+                        grid={g}
+                        cellType="image"
+                        sx={{ marginRight: !isLast ? "15px" : "0px" }}
+                    />
+                );
+            })}
         </Stack>
     );
 };

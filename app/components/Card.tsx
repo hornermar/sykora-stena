@@ -1,9 +1,9 @@
-import Card from "@mui/material/Card";
+import { Card as MuiCard } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-const StyledCard = styled(Card)((color) => ({
+const StyledCard = styled(MuiCard)((color) => ({
     boxShadow: "none",
     borderRadius: "15px",
     backgroundColor: color.color,
@@ -11,7 +11,7 @@ const StyledCard = styled(Card)((color) => ({
     padding: "8px 4px",
 }));
 
-export default function MediaCard({
+export default function Card({
     heading,
     color,
     children,
@@ -31,11 +31,6 @@ export default function MediaCard({
 
                 {children}
             </CardContent>
-
-            {/* <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-            </CardActions> */}
         </StyledCard>
     );
 }

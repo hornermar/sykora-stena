@@ -1,9 +1,8 @@
 "use client";
-import MediaCard from "../MediaCard";
-import { Structure } from "../Structure";
-import { Coefficient } from "./Coefficient";
+import { ArtistInputsCoefficient } from "./Coefficient";
+import { ArtistInputsDiagram } from "./Diagram";
 import { ArtistInputsElements } from "./Elements";
-import { Rule } from "./Rule";
+import { ArtistInputsRule } from "./Rule";
 
 const gridForDiagram = [
     // 1
@@ -40,27 +39,12 @@ export const ArtistInputs = () => {
         <>
             <ArtistInputsElements />
 
-            <MediaCard heading="2. Diagram" color="rgb(219, 219, 219)">
-                <p>
-                    Umělec si připravil mřížku, pro kterou si zvolil počet prvků
-                    do výšky a šířky. Do ní pak umístil libovolný počet elementů
-                    dle vlastního výběru. Do míst, kde si přál zvýšit nebo
-                    naopak snížit hustotu barvy, přidal znaménka <b>+</b> a{" "}
-                    <b>-</b>.
-                </p>
-
-                <p>Výsledný diagram mohl vypadat například takto:</p>
-
-                <Structure
-                    size={smallSize}
-                    grid={gridForDiagram}
-                    cellType="text"
-                    displaySwitch
-                    backgroundColor="white"
-                />
-            </MediaCard>
-            <Coefficient grid={gridForDiagram} rule={form.rule} />
-            <Rule grid={gridForDiagram} coefficient={form.coefficient} />
+            <ArtistInputsDiagram grid={gridForDiagram} />
+            <ArtistInputsCoefficient grid={gridForDiagram} rule={form.rule} />
+            <ArtistInputsRule
+                grid={gridForDiagram}
+                coefficient={form.coefficient}
+            />
         </>
     );
 };

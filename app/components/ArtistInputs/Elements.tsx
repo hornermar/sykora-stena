@@ -1,8 +1,8 @@
 "use client";
 import { Stack, Switch } from "@mui/material";
 import { useState } from "react";
+import Card from "../Card";
 import { ExampleGrid } from "../ExampleGrid";
-import MediaCard from "../MediaCard";
 import { RotatingElement } from "./RotatingElement";
 
 const allElements = [
@@ -26,8 +26,8 @@ const blackWhiteElements = [
     ["1i", "0", "3r"],
 ];
 
-const smallSize = 45;
-const largeSize = 78;
+const smallSize = 30;
+const largeSize = 60;
 
 export const ArtistInputsElements = () => {
     const [whiteBlack, setWhiteBlack] = useState(false);
@@ -69,12 +69,12 @@ export const ArtistInputsElements = () => {
 
     return (
         <>
-            <MediaCard color="transparent">
+            <Card color="transparent">
                 Ještě před spuštěním výpočtu, který provedl algoritmus, musel
                 Zdeněk Sýkora nastavit <b>4</b> parametry. Na těch závisela
                 výsledná podoba obrazu. V této části si ukážeme, které to jsou.
-            </MediaCard>
-            <MediaCard heading="1. Elementy" color="rgb(219, 219, 219)">
+            </Card>
+            <Card heading="1. Elementy" color="rgb(219, 219, 219)">
                 <Stack spacing={4} flexDirection="column">
                     <p>
                         Nejříve musel Sýkora určit elementy, které pro danou
@@ -150,7 +150,7 @@ export const ArtistInputsElements = () => {
                         displayName
                     />
                 </Stack>
-            </MediaCard>
+            </Card>
         </>
     );
 };

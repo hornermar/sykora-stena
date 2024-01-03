@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { map } from "lodash";
 import { getElements } from "../utils/getElements";
 import { Button } from "./Button";
-import MediaCard from "./MediaCard";
+import Card from "./Card";
 import { Structure } from "./Structure";
 
 export const FrontPage = () => {
@@ -47,14 +47,9 @@ export const FrontPage = () => {
                 )}
             </div>
 
-            <MediaCard color="white">
+            <Card color="white">
                 <div>
-                    <Structure
-                        size={50}
-                        grid={grid}
-                        cellType="image"
-                        displaySwitch
-                    />
+                    <Structure grid={grid} cellType="image" displaySwitch />
                     <p>
                         V roce 1961 začal Zdeněk Sýkora vytvářet obrazy
                         gemetrického abstraktního typu. Jejich kompozice byla
@@ -88,15 +83,15 @@ export const FrontPage = () => {
                         </Button>
                     </div>
                 </div>
-            </MediaCard>
+            </Card>
 
-            <MediaCard color="transparent">
+            <Card color="transparent">
                 <p>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. //
                     Nullam justo enim, consectetuer nec, ullamcorper ac, //
                     vestibulum in, elit.
                 </p>
-            </MediaCard>
+            </Card>
         </>
     );
 };

@@ -1,15 +1,18 @@
 import { getElements } from "@/app/utils/getElements";
 import { Slider, Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
-import MediaCard from "../MediaCard";
+import Card from "../Card";
 import { Structure } from "../Structure";
 
-type CoefficientProps = {
+type ArtistInputsCoefficientProps = {
     grid: string[][];
     rule: number;
 };
 
-export const Coefficient = ({ grid, rule }: CoefficientProps) => {
+export const ArtistInputsCoefficient = ({
+    grid,
+    rule,
+}: ArtistInputsCoefficientProps) => {
     const [coefficient, setCoefficient] = useState(2);
     const [gridWithCoefficient, setGridWithCoefficient] = useState(grid);
 
@@ -18,7 +21,7 @@ export const Coefficient = ({ grid, rule }: CoefficientProps) => {
     }, [coefficient]);
 
     return (
-        <MediaCard heading="3. Koeficient" color="rgb(219, 219, 219)">
+        <Card heading="3. Koeficient" color="rgb(219, 219, 219)">
             <p>
                 Dalším vstupem je koeficient <strong>c</strong>, který má
                 číselnou hodnotu větší než 0. Určuje, o kolik se změní barva na{" "}
@@ -52,7 +55,7 @@ export const Coefficient = ({ grid, rule }: CoefficientProps) => {
                 koeficient bude, tím bude obraz tmavší.
             </p>
 
-            <Structure size={30} grid={gridWithCoefficient} cellType="image" />
+            <Structure grid={gridWithCoefficient} cellType="image" />
 
             <Slider
                 value={coefficient}
@@ -63,6 +66,6 @@ export const Coefficient = ({ grid, rule }: CoefficientProps) => {
                 valueLabelDisplay="on"
                 sx={{ marginTop: "40px" }}
             />
-        </MediaCard>
+        </Card>
     );
 };

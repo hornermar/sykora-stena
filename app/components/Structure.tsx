@@ -1,39 +1,56 @@
 import { Stack, Switch } from "@mui/material";
-import { map } from "lodash";
+import { map, size } from "lodash";
 import Image from "next/image";
-import { useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 import { getElementImage } from "../utils/getElementImages";
 import { CellSelect } from "./CellSelect";
 
 export type StructureProps = {
     grid: string[][];
-    size: number;
     cellType?: "select" | "image" | "text";
     onCellChange?: any;
     displaySwitch?: boolean;
     backgroundColor?: string;
+    sx?: CSSProperties;
 };
+
+const defaultCellSize = 10;
 
 export const Structure = ({
     grid,
-    size,
     onCellChange,
     cellType,
     displaySwitch,
     backgroundColor,
+    sx,
 }: StructureProps) => {
     const [type, setType] = useState(cellType);
+    const [cellSize, setCellSize] = useState(0);
+    const ref = useRef<HTMLDivElement | null>(null);
 
     const handleTypeChange = () => {
         setType((prev) => (prev === "image" ? "text" : "image"));
     };
+
+    const getCellSize = () => {
+        if (!ref.current) return 0;
+
+        const gridWidth = Math.max(...map(grid, (row) => size(row)));
+        return ref.current.clientWidth / gridWidth;
+    };
+
+    useEffect(() => {
+        const newCellSize = getCellSize();
+        setCellSize(Math.floor(newCellSize));
+    }, [ref.current]);
 
     return (
         <Stack
             flexDirection="column"
             width="100%"
             alignItems="center"
-            sx={{ margin: "0 auto" }}
+            sx={{ margin: "0 auto", ...sx }}
+            ref={ref}
         >
             {map(grid, (row, y) => (
                 <div
@@ -41,7 +58,7 @@ export const Structure = ({
                     style={{
                         display: "flex",
                         flexDirection: "row",
-                        height: `${size}px`,
+                        height: `${cellSize}px`,
                     }}
                 >
                     {map(row, (cell: string, x) => (
@@ -52,8 +69,8 @@ export const Structure = ({
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                width: `${size}px`,
-                                height: `${size}px`,
+                                width: `${cellSize}px`,
+                                height: `${cellSize}px`,
                                 backgroundColor: backgroundColor,
 
                                 border:
@@ -75,8 +92,8 @@ export const Structure = ({
                                 (cell !== "+" && cell !== "-" ? (
                                     <Image
                                         src={getElementImage(cell)}
-                                        width={size}
-                                        height={size}
+                                        width={cellSize}
+                                        height={cellSize}
                                         alt={`element ${cell}`}
                                         className={`element-${x}${y}`}
                                     />

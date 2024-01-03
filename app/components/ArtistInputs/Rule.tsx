@@ -7,18 +7,20 @@ import {
     RadioGroup,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import MediaCard from "../MediaCard";
-import { Structure } from "../Structure";
+import Card from "../Card";
 import { RuleExample } from "./RuleExample";
 
 const smallSize = 45;
 
-type RuleProps = {
+type ArtistInputsRuleProps = {
     coefficient: number;
     grid: string[][];
 };
 
-export const Rule = ({ coefficient, grid }: RuleProps) => {
+export const ArtistInputsRule = ({
+    coefficient,
+    grid,
+}: ArtistInputsRuleProps) => {
     const [rule, setRule] = useState<number>(0);
     const [gridWithRule, setGridWithRule] = useState(grid);
 
@@ -27,7 +29,7 @@ export const Rule = ({ coefficient, grid }: RuleProps) => {
     }, [rule]);
 
     return (
-        <MediaCard heading="4. Pravidlo" color="rgb(219, 219, 219)">
+        <Card heading="4. Pravidlo" color="rgb(219, 219, 219)">
             <p>Dále je třeba zvolit jedno ze čtyř pravidel.</p>
 
             <p>Nejprve je ale důležité vysvětlit následující pojmy:</p>
@@ -88,7 +90,7 @@ export const Rule = ({ coefficient, grid }: RuleProps) => {
                 </RadioGroup>
             </FormControl>
 
-            <Structure size={30} grid={gridWithRule} cellType="image" />
-        </MediaCard>
+            {/* <Structure size={30} grid={gridWithRule} cellType="image" /> */}
+        </Card>
     );
 };
