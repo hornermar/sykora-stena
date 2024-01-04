@@ -15,7 +15,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import * as React from "react";
-import rotateIcon from "../public/rotate-solid.svg";
+import barsIcon from "../public/bars-solid.svg";
 import ThemeRegistry from "./components/ThemeRegistry/ThemeRegistry";
 
 interface Props {
@@ -72,17 +72,27 @@ export default function RootLayout(props: Props) {
                                 backgroundColor: "transparent",
                             }}
                         >
-                            <Toolbar>
+                            <Toolbar
+                                sx={{
+                                    justifyContent: "flex-end",
+                                    padding: "0 6px",
+                                }}
+                            >
                                 <IconButton
                                     color="inherit"
                                     edge="start"
+                                    size="large"
                                     onClick={handleDrawerToggle}
-                                    sx={{ mr: 2, display: { sm: "none" } }}
+                                    sx={{
+                                        marginTop: "6px",
+                                        display: { sm: "none" },
+                                        backgroundColor: "white",
+                                    }}
                                 >
                                     <Image
-                                        src={rotateIcon}
-                                        width={15}
-                                        height={15}
+                                        src={barsIcon}
+                                        width={25}
+                                        height={25}
                                         alt={"rotate icon"}
                                     />
                                 </IconButton>
@@ -115,6 +125,7 @@ export default function RootLayout(props: Props) {
                         <nav>
                             <Drawer
                                 container={container}
+                                anchor="right"
                                 variant="temporary"
                                 open={mobileOpen}
                                 onClose={handleDrawerToggle}

@@ -9,7 +9,7 @@ export type SectionProps = {
 export const Section = ({ children, backgroundColor, title }: SectionProps) => {
     return (
         <section style={{ backgroundColor: backgroundColor ?? "unset" }}>
-            <Stack spacing={4} sx={{ padding: "60px 10px 50px 10px" }}>
+            <Stack spacing={4} sx={{ padding: "60px 14px 50px 14px" }}>
                 <Typography
                     variant="h4"
                     component="div"

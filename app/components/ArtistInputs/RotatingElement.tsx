@@ -1,9 +1,8 @@
-import { Stack } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import rotateIcon from "../../../public/rotate-solid.svg";
 import { getElementImage } from "../../utils/getElementImages";
-import { Button } from "../Button";
 
 type RotatingElementProps = {
     size: number;
@@ -24,7 +23,7 @@ export const RotatingElement = ({
     };
 
     return (
-        <Stack>
+        <Stack alignItems="center">
             <Image
                 src={getElementImage(name)}
                 width={size}
@@ -35,14 +34,21 @@ export const RotatingElement = ({
                     marginBottom: "20px",
                 }}
             />
-            <Button variant="text" onClick={() => rotate()}>
-                <Image
-                    src={rotateIcon}
-                    width={15}
-                    height={15}
-                    alt={"rotate icon"}
-                />
-            </Button>
+            <div>
+                <IconButton
+                    color="inherit"
+                    edge="start"
+                    size="large"
+                    onClick={() => rotate()}
+                >
+                    <Image
+                        src={rotateIcon}
+                        width={20}
+                        height={20}
+                        alt={"rotate icon"}
+                    />
+                </IconButton>
+            </div>
         </Stack>
     );
 };

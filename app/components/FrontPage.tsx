@@ -23,7 +23,7 @@ export const FrontPage = () => {
                 variant="h1"
                 sx={{
                     fontSize: "46px",
-                    padding: "0 16px",
+                    padding: "60px 16px 0 16px",
                     fontWeight: "400",
                 }}
             >

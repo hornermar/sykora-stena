@@ -10,7 +10,6 @@ export type StructureProps = {
     cellType?: "select" | "image" | "text";
     onCellChange?: any;
     displaySwitch?: boolean;
-    backgroundColor?: string;
     sx?: CSSProperties;
 };
 
@@ -19,7 +18,6 @@ export const Structure = ({
     onCellChange,
     cellType,
     displaySwitch,
-    backgroundColor,
     sx,
 }: StructureProps) => {
     const [type, setType] = useState(cellType);
@@ -40,7 +38,7 @@ export const Structure = ({
     useEffect(() => {
         const newCellSize = getCellSize();
         setCellSize(Math.floor(newCellSize));
-    }, [ref.current]);
+    }, [ref.current, grid]);
 
     return (
         <Stack
@@ -69,8 +67,7 @@ export const Structure = ({
                                 alignItems: "center",
                                 width: `${cellSize}px`,
                                 height: `${cellSize}px`,
-                                backgroundColor: backgroundColor,
-
+                                backgroundColor: "white",
                                 border:
                                     type === "text" ||
                                     cell === "+" ||

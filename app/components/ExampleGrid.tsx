@@ -40,10 +40,10 @@ export const ExampleGrid = ({ grid, size, displayName }: ExampleGridProps) => {
                                                 ? "white"
                                                 : "transparent",
                                         marginBottom: !displayName ? "20px" : 0,
-                                        border:
-                                            cell === "F"
-                                                ? "2px solid rgb(241, 79, 77)"
-                                                : "none",
+                                        // border:
+                                        //     cell === "F"
+                                        //         ? "2px solid rgb(241, 79, 77)"
+                                        //         : "none",
                                     }}
                                 >
                                     <Image

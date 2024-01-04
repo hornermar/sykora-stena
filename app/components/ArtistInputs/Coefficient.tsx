@@ -36,7 +36,7 @@ export const ArtistInputsCoefficient = ({
                 nebo{" "}
                 <Tooltip
                     placement="top"
-                    title="Nejsvětlejší jsou prvky, které začínají číslem 4 (4z, 4b, 4y, 4i, 4r, 4d)"
+                    title="Nejtmavší jsou prvky, které začínají číslem 4 (4z, 4b, 4y, 4i, 4r, 4d)"
                 >
                     <span>
                         <u>tmavší</u>
@@ -50,9 +50,10 @@ export const ArtistInputsCoefficient = ({
                 barvy, vyšší hodnoty naopak znamenají větší změnu.
             </p>
             <p>
-                Na příkladu jde vidět, že pokud se koeficient blíží 0, výsledkem
+                Na příkladu jde vidět, že ...
+                {/* pokud se koeficient blíží 0, výsledkem
                 bude obraz s většími bílými plochami. Naopak čím vyšší
-                koeficient bude, tím bude obraz tmavší.
+                koeficient bude, tím bude obraz tmavší. */}
             </p>
 
             <Structure grid={gridWithCoefficient} cellType="image" />
