@@ -20,12 +20,7 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
 
             <p>Výsledný diagram mohl vypadat například takto:</p>
 
-            <Structure
-                grid={grid}
-                cellType="text"
-                displaySwitch
-                backgroundColor="white"
-            />
+            <Structure grid={grid} cellType="text" displaySwitch />
         </Card>
     );
 };
