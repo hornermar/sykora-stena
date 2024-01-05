@@ -75,7 +75,7 @@ export default function RootLayout(props: Props) {
                             <Toolbar
                                 sx={{
                                     justifyContent: "flex-end",
-                                    padding: "0 6px",
+                                    // padding: "0 6px",
                                 }}
                             >
                                 <IconButton

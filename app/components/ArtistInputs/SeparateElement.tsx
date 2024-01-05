@@ -4,17 +4,19 @@ import { useState } from "react";
 import rotateIcon from "../../../public/rotate-solid.svg";
 import { getElementImage } from "../../utils/getElementImages";
 
-type RotatingElementProps = {
+type SeparateElementProps = {
     size: number;
     name: string;
     onClick?: () => void;
+    isRotating?: boolean;
 };
 
-export const RotatingElement = ({
+export const SeparateElement = ({
     size,
     name,
     onClick,
-}: RotatingElementProps) => {
+    isRotating,
+}: SeparateElementProps) => {
     const [rotation, setRotation] = useState(0);
 
     const rotate = () => {
@@ -31,24 +33,26 @@ export const RotatingElement = ({
                 alt={"element 1z"}
                 style={{
                     transform: `rotate(${-90 * rotation}deg)`,
-                    marginBottom: "20px",
+                    backgroundColor: "white",
                 }}
             />
-            <div>
-                <IconButton
-                    color="inherit"
-                    edge="start"
-                    size="large"
-                    onClick={() => rotate()}
-                >
-                    <Image
-                        src={rotateIcon}
-                        width={20}
-                        height={20}
-                        alt={"rotate icon"}
-                    />
-                </IconButton>
-            </div>
+            {isRotating && (
+                <div>
+                    <IconButton
+                        color="inherit"
+                        size="large"
+                        onClick={() => rotate()}
+                        sx={{ marginTop: "20px" }}
+                    >
+                        <Image
+                            src={rotateIcon}
+                            width={20}
+                            height={20}
+                            alt={"rotate icon"}
+                        />
+                    </IconButton>
+                </div>
+            )}
         </Stack>
     );
 };

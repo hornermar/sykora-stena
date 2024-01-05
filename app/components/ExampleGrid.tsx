@@ -55,7 +55,9 @@ export const ExampleGrid = ({ grid, size, displayName }: ExampleGridProps) => {
                                 </div>
 
                                 {displayName && (
-                                    <span>{cell !== "0" ? cell : " "}</span>
+                                    <span style={{ marginBottom: "15px" }}>
+                                        {cell !== "0" ? cell : " "}
+                                    </span>
                                 )}
                             </div>
                         );

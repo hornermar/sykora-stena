@@ -45,15 +45,9 @@ export const ArtistInputsCoefficient = ({
                 v místech, kde se v poli vyskytují znaménka plus (
                 <strong>+</strong>) a mínus (<strong>-</strong>).
             </p>
-            <p>
+            <p style={{ marginBottom: "30px" }}>
                 Nižší hodnoty <strong>c</strong> způsobí menší změnu v hustotě
                 barvy, vyšší hodnoty naopak znamenají větší změnu.
-            </p>
-            <p>
-                Na příkladu jde vidět, že ...
-                {/* pokud se koeficient blíží 0, výsledkem
-                bude obraz s většími bílými plochami. Naopak čím vyšší
-                koeficient bude, tím bude obraz tmavší. */}
             </p>
 
             <Structure grid={gridWithCoefficient} cellType="image" />
@@ -65,8 +59,15 @@ export const ArtistInputsCoefficient = ({
                 step={0.5}
                 onChange={(e, newValue) => setCoefficient(newValue as number)}
                 valueLabelDisplay="on"
-                sx={{ marginTop: "40px" }}
+                sx={{ marginTop: "35px " }}
             />
+
+            <p>
+                Na příkladu jde vidět, že ...
+                {/* pokud se koeficient blíží 0, výsledkem
+                    bude obraz s většími bílými plochami. Naopak čím vyšší
+                    koeficient bude, tím bude obraz tmavší. */}
+            </p>
         </Card>
     );
 };

@@ -1,17 +1,27 @@
 "use client";
 import { getElements } from "@/app/utils/getElements";
-import {
-    FormControl,
-    FormControlLabel,
-    Radio,
-    RadioGroup,
-} from "@mui/material";
+import { Chip, Stack } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 import Card from "../Card";
 import { Structure } from "../Structure";
 import { RuleExample } from "./RuleExample";
 
-const smallSize = 45;
+const green = "rgb(4, 117, 159)";
+
+const StyledChip = styled(Chip)((props) => ({
+    // border: "2px solid black",
+    backgroundColor: props.variant === "filled" ? green : "black",
+    color: "white",
+    fontSize: "16px",
+    "&:active": {
+        boxShadow: "none",
+        backgroundColor: green,
+    },
+    "&:focus": {
+        backgroundColor: green,
+    },
+}));
 
 type ArtistInputsRuleProps = {
     coefficient: number;
@@ -62,35 +72,40 @@ export const ArtistInputsRule = ({
 
             <p>Z těchto pojmů jsou pak sestavená pravidla:</p>
 
-            <FormControl sx={{ paddingTop: "0px", paddingBottom: "20px" }}>
-                <RadioGroup
-                    row
-                    value={rule}
-                    onChange={(e) => setRule(Number(e.target.value))}
-                >
-                    <FormControlLabel
-                        value="0"
-                        control={<Radio />}
-                        label="0: Barva pokračuje, tvar pokračuje"
+            <Stack spacing={1} sx={{ margin: "10px 0 30px 0" }}>
+                <div>
+                    <StyledChip
+                        label="Barva pokračuje, tvar pokračuje"
+                        clickable
+                        onClick={() => setRule(0)}
+                        variant={rule === 0 ? "filled" : "outlined"}
                     />
-                    <FormControlLabel
-                        value="1"
-                        control={<Radio />}
-                        label="1: Barva pokračuje, tvar nepokračuje"
+                </div>
+                <div>
+                    <StyledChip
+                        label="Barva pokračuje, tvar nepokračuje"
+                        clickable
+                        onClick={() => setRule(1)}
+                        variant={rule === 1 ? "filled" : "outlined"}
                     />
-                    <FormControlLabel
-                        value="2"
-                        control={<Radio />}
-                        label="2: Barva nepokračuje, tvar pokračuje"
+                </div>
+                <div>
+                    <StyledChip
+                        label="Barva nepokračuje, tvar pokračuje"
+                        clickable
+                        onClick={() => setRule(2)}
+                        variant={rule === 2 ? "filled" : "outlined"}
                     />
-                    <FormControlLabel
-                        value="3"
-                        control={<Radio />}
-                        label="3: Barva nepokračuje, tvar nepokračuje"
+                </div>
+                <div>
+                    <StyledChip
+                        label="Barva nepokračuje, tvar nepokračuje"
+                        clickable
+                        onClick={() => setRule(3)}
+                        variant={rule === 3 ? "filled" : "outlined"}
                     />
-                </RadioGroup>
-            </FormControl>
-
+                </div>
+            </Stack>
             <Structure grid={gridWithRule} cellType="image" />
         </Card>
     );

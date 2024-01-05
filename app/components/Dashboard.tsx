@@ -1,6 +1,7 @@
 "use client";
 import { Box } from "@mui/material";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
+import { Calculation } from "./Calculation/Calculation";
 import { FrontPage } from "./FrontPage";
 import { Section } from "./Section";
 
@@ -12,15 +13,21 @@ export default function HomePage() {
                     <FrontPage />
                 </Section>
 
-                <Section backgroundColor="white" title="A. Vstupy umělce">
+                <Section
+                    backgroundColor="white"
+                    letter="A."
+                    title="Vstupy umělce"
+                >
                     <ArtistInputs />
                 </Section>
 
                 <Section
-                    backgroundColor={"rgb(24, 76, 151)"}
-                    title="B. Dopočet chybějících prvků"
+                    backgroundColor={"rgb(4, 117, 159)"}
+                    color="white"
+                    letter="B."
+                    title="Dopočet chybějících prvků"
                 >
-                    <div></div>
+                    <Calculation />
                 </Section>
             </div>
         </Box>
