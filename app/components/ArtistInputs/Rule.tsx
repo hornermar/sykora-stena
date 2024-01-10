@@ -1,27 +1,8 @@
 "use client";
-import { getElements } from "@/app/utils/getElements";
-import { Chip, Stack } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { useEffect, useState } from "react";
+import { Stack } from "@mui/material";
 import Card from "../Card";
-import { Structure } from "../Structure";
+import { Chip } from "../Chip";
 import { RuleExample } from "./RuleExample";
-
-const green = "rgb(4, 117, 159)";
-
-const StyledChip = styled(Chip)((props) => ({
-    // border: "2px solid black",
-    backgroundColor: props.variant === "filled" ? green : "black",
-    color: "white",
-    fontSize: "16px",
-    "&:active": {
-        boxShadow: "none",
-        backgroundColor: green,
-    },
-    "&:focus": {
-        backgroundColor: green,
-    },
-}));
 
 type ArtistInputsRuleProps = {
     coefficient: number;
@@ -32,13 +13,6 @@ export const ArtistInputsRule = ({
     coefficient,
     grid,
 }: ArtistInputsRuleProps) => {
-    const [rule, setRule] = useState<number>(0);
-    const [gridWithRule, setGridWithRule] = useState(grid);
-
-    useEffect(() => {
-        setGridWithRule(getElements(rule, coefficient, grid));
-    }, [rule]);
-
     return (
         <Card heading="4. Pravidlo" color="rgb(219, 219, 219)">
             <p>Dále je třeba zvolit jedno ze čtyř pravidel.</p>
@@ -70,43 +44,17 @@ export const ArtistInputsRule = ({
                 }}
             ></div>
 
-            <p>Z těchto pojmů jsou pak sestavená pravidla:</p>
+            <p>Kombinací těchto pojmů jsou pak sestavená 4 pravidla.</p>
 
             <Stack spacing={1} sx={{ margin: "10px 0 30px 0" }}>
-                <div>
-                    <StyledChip
-                        label="Barva pokračuje, tvar pokračuje"
-                        clickable
-                        onClick={() => setRule(0)}
-                        variant={rule === 0 ? "filled" : "outlined"}
-                    />
-                </div>
-                <div>
-                    <StyledChip
-                        label="Barva pokračuje, tvar nepokračuje"
-                        clickable
-                        onClick={() => setRule(1)}
-                        variant={rule === 1 ? "filled" : "outlined"}
-                    />
-                </div>
-                <div>
-                    <StyledChip
-                        label="Barva nepokračuje, tvar pokračuje"
-                        clickable
-                        onClick={() => setRule(2)}
-                        variant={rule === 2 ? "filled" : "outlined"}
-                    />
-                </div>
-                <div>
-                    <StyledChip
-                        label="Barva nepokračuje, tvar nepokračuje"
-                        clickable
-                        onClick={() => setRule(3)}
-                        variant={rule === 3 ? "filled" : "outlined"}
-                    />
-                </div>
+                <Chip label="Barva pokračuje, tvar pokračuje" />
+
+                <Chip label="Barva pokračuje, tvar nepokračuje" />
+
+                <Chip label="Barva nepokračuje, tvar pokračuje" />
+
+                <Chip label="Barva nepokračuje, tvar pokračuje" />
             </Stack>
-            <Structure grid={gridWithRule} cellType="image" />
         </Card>
     );
 };

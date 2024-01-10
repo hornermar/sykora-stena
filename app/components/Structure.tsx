@@ -20,7 +20,7 @@ export const Structure = ({
     displaySwitch,
     sx,
 }: StructureProps) => {
-    const [type, setType] = useState(cellType);
+    const [type, setType] = useState(cellType ?? "image");
     const [cellSize, setCellSize] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
 

@@ -1,8 +1,6 @@
-import { getElements } from "@/app/utils/getElements";
-import { Slider, Tooltip } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Stack, Tooltip } from "@mui/material";
 import Card from "../Card";
-import { Structure } from "../Structure";
+import { Chip } from "../Chip";
 
 type ArtistInputsCoefficientProps = {
     grid: string[][];
@@ -13,13 +11,6 @@ export const ArtistInputsCoefficient = ({
     grid,
     rule,
 }: ArtistInputsCoefficientProps) => {
-    const [coefficient, setCoefficient] = useState(2);
-    const [gridWithCoefficient, setGridWithCoefficient] = useState(grid);
-
-    useEffect(() => {
-        setGridWithCoefficient(getElements(rule, coefficient, grid));
-    }, [coefficient]);
-
     return (
         <Card heading="3. Koeficient" color="rgb(219, 219, 219)">
             <p>
@@ -50,24 +41,13 @@ export const ArtistInputsCoefficient = ({
                 barvy, vyšší hodnoty naopak znamenají větší změnu.
             </p>
 
-            <Structure grid={gridWithCoefficient} cellType="image" />
-
-            <Slider
-                value={coefficient}
-                min={0.01}
-                max={4}
-                step={0.5}
-                onChange={(e, newValue) => setCoefficient(newValue as number)}
-                valueLabelDisplay="on"
-                sx={{ marginTop: "35px " }}
-            />
-
-            <p>
-                Na příkladu jde vidět, že ...
-                {/* pokud se koeficient blíží 0, výsledkem
-                    bude obraz s většími bílými plochami. Naopak čím vyšší
-                    koeficient bude, tím bude obraz tmavší. */}
-            </p>
+            <Stack
+                flexDirection="row"
+                justifyContent="center"
+                sx={{ fontSize: "24px" }}
+            >
+                <Chip label={"0 < c < 4"} />
+            </Stack>
         </Card>
     );
 };

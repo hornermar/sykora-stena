@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
 import { Calculation } from "./Calculation/Calculation";
 import { FrontPage } from "./FrontPage";
+import { Playground } from "./Playground/Playground";
 import { Section } from "./Section";
 
 export default function HomePage() {
@@ -28,6 +29,10 @@ export default function HomePage() {
                     title="Dopočet chybějících prvků"
                 >
                     <Calculation />
+                </Section>
+
+                <Section backgroundColor="white" letter="C." title="Playground">
+                    <Playground />
                 </Section>
             </div>
         </Box>
