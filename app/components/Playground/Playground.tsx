@@ -25,22 +25,26 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
 
     return (
         <>
-            <Card color="rgb(233,49,47)">
-                {displayDefaultGrid ? (
-                    <Structure grid={defaultGrid} cellType="text" />
-                ) : (
-                    <Structure grid={grid} cellType="image" />
-                )}
-
-                <Stack sx={{ marginTop: "15px" }}>
+            <Card color="rgb(241, 79, 77)">
+                <Stack
+                    sx={{ margin: "10px 0 22px 0" }}
+                    flexDirection="row"
+                    justifyContent="flex-end"
+                >
                     <Switch
                         checked={!displayDefaultGrid}
                         onChange={() => setDisplayDefaultGrid((prev) => !prev)}
                     />
                 </Stack>
 
-                <Stack sx={{ marginTop: "20px" }}>
-                    <Typography sx={{ marginBottom: "-54px" }}>
+                {displayDefaultGrid ? (
+                    <Structure grid={defaultGrid} cellType="text" />
+                ) : (
+                    <Structure grid={grid} cellType="image" />
+                )}
+
+                <Stack sx={{ marginTop: "40px" }}>
+                    <Typography sx={{ marginBottom: "-50px" }}>
                         Koeficient
                     </Typography>
 
@@ -58,8 +62,10 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                     />
                 </Stack>
 
-                <Stack spacing={1} sx={{ marginTop: "10px" }}>
-                    <Typography>Pravidlo</Typography>
+                <Stack sx={{ marginTop: "20px" }}>
+                    <Typography sx={{ marginBottom: "15px" }}>
+                        Pravidlo
+                    </Typography>
                     {map(rulesItems, (rule: Rule) => (
                         <Chip
                             label={rule.text}

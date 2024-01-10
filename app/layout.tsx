@@ -87,6 +87,7 @@ export default function RootLayout(props: Props) {
                                     right: 10,
                                     display: { sm: "none" },
                                     backgroundColor: "white",
+                                    zIndex: 100,
                                 }}
                             >
                                 <Image

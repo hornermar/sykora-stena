@@ -33,7 +33,7 @@ export default function HomePage() {
     return (
         <Box sx={{ display: "flex" }}>
             <div>
-                <Section backgroundColor={"rgb(233,49,47)"}>
+                <Section backgroundColor={"rgb(241, 79, 77)"}>
                     <FrontPage />
                 </Section>
 
