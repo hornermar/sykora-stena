@@ -6,11 +6,34 @@ import { FrontPage } from "./FrontPage";
 import { Playground } from "./Playground/Playground";
 import { Section } from "./Section";
 
+const gridForExample = [
+    // 1
+    ["-", "-", "-", "0", "3r", "1r", "+", "+", "0", "-", "-"],
+    // 2
+    ["-", "1r", "+", "+", "-", "-", "-", "4z", "+", "-", "2r"],
+    // 3
+    ["-", "+", "+", "4i", "-", "1i", "-", "0", "0", "0", "0"],
+    // 4
+    ["-", "+", "+", "+", "-", "-", "-", "3b", "+", "+", "0"],
+    // 5
+    ["1z", "0", "0", "0", "-", "1d", "-", "+", "+", "0", "-"],
+    // 6
+    ["-", "+", "+", "0", "-", "-", "1y", "+", "+", "+", "1d"],
+    // 7
+    ["-", "+", "4z", "+", "1r", "-", "-", "0", "+", "0", "-"],
+    // 8
+    ["0", "+", "+", "+", "0", "-", "-", "3b", "0", "-", "-"],
+    // 9
+    ["+", "+", "+", "1d", "0", "-", "-", "+", "+", "4r", "-"],
+    // 10
+    ["+", "0", "3b", "+", "0", "0", "1r", "+", "+", "0", "-"],
+];
+
 export default function HomePage() {
     return (
         <Box sx={{ display: "flex" }}>
             <div>
-                <Section backgroundColor={"rgb(241, 79, 77)"}>
+                <Section backgroundColor={"rgb(233,49,47)"}>
                     <FrontPage />
                 </Section>
 
@@ -19,11 +42,11 @@ export default function HomePage() {
                     letter="A."
                     title="Vstupy umělce"
                 >
-                    <ArtistInputs />
+                    <ArtistInputs grid={gridForExample} />
                 </Section>
 
                 <Section
-                    backgroundColor={"rgb(4, 117, 159)"}
+                    backgroundColor={"rgb(1, 56, 139)"}
                     color="white"
                     letter="B."
                     title="Dopočet chybějících prvků"
@@ -32,7 +55,7 @@ export default function HomePage() {
                 </Section>
 
                 <Section backgroundColor="white" letter="C." title="Playground">
-                    <Playground />
+                    <Playground defaultGrid={gridForExample} />
                 </Section>
             </div>
         </Box>

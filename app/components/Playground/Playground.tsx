@@ -1,37 +1,23 @@
 "use client";
+import { rulesItems } from "@/app/lib/formItems";
 import { getElements } from "@/app/utils/getElements";
-import { Slider, Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import { map } from "lodash";
 import { useEffect, useState } from "react";
 import Card from "../Card";
 import { Chip } from "../Chip";
+import { Slider } from "../Slider";
 import { Structure } from "../Structure";
+import { Switch } from "../Switch";
 
-const defaultGrid = [
-    // 1
-    ["-", "-", "-", "0", "3r", "1r", "+", "+", "0", "-", "-"],
-    // 2
-    ["-", "1r", "+", "+", "-", "-", "-", "4z", "+", "-", "2r"],
-    // 3
-    ["-", "+", "+", "4i", "-", "1i", "-", "0", "0", "0", "0"],
-    // 4
-    ["-", "+", "+", "+", "-", "-", "-", "3b", "+", "+", "0"],
-    // 5
-    ["1z", "0", "0", "0", "-", "1d", "-", "+", "+", "0", "-"],
-    // 6
-    ["-", "+", "+", "0", "-", "-", "1y", "+", "+", "+", "1d"],
-    // 7
-    ["-", "+", "4z", "+", "1r", "-", "-", "0", "+", "0", "-"],
-    // 8
-    ["0", "+", "+", "+", "0", "-", "-", "3b", "0", "-", "-"],
-    // 9
-    ["+", "+", "+", "1d", "0", "-", "-", "+", "+", "4r", "-"],
-    // 10
-    ["+", "0", "3b", "+", "0", "0", "1r", "+", "+", "0", "-"],
-];
+type PlaygroundProps = {
+    defaultGrid: string[][];
+};
 
-export const Playground = () => {
-    const [form, setForm] = useState({ coefficient: 0.75, rule: 3 });
+export const Playground = ({ defaultGrid }: PlaygroundProps) => {
+    const [form, setForm] = useState({ coefficient: 2, rule: 3 });
     const [grid, setGrid] = useState(defaultGrid);
+    const [displayDefaultGrid, setDisplayDefaultGrid] = useState(false);
 
     useEffect(() => {
         setGrid(getElements(form.rule, form.coefficient, defaultGrid));
@@ -39,64 +25,54 @@ export const Playground = () => {
 
     return (
         <>
-            <Card color="#faeb48">
-                <Structure grid={grid} cellType="image" />
+            <Card color="rgb(233,49,47)">
+                {displayDefaultGrid ? (
+                    <Structure grid={defaultGrid} cellType="text" />
+                ) : (
+                    <Structure grid={grid} cellType="image" />
+                )}
 
-                <Slider
-                    value={form.coefficient}
-                    min={0.01}
-                    max={4}
-                    step={0.5}
-                    onChange={(e, newValue) =>
-                        setForm((prev) => ({
-                            ...prev,
-                            coefficient: newValue as number,
-                        }))
-                    }
-                    valueLabelDisplay="on"
-                    sx={{ marginTop: "35px " }}
-                />
+                <Stack sx={{ marginTop: "15px" }}>
+                    <Switch
+                        checked={!displayDefaultGrid}
+                        onChange={() => setDisplayDefaultGrid((prev) => !prev)}
+                    />
+                </Stack>
 
-                <Stack spacing={1} sx={{ margin: "10px 0 30px 0" }}>
-                    <Chip
-                        label="Barva pokračuje, tvar pokračuje"
-                        onClick={() =>
+                <Stack sx={{ marginTop: "20px" }}>
+                    <Typography sx={{ marginBottom: "-54px" }}>
+                        Koeficient
+                    </Typography>
+
+                    <Slider
+                        value={form.coefficient}
+                        step={0.1}
+                        min={0.01}
+                        max={3.99}
+                        onChange={(e: Event, newValue: number | number[]) =>
                             setForm((prev) => ({
                                 ...prev,
-                                rule: 0,
+                                coefficient: newValue as number,
                             }))
                         }
                     />
+                </Stack>
 
-                    <Chip
-                        label="Barva pokračuje, tvar nepokračuje"
-                        onClick={() =>
-                            setForm((prev) => ({
-                                ...prev,
-                                rule: 1,
-                            }))
-                        }
-                    />
-
-                    <Chip
-                        label="Barva nepokračuje, tvar pokračuje"
-                        onClick={() =>
-                            setForm((prev) => ({
-                                ...prev,
-                                rule: 2,
-                            }))
-                        }
-                    />
-
-                    <Chip
-                        label="Barva nepokračuje, tvar pokračuje"
-                        onClick={() =>
-                            setForm((prev) => ({
-                                ...prev,
-                                rule: 3,
-                            }))
-                        }
-                    />
+                <Stack spacing={1} sx={{ marginTop: "10px" }}>
+                    <Typography>Pravidlo</Typography>
+                    {map(rulesItems, (rule: Rule) => (
+                        <Chip
+                            label={rule.text}
+                            onClick={() =>
+                                setForm((prev) => ({
+                                    ...prev,
+                                    rule: rule.code,
+                                }))
+                            }
+                            selected={form.rule === rule.code}
+                            key={rule.code}
+                        />
+                    ))}
                 </Stack>
             </Card>
         </>

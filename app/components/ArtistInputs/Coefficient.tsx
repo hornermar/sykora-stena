@@ -1,21 +1,13 @@
-import { Stack, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import Card from "../Card";
 import { Chip } from "../Chip";
 
-type ArtistInputsCoefficientProps = {
-    grid: string[][];
-    rule: number;
-};
-
-export const ArtistInputsCoefficient = ({
-    grid,
-    rule,
-}: ArtistInputsCoefficientProps) => {
+export const ArtistInputsCoefficient = () => {
     return (
         <Card heading="3. Koeficient" color="rgb(219, 219, 219)">
             <p>
-                Dalším vstupem je koeficient <strong>c</strong>, který má
-                číselnou hodnotu větší než 0. Určuje, o kolik se změní barva na{" "}
+                Dalším vstupem je <strong>koeficient</strong>, který má číselnou
+                hodnotu větší než 0. Určuje, o kolik se změní barva na{" "}
                 <Tooltip
                     placement="top"
                     title="Nejsvětlejší jsou prvky, které začínají číslem 1 (1z, 1b, 1y, 1i, 1r, 1d)"
@@ -41,13 +33,7 @@ export const ArtistInputsCoefficient = ({
                 barvy, vyšší hodnoty naopak znamenají větší změnu.
             </p>
 
-            <Stack
-                flexDirection="row"
-                justifyContent="center"
-                sx={{ fontSize: "24px" }}
-            >
-                <Chip label={"0 < c < 4"} />
-            </Stack>
+            <Chip label={"0 < koeficient < 4"} sx={{ padding: "40px 4px" }} />
         </Card>
     );
 };

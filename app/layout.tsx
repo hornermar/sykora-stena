@@ -8,9 +8,7 @@ import {
     ListItem,
     ListItemButton,
     ListItemText,
-    Toolbar,
 } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
@@ -64,64 +62,63 @@ export default function RootLayout(props: Props) {
                             display: "flex",
                         }}
                     >
-                        <AppBar
-                            component="nav"
-                            position="fixed"
+                        <IconButton
+                            color="inherit"
+                            edge="start"
+                            size="large"
+                            onClick={handleDrawerToggle}
                             sx={{
-                                boxShadow: "none",
-                                backgroundColor: "transparent",
+                                position: "absolute",
+                                top: 6,
+                                left: 20,
+                                backgroundColor: "black",
+                                color: "white",
                             }}
                         >
-                            <Toolbar
+                            J3
+                        </IconButton>
+                        <div>
+                            <IconButton
+                                color="inherit"
+                                size="large"
                                 sx={{
-                                    justifyContent: "flex-end",
-                                    // padding: "0 6px",
+                                    position: "fixed",
+                                    top: 6,
+                                    right: 10,
+                                    display: { sm: "none" },
+                                    backgroundColor: "white",
                                 }}
                             >
-                                <IconButton
-                                    color="inherit"
-                                    edge="start"
-                                    size="large"
-                                    onClick={handleDrawerToggle}
-                                    sx={{
-                                        marginTop: "6px",
-                                        display: { sm: "none" },
-                                        backgroundColor: "white",
-                                    }}
-                                >
-                                    <Image
-                                        src={barsIcon}
-                                        width={25}
-                                        height={25}
-                                        alt={"rotate icon"}
-                                    />
-                                </IconButton>
-                                <Typography
-                                    variant="h6"
-                                    component="div"
-                                    sx={{
-                                        flexGrow: 1,
-                                        display: { xs: "none", sm: "block" },
-                                    }}
-                                >
-                                    Něco
-                                </Typography>
-                                <Box
-                                    sx={{
-                                        display: { xs: "none", sm: "block" },
-                                    }}
-                                >
-                                    {navItems.map((item) => (
-                                        <Button
-                                            key={item}
-                                            sx={{ color: "#fff" }}
-                                        >
-                                            {item}
-                                        </Button>
-                                    ))}
-                                </Box>
-                            </Toolbar>
-                        </AppBar>
+                                <Image
+                                    src={barsIcon}
+                                    width={25}
+                                    height={25}
+                                    alt={"rotate icon"}
+                                />
+                            </IconButton>
+                        </div>
+                        <Typography
+                            variant="h6"
+                            component="div"
+                            sx={{
+                                flexGrow: 1,
+                                display: { xs: "none", sm: "block" },
+                            }}
+                        >
+                            Něco
+                        </Typography>
+                        <Box
+                            sx={{
+                                display: { xs: "none", sm: "block" },
+                            }}
+                        >
+                            {navItems.map((item) => (
+                                <Button key={item} sx={{ color: "#fff" }}>
+                                    {item}
+                                </Button>
+                            ))}
+                        </Box>
+
                         <nav>
                             <Drawer
                                 container={container}

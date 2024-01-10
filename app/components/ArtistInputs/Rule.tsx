@@ -1,23 +1,23 @@
 "use client";
+import { rulesItems } from "@/app/lib/formItems";
 import { Stack } from "@mui/material";
+import { map } from "lodash";
 import Card from "../Card";
 import { Chip } from "../Chip";
 import { RuleExample } from "./RuleExample";
 
-type ArtistInputsRuleProps = {
-    coefficient: number;
-    grid: string[][];
-};
-
-export const ArtistInputsRule = ({
-    coefficient,
-    grid,
-}: ArtistInputsRuleProps) => {
+export const ArtistInputsRule = () => {
     return (
         <Card heading="4. Pravidlo" color="rgb(219, 219, 219)">
             <p>Dále je třeba zvolit jedno ze čtyř pravidel.</p>
 
-            <p>Nejprve je ale důležité vysvětlit následující pojmy:</p>
+            <Stack sx={{ margin: "10px 0 30px 0" }}>
+                {map(rulesItems, (rule: Rule) => (
+                    <Chip label={rule.text} />
+                ))}
+            </Stack>
+
+            <p>Co to ale znamená?</p>
 
             <p>
                 Říkáme, že <i>barvy pokračují</i>, pokud je barva podél strany
@@ -35,26 +35,6 @@ export const ArtistInputsRule = ({
             </p>
 
             <RuleExample continues="shape" />
-
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                }}
-            ></div>
-
-            <p>Kombinací těchto pojmů jsou pak sestavená 4 pravidla.</p>
-
-            <Stack spacing={1} sx={{ margin: "10px 0 30px 0" }}>
-                <Chip label="Barva pokračuje, tvar pokračuje" />
-
-                <Chip label="Barva pokračuje, tvar nepokračuje" />
-
-                <Chip label="Barva nepokračuje, tvar pokračuje" />
-
-                <Chip label="Barva nepokračuje, tvar pokračuje" />
-            </Stack>
         </Card>
     );
 };

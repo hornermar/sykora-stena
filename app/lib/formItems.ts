@@ -1,4 +1,4 @@
-export const rulesItems = [
+export const rulesItems: Rule[] = [
     {
         text: "Pokračuje barva, pokračuje tvar",
         code: 0,
@@ -18,7 +18,7 @@ export const rulesItems = [
         shapeContinue: true,
     },
     {
-        text: "nepokračuje barva, nepokračuje tvar",
+        text: "Nepokračuje barva, nepokračuje tvar",
         code: 3,
         colorContinue: false,
         shapeContinue: false,

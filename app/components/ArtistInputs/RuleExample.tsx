@@ -38,6 +38,7 @@ export const RuleExample = ({ continues }: RuleExampleProps) => {
                         grid={g}
                         cellType="image"
                         sx={{ marginRight: !isLast ? "15px" : "0px" }}
+                        key={i}
                     />
                 );
             })}

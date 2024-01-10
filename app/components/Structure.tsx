@@ -1,9 +1,10 @@
-import { Stack, Switch } from "@mui/material";
+import { Stack } from "@mui/material";
 import { map, size } from "lodash";
 import Image from "next/image";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { getElementImage } from "../utils/getElementImages";
 import { CellSelect } from "./CellSelect";
+import { Switch } from "./Switch";
 
 export type StructureProps = {
     grid: string[][];
@@ -111,11 +112,12 @@ export const Structure = ({
                 </div>
             ))}
             {type !== "select" && displaySwitch && (
-                <Switch
-                    checked={type === "image"}
-                    onChange={handleTypeChange}
-                    sx={{ alignSelf: "center" }}
-                />
+                <Stack sx={{ marginTop: "20px" }}>
+                    <Switch
+                        checked={type === "image"}
+                        onChange={handleTypeChange}
+                    />
+                </Stack>
             )}
         </Stack>
     );

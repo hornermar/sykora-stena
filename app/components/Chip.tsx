@@ -1,15 +1,14 @@
-import { Chip as MuiChip } from "@mui/material";
+import { Chip as MuiChip, SxProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const StyledChip = styled(MuiChip)(() => ({
-    // border: "2px solid black",
-    border: "none",
-    // backgroundColor: props.variant === "filled" ? green : "black",
+const StyledChip = styled(MuiChip)((props) => ({
+    border: props.variant === "filled" ? "2px solid black" : "2px solid white",
     backgroundColor: "white",
-    // color: "white",
-    fontSize: "18px",
-    padding: "20px 10px",
-    borderRadius: "25px",
+    fontSize: "20px",
+    padding: "20px 4px",
+    borderRadius: "20px",
+    fontWeight: "400",
+    width: "100%",
     "&:active": {
         boxShadow: "none",
         backgroundColor: "white",
@@ -17,17 +16,28 @@ const StyledChip = styled(MuiChip)(() => ({
     "&:focus": {
         backgroundColor: "white",
     },
+    "&:hover": {
+        backgroundColor: "white",
+    },
+    "&.MuiButtonBase-root": {
+        margin: "0",
+    },
 }));
 
 type ChipProps = {
     label: string;
     onClick?: () => void;
+    selected?: boolean;
+    sx?: SxProps;
 };
 
-export const Chip = ({ label, onClick }: ChipProps) => {
+export const Chip = ({ label, onClick, selected, sx }: ChipProps) => {
     return (
-        <div>
-            <StyledChip label={label} onClick={onClick} />
-        </div>
+        <StyledChip
+            label={label}
+            onClick={onClick}
+            variant={selected ? "filled" : "outlined"}
+            sx={sx}
+        />
     );
 };

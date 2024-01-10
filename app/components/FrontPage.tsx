@@ -27,7 +27,7 @@ export const FrontPage = () => {
                     fontWeight: "400",
                 }}
             >
-                Zdeněk Sýkora:
+                Zdeněk Sýkora
             </Typography>
             <div style={{ padding: "0 16px", fontWeight: "400" }}>
                 {map(
