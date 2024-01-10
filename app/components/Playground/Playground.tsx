@@ -1,7 +1,7 @@
 "use client";
 import { rulesItems } from "@/app/lib/formItems";
 import { getElements } from "@/app/utils/getElements";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { map } from "lodash";
 import { useEffect, useState } from "react";
 import Card from "../Card";
@@ -25,7 +25,7 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
 
     return (
         <>
-            <Card color="rgb(241, 79, 77)">
+            <Card color="rgb(219, 219, 219)">
                 <Stack
                     sx={{ margin: "10px 0 22px 0" }}
                     flexDirection="row"
@@ -43,10 +43,10 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                     <Structure grid={grid} cellType="image" />
                 )}
 
-                <Stack sx={{ marginTop: "40px" }}>
-                    <Typography sx={{ marginBottom: "-50px" }}>
+                <Stack sx={{ marginTop: "20px" }}>
+                    {/* <Typography sx={{ marginBottom: "-50px" }}>
                         Koeficient
-                    </Typography>
+                    </Typography> */}
 
                     <Slider
                         value={form.coefficient}
@@ -62,10 +62,10 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                     />
                 </Stack>
 
-                <Stack sx={{ marginTop: "20px" }}>
-                    <Typography sx={{ marginBottom: "15px" }}>
+                <Stack sx={{ marginTop: "40px" }}>
+                    {/* <Typography sx={{ marginBottom: "15px" }}>
                         Pravidlo
-                    </Typography>
+                    </Typography> */}
                     {map(rulesItems, (rule: Rule) => (
                         <Chip
                             label={rule.text}

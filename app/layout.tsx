@@ -66,7 +66,6 @@ export default function RootLayout(props: Props) {
                             color="inherit"
                             edge="start"
                             size="large"
-                            onClick={handleDrawerToggle}
                             sx={{
                                 position: "absolute",
                                 top: 6,
@@ -81,6 +80,7 @@ export default function RootLayout(props: Props) {
                             <IconButton
                                 color="inherit"
                                 size="large"
+                                onClick={handleDrawerToggle}
                                 sx={{
                                     position: "fixed",
                                     top: 6,
