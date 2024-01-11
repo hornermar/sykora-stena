@@ -33,55 +33,10 @@ const largeSize = 60;
 
 export const ArtistInputsElements = () => {
     const [whiteBlack, setWhiteBlack] = useState(false);
-    // const [emptydGrid, setEmptyGrid] = useState([
-    //     ["1z", "1r", "3z"],
-    //     ["F", "F", "F"],
-    //     ["F", "0", "F"],
-    //     ["F", "0", "F"],
-    // ]);
-    // const [rotation, setRotation] = useState({
-    //     "1z": 1,
-    //     "1r": 1,
-    //     "3z": 1,
-    // });
-
-    // const addElement = (name: "1z" | "1r" | "3z", order: number) => {
-    //     setEmptyGrid((prev) => {
-    //         const newGrid = [...prev];
-    //         newGrid[rotation[name]][order] =
-    //             blackWhiteElements[rotation[name]][order];
-    //         return newGrid;
-    //     });
-    //     setRotation((prev) => ({ ...prev, [name]: prev[name] + 1 }));
-    // };
-
-    // const addElements = (name: string) => {
-    //     switch (name) {
-    //         case "1z":
-    //             rotation[name] <= 3 && addElement(name, 0);
-    //             break;
-    //         case "1r":
-    //             rotation[name] <= 1 && addElement(name, 1);
-    //             break;
-    //         case "3z":
-    //             rotation[name] <= 3 && addElement(name, 2);
-    //             break;
-    //     }
-    // };
 
     return (
         <>
-            <Card color="transparent">
-                Ještě před spuštěním výpočtu, který provedl algoritmus, musel
-                Zdeněk Sýkora nastavit <b>4</b> parametry. Na těch závisela
-                výsledná podoba obrazu. V této části si ukážeme, které to jsou.
-            </Card>
             <Card heading="1. Elementy" color="rgb(219, 219, 219)">
-                {/* <Stack
-                    spacing={3}
-                    flexDirection="column"
-                    justifyContent={"center"}
-                > */}
                 <p>
                     Nejříve musel Sýkora určit elementy, které pro danou
                     stukturu použije.
@@ -94,59 +49,39 @@ export const ArtistInputsElements = () => {
                     vytvořili kruh.
                 </p>
 
-                <Stack
-                    direction="row"
-                    justifyContent="space-between"
-                    sx={{ marginTop: "30px" }}
-                >
+                <p style={{ marginBottom: "0" }}>
+                    Jejich postupným otáčením získal 10 různých elementů.
+                </p>
+            </Card>
+            <Stack direction="row" justifyContent="space-between">
+                <Card color="rgb(184, 231, 254)" width={"calc(100% / 3)"}>
                     <SeparateElement
                         name={!whiteBlack ? "1z" : "4z"}
                         size={largeSize}
                         isRotating
                     />
+                </Card>
+                <Card color="rgb(184, 231, 254)" width={"calc(100% / 3)"}>
                     <SeparateElement
                         name={!whiteBlack ? "1r" : "4r"}
                         size={largeSize}
                         isRotating
                     />
+                </Card>
+                <Card color="rgb(184, 231, 254)" width={"calc(100% / 3)"}>
                     <SeparateElement
                         name={!whiteBlack ? "3z" : "2z"}
                         size={largeSize}
                         isRotating
                     />
-                </Stack>
-
-                <p style={{ marginBottom: "30px" }}>
-                    Jejich postupným otáčením získal 10 různých elementů.
+                </Card>
+            </Stack>
+            <Card color="rgb(219, 219, 219)">
+                <p style={{ margin: 0 }}>
+                    Prohozením barev se tento počet zdvojnásobil na 20.
                 </p>
-
-                {/* <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        <SeparateElement
-                            name={!whiteBlack ? "1z" : "4z"}
-                            size={largeSize}
-                            onClick={() => addElements("1z")}
-                            isRotating
-                        />
-                        <SeparateElement
-                            name={!whiteBlack ? "1r" : "4r"}
-                            size={largeSize}
-                            onClick={() => addElements("1r")}
-                            isRotating
-                        />
-                        <SeparateElement
-                            name={!whiteBlack ? "3z" : "2z"}
-                            size={largeSize}
-                            onClick={() => addElements("3z")}
-                            isRotating
-                        />
-                    </div> */}
-
+            </Card>
+            <Card color="rgb(184, 231, 254)">
                 <ExampleGrid
                     grid={!whiteBlack ? blackWhiteElements : whiteBlackElements}
                     size={largeSize}
@@ -166,30 +101,16 @@ export const ArtistInputsElements = () => {
                         />
                     </IconButton>
                 </div>
-
-                <p>Prohozením barev se tento počet zdvojnásobil na 20.</p>
-
-                {/* <Switch
-                        checked={whiteBlack}
-                        onChange={() => setWhiteBlack((prev) => !prev)}
-                        sx={{
-                            alignSelf: "center",
-                            marginTop: "0px !important",
-                        }}
-                        // disabled={
-                        //     rotation["1z"] < 4 ||
-                        //     rotation["1r"] < 1 ||
-                        //     rotation["3z"] < 4
-                        // }
-                    /> */}
-
-                <p style={{ marginBottom: "30px" }}>
+            </Card>
+            <Card color="rgb(219, 219, 219)">
+                <p style={{ margin: 0 }}>
                     Elementy následně rozdělil do skupin <b>1</b>, <b>2</b>,{" "}
                     <b>3</b> a <b>4</b> podle hustoty barvy. Skupina 1 (1z, 1b,
                     1y atd.), obsahuje nejsvětlejší prvky. Skupina 4 (4z, 4b, 4y
                     atd.) naopak obsahuje nejtmavší prvky.
                 </p>
-
+            </Card>
+            <Card color="rgb(184, 231, 254)">
                 <ExampleGrid grid={allElements} size={smallSize} displayName />
                 {/* </Stack> */}
             </Card>

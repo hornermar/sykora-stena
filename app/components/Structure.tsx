@@ -4,7 +4,6 @@ import Image from "next/image";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { getElementImage } from "../utils/getElementImages";
 import { CellSelect } from "./CellSelect";
-import { Switch } from "./Switch";
 
 export type StructureProps = {
     grid: string[][];
@@ -70,7 +69,7 @@ export const Structure = ({
                                 height: `${cellSize}px`,
                                 backgroundColor: "white",
                                 border:
-                                    type === "text" ||
+                                    cellType === "text" ||
                                     cell === "+" ||
                                     cell === "-" ||
                                     cell === "0"
@@ -78,13 +77,13 @@ export const Structure = ({
                                         : "unset",
                             }}
                         >
-                            {type === "text" && (
+                            {cellType === "text" && (
                                 <span>
                                     <b>{cell !== "0" && cell}</b>
                                 </span>
                             )}
 
-                            {type === "image" &&
+                            {cellType === "image" &&
                                 (cell !== "+" && cell !== "-" ? (
                                     <Image
                                         src={getElementImage(cell)}
@@ -99,7 +98,7 @@ export const Structure = ({
                                     </span>
                                 ))}
 
-                            {type === "select" && onCellChange && (
+                            {cellType === "select" && onCellChange && (
                                 <CellSelect
                                     onCellChange={onCellChange}
                                     cell={grid[y][x]}
@@ -111,14 +110,14 @@ export const Structure = ({
                     ))}
                 </div>
             ))}
-            {type !== "select" && displaySwitch && (
+            {/* {type !== "select" && displaySwitch && (
                 <Stack sx={{ marginTop: "20px" }}>
                     <Switch
                         checked={type === "image"}
                         onChange={handleTypeChange}
                     />
                 </Stack>
-            )}
+            )} */}
         </Stack>
     );
 };

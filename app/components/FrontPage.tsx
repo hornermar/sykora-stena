@@ -1,60 +1,72 @@
 "use client";
-import { Typography } from "@mui/material";
-import { map } from "lodash";
+import { Stack, SvgIcon, Typography } from "@mui/material";
+import { useState } from "react";
 import { getElements } from "../utils/getElements";
 import { Button } from "./Button";
 import Card from "./Card";
 import { Structure } from "./Structure";
+import { Switch } from "./Switch";
+
+const emptyGrid = [
+    ["3z", "0", "+", "0", "-", "0"],
+    ["+", "0", "+", "0", "-", "0"],
+    ["+", "0", "+", "0", "-", "0"],
+    ["+", "0", "+", "0", "-", "0"],
+    ["+", "0", "+", "0", "-", "0"],
+];
 
 export const FrontPage = () => {
-    const emptyGrid = [
-        ["3z", "0", "+", "0", "-", "0"],
-        ["+", "0", "+", "0", "-", "0"],
-        ["+", "0", "+", "0", "-", "0"],
-        ["+", "0", "+", "0", "-", "0"],
-        ["+", "0", "+", "0", "-", "0"],
-    ];
+    const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
 
     const grid = getElements(3, 0.75, emptyGrid);
 
     return (
         <>
-            <Typography
-                variant="h1"
-                sx={{
-                    fontSize: "46px",
-                    padding: "40px 16px 0 16px",
-                    fontWeight: "400",
-                }}
-            >
-                Zdeněk Sýkora
-            </Typography>
-            <div style={{ padding: "0 16px", fontWeight: "400" }}>
-                {map(
-                    ["Algoritmus", "pro tvorbu", "černobílých", "struktur"],
-                    (word: string, index) => (
-                        <Typography
-                            variant="h2"
-                            key={index}
-                            sx={{
-                                fontSize: "46px",
-                                fontWeight: "400",
-                            }}
-                        >
-                            {word}
-                        </Typography>
-                    )
+            <Card color="rgb(230, 253, 170)">
+                <Typography
+                    variant="h1"
+                    sx={{
+                        fontSize: "42px",
+                        padding: "0px 0px 70px 0px",
+                        fontWeight: "400",
+                    }}
+                >
+                    Jindřišská 3
+                </Typography>
+
+                <Typography
+                    variant="h2"
+                    sx={{
+                        fontSize: "18px",
+                        fontWeight: "400",
+                    }}
+                >
+                    Algoritmus Zdeňka Sýkory pro tvorbu černobílých struktur.
+                </Typography>
+
+                <Stack flexDirection="row" justifyContent="flex-end">
+                    <Switch
+                        checked={!displayEmptyGrid}
+                        onChange={() => setDisplayEmptyGrid((prev) => !prev)}
+                    />
+                </Stack>
+            </Card>
+
+            <Card>
+                {displayEmptyGrid ? (
+                    <Structure grid={emptyGrid} cellType="text" />
+                ) : (
+                    <Structure grid={grid} cellType="image" />
                 )}
-            </div>
+            </Card>
 
             <Card color="white">
                 <div>
-                    <Structure grid={grid} cellType="image" displaySwitch />
-                    <p>
+                    <p style={{ marginTop: "0" }}>
                         V roce 1961 začal Zdeněk Sýkora vytvářet obrazy
                         gemetrického abstraktního typu. Jejich kompozice byla
                         výsledkem opakovaného použití jednoho nebo více
-                        záklafních prvků. Tyto prvky se vyznačovaly tvarem
+                        základních prvků. Tyto prvky se vyznačovaly tvarem
                         (čtvercovým nebo obdélníkovým) a specifickými
                         geometrickými vzory uvnitř.
                     </p>
@@ -77,20 +89,26 @@ export const FrontPage = () => {
                             onClick={() => {
                                 window.location.href = "/algoritmus";
                             }}
-                            fullWidth
+                            endIcon={
+                                <SvgIcon sx={{ marginLeft: "50px" }}>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        height="16"
+                                        width="14"
+                                        viewBox="0 0 448 512"
+                                    >
+                                        <path
+                                            fill="#FFFFFF"
+                                            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                                        />
+                                    </svg>
+                                </SvgIcon>
+                            }
                         >
-                            Vyzkoušet
+                            Rovnou vyzkoušet
                         </Button>
                     </div>
                 </div>
-            </Card>
-
-            <Card color="transparent">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. //
-                    Nullam justo enim, consectetuer nec, ullamcorper ac, //
-                    vestibulum in, elit.
-                </p>
             </Card>
         </>
     );

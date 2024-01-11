@@ -60,7 +60,6 @@ export const Slider = ({ value, onChange, min, max, step }: SliderProps) => {
             step={step}
             onChange={onChange}
             valueLabelDisplay="on"
-            sx={{ marginTop: "40px " }}
         />
     );
 };

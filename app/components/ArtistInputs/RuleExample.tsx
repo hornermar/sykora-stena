@@ -26,7 +26,8 @@ export const RuleExample = ({ continues }: RuleExampleProps) => {
             justifyContent="space-between"
             sx={{
                 ".element-00": {
-                    border: "2px solid rgb(241, 79, 77)",
+                    outline: "2px solid rgb(184, 231, 254)",
+                    zIndex: 10,
                 },
             }}
         >

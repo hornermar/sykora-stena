@@ -1,10 +1,9 @@
 "use client";
 import Card from "../Card";
+import { SectionTitle } from "../SectionTitle";
 import { Structure } from "../Structure";
 
 const grid1 = [
-    ["0", "0", "0", "0", "0"],
-    ["0", "0", "0", "0", "0"],
     ["0", "0", "0", "0", "0"],
     ["0", "0", "0", "0", "0"],
     ["0", "0", "0", "0", "0"],
@@ -21,13 +20,17 @@ const grid2 = [
 export const Calculation = () => {
     return (
         <>
+            <Card color="rgb(219, 219, 219)">
+                <SectionTitle letter="B." title="Dopočet chybějících prvků" />
+            </Card>
             <Card heading="1. Průchod diagramem" color="rgb(219, 219, 219)">
-                <p>
+                <p style={{ margin: 0 }}>
                     Algoritmus začíná v elementu [1;1] v levém horním rohu.
                     Postupuje zleva doprava v lichých řádcích a zprava doleva v
                     sudých.
                 </p>
-
+            </Card>
+            <Card color="rgb(250, 186, 174)">
                 <Structure grid={grid1} />
             </Card>
             <Card heading="2. Výběr skupiny" color="rgb(219, 219, 219)">
@@ -60,7 +63,8 @@ export const Calculation = () => {
                     Výsledek pak určuje, ze které skupiny se vybírá element pro
                     umístění do buňky.
                 </p>
-
+            </Card>
+            <Card color="rgb(250, 186, 174)">
                 <Structure grid={grid2} cellType="text" />
             </Card>
             <Card heading="3. Výběr prvku" color="rgb(219, 219, 219)">

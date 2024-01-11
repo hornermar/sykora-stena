@@ -62,7 +62,7 @@ export default function RootLayout(props: Props) {
                             display: "flex",
                         }}
                     >
-                        <IconButton
+                        {/* <IconButton
                             color="inherit"
                             edge="start"
                             size="large"
@@ -75,7 +75,7 @@ export default function RootLayout(props: Props) {
                             }}
                         >
                             J3
-                        </IconButton>
+                        </IconButton> */}
                         <div>
                             <IconButton
                                 color="inherit"

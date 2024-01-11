@@ -3,23 +3,23 @@ import { styled } from "@mui/material/styles";
 
 const StyledButton = styled(MuiButton)((props) => ({
     boxShadow: "none",
-    padding: "15px 20px",
+    padding: "4px 20px",
     borderRadius: "25px",
-    color: "black",
-    backgroundColor: props.variant === "contained" ? "#b5b5b5" : "transparent",
+    color: "white",
+    backgroundColor: props.variant === "contained" ? "black" : "transparent",
     textTransform: "none",
     "&:hover": {
         boxShadow: "none",
         backgroundColor:
-            props.variant === "contained" ? "#b5b5b5" : "transparent",
+            props.variant === "contained" ? "black" : "transparent",
     },
     "&:active": {
         boxShadow: "none",
-        backgroundColor: "#b5b5b5",
+        backgroundColor: "black",
     },
     "&:focus": {
         backgroundColor:
-            props.variant === "contained" ? "#b5b5b5" : "transparent",
+            props.variant === "contained" ? "black" : "transparent",
     },
 }));
 
@@ -28,6 +28,7 @@ type ButtonProps = {
     onClick: () => void;
     fullWidth?: boolean;
     variant?: "contained" | "text";
+    endIcon?: React.ReactNode;
 };
 
 export const Button = ({
@@ -35,6 +36,7 @@ export const Button = ({
     onClick,
     fullWidth,
     variant,
+    endIcon,
 }: ButtonProps) => {
     return (
         <StyledButton
@@ -42,6 +44,7 @@ export const Button = ({
             onClick={onClick}
             size="small"
             variant={variant ?? "contained"}
+            endIcon={endIcon}
         >
             {children}
         </StyledButton>

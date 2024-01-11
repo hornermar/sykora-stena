@@ -6,6 +6,7 @@ import { map } from "lodash";
 import { useEffect, useState } from "react";
 import Card from "../Card";
 import { Chip } from "../Chip";
+import { SectionTitle } from "../SectionTitle";
 import { Slider } from "../Slider";
 import { Structure } from "../Structure";
 import { Switch } from "../Switch";
@@ -13,6 +14,8 @@ import { Switch } from "../Switch";
 type PlaygroundProps = {
     defaultGrid: string[][];
 };
+
+const backgroundColor = "rgb(247, 223, 130)";
 
 export const Playground = ({ defaultGrid }: PlaygroundProps) => {
     const [form, setForm] = useState({ coefficient: 2, rule: 3 });
@@ -25,25 +28,27 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
 
     return (
         <>
-            <Card color="rgb(219, 219, 219)">
-                <Stack
-                    sx={{ margin: "10px 0 22px 0" }}
-                    flexDirection="row"
-                    justifyContent="flex-end"
-                >
+            <Card color={backgroundColor}>
+                <SectionTitle letter="C." title="Playground" />
+            </Card>
+
+            <Card color={"white"}>
+                {displayDefaultGrid ? (
+                    <Structure grid={defaultGrid} cellType="text" />
+                ) : (
+                    <Structure grid={grid} cellType="image" />
+                )}
+            </Card>
+
+            <Card color={backgroundColor}>
+                <Stack flexDirection="row">
                     <Switch
                         checked={!displayDefaultGrid}
                         onChange={() => setDisplayDefaultGrid((prev) => !prev)}
                     />
                 </Stack>
 
-                {displayDefaultGrid ? (
-                    <Structure grid={defaultGrid} cellType="text" />
-                ) : (
-                    <Structure grid={grid} cellType="image" />
-                )}
-
-                <Stack sx={{ marginTop: "20px" }}>
+                <Stack sx={{ marginTop: "30px" }}>
                     {/* <Typography sx={{ marginBottom: "-50px" }}>
                         Koeficient
                     </Typography> */}
@@ -62,7 +67,11 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                     />
                 </Stack>
 
-                <Stack sx={{ marginTop: "40px" }}>
+                <Stack
+                    flexDirection="row"
+                    flexWrap="wrap"
+                    sx={{ marginTop: "10px" }}
+                >
                     {/* <Typography sx={{ marginBottom: "15px" }}>
                         Pravidlo
                     </Typography> */}

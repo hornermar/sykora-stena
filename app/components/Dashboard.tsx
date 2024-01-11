@@ -33,28 +33,19 @@ export default function HomePage() {
     return (
         <Box sx={{ display: "flex" }}>
             <div>
-                <Section backgroundColor={"rgb(241, 79, 77)"}>
+                <Section>
                     <FrontPage />
                 </Section>
 
-                <Section
-                    backgroundColor="white"
-                    letter="A."
-                    title="Vstupy umělce"
-                >
+                <Section>
                     <ArtistInputs grid={gridForExample} />
                 </Section>
 
-                <Section
-                    backgroundColor={"rgb(1, 56, 139)"}
-                    color="white"
-                    letter="B."
-                    title="Dopočet chybějících prvků"
-                >
+                <Section>
                     <Calculation />
                 </Section>
 
-                <Section backgroundColor="white" letter="C." title="Playground">
+                <Section>
                     <Playground defaultGrid={gridForExample} />
                 </Section>
             </div>
