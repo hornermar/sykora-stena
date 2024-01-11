@@ -14,28 +14,25 @@ export const ArtistInputsRule = () => {
                     jejich pochopení je nejprve potřeba vysvětlit následující
                     pojmy.
                 </p>
-
-                <p style={{ margin: 0 }}>
+            </Card>
+            <Card color="white">
+                <p>
                     Říkáme, že <b>barvy pokračují</b>, pokud je barva podél
                     strany prvku stejná jako barva podél sousedního okraje
                     sousedního prvku.
                 </p>
-            </Card>
-            <Card color="rgb(184, 231, 254)">
                 <RuleExample continues="color" />
-            </Card>
-            <Card color="white">
-                <p style={{ margin: 0 }}>
+
+                <p style={{ marginTop: "40px" }}>
                     Říkáme, že <b>tvary pokračují</b> na straně prvku, pokud se
                     každý půlkruh otevřený na stranu spojuje s půlkruhem
                     ohraničujícího prvku a tvoří úplný kruh nebo pokud se
                     spojují dva vzory, z nichž žádný není půlkruh otevřený na
                     stranu.
                 </p>
-            </Card>
-            <Card color="rgb(184, 231, 254)">
                 <RuleExample continues="shape" />
             </Card>
+
             <Card color="white">
                 <p style={{ margin: 0 }}>
                     Kombinací těchto pojmů pak vznikla následující pravidla

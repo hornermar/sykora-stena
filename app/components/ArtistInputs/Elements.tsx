@@ -54,21 +54,21 @@ export const ArtistInputsElements = () => {
                 </p>
             </Card>
             <Stack direction="row" justifyContent="space-between">
-                <Card color="rgb(184, 231, 254)" width={"calc(100% / 3)"}>
+                <Card color="white" width={"calc(100% / 3)"}>
                     <SeparateElement
                         name={!whiteBlack ? "1z" : "4z"}
                         size={largeSize}
                         isRotating
                     />
                 </Card>
-                <Card color="rgb(184, 231, 254)" width={"calc(100% / 3)"}>
+                <Card color="white" width={"calc(100% / 3)"}>
                     <SeparateElement
                         name={!whiteBlack ? "1r" : "4r"}
                         size={largeSize}
                         isRotating
                     />
                 </Card>
-                <Card color="rgb(184, 231, 254)" width={"calc(100% / 3)"}>
+                <Card color="white" width={"calc(100% / 3)"}>
                     <SeparateElement
                         name={!whiteBlack ? "3z" : "2z"}
                         size={largeSize}
@@ -78,10 +78,10 @@ export const ArtistInputsElements = () => {
             </Stack>
             <Card color="white">
                 <p style={{ margin: 0 }}>
-                    Prohozením barev se tento počet zdvojnásobil na 20.
+                    Prohozením barev se zdvojnásobil na 20.
                 </p>
             </Card>
-            <Card color="rgb(184, 231, 254)">
+            <Card color="white">
                 <ExampleGrid
                     grid={!whiteBlack ? blackWhiteElements : whiteBlackElements}
                     size={largeSize}
