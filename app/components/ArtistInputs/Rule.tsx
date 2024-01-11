@@ -8,7 +8,7 @@ import { RuleExample } from "./RuleExample";
 export const ArtistInputsRule = () => {
     return (
         <>
-            <Card heading="4. Pravidlo" color="rgb(219, 219, 219)">
+            <Card heading="4. Pravidlo" color="white">
                 <p>
                     Dále je třeba zvolit jedno ze čtyř <b>pravidel</b> Pro
                     jejich pochopení je nejprve potřeba vysvětlit následující
@@ -24,7 +24,7 @@ export const ArtistInputsRule = () => {
             <Card color="rgb(184, 231, 254)">
                 <RuleExample continues="color" />
             </Card>
-            <Card color="rgb(219, 219, 219)">
+            <Card color="white">
                 <p style={{ margin: 0 }}>
                     Říkáme, že <b>tvary pokračují</b> na straně prvku, pokud se
                     každý půlkruh otevřený na stranu spojuje s půlkruhem
@@ -36,15 +36,15 @@ export const ArtistInputsRule = () => {
             <Card color="rgb(184, 231, 254)">
                 <RuleExample continues="shape" />
             </Card>
-            <Card color="rgb(219, 219, 219)">
+            <Card color="white">
                 <p style={{ margin: 0 }}>
-                    Kombinací těchto pojmů pak vzniknou následující pravidla
+                    Kombinací těchto pojmů pak vznikla následující pravidla
                 </p>
             </Card>
 
             <Stack flexDirection="row" flexWrap="wrap">
                 {map(rulesItems, (rule: Rule) => (
-                    <Card color="white" width={"50%"}>
+                    <Card color="rgb(184, 231, 254)" width={"50%"}>
                         <Typography
                             variant="h6"
                             component="div"

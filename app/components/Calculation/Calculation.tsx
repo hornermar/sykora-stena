@@ -6,7 +6,6 @@ import { Structure } from "../Structure";
 const grid1 = [
     ["0", "0", "0", "0", "0"],
     ["0", "0", "0", "0", "0"],
-    ["0", "0", "0", "0", "0"],
 ];
 
 const grid2 = [
@@ -20,10 +19,10 @@ const grid2 = [
 export const Calculation = () => {
     return (
         <>
-            <Card color="rgb(219, 219, 219)">
+            <Card color="rgb(250, 186, 174)">
                 <SectionTitle letter="B." title="Dopočet chybějících prvků" />
             </Card>
-            <Card heading="1. Průchod diagramem" color="rgb(219, 219, 219)">
+            <Card heading="1. Průchod diagramem" color="white)">
                 <p style={{ margin: 0 }}>
                     Algoritmus začíná v elementu [1;1] v levém horním rohu.
                     Postupuje zleva doprava v lichých řádcích a zprava doleva v
@@ -33,7 +32,7 @@ export const Calculation = () => {
             <Card color="rgb(250, 186, 174)">
                 <Structure grid={grid1} />
             </Card>
-            <Card heading="2. Výběr skupiny" color="rgb(219, 219, 219)">
+            <Card heading="2. Výběr skupiny" color="white">
                 <p>
                     Pro každý element, který není vyplněný, zkontroluje všechny
                     okolní elementy. V každé buňce, která je prázdná, se zastaví
@@ -67,7 +66,7 @@ export const Calculation = () => {
             <Card color="rgb(250, 186, 174)">
                 <Structure grid={grid2} cellType="text" />
             </Card>
-            <Card heading="3. Výběr prvku" color="rgb(219, 219, 219)">
+            <Card heading="3. Výběr prvku" color="white">
                 <p>
                     Umělec si připravil mřížku, pro kterou si zvolil počet prvků
                     do výšky a šířky. Do ní pak umístil libovolný počet elementů

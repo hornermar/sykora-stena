@@ -13,7 +13,7 @@ type ArtistInputProps = {
 export const ArtistInputs = ({ grid }: ArtistInputProps) => {
     return (
         <>
-            <Card color="rgb(219, 219, 219)">
+            <Card color="rgb(184, 231, 254)">
                 <SectionTitle letter="A." title="Vstupy umělce" />
                 <p
                     style={{
@@ -33,6 +33,21 @@ export const ArtistInputs = ({ grid }: ArtistInputProps) => {
             <ArtistInputsDiagram grid={grid} />
             <ArtistInputsCoefficient />
             <ArtistInputsRule />
+
+            <Card>
+                <p>
+                    Zdeněk Sýkora zadal do počátače tyto 4 vstupy a na základně
+                    nich se vygenerovalo dílo.
+                </p>
+                <p>
+                    V textu blablabla popisuje, jakým způsobem je dobré
+                    rozmisťovat jednotlivé elementy tak, aby docílil zajímavé
+                    struktury. Pokud na malém formátu zadá příliž mnoho prvků,
+                    nezbyde už mnoho prostoru pro náhodný vzor. Je proto lepší
+                    rozmístit prvky v určitém rytmu s prostorem a nechat více
+                    prosotru náhodě.
+                </p>
+            </Card>
         </>
     );
 };

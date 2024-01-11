@@ -4,7 +4,7 @@ import Card from "../Card";
 export const ArtistInputsCoefficient = () => {
     return (
         <>
-            <Card heading="3. Koeficient" color="rgb(219, 219, 219)">
+            <Card heading="3. Koeficient" color="white">
                 <p>
                     Dalším vstupem je <strong>koeficient</strong>, který má
                     číselnou hodnotu větší než 0. Určuje, o kolik se změní barva
@@ -35,7 +35,7 @@ export const ArtistInputsCoefficient = () => {
                     změnu.
                 </p>
             </Card>
-            <Card color="white">
+            <Card color="rgb(184, 231, 254)">
                 <Typography
                     variant="h6"
                     component="div"

@@ -13,7 +13,7 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
 
     return (
         <>
-            <Card heading="2. Diagram" color="rgb(219, 219, 219)">
+            <Card heading="2. Diagram" color="white">
                 <p>
                     Umělec si připravil mřížku, pro kterou si zvolil počet prvků
                     do výšky a šířky. Do ní pak umístil libovolný počet elementů

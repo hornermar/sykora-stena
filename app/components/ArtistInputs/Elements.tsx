@@ -36,7 +36,7 @@ export const ArtistInputsElements = () => {
 
     return (
         <>
-            <Card heading="1. Elementy" color="rgb(219, 219, 219)">
+            <Card heading="1. Elementy" color="white">
                 <p>
                     Nejříve musel Sýkora určit elementy, které pro danou
                     stukturu použije.
@@ -76,7 +76,7 @@ export const ArtistInputsElements = () => {
                     />
                 </Card>
             </Stack>
-            <Card color="rgb(219, 219, 219)">
+            <Card color="white">
                 <p style={{ margin: 0 }}>
                     Prohozením barev se tento počet zdvojnásobil na 20.
                 </p>
@@ -102,7 +102,7 @@ export const ArtistInputsElements = () => {
                     </IconButton>
                 </div>
             </Card>
-            <Card color="rgb(219, 219, 219)">
+            <Card color="white">
                 <p style={{ margin: 0 }}>
                     Elementy následně rozdělil do skupin <b>1</b>, <b>2</b>,{" "}
                     <b>3</b> a <b>4</b> podle hustoty barvy. Skupina 1 (1z, 1b,
