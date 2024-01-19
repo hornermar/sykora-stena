@@ -17,16 +17,10 @@ export const Structure = ({
     grid,
     onCellChange,
     cellType,
-    displaySwitch,
     sx,
 }: StructureProps) => {
-    const [type, setType] = useState(cellType ?? "image");
     const [cellSize, setCellSize] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
-
-    const handleTypeChange = () => {
-        setType((prev) => (prev === "image" ? "text" : "image"));
-    };
 
     const getCellSize = () => {
         if (!ref.current) return 0;
@@ -110,14 +104,6 @@ export const Structure = ({
                     ))}
                 </div>
             ))}
-            {/* {type !== "select" && displaySwitch && (
-                <Stack sx={{ marginTop: "20px" }}>
-                    <Switch
-                        checked={type === "image"}
-                        onChange={handleTypeChange}
-                    />
-                </Stack>
-            )} */}
         </Stack>
     );
 };

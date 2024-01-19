@@ -4,11 +4,14 @@ import { styled } from "@mui/material/styles";
 const StyledChip = styled(MuiChip)((props) => ({
     border: props.variant === "filled" ? "2px solid black" : "2px solid white",
     backgroundColor: "white",
-    fontSize: "14px",
-    // padding: "20px 0px",
-    borderRadius: "20px",
+    fontSize: "12px",
     fontWeight: "400",
-    // width: "100%",
+    borderRadius: "40px",
+    // width: "min-content",
+    // maxWidth: "100%",
+    // fontWeight: "400",
+    padding: "6px 0px",
+    height: "auto",
     "&:active": {
         boxShadow: "none",
         backgroundColor: "white",
@@ -21,6 +24,9 @@ const StyledChip = styled(MuiChip)((props) => ({
     },
     "&.MuiButtonBase-root": {
         marginBottom: "4px",
+    },
+    ".MuiChip-label": {
+        whiteSpace: "normal",
     },
 }));
 

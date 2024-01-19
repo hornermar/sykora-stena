@@ -11,7 +11,7 @@ const StyledCard = styled(MuiCard)((props) => ({
     fontSize: "16px",
 }));
 
-export default function Card({
+export function Card({
     heading,
     color,
     children,
@@ -23,7 +23,7 @@ export default function Card({
     width?: string;
 }) {
     return (
-        <StyledCard color={color} sx={{ width: width ?? "unset" }}>
+        <StyledCard color={color} sx={{ width: width ?? "100%" }}>
             <CardContent sx={{ padding: "20px" }}>
                 {heading && (
                     <Typography gutterBottom variant="h5" component="div">

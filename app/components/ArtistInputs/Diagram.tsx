@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 import { useState } from "react";
-import Card from "../Card";
+import { Card } from "../Card";
 import { Structure } from "../Structure";
 import { Switch } from "../Switch";
 
@@ -13,7 +13,7 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
 
     return (
         <>
-            <Card heading="2. Diagram" color="white">
+            <Card heading="2. Rastr" color="white">
                 <p>
                     Umělec si připravil mřížku, pro kterou si zvolil počet prvků
                     do výšky a šířky. Do ní pak umístil libovolný počet elementů
@@ -21,7 +21,7 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
                     naopak snížit hustotu barvy, přidal znaménka <b>+</b> a{" "}
                     <b>-</b>.
                 </p>
-                <p style={{ marginBottom: 0 }}>Takhle může diagram vypadat</p>
+                <p style={{ marginBottom: 0 }}>Takhle mohl rastr vypadat</p>
                 <Stack flexDirection="row" justifyContent="flex-end">
                     <Switch
                         checked={displayText}
@@ -29,7 +29,7 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
                     />
                 </Stack>
             </Card>
-            <Card color="rgb(184, 231, 254)">
+            <Card color="white">
                 {displayText ? (
                     <Structure grid={grid} cellType="image" />
                 ) : (

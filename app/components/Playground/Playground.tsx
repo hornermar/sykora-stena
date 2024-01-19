@@ -4,7 +4,8 @@ import { getElements } from "@/app/utils/getElements";
 import { Stack } from "@mui/material";
 import { map } from "lodash";
 import { useEffect, useState } from "react";
-import Card from "../Card";
+import { Rule } from "../../types/Rule";
+import { Card } from "../Card";
 import { Chip } from "../Chip";
 import { SectionTitle } from "../SectionTitle";
 import { Slider } from "../Slider";
@@ -70,23 +71,26 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                 <Stack
                     flexDirection="row"
                     flexWrap="wrap"
+                    width="100%"
                     sx={{ marginTop: "10px" }}
                 >
                     {/* <Typography sx={{ marginBottom: "15px" }}>
                         Pravidlo
                     </Typography> */}
                     {map(rulesItems, (rule: Rule) => (
-                        <Chip
-                            label={rule.text}
-                            onClick={() =>
-                                setForm((prev) => ({
-                                    ...prev,
-                                    rule: rule.code,
-                                }))
-                            }
-                            selected={form.rule === rule.code}
-                            key={rule.code}
-                        />
+                        <Stack width="100%">
+                            <Chip
+                                label={rule.text}
+                                onClick={() =>
+                                    setForm((prev) => ({
+                                        ...prev,
+                                        rule: rule.code,
+                                    }))
+                                }
+                                selected={form.rule === rule.code}
+                                key={rule.code}
+                            />
+                        </Stack>
                     ))}
                 </Stack>
             </Card>

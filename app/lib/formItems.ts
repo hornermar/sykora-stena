@@ -1,26 +1,32 @@
+import { Rule } from "../types/Rule";
+
 export const rulesItems: Rule[] = [
     {
-        text: "Pokračuje barva, pokračuje tvar",
+        text: "Elementy\u00A0navazují\u00A0barvami, elementy\u00A0navazují\u00A0tvary",
         code: 0,
         colorContinue: true,
         shapeContinue: true,
+        example: [["1r", "1z"]],
     },
     {
-        text: "Pokračuje barva, nepokračuje tvar",
+        text: "Elementy\u00A0navazují\u00A0barvami, elementy\u00A0nenavazují\u00A0tvary",
         code: 1,
         colorContinue: true,
         shapeContinue: false,
+        example: [["2z", "4d"]],
     },
     {
-        text: "Nepokračuje barva, pokračuje tvar",
+        text: "Elementy\u00A0nenavazují\u00A0barvami, elementy\u00A0navazují\u00A0tvary",
         code: 2,
         colorContinue: false,
         shapeContinue: true,
+        example: [["3y", "4z"]],
     },
     {
-        text: "Nepokračuje barva, nepokračuje tvar",
+        text: "Elementy\u00A0nenavazují\u00A0barvami, elementy\u00A0nenavazují\u00A0tvary",
         code: 3,
         colorContinue: false,
         shapeContinue: false,
+        example: [["1d", "2y"]],
     },
 ];

@@ -1,5 +1,5 @@
 "use client";
-import Card from "../Card";
+import { Card } from "../Card";
 import { SectionTitle } from "../SectionTitle";
 import { Structure } from "../Structure";
 
@@ -9,11 +9,12 @@ const grid1 = [
 ];
 
 const grid2 = [
-    ["1z", "2z", "3z", "4b", "4d"],
-    ["2r", "2b", "3y", "4b", "3z"],
-    ["2b", "2r", "+", "0", "0"],
-    ["0", "0", "0", "0", "0"],
-    ["0", "0", "0", "0", "0"],
+    // 1
+    ["-", "-", "-", "0", "3r", "1r", "+", "+", "0", "-", "-"],
+    // 2
+    ["-", "1r", "+", "+", "-", "-", "-", "4z", "+", "-", "2r"],
+    // 3
+    ["-", "+", "+", "4i", "-", "1i", "-", "0", "0", "0", "0"],
 ];
 
 export const Calculation = () => {

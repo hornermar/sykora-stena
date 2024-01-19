@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
-import Card from "../Card";
+import { Card } from "../Card";
 
 export const ArtistInputsCoefficient = () => {
     return (

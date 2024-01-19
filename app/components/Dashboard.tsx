@@ -45,7 +45,7 @@ export default function HomePage() {
                     <Calculation />
                 </Section>
 
-                <Section>
+                <Section id="playground">
                     <Playground defaultGrid={gridForExample} />
                 </Section>
             </div>

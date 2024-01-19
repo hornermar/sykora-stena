@@ -1,48 +1,49 @@
-import { Stack } from "@mui/material";
-import { map } from "lodash";
+import { Stack, Typography } from "@mui/material";
+import { Rule } from "../../types/Rule";
 import { Structure } from "../Structure";
 
 type RuleExampleProps = {
-    continues: "color" | "shape";
+    rule: Rule;
 };
 
-export const RuleExample = ({ continues }: RuleExampleProps) => {
-    const grid = {
-        color: {
-            0: [["1r", "1z"]],
-            1: [["2z", "4d"]],
-            2: [["4y", "3y"]],
-        },
-        shape: {
-            0: [["3y", "1z"]],
-            1: [["3y", "4z"]],
-            2: [["1d", "3y"]],
-        },
-    };
-
+export const RuleExample = ({ rule }: RuleExampleProps) => {
     return (
         <Stack
-            direction="row"
-            justifyContent="space-between"
             sx={{
                 ".element-00": {
                     outline: "2px solid rgb(184, 231, 254)",
                     zIndex: 10,
                 },
+                marginBottom: "30px",
             }}
         >
-            {map(grid[continues], (g, i) => {
-                const isLast =
-                    Number(i) === Object.keys(grid[continues]).length - 1;
-                return (
-                    <Structure
-                        grid={g}
-                        cellType="image"
-                        sx={{ marginRight: !isLast ? "15px" : "0px" }}
-                        key={i}
-                    />
-                );
-            })}
+            <Typography
+                variant="h6"
+                component="div"
+                sx={{
+                    fontWeight: "400",
+                    fontSize: "14px",
+                }}
+            >
+                {rule.code}:
+            </Typography>
+            <Typography
+                variant="h6"
+                component="div"
+                sx={{
+                    fontWeight: "400",
+                    fontSize: "16px",
+                    marginBottom: "30px",
+                }}
+            >
+                {rule.text}
+            </Typography>
+            <Structure
+                grid={rule.example}
+                cellType="image"
+                sx={{ width: "40%" }}
+                key={rule.code}
+            />
         </Stack>
     );
 };

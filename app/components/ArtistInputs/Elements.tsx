@@ -3,7 +3,7 @@ import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import rightLeftIcon from "../../../public/right-left-solid.svg";
-import Card from "../Card";
+import { Card } from "../Card";
 import { ExampleGrid } from "../ExampleGrid";
 import { SeparateElement } from "./SeparateElement";
 
@@ -110,7 +110,7 @@ export const ArtistInputsElements = () => {
                     atd.) naopak obsahuje nejtmavší prvky.
                 </p>
             </Card>
-            <Card color="rgb(184, 231, 254)">
+            <Card color="white">
                 <ExampleGrid grid={allElements} size={smallSize} displayName />
                 {/* </Stack> */}
             </Card>

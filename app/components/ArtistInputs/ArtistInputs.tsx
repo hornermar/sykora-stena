@@ -1,5 +1,5 @@
 "use client";
-import Card from "../Card";
+import { Card } from "../Card";
 import { SectionTitle } from "../SectionTitle";
 import { ArtistInputsCoefficient } from "./Coefficient";
 import { ArtistInputsDiagram } from "./Diagram";

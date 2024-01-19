@@ -3,7 +3,7 @@ import { Stack, SvgIcon, Typography } from "@mui/material";
 import { useState } from "react";
 import { getElements } from "../utils/getElements";
 import { Button } from "./Button";
-import Card from "./Card";
+import { Card } from "./Card";
 import { Structure } from "./Structure";
 import { Switch } from "./Switch";
 
@@ -86,8 +86,13 @@ export const FrontPage = () => {
 
                     <div style={{ paddingTop: "10px" }}>
                         <Button
+                            // onClick={() => {
+                            //     window.location.href = "/algoritmus";
+                            // }}
+
+                            // onClick go to id PlayGround
                             onClick={() => {
-                                window.location.href = "/algoritmus";
+                                window.location.href = "/#playground";
                             }}
                             endIcon={
                                 <SvgIcon sx={{ marginLeft: "50px" }}>
