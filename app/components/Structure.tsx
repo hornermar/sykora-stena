@@ -9,7 +9,7 @@ export type StructureProps = {
     grid: string[][];
     cellType?: "select" | "image" | "text";
     onCellChange?: any;
-    displaySwitch?: boolean;
+    isSpaceBetween?: boolean;
     sx?: CSSProperties;
 };
 
@@ -17,10 +17,12 @@ export const Structure = ({
     grid,
     onCellChange,
     cellType,
+    isSpaceBetween,
     sx,
 }: StructureProps) => {
     const [cellSize, setCellSize] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
+    const spaceBetweeen = isSpaceBetween ? 14 : 0;
 
     const getCellSize = () => {
         if (!ref.current) return 0;
@@ -30,7 +32,9 @@ export const Structure = ({
     };
 
     useEffect(() => {
-        const newCellSize = getCellSize();
+        const newCellSize = isSpaceBetween
+            ? getCellSize() - spaceBetweeen
+            : getCellSize();
         setCellSize(Math.floor(newCellSize));
     }, [ref.current, grid]);
 
@@ -49,19 +53,21 @@ export const Structure = ({
                         display: "flex",
                         flexDirection: "row",
                         height: `${cellSize}px`,
+                        marginTop: y === 0 ? 0 : spaceBetweeen / 2,
+                        marginBottom:
+                            y === size(grid) - 1 ? 0 : spaceBetweeen / 2,
                     }}
                 >
                     {map(row, (cell: string, x) => (
                         <div
                             key={`${x}${y}`}
-                            className={`xy`}
+                            className={`element-${x}${y}`}
                             style={{
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
                                 width: `${cellSize}px`,
                                 height: `${cellSize}px`,
-                                backgroundColor: "white",
                                 border:
                                     cellType === "text" ||
                                     cell === "+" ||
@@ -69,6 +75,9 @@ export const Structure = ({
                                     cell === "0"
                                         ? "1px solid black"
                                         : "unset",
+                                marginRight:
+                                    x === size(row) - 1 ? 0 : spaceBetweeen / 2,
+                                marginLeft: x === 0 ? 0 : spaceBetweeen / 2,
                             }}
                         >
                             {cellType === "text" && (
@@ -84,7 +93,6 @@ export const Structure = ({
                                         width={cellSize}
                                         height={cellSize}
                                         alt={`element ${cell}`}
-                                        className={`element-${x}${y}`}
                                     />
                                 ) : (
                                     <span>

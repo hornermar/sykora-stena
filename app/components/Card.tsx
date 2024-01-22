@@ -5,7 +5,6 @@ import { styled } from "@mui/material/styles";
 
 const StyledCard = styled(MuiCard)((props) => ({
     boxShadow: "none",
-    borderRadius: "15px",
     border: "1px solid black",
     backgroundColor: props.color,
     fontSize: "16px",

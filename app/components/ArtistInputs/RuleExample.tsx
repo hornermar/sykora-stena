@@ -11,7 +11,7 @@ export const RuleExample = ({ rule }: RuleExampleProps) => {
         <Stack
             sx={{
                 ".element-00": {
-                    outline: "2px solid rgb(184, 231, 254)",
+                    outline: "4px solid rgb(184, 231, 254)",
                     zIndex: 10,
                 },
                 marginBottom: "30px",
