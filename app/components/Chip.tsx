@@ -34,15 +34,17 @@ type ChipProps = {
     label: string;
     onClick?: () => void;
     selected?: boolean;
+    disabled?: boolean;
     sx?: SxProps;
 };
 
-export const Chip = ({ label, onClick, selected, sx }: ChipProps) => {
+export const Chip = ({ label, onClick, selected, disabled, sx }: ChipProps) => {
     return (
         <StyledChip
             label={label}
             onClick={onClick}
             variant={selected ? "filled" : "outlined"}
+            disabled={disabled}
             sx={sx}
         />
     );

@@ -22,7 +22,7 @@ export const Grid = ({ grid, setGrid, isGenerated }: GridProps) => {
     return (
         <Structure
             grid={grid}
-            onCellChange={handleCellChange}
+            // onCellChange={handleCellChange}
             cellType={isGenerated ? "image" : "select"}
         />
     );

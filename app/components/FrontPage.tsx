@@ -53,11 +53,10 @@ export const FrontPage = () => {
             </Card>
 
             <Card>
-                {displayEmptyGrid ? (
-                    <Structure grid={emptyGrid} cellType="text" />
-                ) : (
-                    <Structure grid={grid} cellType="image" />
-                )}
+                <Structure
+                    grid={displayEmptyGrid ? emptyGrid : grid}
+                    cellType={displayEmptyGrid ? "text" : "image"}
+                />
             </Card>
 
             <Card color="white">

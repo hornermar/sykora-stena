@@ -19,8 +19,6 @@ export const ArtistInputs = ({ grid }: ArtistInputProps) => {
                     style={{
                         marginTop: "70px",
                         marginBottom: 0,
-                        fontSize: "16px",
-                        fontWeight: 400,
                     }}
                 >
                     Ještě před spuštěním výpočtu, který provedl algoritmus,

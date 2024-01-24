@@ -30,11 +30,10 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
                 </Stack>
             </Card>
             <Card color="white">
-                {displayText ? (
-                    <Structure grid={grid} cellType="image" />
-                ) : (
-                    <Structure grid={grid} cellType="text" />
-                )}
+                <Structure
+                    grid={grid}
+                    cellType={displayText ? "text" : "image"}
+                />
             </Card>
         </>
     );

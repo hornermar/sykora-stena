@@ -25,7 +25,7 @@ const StyledButton = styled(MuiButton)((props) => ({
 
 type ButtonProps = {
     children: React.ReactNode;
-    onClick: () => void;
+    onClick?: () => void;
     fullWidth?: boolean;
     variant?: "contained" | "text";
     endIcon?: React.ReactNode;

@@ -18,6 +18,8 @@ export const getColourDensity = (
     let repeat: boolean = true;
     let unRoundedResult: number = 0;
 
+    let description = [];
+
     while (repeat && step < 5) {
         const neighbours = getNeighbours(step, grid, x, y);
         const neighboursAverage: number = getDensityAverage(neighbours);
@@ -28,9 +30,17 @@ export const getColourDensity = (
         );
 
         repeat = unRoundedResult - Math.floor(unRoundedResult) === 0.5;
+        description.push({
+            step,
+            neighbours,
+            neighboursAverage:
+                Math.round((neighboursAverage + Number.EPSILON) * 100) / 100,
+            unRoundedResult:
+                Math.round((unRoundedResult + Number.EPSILON) * 100) / 100,
+        });
         step++;
     }
 
     const rounded: number = getRounded(unRoundedResult);
-    return rounded;
+    return { result: rounded, description };
 };

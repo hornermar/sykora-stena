@@ -2,6 +2,7 @@
 import { Box } from "@mui/material";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
 import { Calculation } from "./Calculation/Calculation";
+import { Example } from "./Example/Example";
 import { FrontPage } from "./FrontPage";
 import { Playground } from "./Playground/Playground";
 import { Section } from "./Section";
@@ -43,6 +44,10 @@ export default function HomePage() {
 
                 <Section>
                     <Calculation />
+                </Section>
+
+                <Section>
+                    <Example defaultGrid={gridForExample} />
                 </Section>
 
                 <Section id="playground">

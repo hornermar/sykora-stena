@@ -1,10 +1,12 @@
 "use client";
 import { rulesItems } from "@/app/lib/formItems";
 import { getElements } from "@/app/utils/getElements";
-import { Stack } from "@mui/material";
-import { map } from "lodash";
+import { getEmptyGrid } from "@/app/utils/getEmptyGrid";
+import { Stack, Typography } from "@mui/material";
+import { map, size } from "lodash";
 import { useEffect, useState } from "react";
 import { Rule } from "../../types/Rule";
+import { Button } from "../Button";
 import { Card } from "../Card";
 import { Chip } from "../Chip";
 import { SectionTitle } from "../SectionTitle";
@@ -19,18 +21,36 @@ type PlaygroundProps = {
 const backgroundColor = "rgb(247, 223, 130)";
 
 export const Playground = ({ defaultGrid }: PlaygroundProps) => {
-    const [form, setForm] = useState({ coefficient: 2, rule: 3 });
+    const [form, setForm] = useState({
+        coefficient: 2,
+        rule: 3,
+        isRandom: false,
+    });
     const [grid, setGrid] = useState(defaultGrid);
     const [displayDefaultGrid, setDisplayDefaultGrid] = useState(false);
+    const [displayText, setDisplayText] = useState(false);
 
     useEffect(() => {
-        setGrid(getElements(form.rule, form.coefficient, defaultGrid));
-    }, [form.coefficient, form.rule]);
+        setGrid(
+            getElements(
+                form.rule,
+                form.coefficient,
+                defaultGrid,
+                undefined,
+                form.isRandom
+            )
+        );
+    }, [form.coefficient, form.rule, form.isRandom]);
+
+    const clearGrid = () => {
+        const emptyGrid = getEmptyGrid(size(defaultGrid), size(defaultGrid[0]));
+        setGrid(emptyGrid);
+    };
 
     return (
         <>
             <Card color={backgroundColor}>
-                <SectionTitle letter="C." title="Playground" />
+                <SectionTitle letter="D." title="Playground" />
             </Card>
 
             <Card color={"white"}>
@@ -42,23 +62,47 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
             </Card>
 
             <Card color={backgroundColor}>
+                <Button onClick={clearGrid}>Vymazat vše</Button>
+
+                <Typography>Zadání</Typography>
                 <Stack flexDirection="row">
                     <Switch
-                        checked={!displayDefaultGrid}
+                        checked={displayDefaultGrid}
                         onChange={() => setDisplayDefaultGrid((prev) => !prev)}
                     />
                 </Stack>
 
+                <Typography>Zobrazení</Typography>
+                <Switch
+                    checked={displayText}
+                    onChange={() => setDisplayText((prev) => !prev)}
+                />
+
+                {/* on/off algoritmus */}
+                <Typography>Algoritmus</Typography>
+                <Stack flexDirection="row">
+                    <Switch
+                        checked={!form.isRandom}
+                        onChange={() =>
+                            setForm((prev) => ({
+                                ...prev,
+                                isRandom: !prev.isRandom,
+                            }))
+                        }
+                    />
+                </Stack>
+
                 <Stack sx={{ marginTop: "30px" }}>
-                    {/* <Typography sx={{ marginBottom: "-50px" }}>
+                    <Typography sx={{ marginBottom: "-50px" }}>
                         Koeficient
-                    </Typography> */}
+                    </Typography>
 
                     <Slider
                         value={form.coefficient}
                         step={0.1}
                         min={0.01}
                         max={3.99}
+                        disabled={form.isRandom}
                         onChange={(e: Event, newValue: number | number[]) =>
                             setForm((prev) => ({
                                 ...prev,
@@ -74,9 +118,9 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                     width="100%"
                     sx={{ marginTop: "10px" }}
                 >
-                    {/* <Typography sx={{ marginBottom: "15px" }}>
+                    <Typography sx={{ marginBottom: "15px" }}>
                         Pravidlo
-                    </Typography> */}
+                    </Typography>
                     {map(rulesItems, (rule: Rule) => (
                         <Stack width="100%">
                             <Chip
@@ -88,6 +132,7 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                                     }))
                                 }
                                 selected={form.rule === rule.code}
+                                disabled={form.isRandom}
                                 key={rule.code}
                             />
                         </Stack>

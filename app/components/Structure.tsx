@@ -3,22 +3,23 @@ import { map, size } from "lodash";
 import Image from "next/image";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { getElementImage } from "../utils/getElementImages";
-import { CellSelect } from "./CellSelect";
 
 export type StructureProps = {
     grid: string[][];
     cellType?: "select" | "image" | "text";
-    onCellChange?: any;
+    // onCellChange?: any;
     isSpaceBetween?: boolean;
     sx?: CSSProperties;
+    onCellClick?: (x: number, y: number) => void;
 };
 
 export const Structure = ({
     grid,
-    onCellChange,
+    // onCellChange,
     cellType,
     isSpaceBetween,
     sx,
+    onCellClick,
 }: StructureProps) => {
     const [cellSize, setCellSize] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
@@ -62,6 +63,7 @@ export const Structure = ({
                         <div
                             key={`${x}${y}`}
                             className={`element-${x}${y}`}
+                            onClick={() => onCellClick && onCellClick(x, y)}
                             style={{
                                 display: "flex",
                                 justifyContent: "center",
@@ -100,14 +102,14 @@ export const Structure = ({
                                     </span>
                                 ))}
 
-                            {cellType === "select" && onCellChange && (
+                            {/* {cellType === "select" && onCellChange && (
                                 <CellSelect
                                     onCellChange={onCellChange}
                                     cell={grid[y][x]}
                                     x={x}
                                     y={y}
                                 />
-                            )}
+                            )} */}
                         </div>
                     ))}
                 </div>

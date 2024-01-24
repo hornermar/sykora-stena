@@ -1,4 +1,4 @@
-import { Slider as MuiSlider, SxProps, styled } from "@mui/material";
+import { Slider as MuiSlider, styled } from "@mui/material";
 
 const StyledSlider = styled(MuiSlider)({
     color: "black",
@@ -48,10 +48,17 @@ type SliderProps = {
     min: number;
     max: number;
     step: number;
-    sx?: SxProps;
+    disabled?: boolean;
 };
 
-export const Slider = ({ value, onChange, min, max, step }: SliderProps) => {
+export const Slider = ({
+    value,
+    onChange,
+    min,
+    max,
+    step,
+    disabled,
+}: SliderProps) => {
     return (
         <StyledSlider
             value={value}
@@ -59,6 +66,7 @@ export const Slider = ({ value, onChange, min, max, step }: SliderProps) => {
             max={max}
             step={step}
             onChange={onChange}
+            disabled={disabled}
             valueLabelDisplay="on"
         />
     );

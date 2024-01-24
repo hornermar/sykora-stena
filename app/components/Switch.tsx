@@ -1,6 +1,6 @@
-import { Switch as MuiSwitch, SxProps, styled } from "@mui/material";
+import { Switch as MuiSwitch, styled } from "@mui/material";
 
-const StyledSwitch = styled(MuiSwitch)(() => ({
+const StyledSwitch = styled(MuiSwitch)((props) => ({
     width: 62,
     height: 34,
     padding: 7,
@@ -46,9 +46,8 @@ const StyledSwitch = styled(MuiSwitch)(() => ({
 type SwitchProps = {
     onChange: () => void;
     checked: boolean;
-    sx?: SxProps;
 };
 
-export const Switch = ({ onChange, checked, sx }: SwitchProps) => {
+export const Switch = ({ onChange, checked }: SwitchProps) => {
     return <StyledSwitch checked={checked} onChange={onChange} />;
 };
