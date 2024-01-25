@@ -37,21 +37,19 @@ export const SeparateElement = ({
                 }}
             />
             {isRotating && (
-                <div>
-                    <IconButton
-                        color="inherit"
-                        size="large"
-                        onClick={() => rotate()}
-                        sx={{ marginTop: "20px" }}
-                    >
-                        <Image
-                            src={rotateIcon}
-                            width={20}
-                            height={20}
-                            alt={"rotate icon"}
-                        />
-                    </IconButton>
-                </div>
+                <IconButton
+                    color="inherit"
+                    size="large"
+                    onClick={() => rotate()}
+                    sx={{ marginTop: "20px" }}
+                >
+                    <Image
+                        src={rotateIcon}
+                        width={20}
+                        height={20}
+                        alt={"rotate icon"}
+                    />
+                </IconButton>
             )}
         </Stack>
     );

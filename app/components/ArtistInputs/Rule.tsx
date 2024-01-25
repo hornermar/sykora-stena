@@ -10,14 +10,14 @@ export const ArtistInputsRule = () => {
         <>
             <Card heading="4. Pravidlo" color="white">
                 <p>
-                    Dále je třeba zvolit jedno ze čtyř <b>pravidel</b>, podle
+                    Dále je třeba zvolit jedno ze čtyř pravidel <b>V</b>, podle
                     kterého budou vypočítané elementy zaujímat vzájemnou polohu.
                 </p>
             </Card>
 
             <Card color="white">
                 {map(rulesItems, (rule: Rule) => (
-                    <RuleExample rule={rule} />
+                    <RuleExample rule={rule} key={rule.code} />
                 ))}
             </Card>
         </>

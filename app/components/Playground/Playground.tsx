@@ -18,7 +18,7 @@ type PlaygroundProps = {
     defaultGrid: string[][];
 };
 
-const backgroundColor = "rgb(247, 223, 130)";
+const backgroundColor = "rgb(252, 162, 131)";
 
 export const Playground = ({ defaultGrid }: PlaygroundProps) => {
     const [form, setForm] = useState({
@@ -122,7 +122,7 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                         Pravidlo
                     </Typography>
                     {map(rulesItems, (rule: Rule) => (
-                        <Stack width="100%">
+                        <Stack width="100%" key={rule.code}>
                             <Chip
                                 label={rule.text}
                                 onClick={() =>
@@ -133,7 +133,6 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                                 }
                                 selected={form.rule === rule.code}
                                 disabled={form.isRandom}
-                                key={rule.code}
                             />
                         </Stack>
                     ))}

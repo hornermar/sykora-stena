@@ -1,11 +1,22 @@
 "use client";
+import { Stack } from "@mui/material";
 import { Card } from "../Card";
 import { SectionTitle } from "../SectionTitle";
+import { Structure } from "../Structure";
+
+const gridForGroup = [
+    // 4
+    ["+", "-", "-", "-", "3b", "+", "+"],
+    // 5
+    ["0", "-", "1d", "-", "+", "+", "0"],
+    // 6
+    ["0", "-", "-", "1y", "+", "+", "+"],
+];
 
 export const Calculation = () => {
     return (
         <>
-            <Card color="rgb(250, 186, 174)">
+            <Card color="rgb(134,117, 215)">
                 <SectionTitle letter="B." title="Výpočet" />
                 <p
                     style={{
@@ -23,10 +34,19 @@ export const Calculation = () => {
             </Card>
 
             <Card heading="1. Průchod diagramem" color="white">
-                <p style={{ margin: 0 }}>
+                <p>
                     Algoritmus začíná v levém horním rohu. Postupuje zleva
                     doprava v lichých řádcích a zprava doleva v sudých.
                 </p>
+                <Stack sx={{ margin: "30px 0 20px 0" }}>
+                    <Structure
+                        grid={[
+                            ["0", "0", "0", "0", "0", "0", "0", "0"],
+                            ["0", "0", "0", "0", "0", "0", "0", "0"],
+                        ]}
+                        cellType="text"
+                    />
+                </Stack>
             </Card>
 
             <Card heading="2. Výpočet skupiny" color="white">
@@ -49,6 +69,21 @@ export const Calculation = () => {
                     počítač prohledávat širší okolí elementu, nejdále však o
                     čtyři elementy dál a zopakuje předchozí kroky.
                 </p>
+                <Stack
+                    sx={{
+                        margin: "30px 0 20px 0",
+                        ".element-31": {
+                            outline: "4px solid rgb(134,117, 215)",
+                            zIndex: 100,
+                        },
+                        ".element-21, .element-40, .element-32": {
+                            outline: "4px solid rgb(247, 223, 130)",
+                            zIndex: 10,
+                        },
+                    }}
+                >
+                    <Structure grid={gridForGroup} cellType="text" />
+                </Stack>
             </Card>
 
             <Card heading="3. Výpočet otočení" color="white">
@@ -60,10 +95,25 @@ export const Calculation = () => {
                 </p>
 
                 <p>
-                    Pokud existuje tkových prvků víc, vybere z nich jeden
-                    náhodně. Pokud naopak nevyhovuje žádný prvke, vybere náhodně
-                    z celé skupiny.
+                    Pokud existuje takových prvků víc, vybere z nich jeden
+                    náhodně. Pokud naopak nevyhovuje žádný prvkek, vybere
+                    náhodně z celé skupiny.
                 </p>
+                <Stack
+                    sx={{
+                        margin: "30px 0 20px 0",
+                        ".element-31": {
+                            outline: "4px solid rgb(134,117, 215)",
+                            zIndex: 100,
+                        },
+                        ".element-21,  .element-32": {
+                            outline: "4px solid rgb(247, 223, 130)",
+                            zIndex: 10,
+                        },
+                    }}
+                >
+                    <Structure grid={gridForGroup} cellType="image" />
+                </Stack>
             </Card>
         </>
     );

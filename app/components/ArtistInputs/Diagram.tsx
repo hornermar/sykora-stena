@@ -13,15 +13,14 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
 
     return (
         <>
-            <Card heading="2. Rastr" color="white">
+            <Card heading="2. Diagram" color="white">
                 <p>
                     Umělec si připravil mřížku, pro kterou si zvolil počet prvků
                     do výšky a šířky. Do ní pak umístil libovolný počet elementů
-                    dle vlastního výběru. Do míst, kde si přál zvýšit nebo
-                    naopak snížit hustotu barvy, přidal znaménka <b>+</b> a{" "}
-                    <b>-</b>.
+                    dle vlastního výběru. Do míst, kde si přál urychlit nebo
+                    zpomalit přechody barev přidal znaménka <b>+</b> a <b>-</b>.
                 </p>
-                <p style={{ marginBottom: 0 }}>Takhle mohl rastr vypadat</p>
+                <p style={{ marginBottom: 0 }}>Takhle mohl diagram vypadat</p>
                 <Stack flexDirection="row" justifyContent="flex-end">
                     <Switch
                         checked={displayText}

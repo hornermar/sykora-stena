@@ -13,7 +13,7 @@ type ArtistInputProps = {
 export const ArtistInputs = ({ grid }: ArtistInputProps) => {
     return (
         <>
-            <Card color="rgb(184, 231, 254)">
+            <Card color="rgb(216, 167, 192)">
                 <SectionTitle letter="A." title="Vstupy umělce" />
                 <p
                     style={{
@@ -32,7 +32,7 @@ export const ArtistInputs = ({ grid }: ArtistInputProps) => {
             <ArtistInputsCoefficient />
             <ArtistInputsRule />
 
-            <Card>
+            {/* <Card>
                 <p>
                     Zdeněk Sýkora zadal do počátače tyto 4 vstupy a na základně
                     nich se vygenerovalo dílo.
@@ -45,7 +45,7 @@ export const ArtistInputs = ({ grid }: ArtistInputProps) => {
                     rozmístit prvky v určitém rytmu s prostorem a nechat více
                     prosotru náhodě.
                 </p>
-            </Card>
+            </Card> */}
         </>
     );
 };

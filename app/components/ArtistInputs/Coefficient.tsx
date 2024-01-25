@@ -1,4 +1,4 @@
-import { Tooltip, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Card } from "../Card";
 
 export const ArtistInputsCoefficient = () => {
@@ -6,10 +6,10 @@ export const ArtistInputsCoefficient = () => {
         <>
             <Card heading="3. Koeficient" color="white">
                 <p>
-                    Dalším vstupem je <strong>koeficient</strong>, který má
-                    číselnou hodnotu větší než 0. Určuje, o kolik se změní barva
-                    na{" "}
-                    <Tooltip
+                    Dalším vstupem je koeficient <strong>C</strong>, který má
+                    číselnou hodnotu větší než 0.
+                    {/* Určuje, o kolik se změní barva na{" "} */}
+                    {/* <Tooltip
                         placement="top"
                         title="Nejsvětlejší jsou prvky, které začínají číslem 1 (1z, 1b, 1y, 1i, 1r, 1d)"
                     >
@@ -27,15 +27,19 @@ export const ArtistInputsCoefficient = () => {
                         </span>
                     </Tooltip>{" "}
                     v místech, kde se v poli vyskytují znaménka plus (
-                    <strong>+</strong>) a mínus (<strong>-</strong>).
+                    <strong>+</strong>) a mínus (<strong>-</strong>). */}
                 </p>
-                <p style={{ marginBottom: 0 }}>
-                    Nižší hodnoty <strong>koeficientu</strong> způsobí menší
-                    změnu v hustotě barvy, vyšší hodnoty naopak znamenají větší
-                    změnu.
+                <p>
+                    Koeficient má funkci urychlit nebo zpomalit přechody od
+                    světlých elementů k tmavým nebo naopak. Vyšší koeficient
+                    znamená kontrastnější přechody, nižší pozvolnější.
+                </p>
+                <p>
+                    V diagramu jsou tato místa umělcem označena znaménky{" "}
+                    <b>+</b> a <b>-</b>
                 </p>
             </Card>
-            <Card color="rgb(184, 231, 254)">
+            <Card color="rgb(216, 167, 192)">
                 <Typography
                     variant="h6"
                     component="div"
@@ -45,7 +49,7 @@ export const ArtistInputsCoefficient = () => {
                         textAlign: "center",
                     }}
                 >
-                    {"0 < koeficient < 4"}
+                    {"0 < C < 4"}
                 </Typography>
             </Card>
         </>

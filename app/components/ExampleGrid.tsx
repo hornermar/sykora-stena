@@ -1,4 +1,5 @@
 "use client";
+import { Stack, SxProps } from "@mui/material";
 import { map } from "lodash";
 import Image from "next/image";
 import { getElementImage } from "../utils/getElementImages";
@@ -7,19 +8,23 @@ type ExampleGridProps = {
     grid: string[][];
     size: number;
     displayName?: boolean;
+    sx?: SxProps;
 };
 
-export const ExampleGrid = ({ grid, size, displayName }: ExampleGridProps) => {
+export const ExampleGrid = ({
+    grid,
+    size,
+    displayName,
+    sx,
+}: ExampleGridProps) => {
     return (
-        <div>
+        <>
             {map(grid, (row, y) => (
-                <div
+                <Stack
+                    flexDirection="row"
+                    justifyContent="space-between"
                     key={y}
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                    }}
+                    sx={sx}
                 >
                     {map(row, (cell: string, x) => {
                         return (
@@ -64,8 +69,8 @@ export const ExampleGrid = ({ grid, size, displayName }: ExampleGridProps) => {
                             </div>
                         );
                     })}
-                </div>
+                </Stack>
             ))}
-        </div>
+        </>
     );
 };

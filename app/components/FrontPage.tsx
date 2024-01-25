@@ -1,37 +1,51 @@
 "use client";
 import { Stack, SvgIcon, Typography } from "@mui/material";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { getElements } from "../utils/getElements";
+import { getRandomCoefficient } from "../utils/getRandomCoefficient";
+import { getRandomRule } from "../utils/getRandomRule copy";
 import { Button } from "./Button";
 import { Card } from "./Card";
+import { InputsLabel } from "./InputsLabel";
 import { Structure } from "./Structure";
 import { Switch } from "./Switch";
 
 const emptyGrid = [
-    ["3z", "0", "+", "0", "-", "0"],
-    ["+", "0", "+", "0", "-", "0"],
-    ["+", "0", "+", "0", "-", "0"],
-    ["+", "0", "+", "0", "-", "0"],
-    ["+", "0", "+", "0", "-", "0"],
+    ["-", "-", "-", "0", "3r", "1r"],
+    // 2
+    ["-", "1r", "+", "+", "-", "-"],
+    // 3
+    ["-", "+", "+", "4i", "-", "1i"],
+    // 4
+    ["-", "+", "+", "+", "-", "-"],
+    // 5
+    ["1z", "0", "0", "0", "-", "1d"],
+    // 6
 ];
 
 export const FrontPage = () => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
 
-    const grid = getElements(3, 0.75, emptyGrid);
+    const coefficient = useMemo(() => getRandomCoefficient(), []);
+    const rule = useMemo(() => getRandomRule(), []);
+
+    const grid = useMemo(() => {
+        console.log(rule, coefficient);
+        return getElements(rule, coefficient, emptyGrid);
+    }, [rule, coefficient]);
 
     return (
         <>
-            <Card color="rgb(230, 253, 170)">
+            <Card color="rgb(134,117, 215)">
                 <Typography
                     variant="h1"
                     sx={{
                         fontSize: "42px",
-                        padding: "0px 0px 150px 0px",
+                        padding: "0px 0px 130px 0px",
                         fontWeight: "400",
                     }}
                 >
-                    Jindřišská 3
+                    Systém Sýkora
                 </Typography>
 
                 <Typography
@@ -53,10 +67,17 @@ export const FrontPage = () => {
             </Card>
 
             <Card>
-                <Structure
-                    grid={displayEmptyGrid ? emptyGrid : grid}
-                    cellType={displayEmptyGrid ? "text" : "image"}
-                />
+                <Stack sx={{ position: "relative", margin: "30px 0 20px 0" }}>
+                    <InputsLabel
+                        coefficient={coefficient}
+                        rule={rule}
+                        display={displayEmptyGrid}
+                    />
+                    <Structure
+                        grid={displayEmptyGrid ? emptyGrid : grid}
+                        cellType={displayEmptyGrid ? "text" : "image"}
+                    />
+                </Stack>
             </Card>
 
             <Card color="white">
