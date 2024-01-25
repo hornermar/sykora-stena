@@ -1,20 +1,18 @@
 import { Stack, Typography } from "@mui/material";
-import { useState } from "react";
 import { Rule } from "../../types/Rule";
 import { Structure } from "../Structure";
 
 type RuleExampleProps = {
     rule: Rule;
+    color: string;
 };
 
-export const RuleExample = ({ rule }: RuleExampleProps) => {
-    const [grid, setGrid] = useState<string[][]>(rule.example);
-
+export const RuleExample = ({ rule, color }: RuleExampleProps) => {
     return (
         <Stack
             sx={{
                 ".element-10": {
-                    outline: "4px solid rgb(216, 167, 192)",
+                    outline: `4px solid ${color}`,
                     zIndex: 100,
                 },
                 marginBottom: "30px",
@@ -62,7 +60,7 @@ export const RuleExample = ({ rule }: RuleExampleProps) => {
             </Stack>
 
             <Structure
-                grid={grid}
+                grid={rule.example}
                 cellType="image"
                 sx={{ width: "60%" }}
                 key={rule.code}

@@ -1,7 +1,13 @@
 import { Typography } from "@mui/material";
 import { Card } from "../Card";
 
-export const ArtistInputsCoefficient = () => {
+type ArtistInputsCoefficientColor = {
+    color: string;
+};
+
+export const ArtistInputsCoefficient = ({
+    color,
+}: ArtistInputsCoefficientColor) => {
     return (
         <>
             <Card heading="3. Koeficient" color="white">
@@ -39,7 +45,7 @@ export const ArtistInputsCoefficient = () => {
                     <b>+</b> a <b>-</b>
                 </p>
             </Card>
-            <Card color="rgb(216, 167, 192)">
+            <Card color={color}>
                 <Typography
                     variant="h6"
                     component="div"

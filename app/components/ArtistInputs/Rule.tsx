@@ -5,7 +5,11 @@ import { Rule } from "../../types/Rule";
 import { Card } from "../Card";
 import { RuleExample } from "./RuleExample";
 
-export const ArtistInputsRule = () => {
+type ArtistInputsRuleProps = {
+    color: string;
+};
+
+export const ArtistInputsRule = ({ color }: ArtistInputsRuleProps) => {
     return (
         <>
             <Card heading="4. Pravidlo" color="white">
@@ -17,7 +21,7 @@ export const ArtistInputsRule = () => {
 
             <Card color="white">
                 {map(rulesItems, (rule: Rule) => (
-                    <RuleExample rule={rule} key={rule.code} />
+                    <RuleExample rule={rule} key={rule.code} color={color} />
                 ))}
             </Card>
         </>

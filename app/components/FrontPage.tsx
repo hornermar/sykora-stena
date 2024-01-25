@@ -23,7 +23,11 @@ const emptyGrid = [
     // 6
 ];
 
-export const FrontPage = () => {
+type FrontPageProps = {
+    color: string;
+};
+
+export const FrontPage = ({ color }: FrontPageProps) => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
 
     const coefficient = useMemo(() => getRandomCoefficient(), []);
@@ -36,7 +40,7 @@ export const FrontPage = () => {
 
     return (
         <>
-            <Card color="rgb(134,117, 215)">
+            <Card color={color}>
                 <Typography
                     variant="h1"
                     sx={{

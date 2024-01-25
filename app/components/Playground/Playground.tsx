@@ -16,11 +16,10 @@ import { Switch } from "../Switch";
 
 type PlaygroundProps = {
     defaultGrid: string[][];
+    color: string;
 };
 
-const backgroundColor = "rgb(252, 162, 131)";
-
-export const Playground = ({ defaultGrid }: PlaygroundProps) => {
+export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
     const [form, setForm] = useState({
         coefficient: 2,
         rule: 3,
@@ -49,7 +48,7 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
 
     return (
         <>
-            <Card color={backgroundColor}>
+            <Card color={color}>
                 <SectionTitle letter="D." title="Playground" />
             </Card>
 
@@ -61,7 +60,7 @@ export const Playground = ({ defaultGrid }: PlaygroundProps) => {
                 )}
             </Card>
 
-            <Card color={backgroundColor}>
+            <Card color={color}>
                 <Button onClick={clearGrid}>Vymazat vše</Button>
 
                 <Typography>Zadání</Typography>

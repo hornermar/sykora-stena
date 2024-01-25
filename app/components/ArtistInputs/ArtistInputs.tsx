@@ -8,12 +8,13 @@ import { ArtistInputsRule } from "./Rule";
 
 type ArtistInputProps = {
     grid: string[][];
+    color: string;
 };
 
-export const ArtistInputs = ({ grid }: ArtistInputProps) => {
+export const ArtistInputs = ({ grid, color }: ArtistInputProps) => {
     return (
         <>
-            <Card color="rgb(216, 167, 192)">
+            <Card color={color}>
                 <SectionTitle letter="A." title="Vstupy umělce" />
                 <p
                     style={{
@@ -29,8 +30,8 @@ export const ArtistInputs = ({ grid }: ArtistInputProps) => {
             <ArtistInputsElements />
 
             <ArtistInputsDiagram grid={grid} />
-            <ArtistInputsCoefficient />
-            <ArtistInputsRule />
+            <ArtistInputsCoefficient color={color} />
+            <ArtistInputsRule color={color} />
 
             {/* <Card>
                 <p>

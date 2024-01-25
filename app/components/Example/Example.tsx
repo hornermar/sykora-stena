@@ -12,11 +12,12 @@ import { ExampleDescriptions } from "./Descriptions";
 
 type ExampleProps = {
     defaultGrid: string[][];
+    color: string;
 };
 
 export const cellsToProcess = ["0", "+", "-"];
 
-export const Example = ({ defaultGrid }: ExampleProps) => {
+export const Example = ({ defaultGrid, color }: ExampleProps) => {
     const [grid, setGrid] = useState<string[][]>(defaultGrid);
     const [cell, setCell] = useState<Cell>({ x: 0, y: 0 });
     const [displayText, setDisplayText] = useState(false);
@@ -34,7 +35,7 @@ export const Example = ({ defaultGrid }: ExampleProps) => {
 
     return (
         <>
-            <Card color="rgb(216, 167, 192)">
+            <Card color={color}>
                 <SectionTitle letter="C." title="Příklad" />
                 <p>
                     Člověk se v popisu algortitmu může lehko ztratit. Pro lepší

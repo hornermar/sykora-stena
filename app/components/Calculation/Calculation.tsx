@@ -13,10 +13,14 @@ const gridForGroup = [
     ["0", "-", "-", "1y", "+", "+", "+"],
 ];
 
-export const Calculation = () => {
+type CalculationProps = {
+    color: string;
+};
+
+export const Calculation = ({ color }: CalculationProps) => {
     return (
         <>
-            <Card color="rgb(134,117, 215)">
+            <Card color={color}>
                 <SectionTitle letter="B." title="Výpočet" />
                 <p
                     style={{
@@ -73,11 +77,11 @@ export const Calculation = () => {
                     sx={{
                         margin: "30px 0 20px 0",
                         ".element-31": {
-                            outline: "4px solid rgb(134,117, 215)",
+                            outline: `4px solid ${color}`,
                             zIndex: 100,
                         },
                         ".element-21, .element-40, .element-32": {
-                            outline: "4px solid rgb(247, 223, 130)",
+                            outline: "4px solid #00539CFF",
                             zIndex: 10,
                         },
                     }}
@@ -103,11 +107,11 @@ export const Calculation = () => {
                     sx={{
                         margin: "30px 0 20px 0",
                         ".element-31": {
-                            outline: "4px solid rgb(134,117, 215)",
+                            outline: `4px solid ${color}`,
                             zIndex: 100,
                         },
                         ".element-21,  .element-32": {
-                            outline: "4px solid rgb(247, 223, 130)",
+                            outline: "4px solid #00539CFF",
                             zIndex: 10,
                         },
                     }}
