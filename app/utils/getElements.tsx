@@ -28,7 +28,13 @@ const processCell = (
                 coefficient
             );
 
-            const element = getShape(newGrid, x, y, colorDensity, rule);
+            const { result: element } = getShape(
+                newGrid,
+                x,
+                y,
+                colorDensity,
+                rule
+            );
 
             newGrid[y][x] = element ?? "0";
         }

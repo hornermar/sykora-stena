@@ -2,8 +2,6 @@
 import { Stack, SvgIcon, Typography } from "@mui/material";
 import { useMemo, useState } from "react";
 import { getElements } from "../utils/getElements";
-import { getRandomCoefficient } from "../utils/getRandomCoefficient";
-import { getRandomRule } from "../utils/getRandomRule copy";
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { InputsLabel } from "./InputsLabel";
@@ -30,8 +28,11 @@ type FrontPageProps = {
 export const FrontPage = ({ color }: FrontPageProps) => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
 
-    const coefficient = useMemo(() => getRandomCoefficient(), []);
-    const rule = useMemo(() => getRandomRule(), []);
+    // const coefficient = useMemo(() => getRandomCoefficient(), []);
+    // const rule = useMemo(() => getRandomRule(), []);
+
+    const coefficient = 0.5;
+    const rule = 0;
 
     const grid = useMemo(() => {
         console.log(rule, coefficient);

@@ -26,7 +26,7 @@ export const RuleExample = ({ rule, color }: RuleExampleProps) => {
                     fontSize: "14px",
                 }}
             >
-                R {rule.code}:
+                {rule.code}:
             </Typography>
             <Stack
                 flexDirection="row"

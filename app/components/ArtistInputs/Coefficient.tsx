@@ -12,7 +12,7 @@ export const ArtistInputsCoefficient = ({
         <>
             <Card heading="3. Koeficient" color="white">
                 <p>
-                    Dalším vstupem je koeficient <strong>C</strong>, který má
+                    Dalším vstupem je <strong>koeficient</strong>, který má
                     číselnou hodnotu větší než 0.
                     {/* Určuje, o kolik se změní barva na{" "} */}
                     {/* <Tooltip
@@ -55,7 +55,7 @@ export const ArtistInputsCoefficient = ({
                         textAlign: "center",
                     }}
                 >
-                    {"0 < C < 4"}
+                    {"0 < koeficient < 4"}
                 </Typography>
             </Card>
         </>

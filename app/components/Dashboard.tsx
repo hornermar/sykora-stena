@@ -35,23 +35,32 @@ export default function HomePage() {
         <Box sx={{ display: "flex" }}>
             <div>
                 <Section>
-                    <FrontPage color="#8c9cfb" />
+                    <FrontPage color="rgb(247, 133, 130)" />
                 </Section>
 
                 <Section>
-                    <ArtistInputs grid={gridForExample} color="#f4bc2c" />
+                    <ArtistInputs
+                        grid={gridForExample}
+                        color="rgb(174, 223, 255)"
+                    />
                 </Section>
 
                 <Section>
-                    <Calculation color="#8c9cfb" />
+                    <Calculation color="rgb(247, 133, 130)" />
                 </Section>
 
                 <Section>
-                    <Example defaultGrid={gridForExample} color="#f4bc2c" />
+                    <Example
+                        defaultGrid={gridForExample}
+                        color="rgb(174, 223, 255)"
+                    />
                 </Section>
 
                 <Section id="playground">
-                    <Playground defaultGrid={gridForExample} color="#8c9cfb" />
+                    <Playground
+                        defaultGrid={gridForExample}
+                        color="rgb(247, 133, 130)"
+                    />
                 </Section>
             </div>
         </Box>

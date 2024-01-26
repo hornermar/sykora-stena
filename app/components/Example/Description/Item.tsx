@@ -6,7 +6,7 @@ type ExampleDesctiptionProps = {
     isInLine?: boolean;
 };
 
-export const ExampleDescription = ({
+export const ExampleDescriptionItem = ({
     label,
     value,
     isInLine,

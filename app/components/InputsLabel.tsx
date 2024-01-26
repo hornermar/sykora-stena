@@ -28,7 +28,7 @@ export const InputsLabel = ({
                 }}
             >
                 <span>
-                    C: {coefficient} V: {rule}
+                    Koeficient: {coefficient} Pravidlo: {rule}
                 </span>
             </Stack>
         )

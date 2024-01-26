@@ -76,17 +76,17 @@ export const Calculation = ({ color }: CalculationProps) => {
                 <Stack
                     sx={{
                         margin: "30px 0 20px 0",
-                        ".element-31": {
-                            outline: `4px solid ${color}`,
-                            zIndex: 100,
-                        },
                         ".element-21, .element-40, .element-32": {
-                            outline: "4px solid #00539CFF",
+                            outline: `2px solid ${color}`,
                             zIndex: 10,
                         },
                     }}
                 >
-                    <Structure grid={gridForGroup} cellType="text" />
+                    <Structure
+                        grid={gridForGroup}
+                        cellType="text"
+                        activeCell={{ x: 3, y: 1 }}
+                    />
                 </Stack>
             </Card>
 
@@ -105,18 +105,17 @@ export const Calculation = ({ color }: CalculationProps) => {
                 </p>
                 <Stack
                     sx={{
-                        margin: "30px 0 20px 0",
-                        ".element-31": {
-                            outline: `4px solid ${color}`,
-                            zIndex: 100,
-                        },
                         ".element-21,  .element-32": {
-                            outline: "4px solid #00539CFF",
+                            outline: `2px solid ${color}`,
                             zIndex: 10,
                         },
                     }}
                 >
-                    <Structure grid={gridForGroup} cellType="image" />
+                    <Structure
+                        grid={gridForGroup}
+                        cellType="image"
+                        activeCell={{ x: 3, y: 1 }}
+                    />
                 </Stack>
             </Card>
         </>

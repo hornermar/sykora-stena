@@ -1,41 +1,53 @@
 import { elementList } from "@/app/lib/elementList";
-import { Cell } from "@/app/types/General";
-import { getColourDensity } from "@/app/utils/getColorDensity";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { filter, first, map, size } from "lodash";
-import { useMemo } from "react";
-import { Accordion } from "../Accordion";
-import { ExampleGrid } from "../ExampleGrid";
-import { ExampleDescription } from "./Description";
+import React, { useEffect, useMemo, useState } from "react";
+import { Accordion } from "../../Accordion";
+import { ExampleGrid } from "../../ExampleGrid";
+import { ExampleDescriptionItem } from "./Item";
 
-type ExampleDesriptionsProps = {
-    grid: string[][];
-    cell: Cell;
-    coefficient: number;
-    defaultGrid: string[][];
+type Group = {
+    result: number;
+    description: {
+        neighbours: string[];
+        neighboursAverage: number;
+        step: number;
+        unRoundedResult: number;
+    }[];
 };
 
-export const ExampleDescriptions = ({
-    grid,
-    cell,
-    coefficient,
-    defaultGrid,
-}: ExampleDesriptionsProps) => {
-    const group = getColourDensity(grid, cell.x, cell.y, coefficient);
+type ExampleDescriptionGroupProps = {
+    coefficient: number;
+    group: Group;
+    cellContent: string;
+};
 
-    const cellContent = useMemo(() => {
-        return defaultGrid[cell.y][cell.x];
-    }, [cell]);
+export const ExampleDescriptionGroup = ({
+    coefficient,
+    group,
+    cellContent,
+}: ExampleDescriptionGroupProps) => {
+    const [expanded, setExpanded] = useState<number | false>(false);
+
+    const handleChange =
+        (panel: number) =>
+        (event: React.SyntheticEvent, isExpanded: boolean) => {
+            setExpanded(isExpanded ? panel : false);
+        };
+
+    const steps = useMemo(() => size(group.description), [group]);
 
     const options = filter(
         elementList,
         ({ colorDensity }) => colorDensity === group.result
     );
 
-    const steps = size(group.description);
+    useEffect(() => {
+        setExpanded(steps);
+    }, [steps]);
 
     return (
-        <Stack>
+        <>
             <Box sx={{ marginBottom: "15px" }}>
                 {map(group.description, (d, index) => {
                     const neighboursGroup = map(d.neighbours, (n) =>
@@ -44,11 +56,12 @@ export const ExampleDescriptions = ({
 
                     return (
                         <Accordion
-                            defaultExpanded={steps === 1 || steps === d.step}
+                            expanded={expanded === d.step}
+                            onChange={handleChange(d.step)}
                             summary={`Okolí ${d.step}`}
                             key={d.step}
                         >
-                            <ExampleDescription
+                            <ExampleDescriptionItem
                                 label="Výpočet průměru okolí"
                                 value={`${
                                     size(neighboursGroup) === 1
@@ -61,8 +74,12 @@ export const ExampleDescriptions = ({
                             />
 
                             {(cellContent === "+" || cellContent === "-") && (
-                                <ExampleDescription
-                                    label={`Zohlednění koeficientu (v buňce je znaménko ${cellContent})`}
+                                <ExampleDescriptionItem
+                                    label={`V buňce je znaménko ${cellContent}, od průměru je proto potřeba ${
+                                        cellContent === "+"
+                                            ? "přičíst"
+                                            : "odečíst"
+                                    } koeficient ${coefficient}:`}
                                     value={`${d.neighboursAverage} ${cellContent} ${coefficient} = ${d.unRoundedResult}`}
                                 />
                             )}
@@ -74,37 +91,32 @@ export const ExampleDescriptions = ({
                                         fontWeight: "400",
                                     }}
                                 >
-                                    Protože výsledek není jednoznačný, je
-                                    potřeba prohledat širší okolí.
+                                    Protože výsledek není jednoznačný (končí
+                                    0.5), je potřeba prohledat širší okolí.
                                 </div>
                             )}
                         </Accordion>
                     );
                 })}
             </Box>
-
-            <ExampleDescription
-                label="Nejbližší skupina"
+            <ExampleDescriptionItem
+                label="Nejbližší skupina:"
                 value={group.result.toString()}
                 isInLine
             />
+            <label style={{ fontSize: "14px", fontWeight: "400" }}>
+                Do skupiny {group.result} patří tyto elementy:
+            </label>
             <ExampleGrid
                 grid={[map(options, (option) => option.name)]}
                 displayName
-                size={40}
+                size={30}
                 sx={{
                     justifyContent: "flex-start",
                     gap: "10px",
                     marginTop: "5px",
                 }}
             />
-
-            {/* <p>Pravidlu odpovídá jeden prvek: </p>
-                <p>Pravidlu odpovídají: ... </p>
-                <p>
-                    Pravidlu neodpovídají žádné prvky. Proto ze skupiny vybírá
-                    náhodně
-                </p> */}
-        </Stack>
+        </>
     );
 };

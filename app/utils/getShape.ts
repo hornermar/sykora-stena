@@ -18,5 +18,13 @@ export const getShape = (
     const neighbours = getNeighboursWithSides(x, y, grid);
     const element = applyRules(rule, neighbours, options);
 
-    return element?.name;
+    return {
+        result: element?.result.name,
+        description: {
+            neighbours,
+            options,
+            reason: element?.reason,
+            finalOptions: element?.finalOptions,
+        },
+    };
 };

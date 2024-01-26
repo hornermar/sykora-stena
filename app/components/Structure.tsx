@@ -7,7 +7,8 @@ import { getElementImage } from "../utils/getElementImages";
 
 export type StructureProps = {
     grid: string[][];
-    cellType?: "select" | "image" | "text";
+    defaultGrid?: string[][];
+    cellType?: "image" | "text";
     sx?: CSSProperties;
     onCellClick?: (x: number, y: number) => void;
     activeCell?: Cell;
@@ -15,6 +16,7 @@ export type StructureProps = {
 
 export const Structure = ({
     grid,
+    defaultGrid,
     cellType,
     sx,
     onCellClick,
@@ -58,9 +60,14 @@ export const Structure = ({
                     {map(row, (cell: string, x) => {
                         const isCellActive =
                             activeCell?.x === x && activeCell?.y === y;
-
                         const isCellEmpty =
                             cell === "0" || cell === "+" || cell === "-";
+                        const isCellOriginal =
+                            defaultGrid &&
+                            defaultGrid[y][x] !== "+" &&
+                            defaultGrid[y][x] !== "-" &&
+                            defaultGrid[y][x] === cell;
+
                         return (
                             <div
                                 key={`${x}${y}`}
@@ -73,18 +80,23 @@ export const Structure = ({
                                     width: `${cellSize}px`,
                                     height: `${cellSize}px`,
                                     border: isCellActive
-                                        ? "2px solid rgb(216, 167, 192)"
+                                        ? "2px solid rgb(174, 223, 255)"
                                         : cellType === "text" || isCellEmpty
                                         ? "1px solid black"
                                         : "initial",
                                     backgroundColor: isCellActive
-                                        ? "rgb(216, 167, 192)"
-                                        : "unset",
+                                        ? "rgb(174, 223, 255)"
+                                        : "transparent",
                                 }}
                             >
                                 {cellType === "text" && (
                                     <span
-                                    // style={{ textDecoration: "underline" }}
+                                        style={{
+                                            textDecoration:
+                                                defaultGrid && isCellOriginal
+                                                    ? "underline"
+                                                    : "none",
+                                        }}
                                     >
                                         <b>{cell !== "0" && cell}</b>
                                     </span>

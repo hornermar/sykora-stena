@@ -53,17 +53,17 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
             </Card>
 
             <Card color={"white"}>
-                {displayDefaultGrid ? (
-                    <Structure grid={defaultGrid} cellType="text" />
-                ) : (
-                    <Structure grid={grid} cellType="image" />
-                )}
+                <Structure
+                    grid={displayDefaultGrid ? defaultGrid : grid}
+                    cellType={displayText ? "text" : "image"}
+                    defaultGrid={defaultGrid}
+                />
             </Card>
 
             <Card color={color}>
                 <Button onClick={clearGrid}>Vymazat vše</Button>
 
-                <Typography>Zadání</Typography>
+                <Typography>Diagram (zadání)</Typography>
                 <Stack flexDirection="row">
                     <Switch
                         checked={displayDefaultGrid}
@@ -71,14 +71,16 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                     />
                 </Stack>
 
-                <Typography>Zobrazení</Typography>
+                <Typography>Zobrazení (text/obraz) </Typography>
                 <Switch
-                    checked={displayText}
+                    checked={!displayText}
                     onChange={() => setDisplayText((prev) => !prev)}
                 />
 
                 {/* on/off algoritmus */}
-                <Typography>Algoritmus</Typography>
+                <Typography>
+                    Algoritmus (Vypnutím se budou prvky vybírat zcela náhodně)
+                </Typography>
                 <Stack flexDirection="row">
                     <Switch
                         checked={!form.isRandom}
