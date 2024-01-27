@@ -4,7 +4,7 @@ import { getColourDensity } from "@/app/utils/getColorDensity";
 import { getElements } from "@/app/utils/getElements";
 import { getSlicedGrid } from "@/app/utils/getSlicedGrid";
 import { Stack } from "@mui/material";
-import { map } from "lodash";
+import { map, size } from "lodash";
 import { useEffect, useMemo, useState } from "react";
 import { Card } from "../Card";
 import { InputsLabel } from "../InputsLabel";
@@ -25,7 +25,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
     const [displayText, setDisplayText] = useState(true);
 
-    const coefficient: number = 0.75;
+    const coefficient: number = 0.5;
     const rule: number = 0;
 
     useEffect(() => {
@@ -48,10 +48,11 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
             ),
         [activeCell]
     );
+    const averageSteps = useMemo(() => size(group.description), [group]);
 
     const activeNeighbours = useMemo(() => {
         return map(
-            group.description[0].neighbours,
+            group.description[averageSteps - 1].neighbours,
             (neighbour) => neighbour.position
         );
     }, [group]);
@@ -103,6 +104,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                         onCellClick={onCellClick}
                         activeCell={activeCell}
                         activeNeighbours={activeNeighbours}
+                        color={color}
                     />
                 </Stack>
             </Card>

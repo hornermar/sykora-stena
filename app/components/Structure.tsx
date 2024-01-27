@@ -13,6 +13,7 @@ export type StructureProps = {
     onCellClick?: (x: number, y: number) => void;
     activeCell?: Cell;
     activeNeighbours?: Cell[];
+    color?: string;
 };
 
 export const Structure = ({
@@ -23,6 +24,7 @@ export const Structure = ({
     onCellClick,
     activeCell,
     activeNeighbours,
+    color,
 }: StructureProps) => {
     const [cellSize, setCellSize] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
@@ -88,20 +90,20 @@ export const Structure = ({
                                     alignItems: "center",
                                     width: `${cellSize}px`,
                                     height: `${cellSize}px`,
-                                    border: isCellActive
-                                        ? "2px solid rgb(247, 133, 130)"
-                                        : cellType === "text" || isCellEmpty
-                                        ? "1px solid black"
-                                        : "initial",
+                                    border:
+                                        isCellActive || isCellActiveNeighbour
+                                            ? `2px solid ${color}`
+                                            : cellType === "text" || isCellEmpty
+                                            ? "1px solid black"
+                                            : "initial",
                                     backgroundColor: isCellActive
-                                        ? "rgb(247, 133, 130)"
+                                        ? color
                                         : "transparent",
-                                    outline: isCellActive
-                                        ? "1px solid rgb(247, 133, 130)"
+                                    zIndex: isCellActive
+                                        ? 100
                                         : isCellActiveNeighbour
-                                        ? "4px solid rgb(247, 133, 130)"
-                                        : "none",
-                                    zIndex: isCellActive ? 1 : 0,
+                                        ? 50
+                                        : 0,
                                 }}
                             >
                                 {cellType === "text" && (
@@ -124,6 +126,13 @@ export const Structure = ({
                                             width={cellSize}
                                             height={cellSize}
                                             alt={`element ${cell}`}
+                                            style={{
+                                                border:
+                                                    isCellActive ||
+                                                    isCellActiveNeighbour
+                                                        ? `2px solid ${color}`
+                                                        : "none",
+                                            }}
                                         />
                                     ) : (
                                         <span>

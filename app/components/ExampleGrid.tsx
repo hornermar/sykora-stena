@@ -45,7 +45,7 @@ export const ExampleGrid = ({
                                         height: `${size}px`,
                                         marginBottom: !displayName ? "20px" : 0,
                                         outline: isCellActive
-                                            ? "4px solid rgb(174, 223, 255)"
+                                            ? "4px solid rgb(247, 133, 130)"
                                             : "initial",
                                     }}
                                 >

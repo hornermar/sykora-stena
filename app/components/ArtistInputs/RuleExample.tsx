@@ -9,15 +9,7 @@ type RuleExampleProps = {
 
 export const RuleExample = ({ rule, color }: RuleExampleProps) => {
     return (
-        <Stack
-            sx={{
-                ".element-10": {
-                    outline: `4px solid ${color}`,
-                    zIndex: 100,
-                },
-                marginBottom: "30px",
-            }}
-        >
+        <Stack>
             <Typography
                 variant="h6"
                 component="div"
@@ -50,6 +42,8 @@ export const RuleExample = ({ rule, color }: RuleExampleProps) => {
                 cellType="image"
                 sx={{ width: "60%" }}
                 key={rule.code}
+                activeNeighbours={[{ x: 1, y: 0 }]}
+                color={color}
             />
         </Stack>
     );

@@ -2,7 +2,7 @@ import { rulesItems } from "@/app/lib/formItems";
 import { ElementType } from "@/app/types/ElementType";
 import { Neighbour, NeighbourItem } from "@/app/types/Neighbout";
 import { Rule } from "@/app/types/Rule";
-import { Box, Stack } from "@mui/material";
+import { Box, Collapse, Stack } from "@mui/material";
 import { find, map } from "lodash";
 import { useMemo } from "react";
 import { ExampleGrid } from "../../ExampleGrid";
@@ -67,7 +67,7 @@ export const ExampleDescriptionShape = ({
 
     return (
         <>
-            <Box display={expanded ? "block" : "none"}>
+            <Collapse in={expanded}>
                 <p>
                     Při výpočtu zkoumá sousední prvky (dotýkající se poue
                     stranou stranou) a jejich vlastnosti. Ty jsou barva (černá /
@@ -115,7 +115,7 @@ export const ExampleDescriptionShape = ({
                     Protože {shape.description.reason}. Výsledkem je{" "}
                     <b>{shape.result}</b>
                 </p>
-            </Box>
+            </Collapse>
 
             {
                 <ExampleGrid

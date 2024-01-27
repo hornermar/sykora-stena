@@ -1,5 +1,8 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import arrowToTopIcon from "../../public/angles-up-solid.svg";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
 import { Card } from "./Card";
 import { Example } from "./Example/Example";
@@ -31,35 +34,75 @@ const gridForExample = [
 ];
 
 export default function HomePage() {
+    const [showButton, setShowButton] = useState(false);
+
+    const checkScrollPosition = () => {
+        if (window.scrollY > 7200) {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", checkScrollPosition);
+        return () => window.removeEventListener("scroll", checkScrollPosition);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     return (
-        <Box sx={{ display: "flex" }}>
-            <div>
-                <Section>
-                    <FrontPage color="rgb(247, 133, 130)" />
-                </Section>
-                <Section>
-                    <ArtistInputs
-                        grid={gridForExample}
-                        color="rgb(174, 223, 255)"
+        <Box>
+            {showButton && (
+                <IconButton
+                    color="inherit"
+                    size="large"
+                    onClick={() => scrollToTop()}
+                    sx={{
+                        position: "fixed",
+                        bottom: 10,
+                        right: 10,
+                        zIndex: 100,
+                        backgroundColor: "rgba(0, 0, 0, 0.2)",
+                    }}
+                >
+                    <Image
+                        src={arrowToTopIcon}
+                        width={20}
+                        height={20}
+                        alt={"arrow to the top icon"}
                     />
-                </Section>
-                <Section>
-                    <Example
-                        defaultGrid={gridForExample}
-                        color="rgb(247, 133, 130)"
-                    />
-                </Section>
-                <Section id="playground">
-                    <Playground
-                        defaultGrid={gridForExample}
-                        color="rgb(174, 223, 255)"
-                    />
-                </Section>
-                <Section>
-                    <Card>Zdroje</Card>
-                </Section>
-                <Section>Kontakt</Section>
-            </div>
+                </IconButton>
+            )}
+
+            <Section id="frontpage">
+                <FrontPage color="rgb(247, 133, 130)" />
+            </Section>
+
+            <Section>
+                <ArtistInputs
+                    grid={gridForExample}
+                    color="rgb(174, 223, 255)"
+                />
+            </Section>
+            <Section>
+                <Example
+                    defaultGrid={gridForExample}
+                    color="rgb(247, 133, 130)"
+                />
+            </Section>
+            <Section id="playground">
+                <Playground
+                    defaultGrid={gridForExample}
+                    color="rgb(174, 223, 255)"
+                />
+            </Section>
+            <Section>
+                <Card>Zdroje</Card>
+            </Section>
+            <Section>Kontakt</Section>
         </Box>
     );
 }

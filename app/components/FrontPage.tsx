@@ -38,6 +38,11 @@ export const FrontPage = ({ color }: FrontPageProps) => {
         return getElements(rule, coefficient, emptyGrid);
     }, [rule, coefficient]);
 
+    const scrollToPlayground = () => {
+        const element = document.getElementById("playground");
+        element?.scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
         <>
             <Card color={color}>
@@ -110,9 +115,7 @@ export const FrontPage = ({ color }: FrontPageProps) => {
 
                     <div style={{ paddingTop: "10px" }}>
                         <Button
-                            onClick={() => {
-                                window.location.href = "/#playground";
-                            }}
+                            onClick={() => scrollToPlayground()}
                             endIcon={
                                 <SvgIcon sx={{ marginLeft: "50px" }}>
                                     <svg

@@ -1,5 +1,5 @@
 import { elementList } from "@/app/lib/elementList";
-import { Box } from "@mui/material";
+import { Box, Collapse } from "@mui/material";
 import { filter, map, size } from "lodash";
 import { useMemo } from "react";
 import { Accordion } from "../../Accordion";
@@ -42,7 +42,7 @@ export const ExampleDescriptionGroup = ({
 
     return (
         <>
-            <Box display={expanded ? "block" : "none"}>
+            <Collapse in={expanded}>
                 <p>
                     Při výpočtu zkoumá sousední prvky (dotýkající se stranou i
                     rohy) a spočítá průměr ze skupin, do kterých patří.
@@ -93,7 +93,7 @@ export const ExampleDescriptionGroup = ({
                 <ExampleDescriptionLabel value={group.result.toString()} />
 
                 <p>Do této skupiny patří elementy</p>
-            </Box>
+            </Collapse>
 
             <ExampleGrid
                 grid={[map(options, (option) => option.name)]}
