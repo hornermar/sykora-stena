@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { map, size } from "lodash";
 import Image from "next/image";
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 import { Cell } from "../types/General";
 import { getElementImage } from "../utils/getElementImages";
 
@@ -32,12 +32,12 @@ export const Structure = ({
     const rowsCount = size(grid);
     const columnsCount = Math.max(...map(grid, (row) => size(row)));
 
-    const getCellSize = () => {
+    const getCellSize = useCallback(() => {
         if (!ref.current) return 0;
 
         const gridWidth = columnsCount;
         return ref.current.clientWidth / gridWidth;
-    };
+    }, [columnsCount]);
 
     useEffect(() => {
         const newCellSize = getCellSize();
