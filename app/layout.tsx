@@ -2,7 +2,6 @@
 import {
     Button,
     Divider,
-    Drawer,
     IconButton,
     List,
     ListItem,
@@ -17,7 +16,7 @@ import barsIcon from "../public/bars-solid.svg";
 import ThemeRegistry from "./components/ThemeRegistry/ThemeRegistry";
 
 type Props = {
-    window?: () => Window;
+    // window?: () => Window;
     children: React.ReactNode;
 };
 
@@ -25,7 +24,7 @@ const drawerWidth = 240;
 const navItems = ["Vyzkoušet", "Kontakt"];
 
 export default function RootLayout(props: Props) {
-    const { window } = props;
+    // const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -50,8 +49,8 @@ export default function RootLayout(props: Props) {
         </Box>
     );
 
-    const container =
-        window !== undefined ? () => window().document.body : undefined;
+    // const container =
+    //     window !== undefined ? () => window().document.body : undefined;
 
     return (
         <html lang="en">
@@ -120,7 +119,7 @@ export default function RootLayout(props: Props) {
                             ))}
                         </Box>
 
-                        <nav>
+                        {/* <nav>
                             <Drawer
                                 container={container}
                                 anchor="right"
@@ -140,7 +139,7 @@ export default function RootLayout(props: Props) {
                             >
                                 {drawer}
                             </Drawer>
-                        </nav>
+                        </nav> */}
                     </Box>
 
                     <Box
