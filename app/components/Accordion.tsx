@@ -26,25 +26,14 @@ const StyledAccordion = styled(MuiAccordion)((props) => ({
 }));
 
 type AccordionProps = {
-    expanded: boolean;
-    onChange?: (event: React.SyntheticEvent, isExpanded: boolean) => void;
     summary: string;
     children: React.ReactNode;
 };
 
-export const Accordion = ({
-    expanded,
-    onChange,
-    summary,
-    children,
-}: AccordionProps) => {
+export const Accordion = ({ summary, children }: AccordionProps) => {
     return (
-        <StyledAccordion expanded={expanded} onChange={onChange}>
-            <AccordionSummary
-                expandIcon={
-                    expanded ? <span>&#x2212;</span> : <span>&#x2b;</span>
-                }
-            >
+        <StyledAccordion>
+            <AccordionSummary expandIcon={<span>&#x2212;</span>}>
                 {summary}
             </AccordionSummary>
             <AccordionDetails>{children}</AccordionDetails>

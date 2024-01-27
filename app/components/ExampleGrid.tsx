@@ -9,6 +9,7 @@ type ExampleGridProps = {
     size: number;
     displayName?: boolean;
     sx?: SxProps;
+    activeCell?: { x: number; y: number };
 };
 
 export const ExampleGrid = ({
@@ -16,6 +17,7 @@ export const ExampleGrid = ({
     size,
     displayName,
     sx,
+    activeCell,
 }: ExampleGridProps) => {
     return (
         <>
@@ -27,6 +29,8 @@ export const ExampleGrid = ({
                     sx={sx}
                 >
                     {map(row, (cell: string, x) => {
+                        const isCellActive =
+                            activeCell?.x === x && activeCell?.y === y;
                         return (
                             <div
                                 key={`${x}${y}`}
@@ -36,21 +40,13 @@ export const ExampleGrid = ({
                                     alignItems: "center",
                                 }}
                             >
-                                {/* TODO remove background color and redo svg */}
                                 <div
                                     style={{
                                         height: `${size}px`,
-                                        backgroundColor:
-                                            cell !== "0"
-                                                ? "white"
-                                                : "transparent",
                                         marginBottom: !displayName ? "20px" : 0,
-
-                                        // outline:
-                                        //     cell === "0"
-                                        //         ? "none"
-                                        //         : "2px solid rgb(184, 231, 254)",
-                                        // zIndex: 10,
+                                        outline: isCellActive
+                                            ? "4px solid rgb(174, 223, 255)"
+                                            : "initial",
                                     }}
                                 >
                                     <Image

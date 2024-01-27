@@ -7,9 +7,6 @@ const StyledChip = styled(MuiChip)((props) => ({
     fontSize: "12px",
     fontWeight: "400",
     borderRadius: "40px",
-    // width: "min-content",
-    // maxWidth: "100%",
-    // fontWeight: "400",
     padding: "6px 0px",
     height: "auto",
     "&:active": {

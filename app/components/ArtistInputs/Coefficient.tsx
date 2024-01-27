@@ -14,27 +14,8 @@ export const ArtistInputsCoefficient = ({
                 <p>
                     Dalším vstupem je <strong>koeficient</strong>, který má
                     číselnou hodnotu větší než 0.
-                    {/* Určuje, o kolik se změní barva na{" "} */}
-                    {/* <Tooltip
-                        placement="top"
-                        title="Nejsvětlejší jsou prvky, které začínají číslem 1 (1z, 1b, 1y, 1i, 1r, 1d)"
-                    >
-                        <span>
-                            <u>světlejší</u>
-                        </span>
-                    </Tooltip>{" "}
-                    nebo{" "}
-                    <Tooltip
-                        placement="top"
-                        title="Nejtmavší jsou prvky, které začínají číslem 4 (4z, 4b, 4y, 4i, 4r, 4d)"
-                    >
-                        <span>
-                            <u>tmavší</u>
-                        </span>
-                    </Tooltip>{" "}
-                    v místech, kde se v poli vyskytují znaménka plus (
-                    <strong>+</strong>) a mínus (<strong>-</strong>). */}
                 </p>
+                {/* TODO: Add tooltip widt ecample of lightest and darkest elements */}
                 <p>
                     Koeficient má funkci urychlit nebo zpomalit přechody od
                     světlých elementů k tmavým nebo naopak. Vyšší koeficient

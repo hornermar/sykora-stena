@@ -14,7 +14,7 @@ export const ArtistInputsRule = ({ color }: ArtistInputsRuleProps) => {
         <>
             <Card heading="4. Pravidlo" color="white">
                 <p>
-                    Dále je třeba zvolit jedno ze čtyř pravidel <b>V</b>, podle
+                    Dále je třeba zvolit jedno ze čtyř <b>pravidel</b>, podle
                     kterého budou vypočítané elementy zaujímat vzájemnou polohu.
                 </p>
             </Card>

@@ -32,21 +32,6 @@ export const ArtistInputs = ({ grid, color }: ArtistInputProps) => {
             <ArtistInputsDiagram grid={grid} />
             <ArtistInputsCoefficient color={color} />
             <ArtistInputsRule color={color} />
-
-            {/* <Card>
-                <p>
-                    Zdeněk Sýkora zadal do počátače tyto 4 vstupy a na základně
-                    nich se vygenerovalo dílo.
-                </p>
-                <p>
-                    V textu blablabla popisuje, jakým způsobem je dobré
-                    rozmisťovat jednotlivé elementy tak, aby docílil zajímavé
-                    struktury. Pokud na malém formátu zadá příliž mnoho prvků,
-                    nezbyde už mnoho prostoru pro náhodný vzor. Je proto lepší
-                    rozmístit prvky v určitém rytmu s prostorem a nechat více
-                    prosotru náhodě.
-                </p>
-            </Card> */}
         </>
     );
 };

@@ -35,7 +35,6 @@ export const FrontPage = ({ color }: FrontPageProps) => {
     const rule = 0;
 
     const grid = useMemo(() => {
-        console.log(rule, coefficient);
         return getElements(rule, coefficient, emptyGrid);
     }, [rule, coefficient]);
 
@@ -111,11 +110,6 @@ export const FrontPage = ({ color }: FrontPageProps) => {
 
                     <div style={{ paddingTop: "10px" }}>
                         <Button
-                            // onClick={() => {
-                            //     window.location.href = "/algoritmus";
-                            // }}
-
-                            // onClick go to id PlayGround
                             onClick={() => {
                                 window.location.href = "/#playground";
                             }}

@@ -112,7 +112,6 @@ export const ArtistInputsElements = () => {
             </Card>
             <Card color="white">
                 <ExampleGrid grid={allElements} size={smallSize} displayName />
-                {/* </Stack> */}
             </Card>
         </>
     );

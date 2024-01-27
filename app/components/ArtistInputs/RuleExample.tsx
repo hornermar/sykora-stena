@@ -43,20 +43,6 @@ export const RuleExample = ({ rule, color }: RuleExampleProps) => {
                 >
                     {rule.text}
                 </Typography>
-                {/* <div style={{ width: "30%" }}>
-                    <IconButton
-                        color="inherit"
-                        size="large"
-                        onClick={() => refresh()}
-                    >
-                        <Image
-                            src={rotateIcon}
-                            width={20}
-                            height={20}
-                            alt={"rotate icon"}
-                        />
-                    </IconButton>
-                </div> */}
             </Stack>
 
             <Structure

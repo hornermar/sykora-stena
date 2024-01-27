@@ -23,7 +23,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
     const [displayText, setDisplayText] = useState(true);
 
-    const coefficient: number = 0.5;
+    const coefficient: number = 0.75;
     const rule: number = 0;
 
     useEffect(() => {
@@ -39,7 +39,14 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     return (
         <>
             <Card color={color}>
-                <SectionTitle letter="C." title="Příklad" />
+                <SectionTitle letter="C." title="Výpočet" />
+                <p>
+                    Až potud určoval vše autor. Vyplnění prázdných políček
+                    postupuje po řadách. Algoritmus vybere nejprve skupinu (1,
+                    2, 3, 4) na základě skupin sousedních prvků a koeficientu.
+                    Poté z ní vybere natočení (z, b, y atd.) tak, aby odpovídalo
+                    zvolenému pravidlu.
+                </p>
                 <p>
                     Člověk se v popisu algortitmu může lehko ztratit. Pro lepší
                     pochopení algoritmu je zde příklad, jak výpočet probíhá.
@@ -47,7 +54,13 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                     podtržené - ty jsou totiž již určené) a prozkoumejte, jak
                     jsou jednotlivé prvky voleny.
                 </p>
+            </Card>
 
+            <Card heading="1. Průchod diagramem">
+                <p>
+                    Algoritmus začíná počítat v levém horním rohu. Postupuje
+                    zleva doprava v lichých řadách a zprava doleva v sudých.
+                </p>
                 <Stack flexDirection="row" justifyContent="flex-end">
                     <Switch
                         checked={!displayText}
@@ -72,15 +85,14 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                     />
                 </Stack>
             </Card>
-            <Card>
-                <ExampleDescription
-                    grid={slicedGrid}
-                    cell={activeCell}
-                    coefficient={coefficient}
-                    rule={rule}
-                    defaultGrid={defaultGrid}
-                />
-            </Card>
+
+            <ExampleDescription
+                grid={slicedGrid}
+                cell={activeCell}
+                coefficient={coefficient}
+                rule={rule}
+                defaultGrid={defaultGrid}
+            />
         </>
     );
 };

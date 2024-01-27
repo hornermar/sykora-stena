@@ -1,12 +1,10 @@
 "use client";
 import { rulesItems } from "@/app/lib/formItems";
 import { getElements } from "@/app/utils/getElements";
-import { getEmptyGrid } from "@/app/utils/getEmptyGrid";
 import { Stack, Typography } from "@mui/material";
-import { map, size } from "lodash";
+import { map } from "lodash";
 import { useEffect, useState } from "react";
 import { Rule } from "../../types/Rule";
-import { Button } from "../Button";
 import { Card } from "../Card";
 import { Chip } from "../Chip";
 import { SectionTitle } from "../SectionTitle";
@@ -41,11 +39,6 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
         );
     }, [form.coefficient, form.rule, form.isRandom]);
 
-    const clearGrid = () => {
-        const emptyGrid = getEmptyGrid(size(defaultGrid), size(defaultGrid[0]));
-        setGrid(emptyGrid);
-    };
-
     return (
         <>
             <Card color={color}>
@@ -61,8 +54,6 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
             </Card>
 
             <Card color={color}>
-                <Button onClick={clearGrid}>Vymazat vše</Button>
-
                 <Typography>Diagram (zadání)</Typography>
                 <Stack flexDirection="row">
                     <Switch

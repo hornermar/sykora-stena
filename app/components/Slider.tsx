@@ -68,6 +68,11 @@ export const Slider = ({
             onChange={onChange}
             disabled={disabled}
             valueLabelDisplay="on"
+            sx={{
+                "& .MuiSlider-valueLabel": {
+                    borderColor: disabled ? "grey.500" : "black",
+                },
+            }}
         />
     );
 };

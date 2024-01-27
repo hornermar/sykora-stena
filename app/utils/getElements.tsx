@@ -72,7 +72,5 @@ export const getElements = (
         }
     }
 
-    console.log("newGrid: ", newGrid);
-
     return newGrid;
 };
