@@ -16,10 +16,10 @@ import * as React from "react";
 import barsIcon from "../public/bars-solid.svg";
 import ThemeRegistry from "./components/ThemeRegistry/ThemeRegistry";
 
-interface Props {
+type Props = {
     window?: () => Window;
     children: React.ReactNode;
-}
+};
 
 const drawerWidth = 240;
 const navItems = ["Vyzkoušet", "Kontakt"];
