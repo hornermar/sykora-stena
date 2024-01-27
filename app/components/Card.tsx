@@ -1,4 +1,4 @@
-import { Card as MuiCard, Stack } from "@mui/material";
+import { Card as MuiCard, Stack, SxProps } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
@@ -17,15 +17,17 @@ export function Card({
     children,
     width,
     button,
+    sx,
 }: {
     heading?: string;
     color?: string;
     children?: React.ReactNode;
     width?: string;
     button?: React.ReactNode;
+    sx?: SxProps;
 }) {
     return (
-        <StyledCard color={color} sx={{ width: width ?? "100%" }}>
+        <StyledCard color={color} sx={sx}>
             <CardContent sx={{ padding: "20px", borderRadius: "none" }}>
                 <Stack flexDirection="row" justifyContent="space-between">
                     {heading && (

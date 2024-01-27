@@ -7,7 +7,7 @@ const StyledChip = styled(MuiChip)((props) => ({
     fontSize: "12px",
     fontWeight: "400",
     borderRadius: "40px",
-    padding: "6px 0px",
+    padding: "4px 0px",
     height: "auto",
     "&:active": {
         boxShadow: "none",

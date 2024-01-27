@@ -63,38 +63,52 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
             </Card>
 
             <Card color={color}>
-                <Typography>Diagram (zadání)</Typography>
-                <Stack flexDirection="row">
-                    <Switch
-                        checked={displayDefaultGrid}
-                        onChange={() => setDisplayDefaultGrid((prev) => !prev)}
-                    />
-                </Stack>
+                <table style={{ width: "100%" }}>
+                    <colgroup>
+                        <col style={{ width: "33%" }} />
+                        <col style={{ width: "33%" }} />
+                        <col style={{ width: "33%" }} />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>Diagram</td>
+                            <td>Text/obraz</td>
+                            <td>Algoritmus</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Switch
+                                    checked={displayDefaultGrid}
+                                    onChange={() =>
+                                        setDisplayDefaultGrid((prev) => !prev)
+                                    }
+                                />
+                            </td>
+                            <td>
+                                <Switch
+                                    checked={!displayText}
+                                    onChange={() =>
+                                        setDisplayText((prev) => !prev)
+                                    }
+                                />
+                            </td>
+                            <td>
+                                <Switch
+                                    checked={!form.isRandom}
+                                    onChange={() =>
+                                        setForm((prev) => ({
+                                            ...prev,
+                                            isRandom: !prev.isRandom,
+                                        }))
+                                    }
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                <Typography>Zobrazení (text/obraz) </Typography>
-                <Switch
-                    checked={!displayText}
-                    onChange={() => setDisplayText((prev) => !prev)}
-                />
-
-                {/* on/off algoritmus */}
-                <Typography>
-                    Algoritmus (Vypnutím se budou prvky vybírat zcela náhodně)
-                </Typography>
-                <Stack flexDirection="row">
-                    <Switch
-                        checked={!form.isRandom}
-                        onChange={() =>
-                            setForm((prev) => ({
-                                ...prev,
-                                isRandom: !prev.isRandom,
-                            }))
-                        }
-                    />
-                </Stack>
-
-                <Stack sx={{ marginTop: "30px" }}>
-                    <Typography sx={{ marginBottom: "-50px" }}>
+                <Stack sx={{ marginTop: "25px" }}>
+                    <Typography sx={{ marginBottom: "-15px" }}>
                         Koeficient
                     </Typography>
 
@@ -113,13 +127,8 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                     />
                 </Stack>
 
-                <Stack
-                    flexDirection="row"
-                    flexWrap="wrap"
-                    width="100%"
-                    sx={{ marginTop: "10px" }}
-                >
-                    <Typography sx={{ marginBottom: "15px" }}>
+                <Stack flexDirection="row" flexWrap="wrap" width="100%">
+                    <Typography sx={{ marginBottom: "5px" }}>
                         Pravidlo
                     </Typography>
                     {map(rulesItems, (rule: Rule) => (

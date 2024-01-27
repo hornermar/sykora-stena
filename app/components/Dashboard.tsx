@@ -4,11 +4,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import arrowToTopIcon from "../../public/angles-up-solid.svg";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
-import { Card } from "./Card";
+import { Contact } from "./Contact/Contact";
 import { Example } from "./Example/Example";
 import { FrontPage } from "./FrontPage";
 import { Playground } from "./Playground/Playground";
 import { Section } from "./Section";
+import { Sources } from "./Sources/Sources";
 
 const gridForExample = [
     // 1
@@ -100,9 +101,11 @@ export default function HomePage() {
                 />
             </Section>
             <Section>
-                <Card>Zdroje</Card>
+                <Sources />
             </Section>
-            <Section>Kontakt</Section>
+            <Section>
+                <Contact />
+            </Section>
         </Box>
     );
 }
