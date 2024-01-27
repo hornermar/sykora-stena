@@ -39,7 +39,13 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     const slicedGrid = getSlicedGrid(grid, defaultGrid, activeCell);
 
     const group = useMemo(
-        () => getColourDensity(grid, activeCell.x, activeCell.y, coefficient),
+        () =>
+            getColourDensity(
+                slicedGrid,
+                activeCell.x,
+                activeCell.y,
+                coefficient
+            ),
         [activeCell]
     );
 

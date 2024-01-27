@@ -89,15 +89,15 @@ export const Structure = ({
                                     width: `${cellSize}px`,
                                     height: `${cellSize}px`,
                                     border: isCellActive
-                                        ? "2px solid rgb(174, 223, 255)"
+                                        ? "2px solid rgb(247, 133, 130)"
                                         : cellType === "text" || isCellEmpty
                                         ? "1px solid black"
                                         : "initial",
                                     backgroundColor: isCellActive
-                                        ? "rgb(174, 223, 255)"
+                                        ? "rgb(247, 133, 130)"
                                         : "transparent",
                                     outline: isCellActive
-                                        ? "1px solid rgb(174, 223, 255)"
+                                        ? "1px solid rgb(247, 133, 130)"
                                         : isCellActiveNeighbour
                                         ? "4px solid rgb(247, 133, 130)"
                                         : "none",
