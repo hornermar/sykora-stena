@@ -25,7 +25,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
     const [displayText, setDisplayText] = useState(true);
 
-    const coefficient: number = 0.5;
+    const coefficient: number = 0.8;
     const rule: number = 0;
 
     useEffect(() => {
@@ -61,19 +61,22 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
         <>
             <Card color={color}>
                 <SectionTitle letter="C." title="Výpočet" />
-                <p>
-                    Až potud určoval vše autor. Vyplnění prázdných políček
-                    postupuje po řadách. Algoritmus vybere nejprve skupinu (1,
-                    2, 3, 4) na základě skupin sousedních prvků a koeficientu.
-                    Poté z ní vybere natočení (z, b, y atd.) tak, aby odpovídalo
-                    zvolenému pravidlu.
+
+                <p
+                    style={{
+                        marginTop: "70px",
+                        marginBottom: 0,
+                    }}
+                >
+                    Až potud vše určoval autor. V tuto chvíli přebírá zpracování
+                    algoritmus, který dopočítá chybějící políčka.
                 </p>
                 <p>
-                    Člověk se v popisu algortitmu může lehko ztratit. Pro lepší
-                    pochopení algoritmu je zde příklad, jak výpočet probíhá.
-                    Proklikejte si jednotlivé buňky (jen ty, které nejsou
-                    podtržené - ty jsou totiž již určené) a prozkoumejte, jak
-                    jsou jednotlivé prvky voleny.
+                    V následující části můžete prozkoumat, jak algoritmus
+                    funguje. V popisu takového algoritmu se ale člověk může
+                    lehko ztratit. Proklikejte si proto jednotlivé buňky (ty
+                    nepodtržené!) a uvidíte , jak takový výpočet v konkrétním
+                    případě probíhá.
                 </p>
             </Card>
 

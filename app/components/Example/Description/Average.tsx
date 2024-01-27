@@ -1,18 +1,11 @@
+import { DensityDescription } from "@/app/types/Density";
 import { first, map, size } from "lodash";
 import { ExampleDescriptionLabel } from "./Label";
 
 type ExampleDescriptionAverageProps = {
     cellContent: string;
     coefficient: number;
-    description: {
-        neighbours: {
-            name: string;
-            position: { x: number; y: number };
-        }[];
-        neighboursAverage: number;
-        step: number;
-        unRoundedResult: number;
-    };
+    description: DensityDescription;
 };
 
 export const ExampleDescriptionAverage = ({
@@ -44,8 +37,8 @@ export const ExampleDescriptionAverage = ({
                         V případě, že se v prvku nachází + nebo -, přičte nebo
                         odečte od průměru předem daný koeficient. Zde je
                         znaménko {cellContent} , od průměru je proto potřeba{" "}
-                        {cellContent === "+" ? "přičíst" : "odečíst"} koeficient{" "}
-                        {coefficient}
+                        {cellContent === "+" ? "přičíst" : "odečíst"} předem
+                        daný koeficient (v tomto případě {coefficient})
                     </p>
 
                     <ExampleDescriptionLabel

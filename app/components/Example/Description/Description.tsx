@@ -1,3 +1,4 @@
+import { Density } from "@/app/types/Density";
 import { Cell } from "@/app/types/General";
 import { getShape } from "@/app/utils/getShape";
 import { useMemo, useState } from "react";
@@ -11,18 +12,7 @@ type ExampleDesriptionsProps = {
     coefficient: number;
     rule: number;
     defaultGrid: string[][];
-    group: {
-        result: number;
-        description: {
-            neighbours: {
-                name: string;
-                position: { x: number; y: number };
-            }[];
-            neighboursAverage: number;
-            step: number;
-            unRoundedResult: number;
-        }[];
-    };
+    group: Density;
 };
 
 const ExpandButton = ({

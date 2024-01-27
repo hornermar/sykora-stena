@@ -1,4 +1,5 @@
 import { map } from "lodash";
+import { Density, DensityDescription } from "../types/Density";
 import { applyCoefficient } from "./applyCoefficient";
 import { getDensityAverage } from "./getDensityAverage";
 import { getNeighbours } from "./getNeighbours";
@@ -14,12 +15,11 @@ export const getColourDensity = (
     x: number,
     y: number,
     coefficient: number
-) => {
+): Density => {
     let step: number = 1;
     let repeat: boolean = true;
     let unRoundedResult: number = 0;
-
-    let description = [];
+    let description: DensityDescription[] = [];
 
     while (repeat && step < 5) {
         const neighbours = getNeighbours(step, grid, x, y);

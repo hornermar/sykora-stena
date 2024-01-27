@@ -43,6 +43,15 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
         <>
             <Card color={color}>
                 <SectionTitle letter="D." title="Playground" />
+                <p
+                    style={{
+                        marginTop: "70px",
+                        marginBottom: 0,
+                    }}
+                >
+                    Tady si můžete vyzkoušet, jak jednotlivé parametry ovlivňují
+                    výsledný obraz.
+                </p>
             </Card>
 
             <Card color={"white"}>
@@ -114,7 +123,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         Pravidlo
                     </Typography>
                     {map(rulesItems, (rule: Rule) => (
-                        <Stack width="100%" key={rule.code}>
+                        <Stack key={rule.code}>
                             <Chip
                                 label={rule.text}
                                 onClick={() =>

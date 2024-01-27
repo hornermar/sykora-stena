@@ -1,4 +1,5 @@
 import { elementList } from "@/app/lib/elementList";
+import { Density } from "@/app/types/Density";
 import { Box, Collapse } from "@mui/material";
 import { filter, map, size } from "lodash";
 import { useMemo } from "react";
@@ -7,22 +8,9 @@ import { ExampleGrid } from "../../ExampleGrid";
 import { ExampleDescriptionAverage } from "./Average";
 import { ExampleDescriptionLabel } from "./Label";
 
-type Group = {
-    result: number;
-    description: {
-        neighbours: {
-            name: string;
-            position: { x: number; y: number };
-        }[];
-        neighboursAverage: number;
-        step: number;
-        unRoundedResult: number;
-    }[];
-};
-
 type ExampleDescriptionGroupProps = {
     coefficient: number;
-    group: Group;
+    group: Density;
     cellContent: string;
     expanded: boolean;
 };

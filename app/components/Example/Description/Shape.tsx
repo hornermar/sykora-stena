@@ -1,7 +1,7 @@
 import { rulesItems } from "@/app/lib/formItems";
-import { ElementType } from "@/app/types/ElementType";
-import { Neighbour, NeighbourItem } from "@/app/types/Neighbout";
+import { NeighbourItem } from "@/app/types/Neighbout";
 import { Rule } from "@/app/types/Rule";
+import { Shape } from "@/app/types/Shape";
 import { Box, Collapse, Stack } from "@mui/material";
 import { find, map } from "lodash";
 import { useMemo } from "react";
@@ -33,15 +33,7 @@ const LabelForSide = ({ side }: { side?: NeighbourItem }) => {
 
 type ExampleDescriptionShapeProps = {
     rule: number;
-    shape: {
-        result: string | undefined;
-        description: {
-            neighbours: Neighbour;
-            options: ElementType[];
-            reason: string | undefined;
-            finalOptions: ElementType[] | undefined;
-        };
-    };
+    shape: Shape;
     expanded: boolean;
 };
 

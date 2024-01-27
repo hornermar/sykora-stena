@@ -1,5 +1,6 @@
 import { filter } from "lodash";
 import { elementList } from "../lib/elementList";
+import { Shape } from "../types/Shape";
 import { applyRules } from "./applyRules";
 import { getNeighboursWithSides } from "./getNeighboursWithSides";
 
@@ -9,7 +10,7 @@ export const getShape = (
     y: number,
     density: number,
     rule: number
-) => {
+): Shape => {
     const options = filter(
         elementList,
         ({ colorDensity }) => colorDensity === density
