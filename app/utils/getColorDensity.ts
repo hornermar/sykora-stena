@@ -1,3 +1,4 @@
+import { map } from "lodash";
 import { applyCoefficient } from "./applyCoefficient";
 import { getDensityAverage } from "./getDensityAverage";
 import { getNeighbours } from "./getNeighbours";
@@ -22,7 +23,8 @@ export const getColourDensity = (
 
     while (repeat && step < 5) {
         const neighbours = getNeighbours(step, grid, x, y);
-        const neighboursAverage: number = getDensityAverage(neighbours);
+        const neighboursNames = map(neighbours, (neighbour) => neighbour.name);
+        const neighboursAverage: number = getDensityAverage(neighboursNames);
         unRoundedResult = applyCoefficient(
             grid[y][x],
             coefficient,

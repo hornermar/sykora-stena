@@ -5,7 +5,10 @@ type ExampleDescriptionAverageProps = {
     cellContent: string;
     coefficient: number;
     description: {
-        neighbours: string[];
+        neighbours: {
+            name: string;
+            position: { x: number; y: number };
+        }[];
         neighboursAverage: number;
         step: number;
         unRoundedResult: number;
@@ -17,7 +20,9 @@ export const ExampleDescriptionAverage = ({
     coefficient,
     description,
 }: ExampleDescriptionAverageProps) => {
-    const neighboursGroup = map(description.neighbours, (n) =>
+    const neighboursNames = map(description.neighbours, "name");
+
+    const neighboursGroup = map(neighboursNames, (n) =>
         Number(n.slice(0, 1))
     ).filter(Boolean);
 

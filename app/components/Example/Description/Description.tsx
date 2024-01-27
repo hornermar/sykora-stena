@@ -1,5 +1,4 @@
 import { Cell } from "@/app/types/General";
-import { getColourDensity } from "@/app/utils/getColorDensity";
 import { getShape } from "@/app/utils/getShape";
 import { useMemo, useState } from "react";
 import { Card } from "../../Card";
@@ -12,6 +11,18 @@ type ExampleDesriptionsProps = {
     coefficient: number;
     rule: number;
     defaultGrid: string[][];
+    group: {
+        result: number;
+        description: {
+            neighbours: {
+                name: string;
+                position: { x: number; y: number };
+            }[];
+            neighboursAverage: number;
+            step: number;
+            unRoundedResult: number;
+        }[];
+    };
 };
 
 const ExpandButton = ({
@@ -34,14 +45,10 @@ export const ExampleDescription = ({
     rule,
     coefficient,
     defaultGrid,
+    group,
 }: ExampleDesriptionsProps) => {
     const [groupExpanded, setGroupExpanded] = useState(true);
     const [shapeExpanded, setShapeExpanded] = useState(true);
-
-    const group = useMemo(
-        () => getColourDensity(grid, cell.x, cell.y, coefficient),
-        [cell]
-    );
 
     const shape = useMemo(
         () => getShape(grid, cell.x, cell.y, group.result, rule),

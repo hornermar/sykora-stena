@@ -21,7 +21,10 @@ export const getNeighbours = (
                     neighbourY < grid.length &&
                     neighbourX < grid[0].length
                 ) {
-                    neighbours.push(grid[neighbourY][neighbourX]);
+                    neighbours.push({
+                        name: grid[neighbourY][neighbourX],
+                        position: { x: neighbourX, y: neighbourY },
+                    });
                 }
             }
         }

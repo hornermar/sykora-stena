@@ -12,6 +12,7 @@ export type StructureProps = {
     sx?: CSSProperties;
     onCellClick?: (x: number, y: number) => void;
     activeCell?: Cell;
+    activeNeighbours?: Cell[];
 };
 
 export const Structure = ({
@@ -21,6 +22,7 @@ export const Structure = ({
     sx,
     onCellClick,
     activeCell,
+    activeNeighbours,
 }: StructureProps) => {
     const [cellSize, setCellSize] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
@@ -68,6 +70,13 @@ export const Structure = ({
                             defaultGrid[y][x] !== "-" &&
                             defaultGrid[y][x] === cell;
 
+                        const isCellActiveNeighbour =
+                            activeNeighbours &&
+                            activeNeighbours.some(
+                                (neighbour) =>
+                                    neighbour.x === x && neighbour.y === y
+                            );
+
                         return (
                             <div
                                 key={`${x}${y}`}
@@ -87,6 +96,12 @@ export const Structure = ({
                                     backgroundColor: isCellActive
                                         ? "rgb(174, 223, 255)"
                                         : "transparent",
+                                    outline: isCellActive
+                                        ? "1px solid rgb(174, 223, 255)"
+                                        : isCellActiveNeighbour
+                                        ? "4px solid rgb(247, 133, 130)"
+                                        : "none",
+                                    zIndex: isCellActive ? 1 : 0,
                                 }}
                             >
                                 {cellType === "text" && (

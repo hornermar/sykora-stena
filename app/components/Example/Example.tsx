@@ -1,9 +1,11 @@
 "use client";
 import { Cell } from "@/app/types/General";
+import { getColourDensity } from "@/app/utils/getColorDensity";
 import { getElements } from "@/app/utils/getElements";
 import { getSlicedGrid } from "@/app/utils/getSlicedGrid";
 import { Stack } from "@mui/material";
-import { useEffect, useState } from "react";
+import { map } from "lodash";
+import { useEffect, useMemo, useState } from "react";
 import { Card } from "../Card";
 import { InputsLabel } from "../InputsLabel";
 import { SectionTitle } from "../SectionTitle";
@@ -35,6 +37,18 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     };
 
     const slicedGrid = getSlicedGrid(grid, defaultGrid, activeCell);
+
+    const group = useMemo(
+        () => getColourDensity(grid, activeCell.x, activeCell.y, coefficient),
+        [activeCell]
+    );
+
+    const activeNeighbours = useMemo(() => {
+        return map(
+            group.description[0].neighbours,
+            (neighbour) => neighbour.position
+        );
+    }, [group]);
 
     return (
         <>
@@ -82,6 +96,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                         cellType={displayText ? "text" : "image"}
                         onCellClick={onCellClick}
                         activeCell={activeCell}
+                        activeNeighbours={activeNeighbours}
                     />
                 </Stack>
             </Card>
@@ -92,6 +107,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                 coefficient={coefficient}
                 rule={rule}
                 defaultGrid={defaultGrid}
+                group={group}
             />
         </>
     );

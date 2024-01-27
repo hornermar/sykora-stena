@@ -10,7 +10,10 @@ import { ExampleDescriptionLabel } from "./Label";
 type Group = {
     result: number;
     description: {
-        neighbours: string[];
+        neighbours: {
+            name: string;
+            position: { x: number; y: number };
+        }[];
         neighboursAverage: number;
         step: number;
         unRoundedResult: number;

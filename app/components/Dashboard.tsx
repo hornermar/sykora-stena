@@ -1,6 +1,7 @@
 "use client";
 import { Box } from "@mui/material";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
+import { Card } from "./Card";
 import { Example } from "./Example/Example";
 import { FrontPage } from "./FrontPage";
 import { Playground } from "./Playground/Playground";
@@ -36,27 +37,28 @@ export default function HomePage() {
                 <Section>
                     <FrontPage color="rgb(247, 133, 130)" />
                 </Section>
-
                 <Section>
                     <ArtistInputs
                         grid={gridForExample}
                         color="rgb(174, 223, 255)"
                     />
                 </Section>
-
                 <Section>
                     <Example
                         defaultGrid={gridForExample}
                         color="rgb(247, 133, 130)"
                     />
                 </Section>
-
                 <Section id="playground">
                     <Playground
                         defaultGrid={gridForExample}
                         color="rgb(174, 223, 255)"
                     />
                 </Section>
+                <Section>
+                    <Card>Zdroje</Card>
+                </Section>
+                <Section>Kontakt</Section>
             </div>
         </Box>
     );
