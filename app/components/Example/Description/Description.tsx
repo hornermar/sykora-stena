@@ -42,10 +42,13 @@ export const ExampleDescription = ({
 
     const shape = useMemo(
         () => getShape(grid, cell.x, cell.y, group.result, rule),
-        [cell]
+        [cell, grid]
     );
 
-    const cellContent = useMemo(() => defaultGrid[cell.y][cell.x], [cell]);
+    const cellContent = useMemo(
+        () => defaultGrid[cell.y][cell.x],
+        [cell, defaultGrid]
+    );
 
     return (
         <>

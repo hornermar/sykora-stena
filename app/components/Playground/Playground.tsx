@@ -37,7 +37,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                 form.isRandom
             )
         );
-    }, [form.coefficient, form.rule, form.isRandom]);
+    }, [form.coefficient, form.rule, form.isRandom, defaultGrid]);
 
     return (
         <>

@@ -30,7 +30,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
 
     useEffect(() => {
         setGrid(getElements(rule, coefficient, defaultGrid));
-    }, [coefficient, rule]);
+    }, [coefficient, rule, defaultGrid]);
 
     const onCellClick = (x: number, y: number) => {
         cellsToProcess.includes(defaultGrid[y][x]) && setActiveCell({ x, y });
@@ -46,7 +46,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                 activeCell.y,
                 coefficient
             ),
-        [activeCell]
+        [activeCell, slicedGrid]
     );
     const averageSteps = useMemo(() => size(group.description), [group]);
 
@@ -55,7 +55,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
             group.description[averageSteps - 1].neighbours,
             (neighbour) => neighbour.position
         );
-    }, [group]);
+    }, [group, averageSteps]);
 
     return (
         <>

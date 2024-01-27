@@ -46,7 +46,7 @@ export const Contact = ({}: ContactProps) => {
                     </IconButton>
                 </a>
                 <a
-                    href="https://www.linkedin.com/in/marketahornerova/"
+                    href="https://www.linkedin.com/in/marketahajkova/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

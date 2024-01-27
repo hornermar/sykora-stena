@@ -42,7 +42,7 @@ export const Structure = ({
     useEffect(() => {
         const newCellSize = getCellSize();
         setCellSize(Math.floor(newCellSize));
-    }, [grid]);
+    }, []);
 
     return (
         <Stack
