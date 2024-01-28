@@ -1,9 +1,4 @@
 "use client";
-import { IconButton } from "@mui/material";
-import Image from "next/image";
-import github from "../../../public/github.svg";
-import instagram from "../../../public/instagram.svg";
-import linkedIn from "../../../public/linkedin-in.svg";
 import { Card } from "../Card";
 
 type ContactProps = {};
@@ -15,9 +10,13 @@ export const Contact = ({}: ContactProps) => {
         <>
             <Card
                 color="black"
-                sx={{ color: "white", fontSize: "14px", fontWeight: 300 }}
+                sx={{ color: "white", fontSize: "10px", fontWeight: 300 }}
             >
-                <a
+                <p>
+                    Veškeré struktury na této stránce jsou vygenerované pomocí
+                    rekonstruovaného algoritmu.
+                </p>
+                {/* <a
                     href="https://www.instagram.com/marketa_hajek/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -30,35 +29,8 @@ export const Contact = ({}: ContactProps) => {
                             alt={"arrow to the top icon"}
                         />
                     </IconButton>
-                </a>
-                <a
-                    href="https://github.com/hornermar/sykora-stena"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <IconButton size="large">
-                        <Image
-                            src={github}
-                            width={20}
-                            height={20}
-                            alt={"arrow to the top icon"}
-                        />
-                    </IconButton>
-                </a>
-                <a
-                    href="https://www.linkedin.com/in/marketahajkova/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <IconButton size="large">
-                        <Image
-                            src={linkedIn}
-                            width={20}
-                            height={20}
-                            alt={"arrow to the top icon"}
-                        />
-                    </IconButton>
-                </a>
+                </a> */}
+
                 {/* <p>Email: hornerova.m@gmail.com</p> */}
             </Card>
         </>
