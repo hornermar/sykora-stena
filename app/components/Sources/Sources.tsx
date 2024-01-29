@@ -17,12 +17,12 @@ export const Sources = ({}: SourcesProps) => {
                 >
                     <li style={{ paddingBottom: "10px" }}>
                         SÝKORA, Zdeněk, KAPPEL Pavel. Zdeněk Sýkora 90. Prague:
-                        Verzone, 2010. ISBN 978- 80-904546-1-3.
+                        Verzone, 2010. ISBN 978- 80-904546-1-3, s. 64-65
                     </li>
                     <li>
                         SÝKORA, Zdeněk, BLAŽEK Jaroslav. Computer aided Multi
                         element Geometrical Abstract Paintings. Leonardo. 1970,
-                        roč. 3, s. 409
+                        roč. 3, s. 409-413
                     </li>
                 </ol>
             </Card>

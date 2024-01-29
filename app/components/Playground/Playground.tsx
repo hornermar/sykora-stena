@@ -134,7 +134,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                     {map(rulesItems, (rule: Rule) => (
                         <Stack key={rule.code}>
                             <Chip
-                                label={rule.text}
+                                label={`${rule.code}: ${rule.text}`}
                                 onClick={() =>
                                     setForm((prev) => ({
                                         ...prev,

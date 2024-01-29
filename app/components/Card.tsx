@@ -9,20 +9,19 @@ const StyledCard = styled(MuiCard)((props) => ({
     backgroundColor: props.color,
     fontSize: "16px",
     borderRadius: "0",
+    width: "100%",
 }));
 
 export function Card({
     heading,
     color,
     children,
-    width,
     button,
     sx,
 }: {
     heading?: string;
     color?: string;
     children?: React.ReactNode;
-    width?: string;
     button?: React.ReactNode;
     sx?: SxProps;
 }) {

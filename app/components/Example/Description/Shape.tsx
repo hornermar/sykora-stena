@@ -61,7 +61,7 @@ export const ExampleDescriptionShape = ({
         <>
             <Collapse in={expanded}>
                 <p>
-                    Při výpočtu zkoumá sousední prvky (dotýkající se poue
+                    Při výpočtu zkoumá sousední elementy (dotýkající se poue
                     stranou stranou) a jejich vlastnosti. Ty jsou barva (černá /
                     bílá) a tvar na sousedící straně (ano / ne).
                 </p>

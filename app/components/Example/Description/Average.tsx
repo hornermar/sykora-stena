@@ -34,7 +34,7 @@ export const ExampleDescriptionAverage = ({
             {(cellContent === "+" || cellContent === "-") && (
                 <>
                     <p>
-                        V případě, že se v prvku nachází + nebo -, přičte nebo
+                        V případě, že se v buňce nachází + nebo -, přičte nebo
                         odečte od průměru předem daný koeficient. Zde je
                         znaménko {cellContent} , od průměru je proto potřeba{" "}
                         {cellContent === "+" ? "přičíst" : "odečíst"} předem

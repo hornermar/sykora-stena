@@ -32,8 +32,9 @@ export const ExampleDescriptionGroup = ({
         <>
             <Collapse in={expanded}>
                 <p>
-                    Při výpočtu zkoumá sousední prvky (dotýkající se stranou i
-                    rohy) a spočítá průměr ze skupin, do kterých patří.
+                    Při zjišťování skupiny zkoumá algoritmus sousední elementy
+                    (dotýkající se stranou i rohy) a spočítá průměr ze skupin,
+                    do kterých patří.
                 </p>
 
                 {steps === 1 ? (

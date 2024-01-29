@@ -16,14 +16,14 @@ export const selectElement = (
             // if there is only one element based on color
             return {
                 result: elementsBasedOnColor[0],
-                reason: "neexistuje prvek, který odpovídá tvarem a zároveň jen jeden prvek, který odpovídá barvou, je zvolen ten",
+                reason: "existuje pouze jeden element, který odpovídá barvou, je zvolen ten",
                 finalOptions: elementsBasedOnColor,
             };
         } else {
             // else return a random element based on color
             return {
                 result: getRandomItem(elementsBasedOnColor),
-                reason: "neexistuje prvek, který odpovídá tvarem a zároveň více prvků, které odpovídají barvou, je zvolen jeden z nich náhodně",
+                reason: "existuje více elementů, které odpovídají barvou, ale žádný z nich neodpovídá tvarem, je náhodně vybrán jeden z těch, které odpovídají alespoň barvou",
                 finalOptions: elementsBasedOnColor,
             };
         }
@@ -33,14 +33,14 @@ export const selectElement = (
             // if there is only one element based on shape
             return {
                 result: elementsBasedOnShape[0],
-                reason: "existuje pouze jeden prvek, který odpovídá barvou i tvarem, je zvolen ten",
+                reason: "existuje pouze jeden element, který odpovídá barvou a zároveň tvarem, je zvolen ten",
                 finalOptions: elementsBasedOnShape,
             };
         } else {
             // else return a random element based on shape
             return {
                 result: getRandomItem(elementsBasedOnShape),
-                reason: "existuje více prvků, které odpovídají barvou i tvarem, je vybrán náhodně jeden z nich",
+                reason: "existuje více elementů, které odpovídají barvou i tvarem, je vybrán náhodně jeden z nich",
                 finalOptions: elementsBasedOnShape,
             };
         }
@@ -48,7 +48,7 @@ export const selectElement = (
         // else return a random element with selected density
         return {
             result: getRandomItem(options),
-            reason: "neodpovídá žádný prvek, je vybrán náhodný prvek z dané skupiny",
+            reason: "neodpovídá žádný element, je vybrán náhodný element z dané skupiny",
             finalOptions: options,
         };
     }

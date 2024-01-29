@@ -95,20 +95,20 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                         V roce 1961 začal Zdeněk Sýkora vytvářet obrazy
                         gemetrického abstraktního typu. Jejich kompozice byla
                         výsledkem opakovaného použití jednoho nebo více
-                        základních prvků. Tyto prvky se vyznačovaly tvarem
+                        základních elementů. Tyto elementy se vyznačovaly tvarem
                         (čtvercovým nebo obdélníkovým) a specifickými
                         geometrickými vzory uvnitř.
                     </p>
                     <p>
                         Při zvažování dalších pravidel pro tvorbu kompozic z
-                        daných prvků si ale uvědomil, že člověk naráží na
+                        daných elementů si ale uvědomil, že člověk naráží na
                         kompinatorické složitosti, které lze snadněji vyřešit
                         pomocí počítače.
                     </p>
                     <p>
                         Obrátil se proto na matematika Jaroslava Blažka, se
-                        kterým připravili program, který počítal prvky v obraze
-                        předem zadaných pravidel. Jak algoritmus fungoval
+                        kterým připravili program, který počítal elementy v
+                        obraze předem zadaných pravidel. Jak algoritmus fungoval
                         popsali v článku Computer-aided multielement geometrical
                         abstract paintings v časopise Leonardo z roku 1970.
                     </p>
