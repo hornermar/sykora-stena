@@ -35,7 +35,7 @@ export const FrontPage = ({ color }: FrontPageProps) => {
 
     const grid = useMemo(() => {
         return getElements(rule, coefficient, emptyGrid);
-    }, [rule, coefficient, emptyGrid]);
+    }, [rule, coefficient]);
 
     const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");

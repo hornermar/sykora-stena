@@ -7,7 +7,11 @@ import { find, map } from "lodash";
 import { memo, useMemo } from "react";
 import { ExampleGrid } from "../../ExampleGrid";
 
-const LabelForSide = memo(({ side }: { side?: NeighbourItem }) => {
+const LabelForSide = memo(function LabelForSide({
+    side,
+}: {
+    side?: NeighbourItem;
+}) {
     return side ? (
         <Box
             sx={{

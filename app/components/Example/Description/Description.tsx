@@ -42,7 +42,7 @@ export const ExampleDescription = ({
 
     const shape = useMemo(
         () => getShape(grid, cell.x, cell.y, group.result, rule),
-        [grid]
+        [grid, cell, group.result, rule]
     );
 
     const cellContent = useMemo(

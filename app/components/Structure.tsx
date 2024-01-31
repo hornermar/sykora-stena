@@ -142,65 +142,63 @@ export type StructureProps = {
     color?: string;
 };
 
-export const Structure = memo(
-    ({
-        grid,
-        defaultGrid,
-        cellType,
-        sx,
-        onCellClick,
-        activeCell,
-        activeNeighbours,
-        color,
-    }: StructureProps) => {
-        const [cellSize, setCellSize] = useState(0);
-        const ref = useRef<HTMLDivElement | null>(null);
+export const Structure = memo(function Structure({
+    grid,
+    defaultGrid,
+    cellType,
+    sx,
+    onCellClick,
+    activeCell,
+    activeNeighbours,
+    color,
+}: StructureProps) {
+    const [cellSize, setCellSize] = useState(0);
+    const ref = useRef<HTMLDivElement | null>(null);
 
-        const rowsCount = size(grid);
-        const columnsCount = Math.max(...map(grid, (row) => size(row)));
+    const rowsCount = size(grid);
+    const columnsCount = Math.max(...map(grid, (row) => size(row)));
 
-        const getCellSize = useCallback(() => {
-            if (!ref.current) return 0;
+    const getCellSize = useCallback(() => {
+        if (!ref.current) return 0;
 
-            const gridWidth = columnsCount;
-            return ref.current.clientWidth / gridWidth;
-        }, [columnsCount]);
+        const gridWidth = columnsCount;
+        return ref.current.clientWidth / gridWidth;
+    }, [columnsCount]);
 
-        useEffect(() => {
-            const newCellSize = getCellSize();
-            setCellSize(Math.floor(newCellSize));
-        }, [getCellSize]);
+    useEffect(() => {
+        const newCellSize = getCellSize();
+        setCellSize(Math.floor(newCellSize));
+    }, [getCellSize]);
 
-        const handleCellClick = useCallback(
-            (x: number, y: number) => {
-                if (onCellClick) {
-                    onCellClick(x, y);
-                }
-            },
-            [onCellClick]
-        );
+    const handleCellClick = useCallback(
+        (x: number, y: number) => {
+            if (onCellClick) {
+                onCellClick(x, y);
+            }
+        },
+        [onCellClick]
+    );
 
-        return (
-            <Stack
-                flexDirection="column"
-                width="100%"
-                alignItems="center"
-                sx={{ margin: "0 auto", ...sx }}
-                ref={ref}
-            >
-                {cellSize > 0 && (
-                    <StructureGrid
-                        grid={grid}
-                        cellSize={cellSize}
-                        cellType={cellType}
-                        defaultGrid={defaultGrid}
-                        activeNeighbours={activeNeighbours}
-                        activeCell={activeCell}
-                        handleCellClick={handleCellClick}
-                        color={color}
-                    />
-                )}
-            </Stack>
-        );
-    }
-);
+    return (
+        <Stack
+            flexDirection="column"
+            width="100%"
+            alignItems="center"
+            sx={{ margin: "0 auto", ...sx }}
+            ref={ref}
+        >
+            {cellSize > 0 && (
+                <StructureGrid
+                    grid={grid}
+                    cellSize={cellSize}
+                    cellType={cellType}
+                    defaultGrid={defaultGrid}
+                    activeNeighbours={activeNeighbours}
+                    activeCell={activeCell}
+                    handleCellClick={handleCellClick}
+                    color={color}
+                />
+            )}
+        </Stack>
+    );
+});
