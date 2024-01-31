@@ -9,8 +9,8 @@ import { useMemo, useState } from "react";
 import { Card } from "../Card";
 import { InputsLabel } from "../InputsLabel";
 import { SectionTitle } from "../SectionTitle";
-import { Structure } from "../Structure";
-import { ToggleButtonGroup } from "../ToggleButtonGroup";
+import { Structure } from "../Structure/Structure";
+import { GridSwitch } from "../Switch";
 import { ExampleDescription } from "./Description/Description";
 
 type ExampleProps = {
@@ -25,7 +25,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     const rule: number = 0;
 
     const grid = useMemo(
-        () => getElements(rule, coefficient, defaultGrid),
+        () => getElements(0, 0.8, defaultGrid),
         [rule, coefficient, defaultGrid]
     );
 
@@ -92,19 +92,9 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                     zleva doprava v lichých řadách a zprava doleva v sudých.
                 </p>
                 <Stack flexDirection="row" justifyContent="flex-end">
-                    <ToggleButtonGroup
-                        value={displayText}
-                        onChange={(newValue) => setDisplayText(newValue)}
-                        buttons={[
-                            {
-                                label: "Text",
-                                value: true,
-                            },
-                            {
-                                label: "Obraz",
-                                value: false,
-                            },
-                        ]}
+                    <GridSwitch
+                        checked={!displayText}
+                        onChange={() => setDisplayText((prev) => !prev)}
                     />
                 </Stack>
             </Card>

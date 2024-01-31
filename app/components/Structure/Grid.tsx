@@ -1,16 +1,9 @@
-import { Stack } from "@mui/material";
-import { map, size } from "lodash";
+import { Box } from "@mui/material";
+import { map } from "lodash";
 import Image from "next/image";
-import {
-    CSSProperties,
-    memo,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
-import { Cell } from "../types/General";
-import { getElementImage } from "../utils/getElementImages";
+import { memo } from "react";
+import { Cell } from "../../types/General";
+import { getElementImage } from "../../utils/getElementImages";
 
 type StructureGridProps = {
     grid: string[][];
@@ -23,7 +16,7 @@ type StructureGridProps = {
     color?: string;
 };
 
-const StructureGrid = ({
+export const StructureGrid = memo(function StructureGrid({
     cellSize,
     cellType,
     defaultGrid,
@@ -32,13 +25,13 @@ const StructureGrid = ({
     handleCellClick,
     color,
     grid,
-}: StructureGridProps) => {
+}: StructureGridProps) {
     return (
         <>
             {map(grid, (row, y) => (
-                <div
+                <Box
                     key={y}
-                    style={{
+                    sx={{
                         display: "flex",
                         flexDirection: "row",
                         height: `${cellSize}px`,
@@ -63,11 +56,11 @@ const StructureGrid = ({
                             );
 
                         return (
-                            <div
+                            <Box
                                 key={`${x}${y}`}
                                 className={`element-${x}${y}`}
                                 onClick={() => handleCellClick(x, y)}
-                                style={{
+                                sx={{
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
@@ -122,83 +115,11 @@ const StructureGrid = ({
                                             <b>{cell}</b>
                                         </span>
                                     ))}
-                            </div>
+                            </Box>
                         );
                     })}
-                </div>
+                </Box>
             ))}
         </>
-    );
-};
-
-export type StructureProps = {
-    grid: string[][];
-    defaultGrid?: string[][];
-    cellType?: "image" | "text";
-    sx?: CSSProperties;
-    onCellClick?: (x: number, y: number) => void;
-    activeCell?: Cell;
-    activeNeighbours?: Cell[];
-    color?: string;
-};
-
-export const Structure = memo(function Structure({
-    grid,
-    defaultGrid,
-    cellType,
-    sx,
-    onCellClick,
-    activeCell,
-    activeNeighbours,
-    color,
-}: StructureProps) {
-    const [cellSize, setCellSize] = useState(0);
-    const ref = useRef<HTMLDivElement | null>(null);
-
-    const rowsCount = size(grid);
-    const columnsCount = Math.max(...map(grid, (row) => size(row)));
-
-    const getCellSize = useCallback(() => {
-        if (!ref.current) return 0;
-
-        const gridWidth = columnsCount;
-        return ref.current.clientWidth / gridWidth;
-    }, [columnsCount]);
-
-    useEffect(() => {
-        const newCellSize = getCellSize();
-        setCellSize(Math.floor(newCellSize));
-    }, [getCellSize]);
-
-    const handleCellClick = useCallback(
-        (x: number, y: number) => {
-            if (onCellClick) {
-                onCellClick(x, y);
-            }
-        },
-        [onCellClick]
-    );
-
-    return (
-        <Stack
-            flexDirection="column"
-            width="100%"
-            alignItems="center"
-            sx={{ margin: "0 auto", ...sx }}
-            ref={ref}
-        >
-            {cellSize > 0 && (
-                <StructureGrid
-                    grid={grid}
-                    cellSize={cellSize}
-                    cellType={cellType}
-                    defaultGrid={defaultGrid}
-                    activeNeighbours={activeNeighbours}
-                    activeCell={activeCell}
-                    handleCellClick={handleCellClick}
-                    color={color}
-                />
-            )}
-        </Stack>
     );
 });

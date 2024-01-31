@@ -2,10 +2,8 @@ import { Chip as MuiChip, SxProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const StyledChip = styled(MuiChip)((props) => ({
-    border: "1px solid black",
-    backgroundColor:
-        props.variant === "filled" ? "black !important" : "white !important",
-    color: props.variant === "filled" ? "white !important" : "black !important",
+    border: props.variant === "filled" ? "2px solid black" : "2px solid white",
+    backgroundColor: "white",
     fontSize: "12px",
     fontWeight: "400",
     borderRadius: "40px",
@@ -13,13 +11,13 @@ const StyledChip = styled(MuiChip)((props) => ({
     height: "auto",
     "&:active": {
         boxShadow: "none",
-        backgroundColor: "black !important",
+        backgroundColor: "white",
     },
     "&:focus": {
-        backgroundColor: "black !important",
+        backgroundColor: "white",
     },
     "&:hover": {
-        backgroundColor: "black !important",
+        backgroundColor: "white",
     },
     "&.MuiButtonBase-root": {
         marginBottom: "4px",

@@ -1,4 +1,5 @@
 import { Switch as MuiSwitch, SxProps, styled } from "@mui/material";
+import { memo } from "react";
 
 const StyledSwitch = styled(MuiSwitch)((props) => ({
     width: 62,
@@ -39,17 +40,28 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
     },
 }));
 
+const MemoizedStyledSwitch = memo(StyledSwitch);
+
 type SwitchProps = {
     onChange: () => void;
     checked: boolean;
     sx?: SxProps;
 };
 
-export const Switch = ({ onChange, checked, sx }: SwitchProps) => {
-    return <StyledSwitch checked={checked} onChange={onChange} sx={sx} />;
-};
+export const Switch = memo(function Switch({
+    onChange,
+    checked,
+    sx,
+}: SwitchProps) {
+    return (
+        <MemoizedStyledSwitch checked={checked} onChange={onChange} sx={sx} />
+    );
+});
 
-export const GridSwitch = ({ onChange, checked }: SwitchProps) => {
+export const GridSwitch = memo(function GridSwitch({
+    onChange,
+    checked,
+}: SwitchProps) {
     return (
         <Switch
             checked={checked}
@@ -70,8 +82,11 @@ export const GridSwitch = ({ onChange, checked }: SwitchProps) => {
             }}
         />
     );
-};
+});
 
-export const OnOffSwitch = ({ onChange, checked }: SwitchProps) => {
+export const OnOffSwitch = memo(function OnOffSwitch({
+    onChange,
+    checked,
+}: SwitchProps) {
     return <Switch checked={checked} onChange={onChange} sx={{}} />;
-};
+});

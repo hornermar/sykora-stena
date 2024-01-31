@@ -1,5 +1,5 @@
 "use client";
-import { Stack, SvgIcon, Typography } from "@mui/material";
+import { Box, Stack, SvgIcon, Typography } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
 import { getElements } from "../utils/getElements";
 import { getRandomCoefficient } from "../utils/getRandomCoefficient";
@@ -7,8 +7,8 @@ import { getRandomRule } from "../utils/getRandomRule copy";
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { InputsLabel } from "./InputsLabel";
-import { Structure } from "./Structure";
-import { ToggleButtonGroup } from "./ToggleButtonGroup";
+import { Structure } from "./Structure/Structure";
+import { GridSwitch } from "./Switch";
 
 const emptyGrid = [
     ["-", "-", "-", "0", "3r", "1r"],
@@ -67,25 +67,9 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                 </Typography>
 
                 <Stack flexDirection="row" justifyContent="flex-end">
-                    {/* <GridSwitch
+                    <GridSwitch
                         checked={!displayEmptyGrid}
                         onChange={() => setDisplayEmptyGrid((prev) => !prev)}
-                    /> */}
-                    <ToggleButtonGroup
-                        value={displayEmptyGrid}
-                        onChange={(newValue: boolean) =>
-                            setDisplayEmptyGrid(newValue)
-                        }
-                        buttons={[
-                            {
-                                label: "Zadání",
-                                value: true,
-                            },
-                            {
-                                label: "Výsledek",
-                                value: false,
-                            },
-                        ]}
                     />
                 </Stack>
             </Card>
@@ -141,7 +125,7 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                         přepůlena a smaží se před ní nudle.
                     </p>
 
-                    <div style={{ paddingTop: "10px" }}>
+                    <Box sx={{ paddingTop: "10px" }}>
                         <Button
                             onClick={() => scrollToPlayground()}
                             endIcon={
@@ -162,7 +146,7 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                         >
                             Rovnou vyzkoušet
                         </Button>
-                    </div>
+                    </Box>
                 </div>
             </Card>
         </>

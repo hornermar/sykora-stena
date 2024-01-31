@@ -1,4 +1,5 @@
 import { Stack } from "@mui/material";
+import { memo } from "react";
 
 type InputLabelProps = {
     coefficient: number;
@@ -6,11 +7,11 @@ type InputLabelProps = {
     display: boolean;
 };
 
-export const InputsLabel = ({
+export const InputsLabel = memo(function InputsLabel({
     coefficient,
     rule,
     display,
-}: InputLabelProps) => {
+}: InputLabelProps) {
     return (
         display && (
             <Stack
@@ -33,4 +34,4 @@ export const InputsLabel = ({
             </Stack>
         )
     );
-};
+});

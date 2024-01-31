@@ -103,17 +103,26 @@ export default function HomePage() {
             )}
 
             <Section id="frontpage">
-                <FrontPage color="#F4DF4EFF" />
+                <FrontPage color="rgb(224, 217, 211)" />
             </Section>
 
             <Section>
-                <ArtistInputs grid={gridForExample} color="#D6D6D6" />
+                <ArtistInputs
+                    grid={gridForExample}
+                    color="rgb(224, 217, 211)"
+                />
             </Section>
             <Section>
-                <Example defaultGrid={gridForExample} color="#F4DF4EFF" />
+                <Example
+                    defaultGrid={gridForExample}
+                    color="rgb(224, 217, 211)"
+                />
             </Section>
             <Section id="playground">
-                <Playground defaultGrid={gridForExample} color="#D6D6D6" />
+                <Playground
+                    defaultGrid={gridForExample}
+                    color="rgb(224, 217, 211)"
+                />
             </Section>
             <Section>
                 <Sources />

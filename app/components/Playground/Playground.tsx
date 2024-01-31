@@ -3,13 +3,13 @@ import { rulesItems } from "@/app/lib/formItems";
 import { getElements } from "@/app/utils/getElements";
 import { Stack, Typography } from "@mui/material";
 import { map } from "lodash";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Rule } from "../../types/Rule";
 import { Card } from "../Card";
 import { Chip } from "../Chip";
 import { SectionTitle } from "../SectionTitle";
 import { Slider } from "../Slider";
-import { Structure } from "../Structure";
+import { Structure } from "../Structure/Structure";
 import { ToggleButtonGroup } from "../ToggleButtonGroup";
 
 type PlaygroundProps = {
@@ -38,6 +38,23 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
             )
         );
     }, [form.coefficient, form.rule, form.isRandom, defaultGrid]);
+
+    const handleCoefficientChange = useCallback(
+        (e: Event, newValue: number | number[]) => {
+            setForm((prev) => ({
+                ...prev,
+                coefficient: newValue as number,
+            }));
+        },
+        []
+    );
+
+    const handleRuleChange = useCallback((ruleCode: number) => {
+        setForm((prev) => ({
+            ...prev,
+            rule: ruleCode,
+        }));
+    }, []);
 
     return (
         <>
@@ -133,12 +150,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         min={0.01}
                         max={3.99}
                         disabled={form.isRandom}
-                        onChange={(e: Event, newValue: number | number[]) =>
-                            setForm((prev) => ({
-                                ...prev,
-                                coefficient: newValue as number,
-                            }))
-                        }
+                        onChange={handleCoefficientChange}
                     />
                 </Stack>
 
@@ -150,12 +162,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         <Stack key={rule.code}>
                             <Chip
                                 label={`${rule.code}:\u00A0${rule.text}`}
-                                onClick={() =>
-                                    setForm((prev) => ({
-                                        ...prev,
-                                        rule: rule.code,
-                                    }))
-                                }
+                                onClick={() => handleRuleChange(rule.code)}
                                 selected={form.rule === rule.code}
                                 disabled={form.isRandom}
                             />

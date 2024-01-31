@@ -1,8 +1,8 @@
 import { Stack } from "@mui/material";
 import { useState } from "react";
 import { Card } from "../Card";
-import { Structure } from "../Structure";
-import { ToggleButtonGroup } from "../ToggleButtonGroup";
+import { Structure } from "../Structure/Structure";
+import { GridSwitch } from "../Switch";
 
 type ArtistInputsDiagramProps = {
     grid: string[][];
@@ -23,23 +23,9 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
                 </p>
                 <p style={{ marginBottom: 0 }}>Takhle mohl diagram vypadat</p>
                 <Stack flexDirection="row" justifyContent="flex-end">
-                    {/* <GridSwitch
+                    <GridSwitch
                         checked={displayText}
                         onChange={() => setDisplayText((prev) => !prev)}
-                    /> */}
-                    <ToggleButtonGroup
-                        value={displayText}
-                        onChange={(newValue) => setDisplayText(newValue)}
-                        buttons={[
-                            {
-                                label: "Text",
-                                value: true,
-                            },
-                            {
-                                label: "Obraz",
-                                value: false,
-                            },
-                        ]}
                     />
                 </Stack>
             </Card>

@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { Rule } from "../../types/Rule";
-import { Structure } from "../Structure";
+import { Structure } from "../Structure/Structure";
 
 type RuleExampleProps = {
     rule: Rule;

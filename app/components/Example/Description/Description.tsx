@@ -1,7 +1,7 @@
 import { Density } from "@/app/types/Density";
 import { Cell } from "@/app/types/General";
 import { getShape } from "@/app/utils/getShape";
-import { useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import { Card } from "../../Card";
 import { ExampleDescriptionGroup } from "./Group";
 import { ExampleDescriptionShape } from "./Shape";
@@ -29,14 +29,14 @@ const ExpandButton = ({
     );
 };
 
-export const ExampleDescription = ({
+export const ExampleDescription = memo(function ExampleDescription({
     grid,
     cell,
     rule,
     coefficient,
     defaultGrid,
     group,
-}: ExampleDesriptionsProps) => {
+}: ExampleDesriptionsProps) {
     const [groupExpanded, setGroupExpanded] = useState(true);
     const [shapeExpanded, setShapeExpanded] = useState(true);
 
@@ -94,4 +94,4 @@ export const ExampleDescription = ({
             </Card>
         </>
     );
-};
+});
