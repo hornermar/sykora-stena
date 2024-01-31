@@ -5,12 +5,12 @@ import { getElements } from "@/app/utils/getElements";
 import { getSlicedGrid } from "@/app/utils/getSlicedGrid";
 import { Stack } from "@mui/material";
 import { map, size } from "lodash";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Card } from "../Card";
 import { InputsLabel } from "../InputsLabel";
 import { SectionTitle } from "../SectionTitle";
 import { Structure } from "../Structure";
-import { Switch } from "../Switch";
+import { ToggleButtonGroup } from "../ToggleButtonGroup";
 import { ExampleDescription } from "./Description/Description";
 
 type ExampleProps = {
@@ -21,22 +21,25 @@ type ExampleProps = {
 export const cellsToProcess = ["0", "+", "-"];
 
 export const Example = ({ defaultGrid, color }: ExampleProps) => {
-    const [grid, setGrid] = useState<string[][]>(defaultGrid);
-    const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
-    const [displayText, setDisplayText] = useState(true);
-
     const coefficient: number = 0.8;
     const rule: number = 0;
 
-    useEffect(() => {
-        setGrid(getElements(rule, coefficient, defaultGrid));
-    }, [coefficient, rule, defaultGrid]);
+    const grid = useMemo(
+        () => getElements(rule, coefficient, defaultGrid),
+        [rule, coefficient, defaultGrid]
+    );
+
+    const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
+    const [displayText, setDisplayText] = useState(true);
 
     const onCellClick = (x: number, y: number) => {
         cellsToProcess.includes(defaultGrid[y][x]) && setActiveCell({ x, y });
     };
 
-    const slicedGrid = getSlicedGrid(grid, defaultGrid, activeCell);
+    const slicedGrid = useMemo(
+        () => getSlicedGrid(grid, defaultGrid, activeCell),
+        [grid, defaultGrid, activeCell]
+    );
 
     const group = useMemo(
         () =>
@@ -46,16 +49,19 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                 activeCell.y,
                 coefficient
             ),
-        [activeCell, slicedGrid]
+        [slicedGrid, activeCell, coefficient]
     );
+
     const averageSteps = useMemo(() => size(group.description), [group]);
 
-    const activeNeighbours = useMemo(() => {
-        return map(
-            group.description[averageSteps - 1].neighbours,
-            (neighbour) => neighbour.position
-        );
-    }, [group, averageSteps]);
+    const activeNeighbours = useMemo(
+        () =>
+            map(
+                group.description[averageSteps - 1].neighbours,
+                (neighbour) => neighbour.position
+            ),
+        [group, averageSteps]
+    );
 
     return (
         <>
@@ -86,9 +92,19 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                     zleva doprava v lichých řadách a zprava doleva v sudých.
                 </p>
                 <Stack flexDirection="row" justifyContent="flex-end">
-                    <Switch
-                        checked={!displayText}
-                        onChange={() => setDisplayText((prev) => !prev)}
+                    <ToggleButtonGroup
+                        value={displayText}
+                        onChange={(newValue) => setDisplayText(newValue)}
+                        buttons={[
+                            {
+                                label: "Text",
+                                value: true,
+                            },
+                            {
+                                label: "Obraz",
+                                value: false,
+                            },
+                        ]}
                     />
                 </Stack>
             </Card>

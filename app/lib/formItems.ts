@@ -23,7 +23,7 @@ export const rulesItems: Rule[] = [
         example: [["3y", "4z", "1d"]],
     },
     {
-        text: "Elementy\u00A0nenavazují\u00A0barvami, elementy nenavazují tvary",
+        text: "Elementy\u00A0nenavazují\u00A0barvami, elementy\u00A0nenavazují\u00A0tvary",
         code: 3,
         colorContinue: false,
         shapeContinue: false,

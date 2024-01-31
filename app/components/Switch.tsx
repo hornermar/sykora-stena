@@ -1,4 +1,4 @@
-import { Switch as MuiSwitch, styled } from "@mui/material";
+import { Switch as MuiSwitch, SxProps, styled } from "@mui/material";
 
 const StyledSwitch = styled(MuiSwitch)((props) => ({
     width: 62,
@@ -11,9 +11,6 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
         "&.Mui-checked": {
             color: "#fff",
             transform: "translateX(22px)",
-            "& .MuiSwitch-thumb:before": {
-                backgroundImage: `url('/border-all-solid.svg')`,
-            },
             "& + .MuiSwitch-track": {
                 opacity: 1,
                 backgroundColor: "#8796A5",
@@ -33,7 +30,6 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
             top: 0,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            backgroundImage: `url('/square-regular.svg')`,
         },
     },
     "& .MuiSwitch-track": {
@@ -46,8 +42,36 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
 type SwitchProps = {
     onChange: () => void;
     checked: boolean;
+    sx?: SxProps;
 };
 
-export const Switch = ({ onChange, checked }: SwitchProps) => {
-    return <StyledSwitch checked={checked} onChange={onChange} />;
+export const Switch = ({ onChange, checked, sx }: SwitchProps) => {
+    return <StyledSwitch checked={checked} onChange={onChange} sx={sx} />;
+};
+
+export const GridSwitch = ({ onChange, checked }: SwitchProps) => {
+    return (
+        <Switch
+            checked={checked}
+            onChange={onChange}
+            sx={{
+                "& .MuiSwitch-switchBase": {
+                    "&.Mui-checked": {
+                        "& .MuiSwitch-thumb:before": {
+                            backgroundImage: `url('/border-all-solid.svg')`,
+                        },
+                    },
+                },
+                "& .MuiSwitch-thumb": {
+                    "&::before": {
+                        backgroundImage: `url('/square-regular.svg')`,
+                    },
+                },
+            }}
+        />
+    );
+};
+
+export const OnOffSwitch = ({ onChange, checked }: SwitchProps) => {
+    return <Switch checked={checked} onChange={onChange} sx={{}} />;
 };

@@ -1,18 +1,6 @@
 "use client";
-import {
-    Button,
-    Divider,
-    IconButton,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-} from "@mui/material";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Image from "next/image";
 import * as React from "react";
-import barsIcon from "../public/bars-solid.svg";
 import ThemeRegistry from "./components/ThemeRegistry/ThemeRegistry";
 
 type Props = {
@@ -20,34 +8,34 @@ type Props = {
     children: React.ReactNode;
 };
 
-const drawerWidth = 240;
-const navItems = ["Vyzkoušet", "Kontakt"];
+// const drawerWidth = 240;
+// const navItems = ["Vyzkoušet", "Kontakt"];
 
 export default function RootLayout(props: Props) {
     // const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    // const [mobileOpen, setMobileOpen] = React.useState(false);
 
-    const handleDrawerToggle = () => {
-        setMobileOpen((prevState) => !prevState);
-    };
+    // const handleDrawerToggle = () => {
+    //     setMobileOpen((prevState) => !prevState);
+    // };
 
-    const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-            <Typography variant="h6" sx={{ my: 2 }}>
-                Něco
-            </Typography>
-            <Divider />
-            <List>
-                {navItems.map((item) => (
-                    <ListItem key={item} disablePadding>
-                        <ListItemButton sx={{ textAlign: "center" }}>
-                            <ListItemText primary={item} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </Box>
-    );
+    // const drawer = (
+    //     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    //         <Typography variant="h6" sx={{ my: 2 }}>
+    //             Něco
+    //         </Typography>
+    //         <Divider />
+    //         <List>
+    //             {navItems.map((item) => (
+    //                 <ListItem key={item} disablePadding>
+    //                     <ListItemButton sx={{ textAlign: "center" }}>
+    //                         <ListItemText primary={item} />
+    //                     </ListItemButton>
+    //                 </ListItem>
+    //             ))}
+    //         </List>
+    //     </Box>
+    // );
 
     // const container =
     //     window !== undefined ? () => window().document.body : undefined;
@@ -56,12 +44,12 @@ export default function RootLayout(props: Props) {
         <html lang="en">
             <body>
                 <ThemeRegistry>
-                    <Box
+                    {/* <Box
                         sx={{
                             display: "flex",
                         }}
-                    >
-                        {/* <IconButton
+                    > */}
+                    {/* <IconButton
                             color="inherit"
                             edge="start"
                             size="large"
@@ -75,7 +63,7 @@ export default function RootLayout(props: Props) {
                         >
                             J3
                         </IconButton> */}
-                        <div>
+                    {/* <div>
                             <IconButton
                                 color="inherit"
                                 size="large"
@@ -96,8 +84,8 @@ export default function RootLayout(props: Props) {
                                     alt={"rotate icon"}
                                 />
                             </IconButton>
-                        </div>
-                        <Typography
+                        </div> */}
+                    {/* <Typography
                             variant="h6"
                             component="div"
                             sx={{
@@ -106,8 +94,8 @@ export default function RootLayout(props: Props) {
                             }}
                         >
                             Něco
-                        </Typography>
-                        <Box
+                        </Typography> */}
+                    {/* <Box
                             sx={{
                                 display: { xs: "none", sm: "block" },
                             }}
@@ -117,9 +105,9 @@ export default function RootLayout(props: Props) {
                                     {item}
                                 </Button>
                             ))}
-                        </Box>
+                        </Box> */}
 
-                        {/* <nav>
+                    {/* <nav>
                             <Drawer
                                 container={container}
                                 anchor="right"
@@ -140,7 +128,7 @@ export default function RootLayout(props: Props) {
                                 {drawer}
                             </Drawer>
                         </nav> */}
-                    </Box>
+                    {/* </Box> */}
 
                     <Box
                         component="main"

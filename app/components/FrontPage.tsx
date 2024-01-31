@@ -1,12 +1,14 @@
 "use client";
 import { Stack, SvgIcon, Typography } from "@mui/material";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { getElements } from "../utils/getElements";
+import { getRandomCoefficient } from "../utils/getRandomCoefficient";
+import { getRandomRule } from "../utils/getRandomRule copy";
 import { Button } from "./Button";
 import { Card } from "./Card";
 import { InputsLabel } from "./InputsLabel";
 import { Structure } from "./Structure";
-import { Switch } from "./Switch";
+import { ToggleButtonGroup } from "./ToggleButtonGroup";
 
 const emptyGrid = [
     ["-", "-", "-", "0", "3r", "1r"],
@@ -28,20 +30,17 @@ type FrontPageProps = {
 export const FrontPage = ({ color }: FrontPageProps) => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
 
-    // const coefficient = useMemo(() => getRandomCoefficient(), []);
-    // const rule = useMemo(() => getRandomRule(), []);
-
-    const coefficient = 0.5;
-    const rule = 0;
+    const coefficient = useMemo(() => getRandomCoefficient(), []);
+    const rule = useMemo(() => getRandomRule(), []);
 
     const grid = useMemo(() => {
         return getElements(rule, coefficient, emptyGrid);
-    }, [rule, coefficient]);
+    }, [rule, coefficient, emptyGrid]);
 
-    const scrollToPlayground = () => {
+    const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");
         element?.scrollIntoView({ behavior: "smooth" });
-    };
+    }, []);
 
     return (
         <>
@@ -68,9 +67,25 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                 </Typography>
 
                 <Stack flexDirection="row" justifyContent="flex-end">
-                    <Switch
+                    {/* <GridSwitch
                         checked={!displayEmptyGrid}
                         onChange={() => setDisplayEmptyGrid((prev) => !prev)}
+                    /> */}
+                    <ToggleButtonGroup
+                        value={displayEmptyGrid}
+                        onChange={(newValue: boolean) =>
+                            setDisplayEmptyGrid(newValue)
+                        }
+                        buttons={[
+                            {
+                                label: "Zadání",
+                                value: true,
+                            },
+                            {
+                                label: "Výsledek",
+                                value: false,
+                            },
+                        ]}
                     />
                 </Stack>
             </Card>
@@ -111,6 +126,19 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                         obraze předem zadaných pravidel. Jak algoritmus fungoval
                         popsali v článku Computer-aided multielement geometrical
                         abstract paintings v časopise Leonardo z roku 1970.
+                    </p>
+                    <p>
+                        Jednu ze struktur najdete i v Praze na adrese{" "}
+                        <a
+                            href="https://maps.app.goo.gl/JE3JmM7rd2TKafbx7"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Jindřišká 832/3
+                        </a>
+                        . Původně se nacházela u vstupu do metra, v současné
+                        době je protor předělán na restauraci. Je ale necitlivě
+                        přepůlena a smaží se před ní nudle.
                     </p>
 
                     <div style={{ paddingTop: "10px" }}>

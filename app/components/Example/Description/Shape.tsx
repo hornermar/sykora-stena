@@ -4,10 +4,10 @@ import { Rule } from "@/app/types/Rule";
 import { Shape } from "@/app/types/Shape";
 import { Box, Collapse, Stack } from "@mui/material";
 import { find, map } from "lodash";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { ExampleGrid } from "../../ExampleGrid";
 
-const LabelForSide = ({ side }: { side?: NeighbourItem }) => {
+const LabelForSide = memo(({ side }: { side?: NeighbourItem }) => {
     return side ? (
         <Box
             sx={{
@@ -29,7 +29,7 @@ const LabelForSide = ({ side }: { side?: NeighbourItem }) => {
     ) : (
         <Box sx={{ width: "96px", height: "30px" }}></Box>
     );
-};
+});
 
 type ExampleDescriptionShapeProps = {
     rule: number;

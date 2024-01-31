@@ -10,7 +10,7 @@ import { Chip } from "../Chip";
 import { SectionTitle } from "../SectionTitle";
 import { Slider } from "../Slider";
 import { Structure } from "../Structure";
-import { Switch } from "../Switch";
+import { ToggleButtonGroup } from "../ToggleButtonGroup";
 
 type PlaygroundProps = {
     defaultGrid: string[][];
@@ -52,6 +52,13 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                     Tady si můžete vyzkoušet, jak jednotlivé parametry ovlivňují
                     výsledný obraz.
                 </p>
+                <p>
+                    Nenechte se ale zmást. V době, kdy Sýkora struktury
+                    vytvářel, byly pouze omezené počítačové možnosti. Počítač mu
+                    tak vyjel pouze seznam elementů, které kde jsou. On si pak
+                    pomocí vlastnoručn vyrobených razítek obraz převedl do
+                    výsledné podoby.
+                </p>
             </Card>
 
             <Card color={"white"}>
@@ -63,51 +70,59 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
             </Card>
 
             <Card color={color}>
-                <table style={{ width: "100%" }}>
-                    <colgroup>
-                        <col style={{ width: "33%" }} />
-                        <col style={{ width: "33%" }} />
-                        <col style={{ width: "33%" }} />
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>Diagram</td>
-                            <td>Text/obraz</td>
-                            <td>Algoritmus</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <Switch
-                                    checked={displayDefaultGrid}
-                                    onChange={() =>
-                                        setDisplayDefaultGrid((prev) => !prev)
-                                    }
-                                />
-                            </td>
-                            <td>
-                                <Switch
-                                    checked={!displayText}
-                                    onChange={() =>
-                                        setDisplayText((prev) => !prev)
-                                    }
-                                />
-                            </td>
-                            <td>
-                                <Switch
-                                    checked={!form.isRandom}
-                                    onChange={() =>
-                                        setForm((prev) => ({
-                                            ...prev,
-                                            isRandom: !prev.isRandom,
-                                        }))
-                                    }
-                                />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <Stack flexDirection="row" justifyContent="space-between">
+                    <ToggleButtonGroup
+                        value={displayDefaultGrid}
+                        onChange={(newValue) => setDisplayDefaultGrid(newValue)}
+                        buttons={[
+                            {
+                                label: "Zadání",
+                                value: true,
+                            },
+                            {
+                                label: "Výsledek",
+                                value: false,
+                            },
+                        ]}
+                    />
 
-                <Stack sx={{ marginTop: "25px" }}>
+                    <ToggleButtonGroup
+                        value={displayText}
+                        onChange={(newValue) => setDisplayText(newValue)}
+                        buttons={[
+                            {
+                                label: "Text",
+                                value: true,
+                            },
+                            {
+                                label: "Obraz",
+                                value: false,
+                            },
+                        ]}
+                    />
+
+                    <ToggleButtonGroup
+                        value={form.isRandom}
+                        onChange={(newValue) =>
+                            setForm((prev) => ({
+                                ...prev,
+                                isRandom: newValue,
+                            }))
+                        }
+                        buttons={[
+                            {
+                                label: "Random",
+                                value: true,
+                            },
+                            {
+                                label: "Algoritmus",
+                                value: false,
+                            },
+                        ]}
+                    />
+                </Stack>
+
+                <Stack sx={{ marginTop: "35px" }}>
                     <Typography sx={{ marginBottom: "-15px" }}>
                         Koeficient
                     </Typography>
@@ -134,7 +149,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                     {map(rulesItems, (rule: Rule) => (
                         <Stack key={rule.code}>
                             <Chip
-                                label={`${rule.code}: ${rule.text}`}
+                                label={`${rule.code}:\u00A0${rule.text}`}
                                 onClick={() =>
                                     setForm((prev) => ({
                                         ...prev,
@@ -147,6 +162,13 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         </Stack>
                     ))}
                 </Stack>
+            </Card>
+            <Card>
+                <p>
+                    V 70. letech od tvorby struktur Sýkora ustoupil a začal s
+                    liniemi, protože mu to přišlo příliš omezující. V liniích je
+                    totiž více náhody.
+                </p>
             </Card>
         </>
     );

@@ -10,7 +10,7 @@ const StyledSlider = styled(MuiSlider)({
         height: 24,
         width: 24,
         backgroundColor: "#fff",
-        border: "2px solid currentColor",
+        border: "1px solid currentColor",
         "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
             boxShadow: "inherit",
         },
@@ -27,7 +27,7 @@ const StyledSlider = styled(MuiSlider)({
         height: 32,
         borderRadius: "50% 50% 50% 0",
         backgroundColor: "white",
-        border: "2px solid black",
+        border: "1px solid black",
         color: "black",
         fontWeight: "600",
         transformOrigin: "bottom left",

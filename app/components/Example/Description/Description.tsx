@@ -1,7 +1,7 @@
 import { Density } from "@/app/types/Density";
 import { Cell } from "@/app/types/General";
 import { getShape } from "@/app/utils/getShape";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Card } from "../../Card";
 import { ExampleDescriptionGroup } from "./Group";
 import { ExampleDescriptionShape } from "./Shape";
@@ -42,13 +42,21 @@ export const ExampleDescription = ({
 
     const shape = useMemo(
         () => getShape(grid, cell.x, cell.y, group.result, rule),
-        [cell, grid, group, rule]
+        [grid]
     );
 
     const cellContent = useMemo(
         () => defaultGrid[cell.y][cell.x],
         [cell, defaultGrid]
     );
+
+    const toggleGroupExpanded = useCallback(() => {
+        setGroupExpanded((prev) => !prev);
+    }, []);
+
+    const toggleShapeExpanded = useCallback(() => {
+        setShapeExpanded((prev) => !prev);
+    }, []);
 
     return (
         <>
@@ -57,7 +65,7 @@ export const ExampleDescription = ({
                 button={
                     <ExpandButton
                         expanded={groupExpanded}
-                        onClick={() => setGroupExpanded((prev) => !prev)}
+                        onClick={toggleGroupExpanded}
                     />
                 }
             >
@@ -74,7 +82,7 @@ export const ExampleDescription = ({
                 button={
                     <ExpandButton
                         expanded={shapeExpanded}
-                        onClick={() => setShapeExpanded((prev) => !prev)}
+                        onClick={toggleShapeExpanded}
                     />
                 }
             >

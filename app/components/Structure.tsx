@@ -1,57 +1,40 @@
 import { Stack } from "@mui/material";
 import { map, size } from "lodash";
 import Image from "next/image";
-import { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
+import {
+    CSSProperties,
+    memo,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 import { Cell } from "../types/General";
 import { getElementImage } from "../utils/getElementImages";
 
-export type StructureProps = {
+type StructureGridProps = {
     grid: string[][];
-    defaultGrid?: string[][];
+    cellSize: number;
     cellType?: "image" | "text";
-    sx?: CSSProperties;
-    onCellClick?: (x: number, y: number) => void;
-    activeCell?: Cell;
+    defaultGrid?: string[][];
     activeNeighbours?: Cell[];
+    activeCell?: Cell;
+    handleCellClick: (x: number, y: number) => void;
     color?: string;
 };
 
-export const Structure = ({
-    grid,
-    defaultGrid,
+const StructureGrid = ({
+    cellSize,
     cellType,
-    sx,
-    onCellClick,
-    activeCell,
+    defaultGrid,
     activeNeighbours,
+    activeCell,
+    handleCellClick,
     color,
-}: StructureProps) => {
-    const [cellSize, setCellSize] = useState(0);
-    const ref = useRef<HTMLDivElement | null>(null);
-
-    const rowsCount = size(grid);
-    const columnsCount = Math.max(...map(grid, (row) => size(row)));
-
-    const getCellSize = useCallback(() => {
-        if (!ref.current) return 0;
-
-        const gridWidth = columnsCount;
-        return ref.current.clientWidth / gridWidth;
-    }, [columnsCount]);
-
-    useEffect(() => {
-        const newCellSize = getCellSize();
-        setCellSize(Math.floor(newCellSize));
-    }, [getCellSize]);
-
+    grid,
+}: StructureGridProps) => {
     return (
-        <Stack
-            flexDirection="column"
-            width="100%"
-            alignItems="center"
-            sx={{ margin: "0 auto", ...sx }}
-            ref={ref}
-        >
+        <>
             {map(grid, (row, y) => (
                 <div
                     key={y}
@@ -83,7 +66,7 @@ export const Structure = ({
                             <div
                                 key={`${x}${y}`}
                                 className={`element-${x}${y}`}
-                                onClick={() => onCellClick && onCellClick(x, y)}
+                                onClick={() => handleCellClick(x, y)}
                                 style={{
                                     display: "flex",
                                     justifyContent: "center",
@@ -144,6 +127,80 @@ export const Structure = ({
                     })}
                 </div>
             ))}
-        </Stack>
+        </>
     );
 };
+
+export type StructureProps = {
+    grid: string[][];
+    defaultGrid?: string[][];
+    cellType?: "image" | "text";
+    sx?: CSSProperties;
+    onCellClick?: (x: number, y: number) => void;
+    activeCell?: Cell;
+    activeNeighbours?: Cell[];
+    color?: string;
+};
+
+export const Structure = memo(
+    ({
+        grid,
+        defaultGrid,
+        cellType,
+        sx,
+        onCellClick,
+        activeCell,
+        activeNeighbours,
+        color,
+    }: StructureProps) => {
+        const [cellSize, setCellSize] = useState(0);
+        const ref = useRef<HTMLDivElement | null>(null);
+
+        const rowsCount = size(grid);
+        const columnsCount = Math.max(...map(grid, (row) => size(row)));
+
+        const getCellSize = useCallback(() => {
+            if (!ref.current) return 0;
+
+            const gridWidth = columnsCount;
+            return ref.current.clientWidth / gridWidth;
+        }, [columnsCount]);
+
+        useEffect(() => {
+            const newCellSize = getCellSize();
+            setCellSize(Math.floor(newCellSize));
+        }, [getCellSize]);
+
+        const handleCellClick = useCallback(
+            (x: number, y: number) => {
+                if (onCellClick) {
+                    onCellClick(x, y);
+                }
+            },
+            [onCellClick]
+        );
+
+        return (
+            <Stack
+                flexDirection="column"
+                width="100%"
+                alignItems="center"
+                sx={{ margin: "0 auto", ...sx }}
+                ref={ref}
+            >
+                {cellSize > 0 && (
+                    <StructureGrid
+                        grid={grid}
+                        cellSize={cellSize}
+                        cellType={cellType}
+                        defaultGrid={defaultGrid}
+                        activeNeighbours={activeNeighbours}
+                        activeCell={activeCell}
+                        handleCellClick={handleCellClick}
+                        color={color}
+                    />
+                )}
+            </Stack>
+        );
+    }
+);

@@ -1,4 +1,3 @@
-"use client";
 import { Stack, SxProps } from "@mui/material";
 import { map } from "lodash";
 import Image from "next/image";
