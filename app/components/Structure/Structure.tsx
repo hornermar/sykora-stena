@@ -21,6 +21,7 @@ export type StructureProps = {
     activeCell?: Cell;
     activeNeighbours?: Cell[];
     color?: string;
+    displayDefaultGrid?: boolean;
 };
 
 export const Structure = memo(function Structure({
@@ -32,6 +33,7 @@ export const Structure = memo(function Structure({
     activeCell,
     activeNeighbours,
     color,
+    displayDefaultGrid,
 }: StructureProps) {
     const [cellSize, setCellSize] = useState(0);
     const ref = useRef<HTMLDivElement | null>(null);
@@ -67,6 +69,7 @@ export const Structure = memo(function Structure({
                     cellSize={cellSize}
                     cellType={cellType}
                     defaultGrid={defaultGrid}
+                    displayDefaultGrid={displayDefaultGrid}
                     activeNeighbours={activeNeighbours}
                     activeCell={activeCell}
                     handleCellClick={handleCellClick}

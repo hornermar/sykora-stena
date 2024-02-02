@@ -49,7 +49,7 @@ export const getElements = (
     isRandom?: boolean
 ) => {
     // Create a copy of the grid
-    let newGrid = isRandom ? grid : map(grid, (row: string[]) => [...row]);
+    let newGrid = map(grid, (row: string[]) => [...row]);
 
     // Iterate over the rows
     for (let y = 0; y < grid.length; y++) {

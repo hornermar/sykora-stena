@@ -22,9 +22,14 @@ export const ArtistInputs = ({ grid, color }: ArtistInputProps) => {
                         marginBottom: 0,
                     }}
                 >
-                    Ještě před spuštěním výpočtu, který provedl algoritmus,
-                    musel Zdeněk Sýkora nastavit 4&nbsp;parametry. Na těch
-                    závisela výsledná podoba obrazu.
+                    Před spuštěním výpočtu nastavil Zdeněk Sýkora 4 parametry.
+                    Zásadně na nich závisela výsledná podoba obrazu.
+                </p>
+                <p>
+                    Vztahy v obraze jsou ovlivněny výběrem elementů a jejich
+                    rozmístěním v diagramu. Dále pak koeficientem
+                    světlosti/tmavosti a pravidlem, jak na sebe elementy budou
+                    navazovat.
                 </p>
             </Card>
             <ArtistInputsElements />

@@ -6,7 +6,7 @@ import arrowToTopIcon from "../../public/angles-up-solid.svg";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
 import { Contact } from "./Contact/Contact";
 import { Example } from "./Example/Example";
-import { FrontPage } from "./FrontPage";
+import { FrontPage } from "./FrontPage/FrontPage";
 import { Playground } from "./Playground/Playground";
 import { Section } from "./Section";
 import { Sources } from "./Sources/Sources";

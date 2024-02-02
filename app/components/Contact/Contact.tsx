@@ -16,6 +16,7 @@ export const Contact = ({}: ContactProps) => {
                     Veškeré struktury na této stránce jsou vygenerované pomocí
                     rekonstruovaného algoritmu.
                 </p>
+                <p>@ 2024 Markéta Hájková</p>
                 {/* <a
                     href="https://www.instagram.com/marketa_hajek/"
                     target="_blank"
@@ -31,7 +32,7 @@ export const Contact = ({}: ContactProps) => {
                     </IconButton>
                 </a> */}
 
-                {/* <p>Email: hornerova.m@gmail.com</p> */}
+                <p>Email: hornerova.m@gmail.com</p>
             </Card>
         </>
     );

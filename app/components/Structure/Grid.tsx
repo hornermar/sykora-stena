@@ -14,6 +14,7 @@ type StructureGridProps = {
     activeCell?: Cell;
     handleCellClick: (x: number, y: number) => void;
     color?: string;
+    displayDefaultGrid?: boolean;
 };
 
 export const StructureGrid = memo(function StructureGrid({
@@ -25,10 +26,11 @@ export const StructureGrid = memo(function StructureGrid({
     handleCellClick,
     color,
     grid,
+    displayDefaultGrid,
 }: StructureGridProps) {
     return (
         <>
-            {map(grid, (row, y) => (
+            {map(displayDefaultGrid ? defaultGrid : grid, (row, y) => (
                 <Box
                     key={y}
                     sx={{
@@ -43,6 +45,7 @@ export const StructureGrid = memo(function StructureGrid({
                         const isCellEmpty =
                             cell === "0" || cell === "+" || cell === "-";
                         const isCellOriginal =
+                            !displayDefaultGrid &&
                             defaultGrid &&
                             defaultGrid[y][x] !== "+" &&
                             defaultGrid[y][x] !== "-" &&

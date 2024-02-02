@@ -78,8 +78,8 @@ export const ArtistInputsElements = () => {
             </Stack>
             <Card color="white">
                 <p style={{ margin: 0 }}>
-                    Prohozením barev se zdvojnásobil na 20. (Každý element má
-                    svůj negativ.)
+                    Prohozením barev zdvojnásobil na 20. Každý element tak má
+                    svůj negativ.
                 </p>
             </Card>
             <Card color="white">
@@ -105,14 +105,13 @@ export const ArtistInputsElements = () => {
             </Card>
             <Card color="white">
                 <p style={{ margin: 0 }}>
-                    Elementy následně rozdělil do skupin <b>1</b>, <b>2</b>,{" "}
-                    <b>3</b> a <b>4</b> podle hustoty barvy. Skupina 1 (1z, 1b,
-                    1y atd.), obsahuje nejsvětlejší elementy. Skupina 4 (4z, 4b,
-                    4y atd.) naopak obsahuje nejtmavší elementy.
+                    Elementy následně rozdělil do skupin 1, 2, 3 a 4 podle
+                    poměru barev černá-bílá (Skupina 1 obsahuje nejsvětlejší,
+                    skupina 4 naopak nejtmavší).
                 </p>
                 <p>
-                    Jdou řazeny podle poměru bílá-černá a tak očíslovány 1, 2,
-                    3, 4. Jejich polohy jsou označeny písmeny (z, b, y, i, r, d)
+                    Natočení základních elementů je označeno písmeny (z, b, y,
+                    i, r, d).
                 </p>
             </Card>
             <Card color="white">

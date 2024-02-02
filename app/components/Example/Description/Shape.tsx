@@ -113,24 +113,22 @@ export const ExampleDescriptionShape = ({
                 </p>
             </Collapse>
 
-            {
-                <ExampleGrid
-                    grid={[
-                        map(
-                            shape.description.finalOptions,
-                            (option) => option.name
-                        ),
-                    ]}
-                    activeCell={{ x: indexOfFinalOption ?? 0, y: 0 }}
-                    displayName
-                    size={30}
-                    sx={{
-                        justifyContent: "flex-start",
-                        gap: "10px",
-                        marginTop: "5px",
-                    }}
-                />
-            }
+            <ExampleGrid
+                grid={[
+                    map(
+                        shape.description.finalOptions,
+                        (option) => option.name
+                    ),
+                ]}
+                activeCell={{ x: indexOfFinalOption ?? 0, y: 0 }}
+                displayName
+                size={30}
+                sx={{
+                    justifyContent: "flex-start",
+                    gap: "10px",
+                    marginTop: "5px",
+                }}
+            />
         </>
     );
 };

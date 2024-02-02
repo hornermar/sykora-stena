@@ -3,7 +3,7 @@ import { rulesItems } from "@/app/lib/formItems";
 import { getElements } from "@/app/utils/getElements";
 import { Stack, Typography } from "@mui/material";
 import { map } from "lodash";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Rule } from "../../types/Rule";
 import { Card } from "../Card";
 import { Chip } from "../Chip";
@@ -39,23 +39,6 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
         );
     }, [form.coefficient, form.rule, form.isRandom, defaultGrid]);
 
-    const handleCoefficientChange = useCallback(
-        (e: Event, newValue: number | number[]) => {
-            setForm((prev) => ({
-                ...prev,
-                coefficient: newValue as number,
-            }));
-        },
-        []
-    );
-
-    const handleRuleChange = useCallback((ruleCode: number) => {
-        setForm((prev) => ({
-            ...prev,
-            rule: ruleCode,
-        }));
-    }, []);
-
     return (
         <>
             <Card color={color}>
@@ -80,9 +63,10 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
 
             <Card color={"white"}>
                 <Structure
-                    grid={displayDefaultGrid ? defaultGrid : grid}
+                    grid={grid}
                     cellType={displayText ? "text" : "image"}
                     defaultGrid={defaultGrid}
+                    displayDefaultGrid={displayDefaultGrid}
                 />
             </Card>
 
@@ -150,7 +134,12 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         min={0.01}
                         max={3.99}
                         disabled={form.isRandom}
-                        onChange={handleCoefficientChange}
+                        onChange={(e: Event, newValue: number | number[]) =>
+                            setForm((prev) => ({
+                                ...prev,
+                                coefficient: newValue as number,
+                            }))
+                        }
                     />
                 </Stack>
 
@@ -162,7 +151,12 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         <Stack key={rule.code}>
                             <Chip
                                 label={`${rule.code}:\u00A0${rule.text}`}
-                                onClick={() => handleRuleChange(rule.code)}
+                                onClick={() =>
+                                    setForm((prev) => ({
+                                        ...prev,
+                                        rule: rule.code,
+                                    }))
+                                }
                                 selected={form.rule === rule.code}
                                 disabled={form.isRandom}
                             />

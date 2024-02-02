@@ -17,6 +17,11 @@ export const ArtistInputsRule = ({ color }: ArtistInputsRuleProps) => {
                     Dále je třeba zvolit jedno ze čtyř <b>pravidel</b>, podle
                     kterého budou vypočítané elementy zaujímat vzájemnou polohu.
                 </p>
+                <p>
+                    Rozhoduje, jaké vztahy elementy navazují, zda se vzájemně
+                    napojují, nebo se od sebe izolují (barvou, tvarem, nebo
+                    obojím).
+                </p>
             </Card>
 
             <Card color="white">

@@ -9,10 +9,16 @@ export const Sources = ({}: SourcesProps) => {
         <>
             <Card>
                 <SectionTitle letter="E." title="Zdroje" />
+                <p>
+                    Algoritmus popsal Zdeněk Sýkora v textu Můj systém z roku
+                    1967. O pár let později, v roce 1970, jej pak spolu s
+                    Jaroslavem Blažkem popisují v textu 'Computer-aided
+                    multielement geometrical abstract paintings'.
+                </p>
                 <ol
                     style={{
-                        padding: "20px",
                         fontSize: "14px",
+                        paddingTop: "10px",
                     }}
                 >
                     <li style={{ paddingBottom: "10px" }}>

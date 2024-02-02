@@ -42,7 +42,10 @@ export const RuleExample = ({ rule, color }: RuleExampleProps) => {
                 cellType="image"
                 sx={{ width: "60%" }}
                 key={rule.code}
-                activeNeighbours={[{ x: 1, y: 0 }]}
+                activeNeighbours={[
+                    { x: 1, y: 0 },
+                    { x: 3, y: 0 },
+                ]}
                 color={color}
             />
         </Stack>

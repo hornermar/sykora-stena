@@ -1,14 +1,19 @@
 "use client";
-import { Box, Stack, SvgIcon, Typography } from "@mui/material";
+import { Box, SvgIcon, Typography } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
-import { getElements } from "../utils/getElements";
-import { getRandomCoefficient } from "../utils/getRandomCoefficient";
-import { getRandomRule } from "../utils/getRandomRule copy";
-import { Button } from "./Button";
-import { Card } from "./Card";
-import { InputsLabel } from "./InputsLabel";
-import { Structure } from "./Structure/Structure";
-import { GridSwitch } from "./Switch";
+import { getElements } from "../../utils/getElements";
+import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
+import { getRandomRule } from "../../utils/getRandomRule copy";
+import { Button } from "../Button";
+import { Card } from "../Card";
+import { InputsLabel } from "../InputsLabel";
+import { Structure } from "../Structure/Structure";
+import { GridSwitch } from "../Switch";
+import { useSwitch } from "@/app/hooks/useSwitch";
+import { FrontPageDialog } from "./Dialog";
+import { IconButton, Stack } from "@mui/material";
+import Image from "next/image";
+import infoIcon from "../../../public/circle-info-solid.svg";
 
 const emptyGrid = [
     ["-", "-", "-", "0", "3r", "1r"],
@@ -29,6 +34,7 @@ type FrontPageProps = {
 
 export const FrontPage = ({ color }: FrontPageProps) => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
+    const [open, onOpen, onClose] = useSwitch(false);
 
     const coefficient = useMemo(() => getRandomCoefficient(), []);
     const rule = useMemo(() => getRandomRule(), []);
@@ -91,38 +97,52 @@ export const FrontPage = ({ color }: FrontPageProps) => {
             <Card color="white">
                 <div>
                     <p style={{ marginTop: "0" }}>
-                        V roce 1961 začal Zdeněk Sýkora vytvářet obrazy
-                        gemetrického abstraktního typu. Jejich kompozice byla
-                        výsledkem opakovaného použití jednoho nebo více
-                        základních elementů. Tyto elementy se vyznačovaly tvarem
-                        (čtvercovým nebo obdélníkovým) a specifickými
-                        geometrickými vzory uvnitř.
+                        Zdeněk Sýkora začal v roce 1961 vytvářet geometrické
+                        abstraktní obrazy. Jejich kompozice byla výsledkem
+                        opakovaného použití jednoho nebo více základních
+                        elementů. Tyto elementy se vyznačovaly tvarem
+                        (čtvercovým nebo obdélným) a geometrickými vzory uvnitř.
                     </p>
                     <p>
-                        Při zvažování dalších pravidel pro tvorbu kompozic z
-                        daných elementů si ale uvědomil, že člověk naráží na
-                        kompinatorické složitosti, které lze snadněji vyřešit
-                        pomocí počítače.
+                        Při zvažování pravidel pro tvorbu kompozic si ale
+                        uvědomil, že naráží na kombinatorické složitosti, které
+                        lze snadněji vyřešit pomocí počítače. Obrátil se proto
+                        na matematika Jaroslava Blažka, který měl toho času k
+                        dispozici počítač LGP-30 na svém pracovišti,
+                        Matematicko-fyzikální fakultě Univerzity Karlovy. Spolu
+                        tak v roce 1964 začali vytvářet program, který
+                        dopočítával elementy v obraze podle předem zadaných
+                        pravidel.
                     </p>
+
+                    <Stack flexDirection="row" alignItems="center">
+                        <span>
+                            <IconButton
+                                color="inherit"
+                                onClick={onOpen}
+                                sx={{ marginRight: "10px" }}
+                            >
+                                <Image
+                                    src={infoIcon}
+                                    width={20}
+                                    height={20}
+                                    alt={"right left arrow icon"}
+                                />
+                            </IconButton>
+                        </span>
+                        <p>
+                            Jednu ze struktur najdede i volně přístupnou v
+                            Praze!
+                        </p>
+                    </Stack>
+
                     <p>
-                        Obrátil se proto na matematika Jaroslava Blažka, se
-                        kterým připravili program, který počítal elementy v
-                        obraze předem zadaných pravidel. Jak algoritmus fungoval
-                        popsali v článku Computer-aided multielement geometrical
-                        abstract paintings v časopise Leonardo z roku 1970.
-                    </p>
-                    <p>
-                        Jednu ze struktur najdete i v Praze na adrese{" "}
-                        <a
-                            href="https://maps.app.goo.gl/JE3JmM7rd2TKafbx7"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Jindřišká 832/3
-                        </a>
-                        . Původně se nacházela u vstupu do metra, v současné
-                        době je protor předělán na restauraci. Je ale necitlivě
-                        přepůlena a smaží se před ní nudle.
+                        V následujících najdete popis algoritmu. Nejprve jsou
+                        vysvětleny jednotlivé vstupy, které umělec do programu
+                        zadával. Poté vás provede samotným postupem, vysvětleným
+                        na interaktivním příkladu. V poslední části si pak
+                        můžete sami vyzkoušet, jak se výpočet chová s různými
+                        parametry.
                     </p>
 
                     <Box sx={{ paddingTop: "10px" }}>
@@ -147,8 +167,18 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                             Rovnou vyzkoušet
                         </Button>
                     </Box>
+
+                    {/* <p>
+                        Zdeněk Sýkora se tak stal jedním z prvních umělců na
+                        světě, který do své tvorby zapojil počítač. Nejen díky
+                        tomu se stal mezinárodně uznávaným umělcem. Zároveň se
+                        mu ale nikdy už nepovedlo zbavit označení "počítačový
+                        umělec", i když se o to sám pokoušel.
+                    </p> */}
                 </div>
             </Card>
+
+            <FrontPageDialog open={open} onClose={onClose} />
         </>
     );
 };
