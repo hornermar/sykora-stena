@@ -56,8 +56,8 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
                     Svůj původní účel ztratila v roce 2005, kdy byla pasáž
                     zrušena a zastavěna obchody a bary. Mozaika se stala
                     součástí interiéru kavárny a byla necitlivě přepažena
-                    vestavěným patrem. 'Dnešní provozovatel na cenné keramické
-                    destičky vypouští páru při vaření nudlí.'
+                    vestavěným patrem. Dnešní provozovatel na cenné keramické
+                    destičky vypouští páru při vaření nudlí.
                 </p>
             </DialogContent>
             <DialogActions>
