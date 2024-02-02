@@ -12,8 +12,8 @@ export const Sources = ({}: SourcesProps) => {
                 <p>
                     Algoritmus popsal Zdeněk Sýkora v textu Můj systém z roku
                     1967. O pár let později, v roce 1970, jej pak spolu s
-                    Jaroslavem Blažkem popisují v textu "Computer-aided
-                    multielement geometrical abstract paintings".
+                    Jaroslavem Blažkem popisují v textu Computer-aided
+                    multielement geometrical abstract paintings.
                 </p>
                 <ol
                     style={{
