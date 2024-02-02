@@ -2,7 +2,7 @@ import { Density } from "@/app/types/Density";
 import { Cell } from "@/app/types/General";
 import { getShape } from "@/app/utils/getShape";
 import { memo, useCallback, useMemo, useState } from "react";
-import { Card } from "../../Card";
+import { Card } from "../../common/Card";
 import { ExampleDescriptionGroup } from "./Group";
 import { ExampleDescriptionShape } from "./Shape";
 

@@ -5,12 +5,12 @@ import { Stack, Typography } from "@mui/material";
 import { map } from "lodash";
 import { useEffect, useState } from "react";
 import { Rule } from "../../types/Rule";
-import { Card } from "../Card";
-import { Chip } from "../Chip";
-import { SectionTitle } from "../SectionTitle";
-import { Slider } from "../Slider";
+import { Card } from "../common/Card";
+import { Chip } from "../common/Chip";
+import { SectionTitle } from "../common/SectionTitle";
+import { Slider } from "../common/Slider";
 import { Structure } from "../Structure/Structure";
-import { ToggleButtonGroup } from "../ToggleButtonGroup";
+import { ToggleButtonGroup } from "../common/ToggleButtonGroup";
 
 type PlaygroundProps = {
     defaultGrid: string[][];

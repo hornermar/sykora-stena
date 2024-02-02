@@ -6,11 +6,11 @@ import { getSlicedGrid } from "@/app/utils/getSlicedGrid";
 import { Stack } from "@mui/material";
 import { map, size } from "lodash";
 import { useMemo, useState } from "react";
-import { Card } from "../Card";
-import { InputsLabel } from "../InputsLabel";
-import { SectionTitle } from "../SectionTitle";
+import { Card } from "../common/Card";
+import { StructureForm } from "../Structure/Form";
+import { SectionTitle } from "../common/SectionTitle";
 import { Structure } from "../Structure/Structure";
-import { GridSwitch } from "../Switch";
+import { GridSwitch } from "../common/Switch";
 import { ExampleDescription } from "./Description/Description";
 
 type ExampleProps = {
@@ -21,12 +21,16 @@ type ExampleProps = {
 export const cellsToProcess = ["0", "+", "-"];
 
 export const Example = ({ defaultGrid, color }: ExampleProps) => {
+    const [form, setForm] = useState({
+        coefficient: 0.8,
+        rule: 0,
+    });
     const coefficient: number = 0.8;
     const rule: number = 0;
 
     const grid = useMemo(
-        () => getElements(0, 0.8, defaultGrid),
-        [rule, coefficient, defaultGrid]
+        () => getElements(form.rule, form.coefficient, defaultGrid),
+        [form.rule, form.coefficient, defaultGrid]
     );
 
     const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
@@ -101,9 +105,9 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
 
             <Card color="white">
                 <Stack sx={{ position: "relative", margin: "30px 0 0px 0" }}>
-                    <InputsLabel
-                        coefficient={coefficient}
-                        rule={rule}
+                    <StructureForm
+                        form={form}
+                        setForm={setForm}
                         display={true}
                     />
                     <Structure

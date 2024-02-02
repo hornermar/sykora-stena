@@ -1,6 +1,6 @@
 "use client";
-import { Card } from "../Card";
-import { SectionTitle } from "../SectionTitle";
+import { Card } from "../common/Card";
+import { SectionTitle } from "../common/SectionTitle";
 
 type SourcesProps = {};
 

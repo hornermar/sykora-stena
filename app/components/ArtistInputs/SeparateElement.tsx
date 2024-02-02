@@ -1,7 +1,7 @@
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
-import rotateIcon from "../../../public/rotate-solid.svg";
+import rotateIcon from "../../../public/arrow-rotate-left-solid.svg";
 import { getElementImage } from "../../utils/getElementImages";
 
 type SeparateElementProps = {

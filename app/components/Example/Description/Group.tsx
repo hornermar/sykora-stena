@@ -3,7 +3,7 @@ import { Density } from "@/app/types/Density";
 import { Box, Collapse } from "@mui/material";
 import { filter, map, size } from "lodash";
 import { useMemo } from "react";
-import { Accordion } from "../../Accordion";
+import { Accordion } from "../../common/Accordion";
 import { ExampleGrid } from "../../ExampleGrid";
 import { ExampleDescriptionAverage } from "./Average";
 import { ExampleDescriptionLabel } from "./Label";

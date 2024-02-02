@@ -8,7 +8,7 @@ import { Contact } from "./Contact/Contact";
 import { Example } from "./Example/Example";
 import { FrontPage } from "./FrontPage/FrontPage";
 import { Playground } from "./Playground/Playground";
-import { Section } from "./Section";
+import { Section } from "./common/Section";
 import { Sources } from "./Sources/Sources";
 
 const gridForExample = [

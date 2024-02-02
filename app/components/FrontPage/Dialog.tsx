@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Button } from "../Button";
+import { Button } from "../common/Button";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import { DialogActions, DialogContent } from "@mui/material";
@@ -14,31 +13,31 @@ type FrontPageDialogProp = {
 
 export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
     return (
-        <Dialog onClose={onClose} open={open} sx={{}}>
+        <Dialog
+            onClose={onClose}
+            open={open}
+            sx={{
+                ".MuiPaper-root": {
+                    backgroundColor: "rgb(224, 217, 211)",
+                    padding: "15px 0px",
+                },
+            }}
+        >
             <DialogTitle>Stěna, 1968</DialogTitle>
+
             <IconButton
-                aria-label="close"
+                color="inherit"
                 onClick={onClose}
                 sx={{
+                    marginTop: "-5px",
                     position: "absolute",
                     right: 8,
                     top: 8,
-                    color: (theme) => theme.palette.grey[500],
                 }}
             >
-                <IconButton
-                    color="inherit"
-                    onClick={onClose}
-                    sx={{ marginTop: "-5px" }}
-                >
-                    <Image
-                        src={xIcon}
-                        width={20}
-                        height={20}
-                        alt={"close icon"}
-                    />
-                </IconButton>
+                <Image src={xIcon} width={20} height={20} alt={"close icon"} />
             </IconButton>
+
             <DialogContent>
                 <p>
                     Stěnu na adrese{" "}

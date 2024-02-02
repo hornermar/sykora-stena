@@ -4,11 +4,11 @@ import { useCallback, useMemo, useState } from "react";
 import { getElements } from "../../utils/getElements";
 import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
 import { getRandomRule } from "../../utils/getRandomRule copy";
-import { Button } from "../Button";
-import { Card } from "../Card";
-import { InputsLabel } from "../InputsLabel";
+import { Button } from "../common/Button";
+import { Card } from "../common/Card";
+import { StructureForm } from "../Structure/Form";
 import { Structure } from "../Structure/Structure";
-import { GridSwitch } from "../Switch";
+import { GridSwitch } from "../common/Switch";
 import { useSwitch } from "@/app/hooks/useSwitch";
 import { FrontPageDialog } from "./Dialog";
 import { IconButton, Stack } from "@mui/material";
@@ -35,13 +35,14 @@ type FrontPageProps = {
 export const FrontPage = ({ color }: FrontPageProps) => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
     const [open, onOpen, onClose] = useSwitch(false);
-
-    const coefficient = useMemo(() => getRandomCoefficient(), []);
-    const rule = useMemo(() => getRandomRule(), []);
+    const [form, setForm] = useState({
+        coefficient: getRandomCoefficient(),
+        rule: getRandomRule(),
+    });
 
     const grid = useMemo(() => {
-        return getElements(rule, coefficient, emptyGrid);
-    }, [rule, coefficient]);
+        return getElements(form.rule, form.coefficient, emptyGrid);
+    }, [form.rule, form.coefficient]);
 
     const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");
@@ -82,10 +83,10 @@ export const FrontPage = ({ color }: FrontPageProps) => {
 
             <Card>
                 <Stack sx={{ position: "relative", margin: "30px 0 20px 0" }}>
-                    <InputsLabel
-                        coefficient={coefficient}
-                        rule={rule}
+                    <StructureForm
                         display={displayEmptyGrid}
+                        form={form}
+                        setForm={setForm}
                     />
                     <Structure
                         grid={displayEmptyGrid ? emptyGrid : grid}

@@ -1,8 +1,8 @@
 import { Stack } from "@mui/material";
 import { useState } from "react";
-import { Card } from "../Card";
+import { Card } from "../common/Card";
 import { Structure } from "../Structure/Structure";
-import { GridSwitch } from "../Switch";
+import { GridSwitch } from "../common/Switch";
 
 type ArtistInputsDiagramProps = {
     grid: string[][];

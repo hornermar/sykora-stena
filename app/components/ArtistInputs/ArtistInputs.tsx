@@ -1,6 +1,6 @@
 "use client";
-import { Card } from "../Card";
-import { SectionTitle } from "../SectionTitle";
+import { Card } from "../common/Card";
+import { SectionTitle } from "../common/SectionTitle";
 import { ArtistInputsCoefficient } from "./Coefficient";
 import { ArtistInputsDiagram } from "./Diagram";
 import { ArtistInputsElements } from "./Elements";

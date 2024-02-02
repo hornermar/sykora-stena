@@ -3,7 +3,7 @@ import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import rightLeftIcon from "../../../public/right-left-solid.svg";
-import { Card } from "../Card";
+import { Card } from "../common/Card";
 import { ExampleGrid } from "../ExampleGrid";
 import { SeparateElement } from "./SeparateElement";
 

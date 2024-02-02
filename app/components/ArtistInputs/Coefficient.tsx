@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { Card } from "../Card";
+import { Card } from "../common/Card";
 
 type ArtistInputsCoefficientColor = {
     color: string;

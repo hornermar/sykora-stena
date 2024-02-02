@@ -2,7 +2,7 @@
 import { rulesItems } from "@/app/lib/formItems";
 import { map } from "lodash";
 import { Rule } from "../../types/Rule";
-import { Card } from "../Card";
+import { Card } from "../common/Card";
 import { RuleExample } from "./RuleExample";
 
 type ArtistInputsRuleProps = {
