@@ -61,6 +61,7 @@ export const Switch = memo(function Switch({
 export const GridSwitch = memo(function GridSwitch({
     onChange,
     checked,
+    sx,
 }: SwitchProps) {
     return (
         <Switch
@@ -79,6 +80,7 @@ export const GridSwitch = memo(function GridSwitch({
                         backgroundImage: `url('/square-regular.svg')`,
                     },
                 },
+                ...sx,
             }}
         />
     );

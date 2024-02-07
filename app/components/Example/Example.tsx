@@ -12,6 +12,7 @@ import { SectionTitle } from "../common/SectionTitle";
 import { Structure } from "../Structure/Structure";
 import { GridSwitch } from "../common/Switch";
 import { ExampleDescription } from "./Description/Description";
+import { Collapse } from "../common/Collapse";
 
 type ExampleProps = {
     defaultGrid: string[][];
@@ -95,21 +96,10 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                     Algoritmus začíná počítat v levém horním rohu. Postupuje
                     zleva doprava v lichých řadách a zprava doleva v sudých.
                 </p>
-                <Stack flexDirection="row" justifyContent="flex-end">
-                    <GridSwitch
-                        checked={!displayText}
-                        onChange={() => setDisplayText((prev) => !prev)}
-                    />
-                </Stack>
             </Card>
 
             <Card color="white">
-                <Stack sx={{ position: "relative", margin: "30px 0 0px 0" }}>
-                    <StructureForm
-                        form={form}
-                        setForm={setForm}
-                        display={true}
-                    />
+                <Stack>
                     <Structure
                         grid={slicedGrid}
                         defaultGrid={defaultGrid}
@@ -119,6 +109,21 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                         activeNeighbours={activeNeighbours}
                         color={color}
                     />
+
+                    <Collapse>
+                        <Stack flexDirection="row" alignItems="center">
+                            <span>
+                                Koeficient:&nbsp;{form.coefficient}
+                                &nbsp;Pravidlo:&nbsp;
+                                {form.rule}
+                            </span>
+                            <GridSwitch
+                                sx={{ marginLeft: "20px" }}
+                                checked={!displayText}
+                                onChange={() => setDisplayText((prev) => !prev)}
+                            />
+                        </Stack>
+                    </Collapse>
                 </Stack>
             </Card>
 

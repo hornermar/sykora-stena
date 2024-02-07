@@ -1,6 +1,6 @@
 import { getCellSize } from "@/app/utils/getCellSize";
-import { Stack } from "@mui/material";
-import { map, size } from "lodash";
+import { Box, Skeleton, Stack } from "@mui/material";
+import { head, map, size } from "lodash";
 import {
     CSSProperties,
     memo,
@@ -63,7 +63,7 @@ export const Structure = memo(function Structure({
             sx={{ margin: "0 auto", ...sx }}
             ref={ref}
         >
-            {cellSize > 0 && (
+            {cellSize > 0 ? (
                 <StructureGrid
                     grid={grid}
                     cellSize={cellSize}
@@ -75,6 +75,15 @@ export const Structure = memo(function Structure({
                     handleCellClick={handleCellClick}
                     color={color}
                 />
+            ) : (
+                <Box
+                    sx={{
+                        position: "relative",
+                        width: "100%",
+                        paddingBottom: "100%",
+                        backgroundColor: "rgba(0, 0, 0, 0.03)",
+                    }}
+                ></Box>
             )}
         </Stack>
     );

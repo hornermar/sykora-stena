@@ -11,6 +11,8 @@ import { SectionTitle } from "../common/SectionTitle";
 import { Slider } from "../common/Slider";
 import { Structure } from "../Structure/Structure";
 import { ToggleButtonGroup } from "../common/ToggleButtonGroup";
+import { StructureForm } from "../Structure/Form";
+import { Collapse } from "../common/Collapse";
 
 type PlaygroundProps = {
     defaultGrid: string[][];
@@ -21,11 +23,11 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
     const [form, setForm] = useState({
         coefficient: 2,
         rule: 3,
-        isRandom: false,
     });
     const [grid, setGrid] = useState(defaultGrid);
     const [displayDefaultGrid, setDisplayDefaultGrid] = useState(false);
     const [displayText, setDisplayText] = useState(false);
+    const [isRandom, setIsRandom] = useState(false);
 
     useEffect(() => {
         setGrid(
@@ -34,10 +36,10 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                 form.coefficient,
                 defaultGrid,
                 undefined,
-                form.isRandom
+                isRandom
             )
         );
-    }, [form.coefficient, form.rule, form.isRandom, defaultGrid]);
+    }, [form.coefficient, form.rule, isRandom, defaultGrid]);
 
     return (
         <>
@@ -62,12 +64,78 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
             </Card>
 
             <Card color={"white"}>
-                <Structure
-                    grid={grid}
-                    cellType={displayText ? "text" : "image"}
-                    defaultGrid={defaultGrid}
-                    displayDefaultGrid={displayDefaultGrid}
-                />
+                <Stack>
+                    <Structure
+                        grid={grid}
+                        cellType={displayText ? "text" : "image"}
+                        defaultGrid={defaultGrid}
+                        displayDefaultGrid={displayDefaultGrid}
+                    />
+
+                    <Collapse defaultExpanded={true}>
+                        <Stack
+                            flexDirection="row"
+                            alignItems="center"
+                            sx={{ minWidth: "300px" }}
+                        >
+                            <Typography sx={{ marginRight: "20px" }}>
+                                Koeficient
+                            </Typography>
+
+                            <Slider
+                                value={form.coefficient}
+                                step={0.1}
+                                min={0.01}
+                                max={3.99}
+                                disabled={isRandom}
+                                onChange={(
+                                    e: Event,
+                                    newValue: number | number[]
+                                ) =>
+                                    setForm((prev) => ({
+                                        ...prev,
+                                        coefficient: newValue as number,
+                                    }))
+                                }
+                            />
+                        </Stack>
+                    </Collapse>
+
+                    <Collapse defaultExpanded={true}>
+                        <Stack
+                            flexDirection="row"
+                            alignItems="center"
+                            sx={{ minWidth: "200px" }}
+                        >
+                            <Typography sx={{ paddingRight: "20px" }}>
+                                Pravidlo
+                            </Typography>
+                            <Stack
+                                flexDirection="row"
+                                alignItems="center"
+                                gap={1}
+                                flexWrap="nowrap"
+                            >
+                                {map(rulesItems, (rule: Rule) => (
+                                    <Chip
+                                        label={rule.code.toString()}
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                rule: rule.code,
+                                            }))
+                                        }
+                                        selected={form.rule === rule.code}
+                                        disabled={isRandom}
+                                    />
+                                ))}
+                            </Stack>
+                            {/* <span style={{ fontSize: "12px" }}>
+                                {rulesItems[form.rule].text}
+                            </span> */}
+                        </Stack>
+                    </Collapse>
+                </Stack>
             </Card>
 
             <Card color={color}>
@@ -103,7 +171,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                     />
 
                     <ToggleButtonGroup
-                        value={form.isRandom}
+                        value={isRandom}
                         onChange={(newValue) =>
                             setForm((prev) => ({
                                 ...prev,
@@ -121,47 +189,6 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                             },
                         ]}
                     />
-                </Stack>
-
-                <Stack sx={{ marginTop: "35px" }}>
-                    <Typography sx={{ marginBottom: "-15px" }}>
-                        Koeficient
-                    </Typography>
-
-                    <Slider
-                        value={form.coefficient}
-                        step={0.1}
-                        min={0.01}
-                        max={3.99}
-                        disabled={form.isRandom}
-                        onChange={(e: Event, newValue: number | number[]) =>
-                            setForm((prev) => ({
-                                ...prev,
-                                coefficient: newValue as number,
-                            }))
-                        }
-                    />
-                </Stack>
-
-                <Stack flexDirection="row" flexWrap="wrap" width="100%">
-                    <Typography sx={{ marginBottom: "5px" }}>
-                        Pravidlo
-                    </Typography>
-                    {map(rulesItems, (rule: Rule) => (
-                        <Stack key={rule.code}>
-                            <Chip
-                                label={`${rule.code}:\u00A0${rule.text}`}
-                                onClick={() =>
-                                    setForm((prev) => ({
-                                        ...prev,
-                                        rule: rule.code,
-                                    }))
-                                }
-                                selected={form.rule === rule.code}
-                                disabled={form.isRandom}
-                            />
-                        </Stack>
-                    ))}
                 </Stack>
             </Card>
             <Card>

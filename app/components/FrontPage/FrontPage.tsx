@@ -1,6 +1,7 @@
 "use client";
 import { Box, SvgIcon, Typography } from "@mui/material";
-import { useCallback, useMemo, useState } from "react";
+import { Collapse } from "../common/Collapse";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getElements } from "../../utils/getElements";
 import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
 import { getRandomRule } from "../../utils/getRandomRule copy";
@@ -26,6 +27,7 @@ const emptyGrid = [
     // 5
     ["1z", "0", "0", "0", "-", "1d"],
     // 6
+    ["-", "1r", "+", "+", "-", "-"],
 ];
 
 type FrontPageProps = {
@@ -72,26 +74,31 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                 >
                     Algoritmus Zdeňka Sýkory pro tvorbu černobílých struktur.
                 </Typography>
-
-                <Stack flexDirection="row" justifyContent="flex-end">
-                    <GridSwitch
-                        checked={!displayEmptyGrid}
-                        onChange={() => setDisplayEmptyGrid((prev) => !prev)}
-                    />
-                </Stack>
             </Card>
 
-            <Card>
-                <Stack sx={{ position: "relative", margin: "30px 0 20px 0" }}>
-                    <StructureForm
-                        display={displayEmptyGrid}
-                        form={form}
-                        setForm={setForm}
-                    />
+            <Card sx={{ padding: "5px" }}>
+                <Stack>
                     <Structure
                         grid={displayEmptyGrid ? emptyGrid : grid}
                         cellType={displayEmptyGrid ? "text" : "image"}
                     />
+
+                    <Collapse>
+                        <Stack flexDirection="row" alignItems="center">
+                            <span>
+                                Koeficient:&nbsp;{form.coefficient}
+                                &nbsp;Pravidlo:&nbsp;
+                                {form.rule}
+                            </span>
+                            <GridSwitch
+                                sx={{ marginLeft: "20px" }}
+                                checked={!displayEmptyGrid}
+                                onChange={() =>
+                                    setDisplayEmptyGrid((prev) => !prev)
+                                }
+                            />
+                        </Stack>
+                    </Collapse>
                 </Stack>
             </Card>
 

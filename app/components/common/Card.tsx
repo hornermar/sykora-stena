@@ -27,7 +27,9 @@ export function Card({
 }) {
     return (
         <StyledCard color={color} sx={sx}>
-            <CardContent sx={{ padding: "20px", borderRadius: "none" }}>
+            <CardContent
+                sx={{ padding: "20px !important", borderRadius: "none" }}
+            >
                 <Stack flexDirection="row" justifyContent="space-between">
                     {heading && (
                         <Typography gutterBottom variant="h5" component="div">
