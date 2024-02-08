@@ -76,29 +76,31 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                 </Typography>
             </Card>
 
-            <Card sx={{ padding: "5px" }}>
-                <Stack>
+            <Card sx={{ position: "relative" }}>
+                <Stack sx={{ padding: "15px" }}>
                     <Structure
                         grid={displayEmptyGrid ? emptyGrid : grid}
                         cellType={displayEmptyGrid ? "text" : "image"}
                     />
 
-                    <Collapse>
-                        <Stack flexDirection="row" alignItems="center">
-                            <span>
-                                Koeficient:&nbsp;{form.coefficient}
-                                &nbsp;Pravidlo:&nbsp;
-                                {form.rule}
-                            </span>
-                            <GridSwitch
-                                sx={{ marginLeft: "20px" }}
-                                checked={!displayEmptyGrid}
-                                onChange={() =>
-                                    setDisplayEmptyGrid((prev) => !prev)
-                                }
-                            />
-                        </Stack>
-                    </Collapse>
+                    <Box sx={{ position: "absolute", top: 40 }}>
+                        <Collapse>
+                            <Stack flexDirection="row" alignItems="center">
+                                <span>
+                                    Koeficient:&nbsp;{form.coefficient}
+                                    &nbsp;Pravidlo:&nbsp;
+                                    {form.rule}
+                                </span>
+                                <GridSwitch
+                                    sx={{ marginLeft: "20px" }}
+                                    checked={!displayEmptyGrid}
+                                    onChange={() =>
+                                        setDisplayEmptyGrid((prev) => !prev)
+                                    }
+                                />
+                            </Stack>
+                        </Collapse>
+                    </Box>
                 </Stack>
             </Card>
 

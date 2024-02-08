@@ -3,14 +3,15 @@ import { Slider as MuiSlider, styled } from "@mui/material";
 const StyledSlider = styled(MuiSlider)({
     color: "black",
     height: 8,
+    padding: "0 !important",
     "& .MuiSlider-track": {
         border: "none",
     },
     "& .MuiSlider-thumb": {
-        height: 20,
-        width: 20,
+        height: 16,
+        width: 16,
         backgroundColor: "#fff",
-        border: "1px solid currentColor",
+        border: "2px solid currentColor",
         "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
             boxShadow: "inherit",
         },
@@ -23,17 +24,18 @@ const StyledSlider = styled(MuiSlider)({
         fontSize: 12,
         background: "unset",
         padding: 0,
-        // width: 32,
-        // height: 32,
+        width: 32,
+        height: 32,
         borderRadius: "50% 50% 50% 0",
-        // backgroundColor: "white",
-        // border: "1px solid black",
+        backgroundColor: "white",
+        border: "2px solid black",
         color: "black",
-        // fontWeight: "600",
-        // transformOrigin: "bottom left",
-        // transform: "translate(50%, -85%) rotate(-45deg) scale(0)",
+        fontWeight: "600",
+        transformOrigin: "bottom left",
+        transform: "translate(50%, -85%) rotate(-45deg) scale(0)",
         "&::before": { display: "none" },
         "&.MuiSlider-valueLabelOpen": {
+            // marginTop: "14px",
             transform: "translate(50%, -85%) rotate(-45deg) scale(1)",
         },
         "& > *": {
@@ -67,7 +69,7 @@ export const Slider = ({
             step={step}
             onChange={onChange}
             disabled={disabled}
-            valueLabelDisplay="on"
+            valueLabelDisplay="auto"
             sx={{
                 "& .MuiSlider-valueLabel": {
                     borderColor: disabled ? "grey.500" : "black",

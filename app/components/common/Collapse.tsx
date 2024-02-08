@@ -19,14 +19,14 @@ export const Collapse = memo(function Collapse({
         <MuiCollapse
             in={expanded}
             orientation="horizontal"
-            collapsedSize={25}
+            collapsedSize={35}
             onClick={!expanded ? () => setExpanded(true) : undefined}
             sx={{
-                marginLeft: "-25px",
+                marginLeft: "-35px",
                 marginTop: "10px",
                 borderTopRightRadius: "60px",
                 borderBottomRightRadius: "60px",
-                zIndex: 1000,
+                zIndex: 100,
             }}
         >
             <Stack
@@ -44,7 +44,7 @@ export const Collapse = memo(function Collapse({
                     backgroundColor: "rgb(224, 217, 211)",
                     cursor: "pointer",
                     color: expanded ? "black" : "transparent",
-                    zIndex: 1000,
+                    zIndex: 100,
                 }}
             >
                 <>
@@ -53,10 +53,7 @@ export const Collapse = memo(function Collapse({
                         color="inherit"
                         onClick={() => setExpanded(false)}
                         sx={{
-                            backgroundColor: "white",
                             marginLeft: "15px",
-                            // backgroundColor: "transparent",
-                            // color: "black",
                         }}
                     >
                         <Image

@@ -1,7 +1,7 @@
 "use client";
 import { rulesItems } from "@/app/lib/formItems";
 import { getElements } from "@/app/utils/getElements";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { map } from "lodash";
 import { useEffect, useState } from "react";
 import { Rule } from "../../types/Rule";
@@ -11,7 +11,6 @@ import { SectionTitle } from "../common/SectionTitle";
 import { Slider } from "../common/Slider";
 import { Structure } from "../Structure/Structure";
 import { ToggleButtonGroup } from "../common/ToggleButtonGroup";
-import { StructureForm } from "../Structure/Form";
 import { Collapse } from "../common/Collapse";
 
 type PlaygroundProps = {
@@ -63,8 +62,8 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                 </p>
             </Card>
 
-            <Card color={"white"}>
-                <Stack>
+            <Card color={"white"} sx={{ position: "relative" }}>
+                <Stack sx={{ padding: "15px" }}>
                     <Structure
                         grid={grid}
                         cellType={displayText ? "text" : "image"}
@@ -72,125 +71,140 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         displayDefaultGrid={displayDefaultGrid}
                     />
 
-                    <Collapse defaultExpanded={true}>
-                        <Stack
-                            flexDirection="row"
-                            alignItems="center"
-                            sx={{ minWidth: "300px" }}
-                        >
-                            <Typography sx={{ marginRight: "20px" }}>
-                                Koeficient
-                            </Typography>
-
-                            <Slider
-                                value={form.coefficient}
-                                step={0.1}
-                                min={0.01}
-                                max={3.99}
-                                disabled={isRandom}
-                                onChange={(
-                                    e: Event,
-                                    newValue: number | number[]
-                                ) =>
-                                    setForm((prev) => ({
-                                        ...prev,
-                                        coefficient: newValue as number,
-                                    }))
-                                }
-                            />
-                        </Stack>
-                    </Collapse>
-
-                    <Collapse defaultExpanded={true}>
-                        <Stack
-                            flexDirection="row"
-                            alignItems="center"
-                            sx={{ minWidth: "200px" }}
-                        >
-                            <Typography sx={{ paddingRight: "20px" }}>
-                                Pravidlo
-                            </Typography>
+                    <Box sx={{ position: "absolute", top: 100 }}>
+                        <Collapse defaultExpanded={true}>
                             <Stack
                                 flexDirection="row"
                                 alignItems="center"
-                                gap={1}
-                                flexWrap="nowrap"
+                                sx={{ minWidth: "250px" }}
                             >
-                                {map(rulesItems, (rule: Rule) => (
-                                    <Chip
-                                        label={rule.code.toString()}
-                                        onClick={() =>
-                                            setForm((prev) => ({
-                                                ...prev,
-                                                rule: rule.code,
-                                            }))
-                                        }
-                                        selected={form.rule === rule.code}
-                                        disabled={isRandom}
-                                    />
-                                ))}
+                                <Typography sx={{ marginRight: "20px" }}>
+                                    Koeficient
+                                </Typography>
+
+                                <Slider
+                                    value={form.coefficient}
+                                    step={0.01}
+                                    min={0.01}
+                                    max={3.99}
+                                    disabled={isRandom}
+                                    onChange={(
+                                        e: Event,
+                                        newValue: number | number[]
+                                    ) =>
+                                        setForm((prev) => ({
+                                            ...prev,
+                                            coefficient: newValue as number,
+                                        }))
+                                    }
+                                />
                             </Stack>
-                            {/* <span style={{ fontSize: "12px" }}>
+                        </Collapse>
+
+                        <Collapse defaultExpanded={true}>
+                            <Stack
+                                flexDirection="row"
+                                alignItems="center"
+                                sx={{ minWidth: "200px" }}
+                            >
+                                <Typography sx={{ paddingRight: "20px" }}>
+                                    Pravidlo
+                                </Typography>
+                                <Stack
+                                    flexDirection="row"
+                                    alignItems="center"
+                                    gap={1}
+                                    flexWrap="nowrap"
+                                >
+                                    {map(rulesItems, (rule: Rule) => (
+                                        <Chip
+                                            label={rule.code.toString()}
+                                            onClick={() =>
+                                                setForm((prev) => ({
+                                                    ...prev,
+                                                    rule: rule.code,
+                                                }))
+                                            }
+                                            selected={form.rule === rule.code}
+                                            disabled={isRandom}
+                                        />
+                                    ))}
+                                </Stack>
+                                {/* <span style={{ fontSize: "12px" }}>
                                 {rulesItems[form.rule].text}
                             </span> */}
-                        </Stack>
-                    </Collapse>
+                            </Stack>
+                        </Collapse>
+
+                        <Collapse defaultExpanded={true}>
+                            <Stack
+                                flexDirection="row"
+                                sx={{ minWidth: "200px" }}
+                            >
+                                <Typography
+                                    sx={{
+                                        paddingRight: "20px",
+                                        paddingTop: "8px",
+                                    }}
+                                >
+                                    Zobrazení
+                                </Typography>
+                                <Stack flexWrap="nowrap">
+                                    <ToggleButtonGroup
+                                        value={displayDefaultGrid}
+                                        onChange={(newValue) =>
+                                            setDisplayDefaultGrid(newValue)
+                                        }
+                                        buttons={[
+                                            {
+                                                label: "Zadání",
+                                                value: true,
+                                            },
+                                            {
+                                                label: "Výsledek",
+                                                value: false,
+                                            },
+                                        ]}
+                                    />
+                                    <ToggleButtonGroup
+                                        value={displayText}
+                                        onChange={(newValue) =>
+                                            setDisplayText(newValue)
+                                        }
+                                        buttons={[
+                                            {
+                                                label: "Text",
+                                                value: true,
+                                            },
+                                            {
+                                                label: "Obraz",
+                                                value: false,
+                                            },
+                                        ]}
+                                    />
+                                    <ToggleButtonGroup
+                                        value={isRandom}
+                                        onChange={(newValue) =>
+                                            setIsRandom(newValue)
+                                        }
+                                        buttons={[
+                                            {
+                                                label: "Random",
+                                                value: true,
+                                            },
+                                            {
+                                                label: "Algoritmus",
+                                                value: false,
+                                            },
+                                        ]}
+                                    />
+                                </Stack>
+                            </Stack>
+                        </Collapse>
+                    </Box>
                 </Stack>
             </Card>
 
-            <Card color={color}>
-                <Stack flexDirection="row" justifyContent="space-between">
-                    <ToggleButtonGroup
-                        value={displayDefaultGrid}
-                        onChange={(newValue) => setDisplayDefaultGrid(newValue)}
-                        buttons={[
-                            {
-                                label: "Zadání",
-                                value: true,
-                            },
-                            {
-                                label: "Výsledek",
-                                value: false,
-                            },
-                        ]}
-                    />
-
-                    <ToggleButtonGroup
-                        value={displayText}
-                        onChange={(newValue) => setDisplayText(newValue)}
-                        buttons={[
-                            {
-                                label: "Text",
-                                value: true,
-                            },
-                            {
-                                label: "Obraz",
-                                value: false,
-                            },
-                        ]}
-                    />
-
-                    <ToggleButtonGroup
-                        value={isRandom}
-                        onChange={(newValue) =>
-                            setForm((prev) => ({
-                                ...prev,
-                                isRandom: newValue,
-                            }))
-                        }
-                        buttons={[
-                            {
-                                label: "Random",
-                                value: true,
-                            },
-                            {
-                                label: "Algoritmus",
-                                value: false,
-                            },
-                        ]}
-                    />
-                </Stack>
-            </Card>
             <Card>
                 <p>
                     V 70. letech od tvorby struktur Sýkora ustoupil a začal s
