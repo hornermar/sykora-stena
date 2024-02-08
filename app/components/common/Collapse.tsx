@@ -1,4 +1,4 @@
-import { Collapse as MuiCollapse, Stack } from "@mui/material";
+import { Collapse as MuiCollapse, Stack, SxProps } from "@mui/material";
 import { memo, useState } from "react";
 import arrowLeftIcon from "../../../public/arrow-left-solid.svg";
 import { IconButton } from "@mui/material";
@@ -7,13 +7,19 @@ import Image from "next/image";
 type CollapseProps = {
     children: React.ReactNode;
     defaultExpanded?: boolean;
+    expandable?: boolean;
+    sx?: SxProps;
 };
 
 export const Collapse = memo(function Collapse({
     children,
     defaultExpanded,
+    expandable = true,
+    sx,
 }: CollapseProps) {
-    const [expanded, setExpanded] = useState(defaultExpanded ?? false);
+    const [expanded, setExpanded] = useState(
+        defaultExpanded ?? !expandable ?? false
+    );
 
     return (
         <MuiCollapse
@@ -22,11 +28,12 @@ export const Collapse = memo(function Collapse({
             collapsedSize={35}
             onClick={!expanded ? () => setExpanded(true) : undefined}
             sx={{
-                marginLeft: "-35px",
+                marginLeft: "-25px",
                 marginTop: "10px",
                 borderTopRightRadius: "60px",
                 borderBottomRightRadius: "60px",
-                zIndex: 100,
+                zIndex: 1000,
+                ...sx,
             }}
         >
             <Stack
@@ -49,20 +56,22 @@ export const Collapse = memo(function Collapse({
             >
                 <>
                     {children}
-                    <IconButton
-                        color="inherit"
-                        onClick={() => setExpanded(false)}
-                        sx={{
-                            marginLeft: "15px",
-                        }}
-                    >
-                        <Image
-                            src={arrowLeftIcon}
-                            width={20}
-                            height={20}
-                            alt={"arrow left icon"}
-                        />
-                    </IconButton>
+                    {(expandable || defaultExpanded) && (
+                        <IconButton
+                            color="inherit"
+                            onClick={() => setExpanded(false)}
+                            sx={{
+                                marginLeft: "15px",
+                            }}
+                        >
+                            <Image
+                                src={arrowLeftIcon}
+                                width={20}
+                                height={20}
+                                alt={"arrow left icon"}
+                            />
+                        </IconButton>
+                    )}
                 </>
             </Stack>
         </MuiCollapse>

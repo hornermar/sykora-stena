@@ -3,15 +3,19 @@ import { Cell } from "@/app/types/General";
 import { getColourDensity } from "@/app/utils/getColorDensity";
 import { getElements } from "@/app/utils/getElements";
 import { getSlicedGrid } from "@/app/utils/getSlicedGrid";
-import { Box, Stack } from "@mui/material";
+import rotateIcon from "../../../public/rotate-solid.svg";
 import { map, size } from "lodash";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Card } from "../common/Card";
 import { SectionTitle } from "../common/SectionTitle";
 import { Structure } from "../Structure/Structure";
 import { GridSwitch } from "../common/Switch";
 import { ExampleDescription } from "./Description/Description";
 import { Collapse } from "../common/Collapse";
+import { getRandomCoefficient } from "@/app/utils/getRandomCoefficient";
+import { getRandomRule } from "@/app/utils/getRandomRule copy";
+import { IconButton, Stack } from "@mui/material";
+import Image from "next/image";
 
 type ExampleProps = {
     defaultGrid: string[][];
@@ -21,19 +25,25 @@ type ExampleProps = {
 export const cellsToProcess = ["0", "+", "-"];
 
 export const Example = ({ defaultGrid, color }: ExampleProps) => {
-    const smallGrid = defaultGrid.slice(0, 11);
-    const form = {
-        coefficient: 0.8,
-        rule: 0,
-    };
-
-    const grid = useMemo(
-        () => getElements(form.rule, form.coefficient, smallGrid),
-        [form.rule, form.coefficient, smallGrid]
-    );
-
     const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
     const [displayText, setDisplayText] = useState(true);
+    const smallGrid = useMemo(() => defaultGrid.slice(11, 22), []);
+    const [form, setForm] = useState({
+        coefficient: 0.8,
+        rule: 0,
+    });
+    const [grid, setGrid] = useState(smallGrid);
+
+    const reloadInputs = useCallback(() => {
+        setForm({
+            coefficient: getRandomCoefficient(),
+            rule: getRandomRule(),
+        });
+    }, []);
+
+    useEffect(() => {
+        setGrid(getElements(form.rule, form.coefficient, smallGrid));
+    }, [form]);
 
     const onCellClick = (x: number, y: number) => {
         cellsToProcess.includes(defaultGrid[y][x]) && setActiveCell({ x, y });
@@ -97,36 +107,43 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
             </Card>
 
             <Card color="white" sx={{ position: "relative" }}>
-                <Stack sx={{ padding: "15px" }}>
-                    <Structure
-                        grid={slicedGrid}
-                        defaultGrid={defaultGrid}
-                        cellType={displayText ? "text" : "image"}
-                        onCellClick={onCellClick}
-                        activeCell={activeCell}
-                        activeNeighbours={activeNeighbours}
-                        color={color}
-                    />
+                <Structure
+                    grid={slicedGrid}
+                    defaultGrid={defaultGrid}
+                    cellType={displayText ? "text" : "image"}
+                    onCellClick={onCellClick}
+                    activeCell={activeCell}
+                    activeNeighbours={activeNeighbours}
+                    color={color}
+                />
 
-                    <Box sx={{ position: "absolute", bottom: 50 }}>
-                        <Collapse>
-                            <Stack flexDirection="row" alignItems="center">
-                                <span>
-                                    Koeficient:&nbsp;{form.coefficient}
-                                    &nbsp;Pravidlo:&nbsp;
-                                    {form.rule}
-                                </span>
-                                <GridSwitch
-                                    sx={{ marginLeft: "20px" }}
-                                    checked={!displayText}
-                                    onChange={() =>
-                                        setDisplayText((prev) => !prev)
-                                    }
-                                />
-                            </Stack>
-                        </Collapse>
-                    </Box>
-                </Stack>
+                <Collapse expandable={false}>
+                    <Stack flexDirection="row" alignItems="center">
+                        <span>
+                            Koeficient:&nbsp;{form.coefficient}
+                            &nbsp;Pravidlo:&nbsp;
+                            {form.rule}
+                        </span>
+                        <GridSwitch
+                            sx={{ marginLeft: "20px" }}
+                            checked={!displayText}
+                            onChange={() => setDisplayText((prev) => !prev)}
+                        />
+                    </Stack>
+
+                    <IconButton
+                        color="inherit"
+                        onClick={() => reloadInputs()}
+                        sx={{ backgroundColor: "white !important" }}
+                    >
+                        <Image
+                            src={rotateIcon}
+                            width={20}
+                            height={20}
+                            alt={"arrow left icon"}
+                        />
+                    </IconButton>
+                </Collapse>
             </Card>
 
             <ExampleDescription

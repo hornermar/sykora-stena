@@ -18,6 +18,10 @@ type PlaygroundProps = {
     color: string;
 };
 
+const collapseSx = {
+    marginLeft: "-35px",
+};
+
 export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
     const [form, setForm] = useState({
         coefficient: 2,
@@ -72,7 +76,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                     />
 
                     <Box sx={{ position: "absolute", top: 100 }}>
-                        <Collapse defaultExpanded={true}>
+                        <Collapse defaultExpanded={true} sx={collapseSx}>
                             <Stack
                                 flexDirection="row"
                                 alignItems="center"
@@ -101,7 +105,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                             </Stack>
                         </Collapse>
 
-                        <Collapse defaultExpanded={true}>
+                        <Collapse defaultExpanded={true} sx={collapseSx}>
                             <Stack
                                 flexDirection="row"
                                 alignItems="center"
@@ -136,7 +140,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                             </Stack>
                         </Collapse>
 
-                        <Collapse defaultExpanded={true}>
+                        <Collapse defaultExpanded={true} sx={collapseSx}>
                             <Stack
                                 flexDirection="row"
                                 sx={{ minWidth: "200px" }}

@@ -1,6 +1,6 @@
 import { getCellSize } from "@/app/utils/getCellSize";
-import { Box, Skeleton, Stack } from "@mui/material";
-import { head, map, size } from "lodash";
+import { Box, Stack } from "@mui/material";
+import { map, size } from "lodash";
 import {
     CSSProperties,
     memo,

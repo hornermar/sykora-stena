@@ -1,13 +1,12 @@
 "use client";
 import { Box, SvgIcon, Typography } from "@mui/material";
 import { Collapse } from "../common/Collapse";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getElements } from "../../utils/getElements";
 import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
 import { getRandomRule } from "../../utils/getRandomRule copy";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
-import { StructureForm } from "../Structure/Form";
 import { Structure } from "../Structure/Structure";
 import { GridSwitch } from "../common/Switch";
 import { useSwitch } from "@/app/hooks/useSwitch";
@@ -15,6 +14,7 @@ import { FrontPageDialog } from "./Dialog";
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import infoIcon from "../../../public/circle-info-solid.svg";
+import rotateIcon from "../../../public/rotate-solid.svg";
 
 const emptyGrid = [
     ["-", "-", "-", "0", "3r", "1r"],
@@ -37,14 +37,35 @@ type FrontPageProps = {
 export const FrontPage = ({ color }: FrontPageProps) => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
     const [open, onOpen, onClose] = useSwitch(false);
+    const [grid, setGrid] = useState(emptyGrid);
     const [form, setForm] = useState({
         coefficient: getRandomCoefficient(),
         rule: getRandomRule(),
     });
 
-    const grid = useMemo(() => {
-        return getElements(form.rule, form.coefficient, emptyGrid);
-    }, [form.rule, form.coefficient]);
+    // const form = useMemo(
+    //     () => ({
+    //         coefficient: getRandomCoefficient(),
+    //         rule: getRandomRule(),
+    //     }),
+    //     []
+    // );
+
+    const reloadInputs = useCallback(() => {
+        setForm({
+            coefficient: getRandomCoefficient(),
+            rule: getRandomRule(),
+        });
+    }, []);
+
+    useEffect(() => {
+        setGrid(getElements(form.rule, form.coefficient, emptyGrid));
+    }, [form]);
+    // , [form.rule, form.coefficient]);
+
+    // const grid = useMemo(() => {
+    //     return getElements(form.rule, form.coefficient, emptyGrid);
+    // }, [form.rule, form.coefficient]);
 
     const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");
@@ -76,32 +97,48 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                 </Typography>
             </Card>
 
-            <Card sx={{ position: "relative" }}>
-                <Stack sx={{ padding: "15px" }}>
-                    <Structure
-                        grid={displayEmptyGrid ? emptyGrid : grid}
-                        cellType={displayEmptyGrid ? "text" : "image"}
-                    />
+            <Card>
+                <Structure
+                    grid={displayEmptyGrid ? emptyGrid : grid}
+                    cellType={displayEmptyGrid ? "text" : "image"}
+                />
 
-                    <Box sx={{ position: "absolute", top: 40 }}>
-                        <Collapse>
-                            <Stack flexDirection="row" alignItems="center">
-                                <span>
-                                    Koeficient:&nbsp;{form.coefficient}
-                                    &nbsp;Pravidlo:&nbsp;
-                                    {form.rule}
-                                </span>
-                                <GridSwitch
-                                    sx={{ marginLeft: "20px" }}
-                                    checked={!displayEmptyGrid}
-                                    onChange={() =>
-                                        setDisplayEmptyGrid((prev) => !prev)
-                                    }
-                                />
-                            </Stack>
-                        </Collapse>
-                    </Box>
-                </Stack>
+                <Collapse expandable={false} sx={{ paddingTop: "10px" }}>
+                    <Stack flexDirection="row" alignItems="center">
+                        <p>
+                            Koeficient:&nbsp;
+                            <span
+                                style={{
+                                    display: "inline-block",
+                                    width: "30px",
+                                }}
+                            >
+                                {form.coefficient}
+                            </span>
+                            &nbsp;Pravidlo:&nbsp;
+                            <span>{form.rule}</span>
+                        </p>
+                        <GridSwitch
+                            sx={{ marginLeft: "20px" }}
+                            checked={!displayEmptyGrid}
+                            onChange={() =>
+                                setDisplayEmptyGrid((prev) => !prev)
+                            }
+                        />
+                        <IconButton
+                            color="inherit"
+                            onClick={() => reloadInputs()}
+                            sx={{ backgroundColor: "white !important" }}
+                        >
+                            <Image
+                                src={rotateIcon}
+                                width={20}
+                                height={20}
+                                alt={"arrow left icon"}
+                            />
+                        </IconButton>
+                    </Stack>
+                </Collapse>
             </Card>
 
             <Card color="white">
