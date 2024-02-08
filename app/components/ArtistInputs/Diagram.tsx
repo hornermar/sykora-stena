@@ -10,7 +10,7 @@ type ArtistInputsDiagramProps = {
 };
 
 export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
-    const smallGrid = useMemo(() => grid.slice(0, 11), []);
+    const smallGrid = useMemo(() => grid.slice(0, 11), [grid]);
     const [displayText, setDisplayText] = useState(false);
 
     return (

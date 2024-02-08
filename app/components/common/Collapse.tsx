@@ -43,7 +43,7 @@ export const Collapse = memo(function Collapse({
                 flexWrap="nowrap"
                 sx={{
                     float: "right",
-                    padding: "5px 10px",
+                    padding: "5px 10px 5px 25px",
                     borderTopRightRadius: "40px",
                     borderBottomRightRadius: "40px",
                     minWidth: "25px",

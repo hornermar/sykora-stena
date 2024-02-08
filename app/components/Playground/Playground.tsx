@@ -66,8 +66,17 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                 </p>
             </Card>
 
-            <Card color={"white"} sx={{ position: "relative" }}>
-                <Stack sx={{ padding: "15px" }}>
+            <Card
+                color={"white"}
+                sx={{ position: "relative", height: "100vH" }}
+            >
+                <Stack
+                    sx={{
+                        padding: "15px",
+                        height: "100%",
+                        justifyContent: "center",
+                    }}
+                >
                     <Structure
                         grid={grid}
                         cellType={displayText ? "text" : "image"}
@@ -75,7 +84,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         displayDefaultGrid={displayDefaultGrid}
                     />
 
-                    <Box sx={{ position: "absolute", top: 100 }}>
+                    <Box sx={{ position: "absolute", top: "40vh" }}>
                         <Collapse defaultExpanded={true} sx={collapseSx}>
                             <Stack
                                 flexDirection="row"
@@ -131,6 +140,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                                             }
                                             selected={form.rule === rule.code}
                                             disabled={isRandom}
+                                            key={rule.code}
                                         />
                                     ))}
                                 </Stack>

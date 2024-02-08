@@ -13,8 +13,8 @@ import { GridSwitch } from "../common/Switch";
 import { ExampleDescription } from "./Description/Description";
 import { Collapse } from "../common/Collapse";
 import { getRandomCoefficient } from "@/app/utils/getRandomCoefficient";
-import { getRandomRule } from "@/app/utils/getRandomRule copy";
-import { IconButton, Stack } from "@mui/material";
+import { getRandomRule } from "@/app/utils/getRandomRule";
+import { IconButton, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
 type ExampleProps = {
@@ -27,11 +27,12 @@ export const cellsToProcess = ["0", "+", "-"];
 export const Example = ({ defaultGrid, color }: ExampleProps) => {
     const [activeCell, setActiveCell] = useState<Cell>({ x: 7, y: 0 });
     const [displayText, setDisplayText] = useState(true);
-    const smallGrid = useMemo(() => defaultGrid.slice(11, 22), []);
     const [form, setForm] = useState({
         coefficient: 0.8,
         rule: 0,
     });
+    const smallGrid = useMemo(() => defaultGrid.slice(11, 22), [defaultGrid]);
+
     const [grid, setGrid] = useState(smallGrid);
 
     const reloadInputs = useCallback(() => {
@@ -43,7 +44,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
 
     useEffect(() => {
         setGrid(getElements(form.rule, form.coefficient, smallGrid));
-    }, [form]);
+    }, [form, smallGrid]);
 
     const onCellClick = (x: number, y: number) => {
         cellsToProcess.includes(defaultGrid[y][x]) && setActiveCell({ x, y });
@@ -109,7 +110,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
             <Card color="white" sx={{ position: "relative" }}>
                 <Structure
                     grid={slicedGrid}
-                    defaultGrid={defaultGrid}
+                    defaultGrid={smallGrid}
                     cellType={displayText ? "text" : "image"}
                     onCellClick={onCellClick}
                     activeCell={activeCell}
@@ -117,13 +118,20 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                     color={color}
                 />
 
-                <Collapse expandable={false}>
+                <Collapse expandable={false} sx={{ paddingTop: "10px" }}>
                     <Stack flexDirection="row" alignItems="center">
-                        <span>
-                            Koeficient:&nbsp;{form.coefficient}
-                            &nbsp;Pravidlo:&nbsp;
-                            {form.rule}
-                        </span>
+                        <Typography>
+                            Koeficient:&nbsp;
+                            <span
+                                style={{
+                                    display: "inline-block",
+                                    width: "40px",
+                                }}
+                            >
+                                {form.coefficient}&nbsp;
+                            </span>
+                            Pravidlo:&nbsp;<span>{form.rule}</span>
+                        </Typography>
                         <GridSwitch
                             sx={{ marginLeft: "20px" }}
                             checked={!displayText}

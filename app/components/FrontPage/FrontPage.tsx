@@ -4,7 +4,7 @@ import { Collapse } from "../common/Collapse";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getElements } from "../../utils/getElements";
 import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
-import { getRandomRule } from "../../utils/getRandomRule copy";
+import { getRandomRule } from "../../utils/getRandomRule";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
 import { Structure } from "../Structure/Structure";
@@ -39,17 +39,9 @@ export const FrontPage = ({ color }: FrontPageProps) => {
     const [open, onOpen, onClose] = useSwitch(false);
     const [grid, setGrid] = useState(emptyGrid);
     const [form, setForm] = useState({
-        coefficient: getRandomCoefficient(),
-        rule: getRandomRule(),
+        coefficient: 0.75,
+        rule: 1,
     });
-
-    // const form = useMemo(
-    //     () => ({
-    //         coefficient: getRandomCoefficient(),
-    //         rule: getRandomRule(),
-    //     }),
-    //     []
-    // );
 
     const reloadInputs = useCallback(() => {
         setForm({
@@ -61,11 +53,10 @@ export const FrontPage = ({ color }: FrontPageProps) => {
     useEffect(() => {
         setGrid(getElements(form.rule, form.coefficient, emptyGrid));
     }, [form]);
-    // , [form.rule, form.coefficient]);
 
-    // const grid = useMemo(() => {
-    //     return getElements(form.rule, form.coefficient, emptyGrid);
-    // }, [form.rule, form.coefficient]);
+    useEffect(() => {
+        console.log(grid);
+    }, [grid]);
 
     const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");
@@ -74,27 +65,36 @@ export const FrontPage = ({ color }: FrontPageProps) => {
 
     return (
         <>
-            <Card color={color}>
-                <Typography
-                    variant="h1"
-                    sx={{
-                        fontSize: "42px",
-                        padding: "0px 0px 130px 0px",
-                        fontWeight: "400",
-                    }}
-                >
-                    Systém Sýkora
-                </Typography>
+            <Card
+                color={color}
+                sx={{
+                    height: "50vh",
+                    maxHeight: "400px",
+                }}
+            >
+                <Stack justifyContent="space-between" height="100%">
+                    <Typography
+                        variant="h1"
+                        sx={{
+                            fontSize: "42px",
+                            fontWeight: "400",
+                        }}
+                    >
+                        Systém Sýkora
+                    </Typography>
 
-                <Typography
-                    variant="h2"
-                    sx={{
-                        fontSize: "18px",
-                        fontWeight: "400",
-                    }}
-                >
-                    Algoritmus Zdeňka Sýkory pro tvorbu černobílých struktur.
-                </Typography>
+                    <Typography
+                        variant="h2"
+                        sx={{
+                            fontSize: "18px",
+                            fontWeight: "400",
+                            paddingBottom: "16px",
+                        }}
+                    >
+                        Algoritmus Zdeňka Sýkory pro tvorbu černobílých
+                        struktur.
+                    </Typography>
+                </Stack>
             </Card>
 
             <Card>
@@ -105,19 +105,19 @@ export const FrontPage = ({ color }: FrontPageProps) => {
 
                 <Collapse expandable={false} sx={{ paddingTop: "10px" }}>
                     <Stack flexDirection="row" alignItems="center">
-                        <p>
+                        <Typography>
                             Koeficient:&nbsp;
                             <span
                                 style={{
                                     display: "inline-block",
-                                    width: "30px",
+                                    width: "40px",
                                 }}
                             >
-                                {form.coefficient}
+                                {form.coefficient}&nbsp;
                             </span>
-                            &nbsp;Pravidlo:&nbsp;
-                            <span>{form.rule}</span>
-                        </p>
+                            Pravidlo:&nbsp;<span>{form.rule}</span>
+                        </Typography>
+
                         <GridSwitch
                             sx={{ marginLeft: "20px" }}
                             checked={!displayEmptyGrid}
@@ -162,8 +162,9 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                         pravidel.
                     </p>
 
-                    <Stack flexDirection="row" alignItems="center">
-                        <span>
+                    <Collapse expandable={false}>
+                        <Stack flexDirection="row" alignItems="center">
+                            Jednu ze struktur najdede i centru Prahy!
                             <IconButton
                                 color="inherit"
                                 onClick={onOpen}
@@ -176,12 +177,8 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                                     alt={"right left arrow icon"}
                                 />
                             </IconButton>
-                        </span>
-                        <p>
-                            Jednu ze struktur najdede i volně přístupnou v
-                            Praze!
-                        </p>
-                    </Stack>
+                        </Stack>
+                    </Collapse>
 
                     <p>
                         V následujících najdete popis algoritmu. Nejprve jsou

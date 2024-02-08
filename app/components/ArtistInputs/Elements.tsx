@@ -106,7 +106,7 @@ export const ArtistInputsElements = () => {
             <Card color="white">
                 <p style={{ margin: 0 }}>
                     Elementy následně rozdělil do skupin 1, 2, 3 a 4 podle
-                    poměru barev černá-bílá (Skupina 1 obsahuje nejsvětlejší,
+                    poměru barev černá-bílá (skupina 1 obsahuje nejsvětlejší,
                     skupina 4 naopak nejtmavší).
                 </p>
                 <p>

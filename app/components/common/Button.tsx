@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 
 const StyledButton = styled(MuiButton)((props) => ({
     boxShadow: "none",
-    padding: "4px 20px",
+    padding: "8px 20px",
     borderRadius: "25px",
     color: "white",
     backgroundColor: props.variant === "contained" ? "black" : "transparent",

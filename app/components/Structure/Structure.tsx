@@ -78,7 +78,6 @@ export const Structure = memo(function Structure({
             ) : (
                 <Box
                     sx={{
-                        position: "relative",
                         width: "100%",
                         paddingBottom: "100%",
                         backgroundColor: "rgba(0, 0, 0, 0.03)",
