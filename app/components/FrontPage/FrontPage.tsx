@@ -68,7 +68,7 @@ export const FrontPage = ({ color }: FrontPageProps) => {
             <Card
                 color={color}
                 sx={{
-                    height: "50vh",
+                    height: "45vh",
                     maxHeight: "400px",
                 }}
             >

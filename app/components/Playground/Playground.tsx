@@ -12,6 +12,7 @@ import { Slider } from "../common/Slider";
 import { Structure } from "../Structure/Structure";
 import { ToggleButtonGroup } from "../common/ToggleButtonGroup";
 import { Collapse } from "../common/Collapse";
+import { OnOffSwitch } from "../common/Switch";
 
 type PlaygroundProps = {
     defaultGrid: string[][];
@@ -84,7 +85,7 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         displayDefaultGrid={displayDefaultGrid}
                     />
 
-                    <Box sx={{ position: "absolute", top: "40vh" }}>
+                    <Box sx={{ position: "absolute", top: "30vh" }}>
                         <Collapse defaultExpanded={true} sx={collapseSx}>
                             <Stack
                                 flexDirection="row"
@@ -115,46 +116,82 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                         </Collapse>
 
                         <Collapse defaultExpanded={true} sx={collapseSx}>
-                            <Stack
-                                flexDirection="row"
-                                alignItems="center"
-                                sx={{ minWidth: "200px" }}
-                            >
-                                <Typography sx={{ paddingRight: "20px" }}>
-                                    Pravidlo
-                                </Typography>
-                                <Stack
-                                    flexDirection="row"
-                                    alignItems="center"
-                                    gap={1}
-                                    flexWrap="nowrap"
-                                >
-                                    {map(rulesItems, (rule: Rule) => (
-                                        <Chip
-                                            label={rule.code.toString()}
-                                            onClick={() =>
-                                                setForm((prev) => ({
-                                                    ...prev,
-                                                    rule: rule.code,
-                                                }))
-                                            }
-                                            selected={form.rule === rule.code}
-                                            disabled={isRandom}
-                                            key={rule.code}
-                                        />
-                                    ))}
+                            <Stack>
+                                <Stack flexDirection="row" alignItems="center">
+                                    <Typography sx={{ paddingRight: "20px" }}>
+                                        Pravidlo
+                                    </Typography>
+                                    <Stack
+                                        flexDirection="row"
+                                        alignItems="center"
+                                        gap={1}
+                                        flexWrap="nowrap"
+                                    >
+                                        {map(rulesItems, (rule: Rule) => (
+                                            <Chip
+                                                label={rule.code.toString()}
+                                                onClick={() =>
+                                                    setForm((prev) => ({
+                                                        ...prev,
+                                                        rule: rule.code,
+                                                    }))
+                                                }
+                                                selected={
+                                                    form.rule === rule.code
+                                                }
+                                                disabled={isRandom}
+                                                key={rule.code}
+                                            />
+                                        ))}
+                                    </Stack>
                                 </Stack>
-                                {/* <span style={{ fontSize: "12px" }}>
-                                {rulesItems[form.rule].text}
-                            </span> */}
+                                <span
+                                    style={{
+                                        fontSize: "10px",
+                                        paddingTop: "3px",
+                                    }}
+                                >
+                                    {rulesItems[form.rule].text.replaceAll(
+                                        " ",
+                                        "\u00A0"
+                                    )}
+                                </span>
                             </Stack>
                         </Collapse>
 
                         <Collapse defaultExpanded={true} sx={collapseSx}>
                             <Stack
                                 flexDirection="row"
-                                sx={{ minWidth: "200px" }}
+                                alignItems="center"
+                                justifyContent="space-between"
+                                width="100%"
                             >
+                                <Stack>
+                                    <Typography sx={{ paddingRight: "20px" }}>
+                                        Algoritmus
+                                    </Typography>
+                                    <span
+                                        style={{
+                                            fontSize: "10px",
+                                            paddingTop: "3px",
+                                        }}
+                                    >
+                                        Vypnutím&nbsp;se&nbsp;elementy&nbsp;vybírají&nbsp;náhodně
+                                    </span>
+                                </Stack>
+
+                                <OnOffSwitch
+                                    sx={{ marginLeft: "20px" }}
+                                    checked={!isRandom}
+                                    onChange={() =>
+                                        setIsRandom((prev) => !prev)
+                                    }
+                                />
+                            </Stack>
+                        </Collapse>
+
+                        <Collapse defaultExpanded={true} sx={collapseSx}>
+                            <Stack flexDirection="row">
                                 <Typography
                                     sx={{
                                         paddingRight: "20px",
@@ -192,22 +229,6 @@ export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
                                             },
                                             {
                                                 label: "Obraz",
-                                                value: false,
-                                            },
-                                        ]}
-                                    />
-                                    <ToggleButtonGroup
-                                        value={isRandom}
-                                        onChange={(newValue) =>
-                                            setIsRandom(newValue)
-                                        }
-                                        buttons={[
-                                            {
-                                                label: "Random",
-                                                value: true,
-                                            },
-                                            {
-                                                label: "Algoritmus",
                                                 value: false,
                                             },
                                         ]}
