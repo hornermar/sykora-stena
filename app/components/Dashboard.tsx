@@ -1,7 +1,7 @@
 "use client";
 import { Box, IconButton } from "@mui/material";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import arrowToTopIcon from "../../public/angles-up-solid.svg";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
 import { Contact } from "./Contact/Contact";
@@ -10,32 +10,40 @@ import { FrontPage } from "./FrontPage/FrontPage";
 import { Playground } from "./Playground/Playground";
 import { Section } from "./common/Section";
 import { Sources } from "./Sources/Sources";
-import { useScrollPositionChange } from "@/app/hooks/useScrollPositionChange";
 import { exampleGrid } from "../lib/exampleGrid";
 
 export default function HomePage() {
+    const [scrollTop, setScrollTop] = useState(0);
     const [showButton, setShowButton] = useState(false);
 
-    const checkScrollPosition = () => {
-        if (window.scrollY > 7200) {
+    useEffect(() => {
+        const handleScroll = (event: any) => {
+            setScrollTop(window.scrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (scrollTop > window.innerHeight) {
             setShowButton(true);
         } else {
             setShowButton(false);
         }
-    };
-
-    useScrollPositionChange(() => {
-        checkScrollPosition();
-    });
-
-    useEffect(() => {
-        window.addEventListener("scroll", checkScrollPosition);
-        return () => window.removeEventListener("scroll", checkScrollPosition);
-    }, []);
+    }, [scrollTop]);
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+    const roundedSrollTop = useMemo(
+        () => Math.floor(scrollTop / 100) * 100,
+        [scrollTop]
+    );
 
     return (
         <Box>
@@ -62,11 +70,18 @@ export default function HomePage() {
             )}
 
             <Section id="frontpage">
-                <FrontPage color="rgb(224, 217, 211)" />
+                <FrontPage
+                    color="rgb(224, 217, 211)"
+                    scrollTop={roundedSrollTop}
+                />
             </Section>
 
             <Section>
-                <ArtistInputs grid={exampleGrid} color="rgb(224, 217, 211)" />
+                <ArtistInputs
+                    grid={exampleGrid}
+                    color="rgb(224, 217, 211)"
+                    scrollTop={roundedSrollTop}
+                />
             </Section>
             <Section>
                 <Example defaultGrid={exampleGrid} color="rgb(224, 217, 211)" />

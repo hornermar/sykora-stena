@@ -1,12 +1,11 @@
 "use client";
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import rightLeftIcon from "../../../public/right-left-solid.svg";
 import { Card } from "../common/Card";
 import { ExampleGrid } from "../ExampleGrid";
 import { SeparateElement } from "./SeparateElement";
-import { useScrollPositionChange } from "@/app/hooks/useScrollPositionChange";
 
 const allElements = [
     ["1z", "1r", "2z", "3z", "4z", "4r"],
@@ -32,20 +31,19 @@ const blackWhiteElements = [
 const smallSize = 35;
 const largeSize = 60;
 
-export const ArtistInputsElements = () => {
+type ArtistInputsElementsProps = {
+    scrollTop: number;
+};
+
+export const ArtistInputsElements = ({
+    scrollTop,
+}: ArtistInputsElementsProps) => {
     const [whiteBlack, setWhiteBlack] = useState(false);
     const [rotationOfAll, setRotationOfAll] = useState(0);
 
-    let lastScrollY = 0;
-    useScrollPositionChange(() => {
-        const currentScrollY = Math.floor(window.scrollY);
-
-        if (currentScrollY !== lastScrollY && currentScrollY % 70 === 0) {
-            setRotationOfAll((prev) => prev + 1);
-
-            lastScrollY = currentScrollY;
-        }
-    });
+    useEffect(() => {
+        setRotationOfAll((prev) => prev + 1);
+    }, [scrollTop]);
 
     return (
         <>

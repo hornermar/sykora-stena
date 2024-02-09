@@ -9,9 +9,10 @@ import { ArtistInputsRule } from "./Rule";
 type ArtistInputProps = {
     grid: string[][];
     color: string;
+    scrollTop: number;
 };
 
-export const ArtistInputs = ({ grid, color }: ArtistInputProps) => {
+export const ArtistInputs = ({ grid, color, scrollTop }: ArtistInputProps) => {
     return (
         <>
             <Card color={color}>
@@ -32,7 +33,7 @@ export const ArtistInputs = ({ grid, color }: ArtistInputProps) => {
                     navazovat.
                 </p>
             </Card>
-            <ArtistInputsElements />
+            <ArtistInputsElements scrollTop={scrollTop} />
 
             <ArtistInputsDiagram grid={grid} />
             <ArtistInputsCoefficient color={color} />

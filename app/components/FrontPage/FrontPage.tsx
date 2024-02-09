@@ -1,6 +1,6 @@
 import { Box, SvgIcon, Typography } from "@mui/material";
 import { Collapse } from "../common/Collapse";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
 import { getRandomRule } from "../../utils/getRandomRule";
 import { Button } from "../common/Button";
@@ -10,7 +10,6 @@ import { FrontPageDialog } from "./Dialog";
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import infoIcon from "../../../public/circle-info-solid.svg";
-import { useScrollPositionChange } from "@/app/hooks/useScrollPositionChange";
 import { FrontPageImage } from "./Image";
 
 const emptyGrid = [
@@ -29,9 +28,10 @@ const emptyGrid = [
 
 type FrontPageProps = {
     color: string;
+    scrollTop: number;
 };
 
-export const FrontPage = ({ color }: FrontPageProps) => {
+export const FrontPage = ({ color, scrollTop }: FrontPageProps) => {
     const [open, onOpen, onClose] = useSwitch(false);
     const [form, setForm] = useState({
         coefficient: 0.75,
@@ -45,17 +45,9 @@ export const FrontPage = ({ color }: FrontPageProps) => {
         });
     }, []);
 
-    let lastScrollY = 0;
-    useScrollPositionChange(() => {
-        const currentScrollY = Math.floor(window.scrollY);
-
-        if (currentScrollY !== lastScrollY && currentScrollY % 50 === 0) {
-            if (window.scrollY < window.innerHeight) {
-                reloadInputs();
-            }
-            lastScrollY = currentScrollY;
-        }
-    });
+    useEffect(() => {
+        scrollTop < window.innerHeight && reloadInputs();
+    }, [scrollTop]);
 
     const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");
