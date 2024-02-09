@@ -49,7 +49,7 @@ export const FrontPage = ({ color }: FrontPageProps) => {
     useScrollPositionChange(() => {
         const currentScrollY = Math.floor(window.scrollY);
 
-        if (currentScrollY !== lastScrollY && currentScrollY % 50 === 0) {
+        if (currentScrollY !== lastScrollY && currentScrollY % 80 === 0) {
             if (window.scrollY < window.innerHeight) {
                 reloadInputs();
             }

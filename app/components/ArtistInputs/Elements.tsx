@@ -40,7 +40,7 @@ export const ArtistInputsElements = () => {
     useScrollPositionChange(() => {
         const currentScrollY = Math.floor(window.scrollY);
 
-        if (currentScrollY !== lastScrollY && currentScrollY % 40 === 0) {
+        if (currentScrollY !== lastScrollY && currentScrollY % 100 === 0) {
             setRotationOfAll((prev) => prev + 1);
 
             lastScrollY = currentScrollY;
