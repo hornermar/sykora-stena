@@ -40,7 +40,7 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
 
             <DialogContent>
                 <p>
-                    Stěnu na adrese{" "}
+                    Stěnu najdete na adrese{" "}
                     <a
                         href="https://maps.app.goo.gl/JE3JmM7rd2TKafbx7"
                         target="_blank"
@@ -49,7 +49,8 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
                         Jindřišská 832/3
                     </a>
                     . Tato mozaika pochází z roku 1968 a původně byla určena pro
-                    pasáž.
+                    pasáž. Z jedné stran s ní sousedilo polské kulturní
+                    středisko, z druhé později výlez ze stanice metra Můstek.
                 </p>
                 <p>
                     Svůj původní účel ztratila v roce 2005, kdy byla pasáž

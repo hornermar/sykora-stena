@@ -1,20 +1,17 @@
-"use client";
 import { Box, SvgIcon, Typography } from "@mui/material";
 import { Collapse } from "../common/Collapse";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { getElements } from "../../utils/getElements";
+import { useCallback, useState } from "react";
 import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
 import { getRandomRule } from "../../utils/getRandomRule";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
-import { Structure } from "../Structure/Structure";
-import { GridSwitch } from "../common/Switch";
 import { useSwitch } from "@/app/hooks/useSwitch";
 import { FrontPageDialog } from "./Dialog";
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import infoIcon from "../../../public/circle-info-solid.svg";
-import rotateIcon from "../../../public/rotate-solid.svg";
+import { useScrollPositionChange } from "@/app/hooks/useScrollPositionChange";
+import { FrontPageImage } from "./Image";
 
 const emptyGrid = [
     ["-", "-", "-", "0", "3r", "1r"],
@@ -35,9 +32,7 @@ type FrontPageProps = {
 };
 
 export const FrontPage = ({ color }: FrontPageProps) => {
-    const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
     const [open, onOpen, onClose] = useSwitch(false);
-    const [grid, setGrid] = useState(emptyGrid);
     const [form, setForm] = useState({
         coefficient: 0.75,
         rule: 1,
@@ -50,13 +45,17 @@ export const FrontPage = ({ color }: FrontPageProps) => {
         });
     }, []);
 
-    useEffect(() => {
-        setGrid(getElements(form.rule, form.coefficient, emptyGrid));
-    }, [form]);
+    let lastScrollY = 0;
+    useScrollPositionChange(() => {
+        const currentScrollY = Math.floor(window.scrollY);
 
-    useEffect(() => {
-        console.log(grid);
-    }, [grid]);
+        if (currentScrollY !== lastScrollY && currentScrollY % 10 === 0) {
+            if (window.scrollY < window.innerHeight) {
+                reloadInputs();
+            }
+            lastScrollY = currentScrollY;
+        }
+    });
 
     const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");
@@ -97,49 +96,11 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                 </Stack>
             </Card>
 
-            <Card>
-                <Structure
-                    grid={displayEmptyGrid ? emptyGrid : grid}
-                    cellType={displayEmptyGrid ? "text" : "image"}
-                />
-
-                <Collapse expandable={false} sx={{ paddingTop: "10px" }}>
-                    <Stack flexDirection="row" alignItems="center">
-                        <Typography>
-                            Koeficient:&nbsp;
-                            <span
-                                style={{
-                                    display: "inline-block",
-                                    width: "40px",
-                                }}
-                            >
-                                {form.coefficient}&nbsp;
-                            </span>
-                            Pravidlo:&nbsp;<span>{form.rule}</span>
-                        </Typography>
-
-                        <GridSwitch
-                            sx={{ marginLeft: "20px" }}
-                            checked={!displayEmptyGrid}
-                            onChange={() =>
-                                setDisplayEmptyGrid((prev) => !prev)
-                            }
-                        />
-                        <IconButton
-                            color="inherit"
-                            onClick={() => reloadInputs()}
-                            sx={{ backgroundColor: "white !important" }}
-                        >
-                            <Image
-                                src={rotateIcon}
-                                width={20}
-                                height={20}
-                                alt={"arrow left icon"}
-                            />
-                        </IconButton>
-                    </Stack>
-                </Collapse>
-            </Card>
+            <FrontPageImage
+                emptyGrid={emptyGrid}
+                form={form}
+                reloadInputs={reloadInputs}
+            />
 
             <Card color="white">
                 <div>

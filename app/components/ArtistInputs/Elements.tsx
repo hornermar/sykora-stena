@@ -6,6 +6,7 @@ import rightLeftIcon from "../../../public/right-left-solid.svg";
 import { Card } from "../common/Card";
 import { ExampleGrid } from "../ExampleGrid";
 import { SeparateElement } from "./SeparateElement";
+import { useScrollPositionChange } from "@/app/hooks/useScrollPositionChange";
 
 const allElements = [
     ["1z", "1r", "2z", "3z", "4z", "4r"],
@@ -33,6 +34,16 @@ const largeSize = 60;
 
 export const ArtistInputsElements = () => {
     const [whiteBlack, setWhiteBlack] = useState(false);
+    const [rotationOfAll, setRotationOfAll] = useState(0);
+
+    useScrollPositionChange(() => {
+        window?.visualViewport?.pageTop;
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY % 20 === 0) {
+            setRotationOfAll((prev) => prev + 1);
+        }
+    });
 
     return (
         <>
@@ -58,21 +69,21 @@ export const ArtistInputsElements = () => {
                     <SeparateElement
                         name={!whiteBlack ? "1z" : "4z"}
                         size={largeSize}
-                        isRotating
+                        defaultRotation={rotationOfAll}
                     />
                 </Card>
                 <Card color="white">
                     <SeparateElement
                         name={!whiteBlack ? "1r" : "4r"}
                         size={largeSize}
-                        isRotating
+                        defaultRotation={rotationOfAll}
                     />
                 </Card>
                 <Card color="white">
                     <SeparateElement
                         name={!whiteBlack ? "3z" : "2z"}
                         size={largeSize}
-                        isRotating
+                        defaultRotation={rotationOfAll}
                     />
                 </Card>
             </Stack>

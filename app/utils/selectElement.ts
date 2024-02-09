@@ -16,7 +16,7 @@ export const selectElement = (
             // if there is only one element based on color
             return {
                 result: elementsBasedOnColor[0],
-                reason: "existuje pouze jeden element, který odpovídá barvou, je zvolen ten",
+                reason: "existuje pouze jeden element, který odpovídá barvou, který ale zároveň neodpovídá tvarem, je zvolen ten",
                 finalOptions: elementsBasedOnColor,
             };
         } else {

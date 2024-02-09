@@ -128,7 +128,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                                     width: "40px",
                                 }}
                             >
-                                {form.coefficient}&nbsp;
+                                {form.coefficient.toLocaleString("cs-CZ")}&nbsp;
                             </span>
                             Pravidlo:&nbsp;<span>{form.rule}</span>
                         </Typography>

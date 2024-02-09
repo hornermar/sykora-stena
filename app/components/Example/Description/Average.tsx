@@ -24,11 +24,11 @@ export const ExampleDescriptionAverage = ({
             <ExampleDescriptionLabel
                 value={`${
                     size(neighboursGroup) === 1
-                        ? first(neighboursGroup)
+                        ? first(neighboursGroup)?.toLocaleString("cs-CZ")
                         : `(${neighboursGroup.join(" + ")})`
-                } : ${size(neighboursGroup)}  = ${
-                    description.neighboursAverage
-                }`}
+                } : ${size(
+                    neighboursGroup
+                )}  = ${description.neighboursAverage.toLocaleString("cs-CZ")}`}
             />
 
             {(cellContent === "+" || cellContent === "-") && (
@@ -38,11 +38,18 @@ export const ExampleDescriptionAverage = ({
                         odečte od průměru předem daný koeficient. Zde je
                         znaménko {cellContent} , od průměru je proto potřeba{" "}
                         {cellContent === "+" ? "přičíst" : "odečíst"} předem
-                        daný koeficient (v tomto případě {coefficient})
+                        daný koeficient (zde{" "}
+                        {coefficient.toLocaleString("cs-CZ")})
                     </p>
 
                     <ExampleDescriptionLabel
-                        value={`${description.neighboursAverage} ${cellContent} ${coefficient} = ${description.unRoundedResult}`}
+                        value={`${description.neighboursAverage.toLocaleString(
+                            "cs-CZ"
+                        )} ${cellContent} ${coefficient.toLocaleString(
+                            "cs-CZ"
+                        )} = ${description.unRoundedResult.toLocaleString(
+                            "cs-CZ"
+                        )}`}
                     />
                 </>
             )}

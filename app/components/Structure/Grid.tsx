@@ -77,7 +77,10 @@ export const StructureGrid = memo(function StructureGrid({
                                             : "initial",
                                     backgroundColor: isCellActive
                                         ? color
+                                        : isCellActiveNeighbour
+                                        ? "#f5f2f0"
                                         : "transparent",
+
                                     zIndex: isCellActive
                                         ? 100
                                         : isCellActiveNeighbour
@@ -106,6 +109,12 @@ export const StructureGrid = memo(function StructureGrid({
                                             height={cellSize}
                                             alt={`element ${cell}`}
                                             style={{
+                                                objectFit: "fill",
+                                                opacity:
+                                                    isCellActive ||
+                                                    isCellActiveNeighbour
+                                                        ? 0.8
+                                                        : 1,
                                                 border:
                                                     isCellActive ||
                                                     isCellActiveNeighbour

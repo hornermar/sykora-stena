@@ -24,14 +24,14 @@ const collapseSx = {
 };
 
 export const Playground = ({ defaultGrid, color }: PlaygroundProps) => {
-    const [form, setForm] = useState({
-        coefficient: 2,
-        rule: 3,
-    });
     const [grid, setGrid] = useState(defaultGrid);
     const [displayDefaultGrid, setDisplayDefaultGrid] = useState(false);
     const [displayText, setDisplayText] = useState(false);
     const [isRandom, setIsRandom] = useState(false);
+    const [form, setForm] = useState({
+        coefficient: 2,
+        rule: 3,
+    });
 
     useEffect(() => {
         setGrid(

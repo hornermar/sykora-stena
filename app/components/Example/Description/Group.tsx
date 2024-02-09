@@ -62,11 +62,14 @@ export const ExampleDescriptionGroup = ({
                                                 style={{
                                                     fontSize: "14px",
                                                     fontWeight: "400",
+                                                    paddingTop: "10px",
                                                 }}
                                             >
                                                 Protože výsledek není
-                                                jednoznačný (končí 0.5), je
-                                                potřeba prohledat širší okolí.
+                                                jednoznačný (končí{" "}
+                                                {(0.5).toLocaleString("cs-CZ")}
+                                                ), je potřeba prohledat širší
+                                                okolí.
                                             </div>
                                         )}
                                 </Accordion>
@@ -77,9 +80,11 @@ export const ExampleDescriptionGroup = ({
 
                 <p>
                     Nakonec vybere nejbližší skupinu (1, 2, 3 nebo 4), ze které
-                    pak bude vybírat natočení.
+                    pak bude vybírat natočení. V totmto případě zvolil skupinu
                 </p>
-                <ExampleDescriptionLabel value={group.result.toString()} />
+                <ExampleDescriptionLabel
+                    value={group.result.toLocaleString("cs-CZ")}
+                />
 
                 <p>Do této skupiny patří elementy</p>
             </Collapse>

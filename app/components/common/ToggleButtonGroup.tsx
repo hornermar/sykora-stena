@@ -73,8 +73,9 @@ import {
 import { map } from "lodash";
 
 const StyledToggleButtonGroup = styled(MuiToggleButtonGroup)(() => ({
+    padding: "4px",
     ".MuiButtonBase-root": {
-        padding: "2px 5px",
+        padding: "2px 8px",
         color: "black",
         fontWeight: "400",
         border: "none",
@@ -91,9 +92,7 @@ const StyledToggleButtonGroup = styled(MuiToggleButtonGroup)(() => ({
     },
 
     ".MuiToggleButtonGroup-grouped:not(:last-of-type)": {
-        "::after": {
-            content: '"/"',
-        },
+        borderRight: "1px solid black",
     },
     ".MuiToggleButtonGroup-grouped:not(:first-of-type)": {},
 }));

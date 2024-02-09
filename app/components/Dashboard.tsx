@@ -10,53 +10,8 @@ import { FrontPage } from "./FrontPage/FrontPage";
 import { Playground } from "./Playground/Playground";
 import { Section } from "./common/Section";
 import { Sources } from "./Sources/Sources";
-
-const gridForExample = [
-    // 1
-    ["-", "-", "-", "0", "3r", "1r", "+", "+", "0", "-", "-"],
-    // 2
-    ["-", "1r", "+", "+", "-", "-", "-", "4z", "+", "-", "2r"],
-    // 3
-    ["-", "+", "+", "4i", "-", "1i", "-", "0", "0", "0", "0"],
-    // 4
-    ["-", "+", "+", "+", "-", "-", "-", "3b", "+", "+", "0"],
-    // 5
-    ["1z", "0", "0", "0", "-", "1d", "-", "+", "+", "0", "-"],
-    // 6
-    ["-", "+", "+", "0", "-", "-", "1y", "+", "+", "+", "1d"],
-    // 7
-    ["-", "+", "4z", "+", "1r", "-", "-", "0", "+", "0", "-"],
-    // 8
-    ["0", "+", "+", "+", "0", "-", "-", "3b", "0", "-", "-"],
-    // 9
-    ["+", "+", "+", "1d", "0", "-", "-", "+", "+", "4r", "-"],
-    // 10
-    ["+", "0", "3b", "+", "0", "0", "1r", "+", "+", "0", "-"],
-    // 11 -----
-    ["1z", "-", "-", "-", "1b", "1z", "0", "-", "-", "-", "1i"],
-    // 12
-    ["1d", "0", "1d", "0", "0", "0", "1d", "-", "-", "-", "1b"],
-    // 13
-    ["0", "4z", "-", "-", "1d", "0", "0", "0", "+", "+", "4r"],
-    // 14
-    ["0", "0", "0", "0", "0", "0", "1y", "0", "+", "+", "0"],
-    // 15
-    ["+", "+", "0", "1b", "0", "0", "0", "0", "4z", "0", "0"],
-    // 16
-    ["2r", "0", "0", "+", "+", "1r", "0", "+", "+", "0", "-"],
-    // 17
-    ["-", "0", "4y", "0", "+", "0", "0", "+", "+", "0", "-"],
-    // 18
-    ["-", "0", "0", "+", "+", "0", "1d", "0", "3y", "-", "-"],
-    // 19
-    ["-", "0", "0", "3r", "+", "0", "+", "+", "+", "-", "1y"],
-    // 20
-    ["1b", "0", "0", "3y", "0", "1y", "+", "+", "+", "0", "-"],
-    // 21
-    ["-", "0", "+", "0", "-", "-", "+", "+", "4i", "0", "-"],
-    // 22
-    ["-", "0", "3y", "0", "+", "1r", "0", "+", "+", "+", "0"],
-];
+import { useScrollPositionChange } from "@/app/hooks/useScrollPositionChange";
+import { exampleGrid } from "../lib/exampleGrid";
 
 export default function HomePage() {
     const [showButton, setShowButton] = useState(false);
@@ -68,6 +23,10 @@ export default function HomePage() {
             setShowButton(false);
         }
     };
+
+    useScrollPositionChange(() => {
+        checkScrollPosition();
+    });
 
     useEffect(() => {
         window.addEventListener("scroll", checkScrollPosition);
@@ -107,20 +66,14 @@ export default function HomePage() {
             </Section>
 
             <Section>
-                <ArtistInputs
-                    grid={gridForExample}
-                    color="rgb(224, 217, 211)"
-                />
+                <ArtistInputs grid={exampleGrid} color="rgb(224, 217, 211)" />
             </Section>
             <Section>
-                <Example
-                    defaultGrid={gridForExample}
-                    color="rgb(224, 217, 211)"
-                />
+                <Example defaultGrid={exampleGrid} color="rgb(224, 217, 211)" />
             </Section>
             <Section id="playground">
                 <Playground
-                    defaultGrid={gridForExample}
+                    defaultGrid={exampleGrid}
                     color="rgb(224, 217, 211)"
                 />
             </Section>
