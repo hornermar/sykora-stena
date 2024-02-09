@@ -36,12 +36,14 @@ export const ArtistInputsElements = () => {
     const [whiteBlack, setWhiteBlack] = useState(false);
     const [rotationOfAll, setRotationOfAll] = useState(0);
 
+    let lastScrollY = 0;
     useScrollPositionChange(() => {
-        window?.visualViewport?.pageTop;
-        const currentScrollY = window.scrollY;
+        const currentScrollY = Math.floor(window.scrollY);
 
-        if (currentScrollY % 20 === 0) {
+        if (currentScrollY !== lastScrollY && currentScrollY % 20 === 0) {
             setRotationOfAll((prev) => prev + 1);
+
+            lastScrollY = currentScrollY;
         }
     });
 

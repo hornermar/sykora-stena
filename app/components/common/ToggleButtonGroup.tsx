@@ -98,11 +98,11 @@ const StyledToggleButtonGroup = styled(MuiToggleButtonGroup)(() => ({
 }));
 
 type ToggleButtonGroupProps = {
-    value: boolean;
+    value: any;
     onChange: (value: boolean) => void;
     buttons: {
         label: string;
-        value: boolean;
+        value: any;
     }[];
 };
 
