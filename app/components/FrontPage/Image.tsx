@@ -28,7 +28,7 @@ export const FrontPageImage = ({
 
     useEffect(() => {
         setGrid(getElements(form.rule, form.coefficient, emptyGrid));
-    }, [form]);
+    }, [form, emptyGrid]);
 
     return (
         <Card>
