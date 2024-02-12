@@ -2,11 +2,11 @@ import { Button } from "../common/Button";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import { DialogActions, DialogContent } from "@mui/material";
-import { IconButton, Stack } from "@mui/material";
+import { IconButton } from "@mui/material";
 import Image from "next/image";
 import xIcon from "../../../public/xmark-solid.svg";
-import { originalGrid } from "@/app/lib/originalGrid";
 import { Structure } from "../Structure/Structure";
+import { originalGrid } from "@/app/lib/originalGrid";
 
 type FrontPageDialogProp = {
     open: boolean;
@@ -16,16 +16,16 @@ type FrontPageDialogProp = {
 export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
     return (
         <Dialog
+            fullScreen
             onClose={onClose}
             open={open}
             sx={{
                 ".MuiPaper-root": {
                     backgroundColor: "white",
-                    padding: "15px 0px ",
                 },
             }}
         >
-            <DialogTitle>Stěna, 1968</DialogTitle>
+            <DialogTitle sx={{ paddingBottom: 0 }}>Stěna, 1968</DialogTitle>
 
             <IconButton
                 color="inherit"
@@ -40,7 +40,7 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
                 <Image src={xIcon} width={20} height={20} alt={"close icon"} />
             </IconButton>
 
-            <DialogContent>
+            <DialogContent sx={{ paddingTop: "0" }}>
                 <p>
                     Stěnu najdete na adrese{" "}
                     <a
@@ -62,9 +62,13 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
                     destičky vypouští páru při vaření nudlí.
                 </p>
 
-                <Structure grid={originalGrid} cellType={"image"} />
+                <Structure
+                    grid={originalGrid}
+                    cellType={"image"}
+                    sx={{ paddingTop: "20px" }}
+                />
             </DialogContent>
-            <DialogActions>
+            <DialogActions sx={{ padding: "15px 20px" }}>
                 <Button onClick={onClose}>Zavřít</Button>
             </DialogActions>
         </Dialog>
