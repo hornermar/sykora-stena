@@ -1,7 +1,7 @@
 "use client";
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import rightLeftIcon from "../../../public/right-left-solid.svg";
 import { Card } from "../common/Card";
 import { ExampleGrid } from "../ExampleGrid";
@@ -31,19 +31,39 @@ const blackWhiteElements = [
 const smallSize = 35;
 const largeSize = 60;
 
-type ArtistInputsElementsProps = {
-    scrollTop: number;
-};
+type ArtistInputsElementsProps = {};
 
-export const ArtistInputsElements = ({
-    scrollTop,
-}: ArtistInputsElementsProps) => {
+export const ArtistInputsElements = ({}: ArtistInputsElementsProps) => {
     const [whiteBlack, setWhiteBlack] = useState(false);
-    const [rotationOfAll, setRotationOfAll] = useState(0);
+    const [rotation, setRotation] = useState(0);
+    const elementRef = useRef<any>(null);
+
+    const handleScroll = () => {
+        const { top } = elementRef?.current?.getBoundingClientRect();
+        const vh = (top / window.innerHeight) * 100;
+
+        if (vh > 0 && vh < 100) rotate(vh);
+    };
+
+    const rotate = (vh: number) => {
+        if (vh <= 25) {
+            setRotation(3);
+        } else if (vh <= 50) {
+            setRotation(2);
+        } else if (vh <= 75) {
+            setRotation(1);
+        } else {
+            setRotation(0);
+        }
+    };
 
     useEffect(() => {
-        setRotationOfAll((prev) => prev + 1);
-    }, [scrollTop]);
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
         <>
@@ -64,26 +84,32 @@ export const ArtistInputsElements = ({
                     Jejich postupným otáčením získal 10 různých elementů.
                 </p>
             </Card>
-            <Stack direction="row" justifyContent="space-between">
+            <Stack
+                direction="row"
+                justifyContent="space-between"
+                ref={elementRef}
+            >
                 <Card color="white">
-                    <SeparateElement
-                        name={!whiteBlack ? "1z" : "4z"}
-                        size={largeSize}
-                        defaultRotation={rotationOfAll}
-                    />
+                    <div ref={elementRef}>
+                        <SeparateElement
+                            name={!whiteBlack ? "1z" : "4z"}
+                            size={largeSize}
+                            rotation={rotation}
+                        />
+                    </div>
                 </Card>
                 <Card color="white">
                     <SeparateElement
                         name={!whiteBlack ? "1r" : "4r"}
                         size={largeSize}
-                        defaultRotation={rotationOfAll}
+                        rotation={rotation}
                     />
                 </Card>
                 <Card color="white">
                     <SeparateElement
                         name={!whiteBlack ? "3z" : "2z"}
                         size={largeSize}
-                        defaultRotation={rotationOfAll}
+                        rotation={rotation}
                     />
                 </Card>
             </Stack>

@@ -3,28 +3,39 @@ import { Collapse } from "../common/Collapse";
 import { Card } from "../common/Card";
 import { Structure } from "../Structure/Structure";
 import { GridSwitch } from "../common/Switch";
-import { IconButton, Stack } from "@mui/material";
-import Image from "next/image";
-import rotateIcon from "../../../public/rotate-solid.svg";
-import { useEffect, useState } from "react";
+import { Stack } from "@mui/material";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getElements } from "@/app/utils/getElements";
+import { getRandomCoefficient } from "@/app/utils/getRandomCoefficient";
+import { getRandomRule } from "@/app/utils/getRandomRule";
+import { some } from "lodash";
 
 type FrontPageImageProps = {
     emptyGrid: string[][];
-    form: {
-        coefficient: number;
-        rule: number;
-    };
-    reloadInputs: () => void;
 };
 
-export const FrontPageImage = ({
-    emptyGrid,
-    form,
-    reloadInputs,
-}: FrontPageImageProps) => {
+export const FrontPageImage = ({ emptyGrid }: FrontPageImageProps) => {
     const [displayEmptyGrid, setDisplayEmptyGrid] = useState(false);
     const [grid, setGrid] = useState(emptyGrid);
+    const [form, setForm] = useState({
+        coefficient: 0.75,
+        rule: 0,
+    });
+
+    const reloadInputs = useCallback(() => {
+        setForm({
+            coefficient: getRandomCoefficient(),
+            rule: getRandomRule(),
+        });
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            reloadInputs();
+        }, 1500);
+
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         setGrid(getElements(form.rule, form.coefficient, emptyGrid));
@@ -57,7 +68,7 @@ export const FrontPageImage = ({
                         checked={!displayEmptyGrid}
                         onChange={() => setDisplayEmptyGrid((prev) => !prev)}
                     />
-                    <IconButton
+                    {/* <IconButton
                         color="inherit"
                         onClick={() => reloadInputs()}
                         sx={{ backgroundColor: "white !important" }}
@@ -68,7 +79,7 @@ export const FrontPageImage = ({
                             height={20}
                             alt={"arrow left icon"}
                         />
-                    </IconButton>
+                    </IconButton> */}
                 </Stack>
             </Collapse>
         </Card>

@@ -5,6 +5,8 @@ import { DialogActions, DialogContent } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import xIcon from "../../../public/xmark-solid.svg";
+import { originalGrid } from "@/app/lib/originalGrid";
+import { Structure } from "../Structure/Structure";
 
 type FrontPageDialogProp = {
     open: boolean;
@@ -18,8 +20,8 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
             open={open}
             sx={{
                 ".MuiPaper-root": {
-                    backgroundColor: "rgb(224, 217, 211)",
-                    padding: "15px 0px",
+                    backgroundColor: "white",
+                    padding: "15px 0px ",
                 },
             }}
         >
@@ -59,6 +61,8 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
                     vestavěným patrem. Dnešní provozovatel na cenné keramické
                     destičky vypouští páru při vaření nudlí.
                 </p>
+
+                <Structure grid={originalGrid} cellType={"image"} />
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose}>Zavřít</Button>

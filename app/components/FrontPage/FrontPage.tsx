@@ -1,8 +1,6 @@
 import { Box, SvgIcon, Typography } from "@mui/material";
 import { Collapse } from "../common/Collapse";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { getRandomCoefficient } from "../../utils/getRandomCoefficient";
-import { getRandomRule } from "../../utils/getRandomRule";
+import { useCallback } from "react";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
 import { useSwitch } from "@/app/hooks/useSwitch";
@@ -28,26 +26,10 @@ const emptyGrid = [
 
 type FrontPageProps = {
     color: string;
-    scrollTop: number;
 };
 
-export const FrontPage = ({ color, scrollTop }: FrontPageProps) => {
+export const FrontPage = ({ color }: FrontPageProps) => {
     const [open, onOpen, onClose] = useSwitch(false);
-    const [form, setForm] = useState({
-        coefficient: 0.75,
-        rule: 1,
-    });
-
-    const reloadInputs = useCallback(() => {
-        setForm({
-            coefficient: getRandomCoefficient(),
-            rule: getRandomRule(),
-        });
-    }, []);
-
-    useEffect(() => {
-        scrollTop < window.innerHeight && reloadInputs();
-    }, [scrollTop]);
 
     const scrollToPlayground = useCallback(() => {
         const element = document.getElementById("playground");
@@ -88,11 +70,7 @@ export const FrontPage = ({ color, scrollTop }: FrontPageProps) => {
                 </Stack>
             </Card>
 
-            <FrontPageImage
-                emptyGrid={emptyGrid}
-                form={form}
-                reloadInputs={reloadInputs}
-            />
+            <FrontPageImage emptyGrid={emptyGrid} />
 
             <Card color="white">
                 <div>

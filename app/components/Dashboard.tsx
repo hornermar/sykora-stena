@@ -40,11 +40,6 @@ export default function HomePage() {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    const roundedSrollTop = useMemo(
-        () => Math.floor(scrollTop / 100) * 100,
-        [scrollTop]
-    );
-
     return (
         <Box>
             {showButton && (
@@ -70,18 +65,11 @@ export default function HomePage() {
             )}
 
             <Section id="frontpage">
-                <FrontPage
-                    color="rgb(224, 217, 211)"
-                    scrollTop={roundedSrollTop}
-                />
+                <FrontPage color="rgb(224, 217, 211)" />
             </Section>
 
             <Section>
-                <ArtistInputs
-                    grid={exampleGrid}
-                    color="rgb(224, 217, 211)"
-                    scrollTop={roundedSrollTop}
-                />
+                <ArtistInputs grid={exampleGrid} color="rgb(224, 217, 211)" />
             </Section>
             <Section>
                 <Example defaultGrid={exampleGrid} color="rgb(224, 217, 211)" />
