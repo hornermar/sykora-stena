@@ -23,7 +23,7 @@ export const Contact = ({}: ContactProps) => {
                     rekonstruovaného algoritmu.
                 </p>
                 <Stack flexDirection="row" alignItems="center">
-                    <p style={{ marginRight: "50px" }}>
+                    <p style={{ marginRight: "20px" }}>
                         ©{" "}
                         <span>
                             {currentYear > 2024

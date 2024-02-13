@@ -3,7 +3,7 @@ import { memo, useState } from "react";
 import arrowLeftIcon from "../../../public/arrow-left-solid.svg";
 import { IconButton } from "@mui/material";
 import Image from "next/image";
-import { clickableColor } from "../Dashboard";
+import { clickableColor, primaryColor } from "../Dashboard";
 
 type CollapseProps = {
     children: React.ReactNode;
@@ -49,7 +49,7 @@ export const Collapse = memo(function Collapse({
                     borderBottomRightRadius: "40px",
                     minWidth: "25px",
                     fontSize: "14px",
-                    backgroundColor: "#968d89",
+                    backgroundColor: primaryColor,
                     cursor: "pointer",
                     color: expanded ? "black" : "transparent",
                     zIndex: 100,

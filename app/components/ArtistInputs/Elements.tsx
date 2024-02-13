@@ -127,7 +127,7 @@ export const ArtistInputsElements = ({}: ArtistInputsElementsProps) => {
 
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <IconButton
-                        sx={{ backgroundColor: `${clickableColor} !important` }}
+                        sx={{ backgroundColor: `${primaryColor} !important` }}
                         size="large"
                         onClick={() => setWhiteBlack((prev) => !prev)}
                     >

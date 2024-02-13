@@ -136,11 +136,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                         />
                     </Stack>
 
-                    <IconButton
-                        color="inherit"
-                        onClick={() => reloadInputs()}
-                        sx={{ backgroundColor: "white !important" }}
-                    >
+                    <IconButton color="inherit" onClick={() => reloadInputs()}>
                         <Image
                             src={rotateIcon}
                             width={20}
