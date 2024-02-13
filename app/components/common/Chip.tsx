@@ -1,8 +1,12 @@
 import { Chip as MuiChip, SxProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { clickableColor } from "../Dashboard";
 
 const StyledChip = styled(MuiChip)((props) => ({
-    border: props.variant === "filled" ? "2px solid black" : "2px solid white",
+    border:
+        props.variant === "filled"
+            ? `2px solid ${clickableColor}`
+            : "2px solid white",
     backgroundColor: "white",
     fontSize: "14px",
     fontWeight: "400",
@@ -19,9 +23,7 @@ const StyledChip = styled(MuiChip)((props) => ({
     "&:hover": {
         backgroundColor: "white",
     },
-    // "&.MuiButtonBase-root": {
-    //     marginBottom: "4px",
-    // },
+
     ".MuiChip-label": {
         whiteSpace: "normal",
     },

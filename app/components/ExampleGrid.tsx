@@ -2,6 +2,7 @@ import { Stack, SxProps } from "@mui/material";
 import { map } from "lodash";
 import Image from "next/image";
 import { getElementImage } from "../utils/getElementImages";
+import { primaryColor } from "./Dashboard";
 
 type ExampleGridProps = {
     grid: string[][];
@@ -44,7 +45,7 @@ export const ExampleGrid = ({
                                         height: `${size}px`,
                                         marginBottom: !displayName ? "20px" : 0,
                                         outline: isCellActive
-                                            ? "4px solid rgb(224, 217, 211)"
+                                            ? `4px solid ${primaryColor}`
                                             : "initial",
                                     }}
                                 >

@@ -1,4 +1,3 @@
-"use client";
 import { Card } from "../common/Card";
 import { SectionTitle } from "../common/SectionTitle";
 
@@ -8,13 +7,19 @@ export const Sources = ({}: SourcesProps) => {
     return (
         <>
             <Card>
-                <SectionTitle letter="E." title="Zdroje" />
+                <SectionTitle letter="D." title="Zdroje" />
                 <p>
                     Algoritmus popsal Zdeněk Sýkora v textu Můj systém z roku
                     1967. O pár let později, v roce 1970, jej pak spolu s
                     Jaroslavem Blažkem popisují v textu Computer-aided
                     multielement geometrical abstract paintings.
                 </p>
+                <p>
+                    Příklad diagramu vychází rovněž z těchto zdrojů. V kapitole
+                    A. je použita první část diagramu, v kapitole B. druhá. V
+                    kapitole C. je pak kompletní.
+                </p>
+
                 <ol
                     style={{
                         fontSize: "14px",

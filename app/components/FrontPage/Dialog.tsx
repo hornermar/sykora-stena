@@ -42,24 +42,31 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
 
             <DialogContent sx={{ paddingTop: "0" }}>
                 <p>
-                    Stěnu najdete na adrese{" "}
+                    Na konci 60. let pomocí tohoto algoritmu vytvořil Stěnu pro
+                    pasáž. Původně z jedné strany sousedila s polským kulturním
+                    střediskem, z druhé později s výlezem ze stanice metra
+                    Můstek.
+                </p>
+                <p>
+                    V roce 2005 byla pasáž zrušena a zastavěna obchody a bary a
+                    Sýkorova mozaika se tak stala součástí interiéru kavárny.
+                    Prostor byl doplněn patrem, což necitlivě rozdělilo mozaiku
+                    na dvě části a znemožnilo tak pohled na celé dílo. Dnes se
+                    zde nachází asijské bistro a v těsné blízkosti mozaiky se
+                    smaží nudle. To k uchchování uměleckého díla pravděpodobně
+                    příliš nepřidává.
+                </p>
+
+                <p>
+                    Mozaiku najdete na adrese{" "}
                     <a
-                        href="https://maps.app.goo.gl/JE3JmM7rd2TKafbx7"
+                        href="https://maps.app.goo.gl/YAtsMNmorrUaSU3h7"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Jindřišská 832/3
                     </a>
-                    . Tato mozaika pochází z roku 1968 a původně byla určena pro
-                    pasáž. Z jedné stran s ní sousedilo polské kulturní
-                    středisko, z druhé později výlez ze stanice metra Můstek.
-                </p>
-                <p>
-                    Svůj původní účel ztratila v roce 2005, kdy byla pasáž
-                    zrušena a zastavěna obchody a bary. Mozaika se stala
-                    součástí interiéru kavárny a byla necitlivě přepažena
-                    vestavěným patrem. Dnešní provozovatel na cenné keramické
-                    destičky vypouští páru při vaření nudlí.
+                    .
                 </p>
 
                 <Structure
@@ -68,9 +75,9 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
                     sx={{ paddingTop: "20px" }}
                 />
             </DialogContent>
-            <DialogActions sx={{ padding: "15px 20px" }}>
+            {/* <DialogActions sx={{ padding: "15px 20px" }}>
                 <Button onClick={onClose}>Zavřít</Button>
-            </DialogActions>
+            </DialogActions> */}
         </Dialog>
     );
 };

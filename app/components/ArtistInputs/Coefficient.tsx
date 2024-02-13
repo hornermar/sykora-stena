@@ -13,13 +13,12 @@ export const ArtistInputsCoefficient = ({
             <Card heading="3. Koeficient" color="white">
                 <p>
                     Dalším vstupem je <strong>koeficient</strong>, který má
-                    číselnou hodnotu větší než 0.
+                    číselnou hodnotu větší než 0 a menší než 4.
                 </p>
-                {/* TODO: Add tooltip widt ecample of lightest and darkest elements */}
                 <p>
-                    Koeficient má funkci urychlit nebo zpomalit přechody od
-                    světlých elementů k tmavým nebo naopak. Vyšší koeficient
-                    znamená kontrastnější přechody, nižší pozvolnější.
+                    Jeho funkce je urychlit nebo zpomalit přechody od světlých
+                    elementů k tmavým nebo naopak. Vyšší koeficient znamená
+                    kontrastnější přechody, nižší pozvolnější.
                 </p>
                 <p>
                     V diagramu jsou tato místa umělcem označena znaménky{" "}

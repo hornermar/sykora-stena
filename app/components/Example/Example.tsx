@@ -1,4 +1,3 @@
-"use client";
 import { Cell } from "@/app/types/General";
 import { getColourDensity } from "@/app/utils/getColorDensity";
 import { getElements } from "@/app/utils/getElements";
@@ -80,7 +79,7 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
     return (
         <>
             <Card color={color}>
-                <SectionTitle letter="C." title="Výpočet" />
+                <SectionTitle letter="B." title="Výpočet" />
 
                 <p
                     style={{
@@ -88,15 +87,13 @@ export const Example = ({ defaultGrid, color }: ExampleProps) => {
                         marginBottom: 0,
                     }}
                 >
-                    Až potud vše určoval autor. V tuto chvíli přebírá zpracování
-                    algoritmus, který dopočítá chybějící políčka.
+                    Až potud vše určoval autor. Zpracování přebírá algoritmus,
+                    který dopočítá chybějící políčka.
                 </p>
                 <p>
-                    V následující části můžete prozkoumat, jak algoritmus
-                    funguje. V popisu takového algoritmu se ale člověk může
-                    lehko ztratit. Proklikejte si proto jednotlivé buňky (ty
-                    nepodtržené!) a uvidíte , jak takový výpočet v konkrétním
-                    případě probíhá.
+                    V této části můžete prozkoumat, jak algoritmus funguje.
+                    Proklikejte si jednotlivé buňky (ty nepodtržené) a uvidíte ,
+                    jak výpočet v konkrétním případě probíhá.
                 </p>
             </Card>
 

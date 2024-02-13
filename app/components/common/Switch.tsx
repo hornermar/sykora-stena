@@ -1,5 +1,6 @@
 import { Switch as MuiSwitch, SxProps, styled } from "@mui/material";
 import { memo } from "react";
+import { clickableColor } from "../Dashboard";
 
 const StyledSwitch = styled(MuiSwitch)((props) => ({
     width: 62,
@@ -10,16 +11,16 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
         padding: 0,
         transform: "translateX(6px)",
         "&.Mui-checked": {
-            color: "#fff",
+            color: "black",
             transform: "translateX(22px)",
             "& + .MuiSwitch-track": {
                 opacity: 1,
-                backgroundColor: "#8796A5",
+                backgroundColor: clickableColor,
             },
         },
     },
     "& .MuiSwitch-thumb": {
-        backgroundColor: "black",
+        backgroundColor: "white",
         width: 32,
         height: 32,
         "&::before": {
@@ -35,7 +36,7 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
     },
     "& .MuiSwitch-track": {
         opacity: 1,
-        backgroundColor: "#aab4be",
+        backgroundColor: "black",
         borderRadius: 20 / 2,
     },
 }));

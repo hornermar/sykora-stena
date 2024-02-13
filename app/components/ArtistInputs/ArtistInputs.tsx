@@ -1,4 +1,3 @@
-"use client";
 import { Card } from "../common/Card";
 import { SectionTitle } from "../common/SectionTitle";
 import { ArtistInputsCoefficient } from "./Coefficient";

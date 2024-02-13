@@ -37,9 +37,8 @@ export const ExampleDescriptionAverage = ({
                         V případě, že se v buňce nachází + nebo -, přičte nebo
                         odečte od průměru předem daný koeficient. Zde je
                         znaménko {cellContent} , od průměru je proto potřeba{" "}
-                        {cellContent === "+" ? "přičíst" : "odečíst"} předem
-                        daný koeficient (zde{" "}
-                        {coefficient.toLocaleString("cs-CZ")})
+                        {cellContent === "+" ? "přičíst" : "odečíst"} koeficient
+                        (zde {coefficient.toLocaleString("cs-CZ")})
                     </p>
 
                     <ExampleDescriptionLabel

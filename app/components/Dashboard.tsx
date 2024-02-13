@@ -1,7 +1,7 @@
 "use client";
 import { Box, IconButton } from "@mui/material";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import arrowToTopIcon from "../../public/angles-up-solid.svg";
 import { ArtistInputs } from "./ArtistInputs/ArtistInputs";
 import { Contact } from "./Contact/Contact";
@@ -11,6 +11,10 @@ import { Playground } from "./Playground/Playground";
 import { Section } from "./common/Section";
 import { Sources } from "./Sources/Sources";
 import { exampleGrid } from "../lib/exampleGrid";
+import { LoadingOverlay } from "./LoadingOverlay";
+
+export const clickableColor = "#fd2f46";
+export const primaryColor = "#968d89";
 
 export default function HomePage() {
     const [scrollTop, setScrollTop] = useState(0);
@@ -41,51 +45,54 @@ export default function HomePage() {
     };
 
     return (
-        <Box>
-            {showButton && (
-                <IconButton
-                    color="inherit"
-                    size="large"
-                    onClick={() => scrollToTop()}
-                    sx={{
-                        position: "fixed",
-                        bottom: 10,
-                        right: 10,
-                        zIndex: 100,
-                        backgroundColor: "rgba(0, 0, 0, 0.2)",
-                    }}
-                >
-                    <Image
-                        src={arrowToTopIcon}
-                        width={20}
-                        height={20}
-                        alt={"arrow to the top icon"}
+        <>
+            <LoadingOverlay />
+            <Box>
+                {showButton && (
+                    <IconButton
+                        color="inherit"
+                        size="large"
+                        onClick={() => scrollToTop()}
+                        sx={{
+                            position: "fixed",
+                            bottom: 10,
+                            right: 10,
+                            zIndex: 100,
+                            backgroundColor: "#fd2f46",
+                        }}
+                    >
+                        <Image
+                            src={arrowToTopIcon}
+                            width={20}
+                            height={20}
+                            alt={"arrow to the top icon"}
+                        />
+                    </IconButton>
+                )}
+
+                <Section id="frontpage">
+                    <FrontPage color={primaryColor} />
+                </Section>
+
+                <Section>
+                    <ArtistInputs grid={exampleGrid} color={primaryColor} />
+                </Section>
+                <Section>
+                    <Example defaultGrid={exampleGrid} color={primaryColor} />
+                </Section>
+                <Section id="playground">
+                    <Playground
+                        defaultGrid={exampleGrid}
+                        color={primaryColor}
                     />
-                </IconButton>
-            )}
-
-            <Section id="frontpage">
-                <FrontPage color="rgb(224, 217, 211)" />
-            </Section>
-
-            <Section>
-                <ArtistInputs grid={exampleGrid} color="rgb(224, 217, 211)" />
-            </Section>
-            <Section>
-                <Example defaultGrid={exampleGrid} color="rgb(224, 217, 211)" />
-            </Section>
-            <Section id="playground">
-                <Playground
-                    defaultGrid={exampleGrid}
-                    color="rgb(224, 217, 211)"
-                />
-            </Section>
-            <Section>
-                <Sources />
-            </Section>
-            <Section>
-                <Contact />
-            </Section>
-        </Box>
+                </Section>
+                <Section>
+                    <Sources />
+                </Section>
+                <Section>
+                    <Contact />
+                </Section>
+            </Box>
+        </>
     );
 }

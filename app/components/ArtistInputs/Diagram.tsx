@@ -17,11 +17,10 @@ export const ArtistInputsDiagram = ({ grid }: ArtistInputsDiagramProps) => {
         <>
             <Card heading="2. Diagram" color="white">
                 <p>
-                    Umělec si připravil mřížku / zadáni, pro kterou si zvolil
-                    počet buněk do výšky a šířky. Do ní pak umístil libovolný
-                    počet elementů dle vlastního výběru. Do míst, kde si přál
-                    urychlit nebo zpomalit přechody barev přidal znaménka{" "}
-                    <b>+</b> a <b>-</b>.
+                    Umělec si připravil diagram, pro který si zvolil počet buněk
+                    do výšky a šířky. Do něj umístil libovolný počet elementů
+                    dle vlastního výběru. Do míst, kde si přál urychlit nebo
+                    zpomalit přechody barev přidal znaménka <b>+</b> a <b>-</b>.
                 </p>
                 <p style={{ marginBottom: 0 }}>Takhle mohl diagram vypadat</p>
             </Card>

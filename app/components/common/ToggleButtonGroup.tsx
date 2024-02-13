@@ -71,6 +71,7 @@ import {
     styled,
 } from "@mui/material";
 import { map } from "lodash";
+import { clickableColor } from "../Dashboard";
 
 const StyledToggleButtonGroup = styled(MuiToggleButtonGroup)(() => ({
     padding: "4px",
@@ -89,6 +90,7 @@ const StyledToggleButtonGroup = styled(MuiToggleButtonGroup)(() => ({
     ".Mui-selected": {
         backgroundColor: "transparent !important",
         textDecoration: "underline !important",
+        color: `${clickableColor} !important`,
     },
 
     ".MuiToggleButtonGroup-grouped:not(:last-of-type)": {

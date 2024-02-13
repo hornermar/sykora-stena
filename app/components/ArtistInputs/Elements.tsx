@@ -1,4 +1,3 @@
-"use client";
 import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -6,6 +5,7 @@ import rightLeftIcon from "../../../public/right-left-solid.svg";
 import { Card } from "../common/Card";
 import { ExampleGrid } from "../ExampleGrid";
 import { SeparateElement } from "./SeparateElement";
+import { clickableColor, primaryColor } from "../Dashboard";
 
 const allElements = [
     ["1z", "1r", "2z", "3z", "4z", "4r"],
@@ -127,7 +127,7 @@ export const ArtistInputsElements = ({}: ArtistInputsElementsProps) => {
 
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <IconButton
-                        color="inherit"
+                        sx={{ backgroundColor: `${clickableColor} !important` }}
                         size="large"
                         onClick={() => setWhiteBlack((prev) => !prev)}
                     >

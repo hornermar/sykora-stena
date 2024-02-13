@@ -1,38 +1,54 @@
-"use client";
+import { IconButton, Stack } from "@mui/material";
 import { Card } from "../common/Card";
+import instagramIcon from "../../../public/instagram.svg";
+import Image from "next/image";
 
 type ContactProps = {};
 
 export const Contact = ({}: ContactProps) => {
-    //this year
-    const year = new Date().getFullYear();
+    const currentYear = new Date().getFullYear();
+
     return (
         <>
             <Card
                 color="black"
-                sx={{ color: "white", fontSize: "10px", fontWeight: 300 }}
+                sx={{
+                    color: "white",
+                    fontSize: "10px",
+                    fontWeight: 300,
+                }}
             >
                 <p>
-                    Veškeré struktury na této stránce jsou vygenerované pomocí
+                    Struktury na této stránce jsou vygenerované pomocí
                     rekonstruovaného algoritmu.
                 </p>
-                <p>@ 2024 Markéta Hájková</p>
-                {/* <a
-                    href="https://www.instagram.com/marketa_hajek/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <IconButton size="large">
-                        <Image
-                            src={instagram}
-                            width={20}
-                            height={20}
-                            alt={"arrow to the top icon"}
-                        />
-                    </IconButton>
-                </a> */}
+                <Stack flexDirection="row" alignItems="center">
+                    <p style={{ marginRight: "50px" }}>
+                        ©{" "}
+                        <span>
+                            {currentYear > 2024
+                                ? `2024–⁠⁠⁠⁠⁠${currentYear}`
+                                : currentYear}
+                        </span>{" "}
+                        Markéta Hájková
+                    </p>
+                    <a
+                        href="https://www.instagram.com/marketa_hajek/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <IconButton size="large">
+                            <Image
+                                src={instagramIcon}
+                                width={20}
+                                height={20}
+                                alt={"arrow to the top icon"}
+                            />
+                        </IconButton>
+                    </a>
+                </Stack>
 
-                <p>Email: hornerova.m@gmail.com</p>
+                {/* <p>Email: hornerova.m@gmail.com</p> */}
             </Card>
         </>
     );

@@ -33,8 +33,8 @@ export const ExampleDescriptionGroup = ({
             <Collapse in={expanded}>
                 <p>
                     Při zjišťování skupiny zkoumá algoritmus sousední elementy
-                    (dotýkající se stranou i rohy) a spočítá průměr ze skupin,
-                    do kterých patří.
+                    (dotýkající se stranou i rohy). Spočítá průměr ze skupin, do
+                    kterých sousední elementy patří
                 </p>
 
                 {steps === 1 ? (
@@ -80,7 +80,8 @@ export const ExampleDescriptionGroup = ({
 
                 <p>
                     Nakonec vybere nejbližší skupinu (1, 2, 3 nebo 4), ze které
-                    pak bude vybírat natočení. V totmto případě zvolil skupinu
+                    bude v následujícím kroku vybírat natočení. V totmto případě
+                    skupinu
                 </p>
                 <ExampleDescriptionLabel
                     value={group.result.toLocaleString("cs-CZ")}

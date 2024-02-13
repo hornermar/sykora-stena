@@ -6,6 +6,7 @@ import { Box, Collapse, Stack } from "@mui/material";
 import { find, map } from "lodash";
 import { memo, useMemo } from "react";
 import { ExampleGrid } from "../../ExampleGrid";
+import { ExampleDescriptionLabel } from "./Label";
 
 const LabelForSide = memo(function LabelForSide({
     side,
@@ -16,7 +17,7 @@ const LabelForSide = memo(function LabelForSide({
         <Box
             sx={{
                 fontSize: "16px",
-                width: "96px",
+                width: "100px",
                 height: "30px",
                 textAlign: "center",
             }}
@@ -65,19 +66,18 @@ export const ExampleDescriptionShape = ({
         <>
             <Collapse in={expanded}>
                 <p>
-                    Při výpočtu zkoumá sousední elementy (dotýkající se poue
-                    stranou stranou) a jejich vlastnosti. Ty jsou barva (černá /
-                    bílá) a tvar na sousedící straně (ano / ne).
+                    Při výběru natočení zkoumá sousední elementy (dotýkající se
+                    pouze stranou stranou) a jejich vlastnosti. Těmi jsou barva
+                    (černá / bílá) a tvar na sousedící straně (ano / ne).
                 </p>
-                <p>
-                    Jaké vlastnosti hledá se řídí pravidlem, v tomto případě
-                    pravidlem
-                </p>
+                <p>Jaké vlastnosti hledá se řídí pravidlem, v tomto případě:</p>
                 <p>
                     <i>
                         {ruleItem?.code} : {ruleItem?.text}
                     </i>
                 </p>
+
+                <p>Vzor pro jednotlivé strany a vlastnosti:</p>
 
                 {shapeNeighbours && (
                     <Stack

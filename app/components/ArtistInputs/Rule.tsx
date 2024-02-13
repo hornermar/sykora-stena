@@ -1,4 +1,3 @@
-"use client";
 import { rulesItems } from "@/app/lib/formItems";
 import { map } from "lodash";
 import { Rule } from "../../types/Rule";
@@ -14,14 +13,13 @@ export const ArtistInputsRule = ({ color }: ArtistInputsRuleProps) => {
         <>
             <Card heading="4. Pravidlo" color="white">
                 <p>
-                    Dále je třeba zvolit jedno ze čtyř <b>pravidel</b>, podle
+                    Posledním vstupem je jedno ze čtyř <b>pravidel</b>, podle
                     kterého budou vypočítané elementy zaujímat vzájemnou polohu.
-                </p>
-                <p>
                     Rozhoduje, jaké vztahy elementy navazují, zda se vzájemně
                     napojují, nebo se od sebe izolují (barvou, tvarem, nebo
                     obojím).
                 </p>
+                <p>Pravidla jsou následující</p>
             </Card>
 
             <Card color="white">

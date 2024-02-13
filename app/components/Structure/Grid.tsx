@@ -4,6 +4,7 @@ import Image from "next/image";
 import { memo } from "react";
 import { Cell } from "../../types/General";
 import { getElementImage } from "../../utils/getElementImages";
+import { clickableColor, primaryColor } from "../Dashboard";
 
 type StructureGridProps = {
     grid: string[][];
@@ -69,14 +70,15 @@ export const StructureGrid = memo(function StructureGrid({
                                     alignItems: "center",
                                     width: `${cellSize}px`,
                                     height: `${cellSize}px`,
-                                    border:
-                                        isCellActive || isCellActiveNeighbour
-                                            ? `2px solid ${color}`
-                                            : cellType === "text" || isCellEmpty
-                                            ? "1px solid black"
-                                            : "initial",
+                                    border: isCellActive
+                                        ? `2px solid ${primaryColor}`
+                                        : isCellActiveNeighbour
+                                        ? `2px solid ${primaryColor}`
+                                        : cellType === "text" || isCellEmpty
+                                        ? "1px solid black"
+                                        : "initial",
                                     backgroundColor: isCellActive
-                                        ? color
+                                        ? primaryColor
                                         : isCellActiveNeighbour
                                         ? "#f5f2f0"
                                         : "transparent",
@@ -113,7 +115,7 @@ export const StructureGrid = memo(function StructureGrid({
                                                 opacity:
                                                     isCellActive ||
                                                     isCellActiveNeighbour
-                                                        ? 0.8
+                                                        ? 0.6
                                                         : 1,
                                                 border:
                                                     isCellActive ||
