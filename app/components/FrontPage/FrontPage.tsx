@@ -9,6 +9,7 @@ import { IconButton, Stack } from "@mui/material";
 import Image from "next/image";
 import infoIcon from "../../../public/arrow-up-right-from-square-solid.svg";
 import { FrontPageImage } from "./Image";
+import { clickableColor } from "../Dashboard";
 
 const emptyGrid = [
     ["-", "-", "-", "0", "3r", "1r"],
@@ -49,8 +50,10 @@ export const FrontPage = ({ color }: FrontPageProps) => {
                     <Typography
                         variant="h1"
                         sx={{
-                            fontSize: "42px",
-                            fontWeight: "400",
+                            fontSize: "60px",
+                            fontWeight: 400,
+                            // fontWeight: "bold",
+                            color: clickableColor,
                         }}
                     >
                         Systém Sýkora

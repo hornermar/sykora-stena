@@ -13,8 +13,8 @@ import { Sources } from "./Sources/Sources";
 import { exampleGrid } from "../lib/exampleGrid";
 import { LoadingOverlay } from "./LoadingOverlay";
 
-export const clickableColor = "#fd2f46";
-export const primaryColor = "#6f6f6f";
+export const clickableColor = "#37c4c4";
+export const primaryColor = "#c0c4c4";
 
 export default function HomePage() {
     const [scrollTop, setScrollTop] = useState(0);
@@ -58,7 +58,7 @@ export default function HomePage() {
                             bottom: 10,
                             right: 10,
                             zIndex: 100,
-                            backgroundColor: "#fd2f46",
+                            backgroundColor: primaryColor,
                             opacity: 0.7,
                         }}
                     >

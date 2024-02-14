@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 
 const StyledCard = styled(MuiCard)((props) => ({
     boxShadow: "none",
-    border: "1px solid black",
+    borderBottom: "2px solid black",
     backgroundColor: props.color,
     fontSize: "16px",
     borderRadius: "0",
@@ -26,40 +26,45 @@ export function Card({
     sx?: SxProps;
 }) {
     return (
-        <StyledCard color={color} sx={sx}>
-            <CardContent
-                sx={{
-                    padding: "20px !important",
-                    borderRadius: "none",
-                    height: "100%",
-                }}
-            >
-                {(heading || button) && (
-                    <Stack flexDirection="row" justifyContent="space-between">
-                        {heading && (
-                            <Typography
-                                gutterBottom
-                                variant="h5"
-                                component="div"
-                            >
-                                {heading}
-                            </Typography>
-                        )}
+        <>
+            <StyledCard color={color} sx={sx}>
+                <CardContent
+                    sx={{
+                        padding: "20px !important",
+                        borderRadius: "none",
+                        height: "100%",
+                    }}
+                >
+                    {(heading || button) && (
+                        <Stack
+                            flexDirection="row"
+                            justifyContent="space-between"
+                        >
+                            {heading && (
+                                <Typography
+                                    gutterBottom
+                                    variant="h5"
+                                    component="div"
+                                >
+                                    {heading}
+                                </Typography>
+                            )}
 
-                        {button && (
-                            <Typography
-                                gutterBottom
-                                variant="h5"
-                                component="div"
-                            >
-                                {button}
-                            </Typography>
-                        )}
-                    </Stack>
-                )}
+                            {button && (
+                                <Typography
+                                    gutterBottom
+                                    variant="h5"
+                                    component="div"
+                                >
+                                    {button}
+                                </Typography>
+                            )}
+                        </Stack>
+                    )}
 
-                {children}
-            </CardContent>
-        </StyledCard>
+                    {children}
+                </CardContent>
+            </StyledCard>
+        </>
     );
 }

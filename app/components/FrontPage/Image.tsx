@@ -38,8 +38,8 @@ export const FrontPageImage = memo(function FrontPageImage({
                 // If the card is in the viewport, start the interval
                 if (entry.isIntersecting) {
                     intervalId = setInterval(() => {
-                        reloadInputs();
-                    }, 1000);
+                        // reloadInputs();
+                    }, 2000);
                 } else {
                     // If the card is not in the viewport, clear the interval
                     if (intervalId) {

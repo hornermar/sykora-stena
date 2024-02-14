@@ -11,7 +11,6 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
         padding: 0,
         transform: "translateX(6px)",
         "&.Mui-checked": {
-            color: "black",
             transform: "translateX(22px)",
             "& + .MuiSwitch-track": {
                 opacity: 1,
@@ -20,7 +19,7 @@ const StyledSwitch = styled(MuiSwitch)((props) => ({
         },
     },
     "& .MuiSwitch-thumb": {
-        backgroundColor: "gray",
+        backgroundColor: "black",
         width: 32,
         height: 32,
         "&::before": {
