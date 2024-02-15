@@ -94,7 +94,7 @@ export const ArtistInputsElements = ({}: ArtistInputsElementsProps) => {
                         <SeparateElement
                             name={!whiteBlack ? "1z" : "4z"}
                             size={largeSize}
-                            rotation={rotation}
+                            defaultRotation={rotation}
                         />
                     </div>
                 </Card>
@@ -102,14 +102,14 @@ export const ArtistInputsElements = ({}: ArtistInputsElementsProps) => {
                     <SeparateElement
                         name={!whiteBlack ? "1r" : "4r"}
                         size={largeSize}
-                        rotation={rotation}
+                        defaultRotation={rotation}
                     />
                 </Card>
                 <Card color="white">
                     <SeparateElement
                         name={!whiteBlack ? "3z" : "2z"}
                         size={largeSize}
-                        rotation={rotation}
+                        defaultRotation={rotation}
                     />
                 </Card>
             </Stack>

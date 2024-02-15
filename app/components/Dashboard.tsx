@@ -13,7 +13,7 @@ import { Sources } from "./Sources/Sources";
 import { exampleGrid } from "../lib/exampleGrid";
 import { LoadingOverlay } from "./LoadingOverlay";
 
-export const clickableColor = "#37c4c4";
+export const clickableColor = "#04c2df";
 export const primaryColor = "#c0c4c4";
 
 export default function HomePage() {

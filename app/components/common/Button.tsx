@@ -10,19 +10,19 @@ const StyledButton = styled(MuiButton)((props) => ({
     backgroundColor:
         props.variant === "contained" ? primaryColor : "transparent",
     textTransform: "none",
-    border: `2px solid ${clickableColor}`,
+    border: `2px dotted ${clickableColor}`,
     "&:hover": {
         boxShadow: "none",
         backgroundColor:
-            props.variant === "contained" ? "black" : "transparent",
+            props.variant === "contained" ? primaryColor : "transparent",
     },
     "&:active": {
         boxShadow: "none",
-        backgroundColor: "black",
+        backgroundColor: primaryColor,
     },
     "&:focus": {
         backgroundColor:
-            props.variant === "contained" ? "black" : "transparent",
+            props.variant === "contained" ? primaryColor : "transparent",
     },
 }));
 

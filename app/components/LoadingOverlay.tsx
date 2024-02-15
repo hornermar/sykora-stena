@@ -1,5 +1,5 @@
 "use client";
-import { Box, Fade, Typography } from "@mui/material";
+import { Backdrop, Box, Fade, Typography } from "@mui/material";
 import { useState, useEffect, useRef } from "react";
 import { clickableColor, primaryColor } from "./Dashboard";
 import { set } from "lodash";
@@ -62,16 +62,8 @@ export const LoadingOverlay = ({}: LoadingOverlayProps) => {
     }, [loaded, percentage]);
 
     return (
-        <Fade appear={false} in={percentage < 100}>
-            <Box
-                sx={{
-                    width: "100vw",
-                    height: "100vh",
-                    zIndex: 999,
-
-                    position: "absolute",
-                }}
-            >
+        <Backdrop appear={false} open={percentage < 100} sx={{ zIndex: 999 }}>
+            <Box>
                 <Box
                     sx={{
                         width: "100vw",
@@ -97,7 +89,6 @@ export const LoadingOverlay = ({}: LoadingOverlayProps) => {
                     sx={{
                         width: "100vw",
                         height: "55vh",
-                        zIndex: 999,
                         backgroundColor: "black",
                     }}
                 ></Box>
@@ -115,6 +106,6 @@ export const LoadingOverlay = ({}: LoadingOverlayProps) => {
                     }}
                 />
             </Box>
-        </Fade>
+        </Backdrop>
     );
 };

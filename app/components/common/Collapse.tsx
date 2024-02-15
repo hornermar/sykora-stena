@@ -50,7 +50,7 @@ export const Collapse = memo(function Collapse({
                     minWidth: "25px",
                     fontSize: "14px",
                     backgroundColor: primaryColor,
-                    cursor: "pointer",
+                    cursor: expanded ? "default" : "pointer",
                     color: expanded ? "black" : "transparent",
                     zIndex: 100,
                 }}

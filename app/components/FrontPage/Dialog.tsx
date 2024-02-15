@@ -1,7 +1,7 @@
 import { Button } from "../common/Button";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import { DialogActions, DialogContent } from "@mui/material";
+import { DialogContent } from "@mui/material";
 import { IconButton } from "@mui/material";
 import Image from "next/image";
 import xIcon from "../../../public/xmark-solid.svg";
@@ -75,9 +75,6 @@ export const FrontPageDialog = ({ open, onClose }: FrontPageDialogProp) => {
                     sx={{ paddingTop: "20px" }}
                 />
             </DialogContent>
-            {/* <DialogActions sx={{ padding: "15px 20px" }}>
-                <Button onClick={onClose}>Zavřít</Button>
-            </DialogActions> */}
         </Dialog>
     );
 };
