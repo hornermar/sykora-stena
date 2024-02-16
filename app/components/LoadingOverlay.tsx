@@ -2,7 +2,6 @@
 import { Backdrop, Box, Fade, Typography } from "@mui/material";
 import { useState, useEffect, useRef } from "react";
 import { clickableColor, primaryColor } from "./Dashboard";
-import { set } from "lodash";
 
 type LoadingOverlayProps = {
     // children: React.ReactNode;
@@ -62,50 +61,59 @@ export const LoadingOverlay = ({}: LoadingOverlayProps) => {
     }, [loaded, percentage]);
 
     return (
-        <Backdrop appear={false} open={percentage < 100} sx={{ zIndex: 999 }}>
-            <Box>
-                <Box
-                    sx={{
-                        width: "100vw",
-                        height: "45vh",
-                        backgroundColor: primaryColor,
-                    }}
-                >
-                    <Fade in={percentage > 0 && percentage < 100}>
-                        <Typography
-                            variant="h4"
-                            component="div"
-                            sx={{
-                                color: clickableColor,
-                                fontSize: "80px",
-                                paddingLeft: "20px",
-                            }}
-                        >
-                            <>{percentage < 100 ? percentage : 99}</>
-                        </Typography>
-                    </Fade>
-                </Box>
-                <Box
-                    sx={{
-                        width: "100vw",
-                        height: "55vh",
-                        backgroundColor: "black",
-                    }}
-                ></Box>
+        <Fade appear={false} in={percentage < 200}>
+            <Box
+                sx={{
+                    width: "100vw",
+                    height: "100vh",
+                    zIndex: 999,
+                    position: "fixed",
+                }}
+            >
+                <Box>
+                    <Box
+                        sx={{
+                            width: "100vw",
+                            height: "45vh",
+                            backgroundColor: primaryColor,
+                        }}
+                    >
+                        <Fade in={percentage > 0 && percentage < 100}>
+                            <Typography
+                                variant="h4"
+                                component="div"
+                                sx={{
+                                    color: clickableColor,
+                                    fontSize: "80px",
+                                    paddingLeft: "20px",
+                                }}
+                            >
+                                <>{percentage < 100 ? percentage : 99}</>
+                            </Typography>
+                        </Fade>
+                    </Box>
+                    <Box
+                        sx={{
+                            width: "100vw",
+                            height: "55vh",
+                            backgroundColor: "black",
+                        }}
+                    ></Box>
 
-                <Box
-                    sx={{
-                        backgroundColor: "white",
-                        width: "100vw",
-                        position: "absolute",
-                        bottom: 0,
-                        height:
-                            percentage < 99
-                                ? `calc(55vh * ${percentage / 100})`
-                                : "calc(55vh - 2px)",
-                    }}
-                />
+                    <Box
+                        sx={{
+                            backgroundColor: "white",
+                            width: "100vw",
+                            position: "absolute",
+                            bottom: 0,
+                            height:
+                                percentage < 99
+                                    ? `calc(55vh * ${percentage / 100})`
+                                    : "calc(55vh - 2px)",
+                        }}
+                    />
+                </Box>
             </Box>
-        </Backdrop>
+        </Fade>
     );
 };
