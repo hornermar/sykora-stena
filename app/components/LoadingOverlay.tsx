@@ -61,7 +61,7 @@ export const LoadingOverlay = ({}: LoadingOverlayProps) => {
     }, [loaded, percentage]);
 
     return (
-        <Fade appear={false} in={percentage < 200}>
+        <Fade appear={false} in={percentage < 100}>
             <Box
                 sx={{
                     width: "100vw",
